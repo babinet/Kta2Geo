@@ -15,5 +15,5 @@ Name convention of original .tif file eg :
 ```
 
 ```
-Absis-Ordoné_Whatever_version-numéro_l'année_Whatever.l'extenssion
+Absis-Ordoné_Whatever_version-numéro_l'année_Whatever.l'extension
 ```
