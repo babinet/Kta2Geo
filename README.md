@@ -19,4 +19,11 @@ Or
 Absis-Ordoné_Whatever_version-numéro_Whatever_l'année.l'extenssion
 ```
 
+Usage :
+- Start program >  then choose menu
+Folder/Kta2Geo/Start_Program.sh
+- Kmz files
+Folder/WhateverName.kmz
+- Maps pict format .tif files
+Folder/25-50_plan des carrièrres Denfert_V-1_Source_BHVP_1971.tif
 Convert KMZ to CSV & Geotag images
