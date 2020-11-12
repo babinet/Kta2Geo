@@ -53,6 +53,24 @@ imgs=$(cat tmp/imgs)
 Coordinates=$(cat tmp/Coordinates)
 TimeStamp=$(cat tmp/TimeStamp)
 WKT=$(cat tmp/WKT)
+echo $Coordinates
+
+exiftool -GPSLongitudeRef=W -GPSLongitude=0.006572 -GPSLatitudeRef=N -GPSLatitude=51.483822
+#        exiftool -GPSLongitudeRef=W -GPSLongitude=0.006572 -GPSLatitudeRef=N -GPSLatitude=51.483822 /Users/zeus/Desktop/PASSPORT_D.BABINET\ copie.jpg
+#
+#        exiftool /Users/zeus/Desktop/PASSPORT_D.BABINET\ copie.jpg
+#
+#        GPS Latitude                    : 51 deg 29' 1.76" N
+#        GPS Longitude                   : 0 deg 0' 23.66" W
+#        GPS Position                    : 51 deg 29' 1.76" N, 0 deg 0' 23.66" W
+#
+#        GPS Altitude                    : 85.7 m Above Sea Level
+#        GPS Latitude                    : 48 deg 48' 19.76" N
+#        GPS Longitude                   : 2 deg 14' 24.23" E
+#        Date/Time Created               : 2020:10:30 13:44:50+01:00
+#        GPS Position                    : 48 deg 48' 19.76" N, 2 deg 14' 24.23" E
+
+
 
 echo "$nme|$imgs|$Coordinates|$TimeStamp|$WKT" | awk '!/Point\(,\)/' >> "$fileout"/CSV2DRUPALtmp.csv
 

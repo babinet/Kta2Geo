@@ -18,3 +18,5 @@ Or
 ```
 Absis-Ordoné_Whatever_version-numéro_Whatever_l'année.l'extenssion
 ```
+
+Convert KMZ to CSV & Geotag images
