@@ -12,7 +12,7 @@ Name convention of original .tif file eg :
 Or
 
 ```
-25-50_plan des carrièrres Denfert_V-1_Source_1971.tif
+25-50_plan des carrièrres Denfert_V-1_Source_BHVP_1971.tif
 ```
 
 ```
