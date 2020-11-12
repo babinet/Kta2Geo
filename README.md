@@ -13,7 +13,7 @@ Name convention of original .tif file eg :
 ```
 25-50_plan des carrièrres Denfert_V-1_Source_1971.tif
 ```
-Ou
+Or
 ```
 Absis-Ordoné_Whatever_version-numéro_l'année_Whatever.l'extenssion
 ```
