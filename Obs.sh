@@ -48,11 +48,10 @@ do
 NameNoExt=$(echo "$TiffSource" | sed 's/.tif//g' | sed 's/..\///g')
 Year=$( echo "$TiffSource" | tail -c -9 | awk -F'.tif' '{print $1}')
 NameNoExt=$( echo "$TiffSource" | awk -F'.tif' '{print $1}' | awk -F'\_' '{print $1}' | sed 's/..\///g')
-Absis=$(echo $NameNoExt | awk -F'-' '{print $1}'| tr -d ' ' | sed 's/..\///g')
-Ordoned=$(echo $NameNoExt | awk -F'-' '{print $2}' | tr -d ' '  | awk -F'_' '{print $1}'| sed 's/..\///g')
+Ordoned=$(echo $NameNoExt | awk -F'-' '{print $1}'| tr -d ' ' | sed 's/..\///g')
+Absis=$(echo $NameNoExt | awk -F'-' '{print $2}' | tr -d ' '  | awk -F'_' '{print $1}'| sed 's/..\///g')
 AbsisMultiple=$(echo $Absis-50|bc -l)
 OrdonedMultiple=$(echo $Ordoned-25| bc -l)
-
 # Image Info
 ExifInfo=$(exiftool "$TiffSource")
 #echo $SerialPoster
@@ -64,10 +63,28 @@ HeightImage=$(echo $ExifInfo | awk -F'Image Height : ' '{print $2}' | awk '{prin
 
 # Position Origin 600000 126224 Zéro de l'observatoire de Paris
 
-Nord=$(echo 126224+$AbsisMultiple*$Hauteur |bc -l)
-Sud=$(echo 125824+$AbsisMultiple*$Hauteur |bc -l )
-Est=$(echo 600000+$OrdonedMultiple*$Largeur |bc -l )
-Ouest=$(echo 599400+$OrdonedMultiple*$Largeur |bc -l )
+Nord=$(echo 126224+\($AbsisMultiple*$Hauteur\) |bc -l)
+Sud=$(echo 125824+\($AbsisMultiple*$Hauteur\) |bc -l )
+Est=$(echo 600000+\($OrdonedMultiple*$Largeur\) |bc -l )
+Ouest=$(echo 599400+\($OrdonedMultiple*$Largeur\) |bc -l )
+${red}
+echo 126224+\($AbsisMultiple*$Hauteur\) |bc -l
+echo "${white}
+
+Nord=\$(echo 126224+\($AbsisMultiple*$Hauteur\) |bc -l)
+Sud=\$(echo 125824+\($AbsisMultiple*$Hauteur\) |bc -l )
+Est=\$(echo 600000+\($OrdonedMultiple*$Largeur\) |bc -l )
+Ouest=\$(echo 599400+\($OrdonedMultiple*$Largeur\) |bc -l )
+
+"
+echo $Absis Absis
+echo $Ordoned Ordoned
+echo $OrdonedMultiple OrdonedMultiple
+echo $AbsisMultiple AbsisMultiple
+echo $Nord Nord
+echo $Sud Sud
+echo $Est Est
+echo $Ouest Ouest
 
 #Nord=$(echo 600000+$AbsisMultiple*$Hauteur |bc -l)
 #Sud=$(echo 599400+$AbsisMultiple*$Hauteur |bc -l )
@@ -85,26 +102,38 @@ NordEst4326=$(echo "$Est $Nord" | gdaltransform -s_srs EPSG:27561 -t_srs EPSG:43
 # SE
 SudEst4326=$(echo "$Est $Sud" | gdaltransform -s_srs EPSG:27561 -t_srs EPSG:4326 | awk '{print $1, $2}')
 
-echo "${white}---> \$Nord Lambert 1 -   -   -   -   -   -   -   -   -    ${orange}$Nord"
-echo "${white}---> \$Sud Lambert 1  -   -   -   -   -   -   -   -   -    ${orange}$Sud"
-echo "${white}---> \$Est Lambert 1  -   -   -   -   -   -   -   -   -    ${orange}$Est"
-echo "${white}---> \$Ouest Lambert 1    -   -   -   -   -   -   -   -    ${orange}$Ouest"
-echo "${white}---> \$TiffSource -   -   -   -   -   -   -   -   -   -    ${orange}$TiffSource"
-echo "${white}---> \$NameNoExt  -   -   -   -   -   -   -   -   -   -    ${orange}$NameNoExt"
-echo "${white}---> \$Year   -   -   -   -   -   -   -   -   -   -   -    ${orange}$Year"
-echo "${white}---> \$Absis  -   -   -   -   -   -   -   -   -   -   -    ${orange}$Absis"
-echo "${white}---> \$Ordoned    -   -   -   -   -   -   -   -   -   -    ${orange}$Ordoned"
-echo "${white}---> \$AbsisMultiple  -   -   -   -   -   -   -   -   -    ${orange}$AbsisMultiple"
-echo "${white}---> \$OrdonedMultiple    -   -   -   -   -   -   -   -    ${orange}$OrdonedMultiple"
-echo "${white}---> \$NordOeust -    -   - EPSG:${green}4326 -   -   -   -   -    $NordOuest4326"
-echo "${white}---> \$SudOuest  -    -   - EPSG:${green}4326 -   -   -   -   -    $SudEst4326"
-echo "${white}---> \$NordEst   -    -   - EPSG:${green}4326 -   -   -   -   -    $NordEst4326"
-echo "${white}---> \$SudEst    -    -   - EPSG:${green}4326 -   -   -   -   -    $SudEst4326"
+echo "${white}---> \$TiffSource -   -   -   -   -   -   -   -   -   -   -   -   -   ${orange}$TiffSource"
+echo "${white}---> \$NameNoExt  -   -   -   -   -   -   -   -   -   -   -   -   -   ${orange}$NameNoExt"
+echo "${white}---> \$Year   -   -   -   -   -   -   -   -   -   -   -   -   -   -   ${orange}$Year"
+echo "${white}---> \$Absis  -   -   -   -   -   -   -   -   -   -   -   -   -   -   ${orange}$Absis"
+echo "${white}---> \$Ordoned    -   -   -   -   -   -   -   -   -   -   -   -   -   ${orange}$Ordoned"
+echo "${white}---> \$AbsisMultiple  -   -   -   -   -   -   -   -   -   -   -   -   ${orange}$AbsisMultiple"
+echo "${white}---> \$OrdonedMultiple    -   -   -   -   -   -   -   -   -   -   -   ${orange}$OrdonedMultiple"
+echo "
+${white}############################### Planche ${green}$Absis"-"$Ordoned $Version $Year ${white}###############################
+"
+echo "${white}---> NTF (Paris) / Lambert Nord France  ${green}27561                        ${white}<---"
+                                  
+echo "                                                                     Nord Lambert 1"
+echo "${white}---> \$Nord   Lambert Nord    -   - EPSG:${green}27561${white}-   -   -   -   -   -   ${orange}$Nord"
+echo "                                                                     ${white}Sud Lambert 1"
+echo "${white}---> \$Sud    Lambert Nord    -   - EPSG:${green}27561${white}-   -   -   -   -   -   ${orange}$Sud"
+echo "                                                                     ${white}Est Lambert 1"
+echo "${white}---> \$Est    Lambert Nord    -   - EPSG:${green}27561${white}-   -   -   -   -   -   ${orange}$Est"
+echo "                                                                     ${white}Ouest Lambert 1"
+echo "${white}---> \$Ouest  Lambert Nord    -   - EPSG:${green}27561${white}-   -   -   -   -   -   ${orange}$Ouest"
 
-echo "--->${green} \$WidthImage -   -   -   -   -   -   -   -   -   -    ${orange}$WidthImage"
-echo "--->${green} \$HeightImage    -   -   -   -   -   -   -   -   -    ${orange}$HeightImage"
+echo "${white}---> WGS 84 / Pseudo-Mercator      EPSG:${green}4326 ${white}Corners                 ${white}<---"
 
-echo -e "${white}---> Cas Particulier e.g: planche 4-41"
+echo "${white}---> \$NordOuest4326  -   -   -   - EPSG:${green}4326${white} -   -   -   -   -   -   ${orange}$NordOuest4326"
+echo "${white}---> \$SudEst4326 -   -   -   -   - EPSG:${green}4326${white} -   -   -   -   -   -   ${orange}$SudEst4326"
+echo "${white}---> \$NordEst4326    -   -   -   - EPSG:${green}4326${white} -   -   -   -   -   -   ${orange}$NordEst4326"
+echo "${white}---> \$SudEst4326 -   -   -   -   - EPSG:${green}4326${white} -   -   -   -   -   -   ${orange}$SudEst4326"
+
+echo "${white}--->${green} \$WidthImage${white} -   -   -   -   -   -   -   -   -   -   -   -   -   ${orange}$WidthImage"
+echo "${white}--->${green} \$HeightImage${white}    -   -   -   -   -   -   -   -   -   -   -   -   ${orange}$HeightImage"
+
+echo -e "${white}---> Cas Particuliers e.g: planche 4-41"
 
 if [ "$NameNoExt" == 4-41 ]||[ "$NameNoExt" == 04-41 ]
 then
@@ -136,8 +165,8 @@ then
 rm "../Output/"$NameNoExt"_"$Year".tif"
 fi
 gdalwarp -co COMPRESS=NONE -t_srs "EPSG:27561" -dstalpha -te_srs "EPSG:3857" temp.tif "../Output/"$NameNoExt"_"$Year".tif"
-#rm temp.tif
-mv temp.tif ../temp$NameNoExt.tif
+rm temp.tif
+#mv temp.tif ../temp$NameNoExt.tif
 elif [ "$NameNoExt" == 25-41 ]
 then
 echo "${red}$NameOut NameOut ${green}$HeightImage HeightImage${reset}"
@@ -145,10 +174,11 @@ else
 echo $red hello
 echo "${red}$NameOut NameOut ${green}$HeigthImage HeigthImage${reset}"
 gdal_translate -a_srs EPSG:27561 -of GTiff -gcp 0 0 "$Ouest" "$Nord" -gcp 0 "$HeightImage" "$Ouest" "$Sud" -gcp "$WidthImage" 0 "$Est" "$Nord" -gcp "$WidthImage" "$HeightImage" "$Est" "$Sud" "$TiffSource" temp.tif
-echo "${purple} gdal_translate -a_srs EPSG:27561 -of GTiff -gcp 0 0 "$Ouest" "$Nord" -gcp 0 "$HeightImage" "$Ouest" "$Sud" -gcp "$WidthImage" 0 "$Est" "$Nord" -gcp "$WidthImage" "$HeightImage" "$Est" "$Sud" "$TiffSource" temp.tif
+echo "${purple}gdal_translate -a_srs EPSG:27561 -of GTiff -gcp 0 0 "$Ouest" "$Nord" -gcp 0 "$HeightImage" "$Ouest" "$Sud" -gcp "$WidthImage" 0 "$Est" "$Nord" -gcp "$WidthImage" "$HeightImage" "$Est" "$Sud" "$TiffSource" temp.tif
 
-gdalwarp -co COMPRESS=NONE -dstalpha -t_srs "EPSG:27561" -te_srs "EPSG:3857" temp.tif "../Output/"$NameNoExt"_"$Year".tif"
+${green}gdal_translate -a_srs EPSG:27561 -of GTiff -gcp 0 0 599400 126224 -gcp 0 4808 599400 125824 -gcp 7200 0 600000 126224 -gcp 7200 4808 600000 125824 ~/WORKSHOP/25-50-2003.tif ~/WORKSHOP/Out.tif
 
+#gdalwarp -co COMPRESS=NONE -dstalpha -t_srs "EPSG:27561" -te_srs "EPSG:3857" temp.tif "../Output/"$NameNoExt"_"$Year".tif"
 
 ${white}"
 
@@ -157,9 +187,9 @@ then
 rm "../Output/"$NameNoExt"_"$Year".tif"
 fi
 
-gdalwarp -co COMPRESS=NONE -dstalpha -t_srs "EPSG:27561" -te_srs "EPSG:3857" temp.tif "../Output/"$NameNoExt"_"$Year".tif"
-#rm temp.tif
-mv temp.tif ../temp$NameNoExt.tif
+gdalwarp -co COMPRESS=NONE -dstalpha -s_srs "EPSG:27561" -t_srs "EPSG:3857" temp.tif "../Output/"$NameNoExt"_"$Year".tif"
+rm temp.tif
+#mv temp.tif ../temp$NameNoExt.tif
 
 
 echo -e "${white}---> Fin des actions conditionnelles"
