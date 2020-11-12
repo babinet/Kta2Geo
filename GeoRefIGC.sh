@@ -160,4 +160,6 @@ fi
 done
 #gdaltransform -s_srs EPSG:27571 -t_srs EPSG:3857 <test.txt> transformed.txt
 
+# gdal_translate -a_srs EPSG:27561 -of GTiff -gcp 122 122 585000 145824 -gcp 122 7178 585000 116824 -gcp 8571 122 621000 145824 -gcp 8571 8708 621000 109824 /Users/zeus/Desktop/CropedFomPNG/Atlas\ des\ carrières\ souterraines\ de\ Paris\ tableau\ d\'assemblage\ 1988.tif /Users/zeus/Desktop/CropedFomPNG/Out.tif
+
 
