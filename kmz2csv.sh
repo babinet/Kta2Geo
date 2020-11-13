@@ -28,23 +28,23 @@ cd -P -- "$(dirname -- "$0")" && pwd -P
 )
 cd $dir
 
-mkdir -p tmp output
+mkdir -p tmp ../Output
 for basekmz in ../*.kmz
 do
-fileout=$(echo "$basekmz" | sed 's/.kmz//g')
-mkdir "$fileout"
-python unzip_utf8 "$basekmz" "$fileout"/
+fileout=$(echo "$basekmz" | sed 's/.kmz//g' | sed 's/..\///g')
+mkdir ../Output/"$fileout"
+python unzip_utf8 "$basekmz" ../Output/"$fileout"
+echo fileout $fileout
 
-
-if [ -f "$fileout"/CSV2DRUPALtmp.csv ]
+if [ -f ../Output/"$fileout"/CSV2DRUPALtmp.csv ]
 then
-rm "$fileout"/CSV2DRUPALtmp.csv
+rm ../Output/"$fileout"/CSV2DRUPALtmp.csv
 fi
 
-for filekml in "$fileout"/*.kml
+for filekml in ../Output/"$fileout"/*.kml
 do
-cat "$fileout"/*.kml | tr -d '\n' | sed -e 's/<Placemark>/\
-<Placemark>/g' > "$fileout"/KML_tmp
+cat ../Output/"$fileout"/*.kml | tr -d '\n' | sed -e 's/<Placemark>/\
+<Placemark>/g' >  ../Output/"$fileout"/KML_tmp
 
 
 while read -r line; do
@@ -84,28 +84,32 @@ Coords=$(cat "tmp/Coordinates" | awk -F'\|' '{print $0}')
 while read -r Imageslist
 do
 echo $Imageslist Imageslist
-Long=$(echo "$Coords" | awk -F'|' '{print $1}')
-Lat=$(echo "$Coords" | awk -F'|' '{print $2}')
+Lat=$(echo "$Coords" | awk -F'|' '{print $1}')
+Long=$(echo "$Coords" | awk -F'|' '{print $2}')
 echo "${white}---> Geotaging output image file "$Imageslist""
 echo "${bg_red}${white}---> -GPSLongitudeRef=E Property is set to East of Geenwich ${reset}"
 echo "${reset}${white}---> To chage -GPSLongitudeRef to West edit the file kmz2csv.sh & change -GPSLongitudeRef=E to -GPSLongitudeRef=W ${reset}"
 ImgFolder=$( echo "$line" | awk -F'<img src=\"' '{print $2}' | awk -F'\/' '{print $1"\/"}' )
-exiftool -GPSLongitudeRef=E -GPSLongitude=$Lat -GPSLatitudeRef=N -GPSLatitude=$Long "$fileout"/"$ImgFolder$Imageslist"
+exiftool -imagedescription="$nme" -GPSLongitudeRef=E -GPSLongitude="$Long" -GPSLatitudeRef=N -GPSLatitude="$Lat" "../Output/$fileout"/"$ImgFolder$Imageslist"
+
+#echo "exiftool -GPSLongitudeRef=E -GPSLongitude=$Lat -GPSLatitudeRef=N -GPSLatitude=$Long ../Output/"$fileout"/"$ImgFolder$Imageslist"
+#      exiftool -GPSLongitudeRef=E -GPSLongitude=2.32803117647848 -GPSLatitudeRef=N -GPSLatitude=48.83583666893819
+#"
 #echo "$ImgFolder/$Imageslist"
 #echo $red$Long
 #echo $purple$Lat
 #echo "$Imageslist"
 done < tmp/imgs
-echo "$nme|$imgs|$Coordinates|$TimeStamp|$WKT" | awk '!/Point\(,\)/' >> "$fileout"/CSV2DRUPALtmp.csv
-
+echo "$nme|$imgs|$Coordinates|$TimeStamp|$WKT" | awk '!/Point\(,\)/' >> ../Output/"$fileout"/CSV2DRUPALtmp.csv
 echo "${red}ImgFolder "$ImgFolder""
 
-done < "$fileout"/KML_tmp
+done < ../Output/"$fileout"/KML_tmp
+rm ../Output/"$fileout"/"$ImgFolder$Imageslist"/*.jpg_original
 
 done
-echo "nme|imgs|Lat|Long|TimeStamp|WKT" > "$fileout"/CSV2DRUPAL.csv
-cat "$fileout"/CSV2DRUPALtmp.csv >> "$fileout"/CSV2DRUPAL.csv
-rm "$fileout"/CSV2DRUPALtmp.csv
+echo "nme|imgs|Lat|Long|TimeStamp|WKT" > ../Output/"$fileout"/CSV2DRUPAL.csv
+cat  ../Output/"$fileout"/CSV2DRUPALtmp.csv >> ../Output/"$fileout"/CSV2DRUPAL.csv
+rm ../Output/"$fileout"/CSV2DRUPALtmp.csv
 
 done
 

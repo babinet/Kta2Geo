@@ -1,12 +1,10 @@
 # Kta2Géo
 
+\################
+
 #### Georeference EPSG:3857 from Lambert1 maps based on filename.
 
-Environement :  #/bin/bash!
-
-Requirement : gdal exiftool wget
-
-###### Name convention of original .tif files eg :
+##### Name convention of original .tif file eg :
 
 ```
 Folder/25-50_Whatever_1971.tif
@@ -22,7 +20,7 @@ Folder/25-50_plan des carrièrres Denfert_V-1_Source_BHVP_1971.tif
 Folder/Absis-Ordoné_Whatever_version-numéro_Whatever_l'année.l'extenssion
 ```
 
-###### Usage :
+##### Usage :
 
 Start program > then choose menu
 
@@ -42,6 +40,4 @@ Maps pict format .tif files
 Folder/25-50_plan des carrièrres Denfert_V-1_Source_BHVP_1971.tif
 ```
 
-##### Convert KMZ to CSV & Geotag images
-
-##### Convert Name Old "feuille 281" to "25-50" 
+### Convert KMZ to CSV & Geotag images

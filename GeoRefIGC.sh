@@ -126,24 +126,50 @@ if [ -f "../Output/"$NameNoExt"_"$Year".tif" ]
 then
 rm "../Output/"$NameNoExt"_"$Year".tif"
 fi
-gdalwarp -co COMPRESS=NONE -dstalpha -s_srs "EPSG:27561" -t_srs "EPSG:3857"  temp.tif "../Output/"$NameNoExt"_"$Year".tif"
+gdalwarp -co COMPRESS=NONE -s_srs "EPSG:27561" -t_srs "EPSG:3857"  temp.tif "../Output/"$NameNoExt"_"$Year".tif"
 rm temp.tif
-#mv temp.tif ../temp$NameNoExt.tif
 
-
-
-elif [ "$NameNoExt" == 25-41 ]
+# Planche 07-58
+elif [ "$NameNoExt" == 07-58 ]
 then
-echo "${red}$NameOut NameOut ${green}$HeightImage HeightImage${reset}"
-
-
-
-else
+echo "${purple}$NameOut NameOut ${green}$HeightImage HeightImage${reset}"
+WidthImage=7734
+HeightImage=5284
+gdal_translate -a_srs EPSG:27561 -of GTiff -gcp 0 0 588550 123024 -gcp 0 "$HeightImage" 588550 122574 -gcp "$WidthImage" 0 589200 123024 -gcp "$WidthImage" "$HeightImage" 589200 122574 "$TiffSource" temp.tif
 
 if [ -f "../Output/"$NameNoExt"_"$Year".tif" ]
 then
 rm "../Output/"$NameNoExt"_"$Year".tif"
 fi
+gdalwarp -co COMPRESS=NONE -s_srs "EPSG:27561" -t_srs "EPSG:3857" temp.tif "../Output/"$NameNoExt"_"$Year".tif"
+
+elif [ "$NameNoExt" == "8-9-51-52" ]
+then
+echo "${red}$NameOut NameOut ${green}$HeightImage HeightImage${reset}"
+gdal_translate -a_srs EPSG:27561 -of GTiff -gcp 0 0 589500 125624 -gcp 0 "$HeightImage" 589500 125224 -gcp "$WidthImage" 0 590100 125624 -gcp "$WidthImage" "$HeightImage" 590100 125224 "$TiffSource" temp.tif
+if [ -f "../Output/"$NameNoExt"_"$Year".tif" ]
+then
+rm "../Output/"$NameNoExt"_"$Year".tif"
+fi
+gdalwarp -co COMPRESS=NONE -dstalpha -s_srs "EPSG:27561" -t_srs "EPSG:3857" temp.tif "../Output/"$NameNoExt"_"$Year".tif"
+
+elif [ "$NameNoExt" == "08-44" ]
+then
+echo "${red}$NameOut NameOut ${green}$HeightImage HeightImage${reset}"
+gdal_translate -a_srs EPSG:27561 -of GTiff -gcp 0 0 589200 128624 -gcp 0 "$HeightImage" 589200 128124 -gcp "$WidthImage" 0 589800 128624 -gcp "$WidthImage" "$HeightImage" 589800 128124 "$TiffSource" temp.tif
+if [ -f "../Output/"$NameNoExt"_"$Year".tif" ]
+then
+rm "../Output/"$NameNoExt"_"$Year".tif"
+fi
+gdalwarp -co COMPRESS=NONE -dstalpha -s_srs "EPSG:27561" -t_srs "EPSG:3857" temp.tif "../Output/"$NameNoExt"_"$Year".tif"
+
+
+
+
+
+
+else
+
 gdal_translate -a_srs EPSG:27561 -of GTiff -gcp 0 0 "$Ouest" "$Nord" -gcp 0 "$HeightImage" "$Ouest" "$Sud" -gcp "$WidthImage" 0 "$Est" "$Nord" -gcp "$WidthImage" "$HeightImage" "$Est" "$Sud" "$TiffSource" temp.tif
 
 if [ -f "../Output/"$NameNoExt"_"$Year".tif" ]
@@ -158,64 +184,12 @@ echo -e "${white}---> Fin des actions conditionnelles"
 fi
 
 done
-#gdaltransform -s_srs EPSG:27571 -t_srs EPSG:3857 <test.txt> transformed.txt
-
-# gdal_translate -a_srs EPSG:27561 -of GTiff -gcp 122 122 585000 145824 -gcp 122 7178 585000 116824 -gcp 8571 122 621000 145824 -gcp 8571 8708 621000 109824 /Users/zeus/Desktop/CropedFomPNG/Atlas\ des\ carrières\ souterraines\ de\ Paris\ tableau\ d\'assemblage\ 1988.tif /Users/zeus/Desktop/CropedFomPNG/Out.tif
 
 
+#tesseract -l fra 25-50-2003.tif  Out.txt
+# tesseract -l fra --dpi 300 25-50-2003.tif  Out.txt
 
+#convert /Users/zeus/Desktop/Gallica_2020/CARTO_CLEAN/Atlas\ des\ carrières\ souterraines\ de\ Paris\ -\ feuille\ 309\ \(1931\).png  -colorspace Gray NB.tif
+# tesseract -l fra --dpi 300 NB.tif   Out.txt
+#tesseract -l fra --dpi 72 NB.tif   Out.txt
 
-
-#filejpeg=$(cat tmp/imgs)
-#nbrlignes=$(echo "$filejpeg" | wc -l  | tr -d ' ' | tr -d '\n')
-#if [ $nbrlignes -eq 1 ]
-#then
-#echo "Il n'y a qu'une seule image"
-#Coordinates=$(cat tmp/Coordinates)
-#Long=$(echo $Coordinates | awk -F'|' '{print $2}')
-#Lat=$(echo $Coordinates | awk -F'|' '{print $1}')
-#echo "${red}$Lat ${white}$Long"
-#tmp/imgs
-#else
-#cat tmp/imgs | tr '\n' '@' | sed 's/\@$//'  > tmp/imgs1
-#mv tmp/imgs1 tmp/imgs
-#Coordinates=$(cat tmp/Coordinates)
-#Long=$(echo $Coordinates | awk -F'|' '{print $2}')
-#Lat=$(echo $Coordinates | awk -F'|' '{print $1}')
-#echo "${red}$Lat $long"
-#
-#echo "Il y a plusieurs images"
-#fi
-#nme=$(cat tmp/Name)
-#imgs=$(cat tmp/imgs)
-#TimeStamp=$(cat tmp/TimeStamp)
-#WKT=$(cat tmp/WKT)
-#echo "${bg—red}${white}---> -GPSLongitudeRef=E Property is set to East of Geenwich"
-#echo "${reset}${white}---> To chage -GPSLongitudeRef to West esdit kmz2csv.sh & change -GPSLongitudeRef=E to W "
-#
-##exiftool -GPSLongitudeRef=E -GPSLongitude=2.32906832095378 -GPSLatitudeRef=N -GPSLatitude=48.8372074752241 "$imgs"
-##        exiftool -GPSLongitudeRef=W -GPSLongitude=0.006572 -GPSLatitudeRef=N -GPSLatitude=51.483822 /Users/zeus/Desktop/PASSPORT_D.BABINET\ copie.jpg
-##
-##        exiftool /Users/zeus/Desktop/PASSPORT_D.BABINET\ copie.jpg
-##        48.8372074752241 2.32906832095378
-##        GPS Latitude                    : 51 deg 29' 1.76" N
-##        GPS Longitude                   : 0 deg 0' 23.66" W
-##        GPS Position                    : 51 deg 29' 1.76" N, 0 deg 0' 23.66" W
-##
-##        GPS Altitude                    : 85.7 m Above Sea Level
-##        GPS Latitude                    : 48 deg 48' 19.76" N
-##        GPS Longitude                   : 2 deg 14' 24.23" E
-##        Date/Time Created               : 2020:10:30 13:44:50+01:00
-##        GPS Position                    : 48 deg 48' 19.76" N, 2 deg 14' 24.23" E
-#
-#
-#
-#echo "$nme|$imgs|$Coordinates|$TimeStamp|$WKT" | awk '!/Point\(,\)/' >> "$fileout"/CSV2DRUPALtmp.csv
-#
-#done < "$fileout"/KML_tmp
-#
-#
-#done
-#echo "nme|imgs|Lat|Long|TimeStamp|WKT" > "$fileout"/CSV2DRUPAL.csv
-#cat "$fileout"/CSV2DRUPALtmp.csv >> "$fileout"/CSV2DRUPAL.csv
-#rm "$fileout"/CSV2DRUPALtmp.csv
