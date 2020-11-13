@@ -163,3 +163,59 @@ done
 # gdal_translate -a_srs EPSG:27561 -of GTiff -gcp 122 122 585000 145824 -gcp 122 7178 585000 116824 -gcp 8571 122 621000 145824 -gcp 8571 8708 621000 109824 /Users/zeus/Desktop/CropedFomPNG/Atlas\ des\ carrières\ souterraines\ de\ Paris\ tableau\ d\'assemblage\ 1988.tif /Users/zeus/Desktop/CropedFomPNG/Out.tif
 
 
+
+
+
+#filejpeg=$(cat tmp/imgs)
+#nbrlignes=$(echo "$filejpeg" | wc -l  | tr -d ' ' | tr -d '\n')
+#if [ $nbrlignes -eq 1 ]
+#then
+#echo "Il n'y a qu'une seule image"
+#Coordinates=$(cat tmp/Coordinates)
+#Long=$(echo $Coordinates | awk -F'|' '{print $2}')
+#Lat=$(echo $Coordinates | awk -F'|' '{print $1}')
+#echo "${red}$Lat ${white}$Long"
+#tmp/imgs
+#else
+#cat tmp/imgs | tr '\n' '@' | sed 's/\@$//'  > tmp/imgs1
+#mv tmp/imgs1 tmp/imgs
+#Coordinates=$(cat tmp/Coordinates)
+#Long=$(echo $Coordinates | awk -F'|' '{print $2}')
+#Lat=$(echo $Coordinates | awk -F'|' '{print $1}')
+#echo "${red}$Lat $long"
+#
+#echo "Il y a plusieurs images"
+#fi
+#nme=$(cat tmp/Name)
+#imgs=$(cat tmp/imgs)
+#TimeStamp=$(cat tmp/TimeStamp)
+#WKT=$(cat tmp/WKT)
+#echo "${bg—red}${white}---> -GPSLongitudeRef=E Property is set to East of Geenwich"
+#echo "${reset}${white}---> To chage -GPSLongitudeRef to West esdit kmz2csv.sh & change -GPSLongitudeRef=E to W "
+#
+##exiftool -GPSLongitudeRef=E -GPSLongitude=2.32906832095378 -GPSLatitudeRef=N -GPSLatitude=48.8372074752241 "$imgs"
+##        exiftool -GPSLongitudeRef=W -GPSLongitude=0.006572 -GPSLatitudeRef=N -GPSLatitude=51.483822 /Users/zeus/Desktop/PASSPORT_D.BABINET\ copie.jpg
+##
+##        exiftool /Users/zeus/Desktop/PASSPORT_D.BABINET\ copie.jpg
+##        48.8372074752241 2.32906832095378
+##        GPS Latitude                    : 51 deg 29' 1.76" N
+##        GPS Longitude                   : 0 deg 0' 23.66" W
+##        GPS Position                    : 51 deg 29' 1.76" N, 0 deg 0' 23.66" W
+##
+##        GPS Altitude                    : 85.7 m Above Sea Level
+##        GPS Latitude                    : 48 deg 48' 19.76" N
+##        GPS Longitude                   : 2 deg 14' 24.23" E
+##        Date/Time Created               : 2020:10:30 13:44:50+01:00
+##        GPS Position                    : 48 deg 48' 19.76" N, 2 deg 14' 24.23" E
+#
+#
+#
+#echo "$nme|$imgs|$Coordinates|$TimeStamp|$WKT" | awk '!/Point\(,\)/' >> "$fileout"/CSV2DRUPALtmp.csv
+#
+#done < "$fileout"/KML_tmp
+#
+#
+#done
+#echo "nme|imgs|Lat|Long|TimeStamp|WKT" > "$fileout"/CSV2DRUPAL.csv
+#cat "$fileout"/CSV2DRUPALtmp.csv >> "$fileout"/CSV2DRUPAL.csv
+#rm "$fileout"/CSV2DRUPALtmp.csv

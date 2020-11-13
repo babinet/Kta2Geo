@@ -1,5 +1,28 @@
 #!/bin/bash
-
+orange=`tput setaf 11`
+bg_orange=`tput setab 178`
+purple=`tput setaf 13`
+Line=`tput smul`
+bold=`tput bold`
+black=`tput setaf 0`
+red=`tput setaf 1`
+green=`tput setaf 2`
+yellow=`tput setaf 3`
+blue=`tput setaf 4`
+magenta=`tput setaf 5`
+cyan=`tput setaf 6`
+white=`tput setaf 15`
+reset=`tput sgr0`
+bg_red=`tput setab 1`
+bg_green=`tput setab 2`
+bg_white=`tput setab 7`
+bg_blue=`tput setab 4`
+lightblue=`tput setaf 45`
+lightgreen=`tput setaf 46`
+bleuetern=`tput setaf 45`
+ilghtpurple=`tput setaf 33`
+lightred=`tput setaf 161`
+darkblue=`tput setaf 19`
 dir=$(
 cd -P -- "$(dirname -- "$0")" && pwd -P
 )
@@ -53,29 +76,31 @@ imgs=$(cat tmp/imgs)
 Coordinates=$(cat tmp/Coordinates)
 TimeStamp=$(cat tmp/TimeStamp)
 WKT=$(cat tmp/WKT)
-echo $Coordinates
+#Long=$(cat "tmp/Coordinates" | awk -F'\|' '{print $2, $1}')
+Coords=$(cat "tmp/Coordinates" | awk -F'\|' '{print $0}')
 
-exiftool -GPSLongitudeRef=W -GPSLongitude=0.006572 -GPSLatitudeRef=N -GPSLatitude=51.483822
-#        exiftool -GPSLongitudeRef=W -GPSLongitude=0.006572 -GPSLatitudeRef=N -GPSLatitude=51.483822 /Users/zeus/Desktop/PASSPORT_D.BABINET\ copie.jpg
-#
-#        exiftool /Users/zeus/Desktop/PASSPORT_D.BABINET\ copie.jpg
-#
-#        GPS Latitude                    : 51 deg 29' 1.76" N
-#        GPS Longitude                   : 0 deg 0' 23.66" W
-#        GPS Position                    : 51 deg 29' 1.76" N, 0 deg 0' 23.66" W
-#
-#        GPS Altitude                    : 85.7 m Above Sea Level
-#        GPS Latitude                    : 48 deg 48' 19.76" N
-#        GPS Longitude                   : 2 deg 14' 24.23" E
-#        Date/Time Created               : 2020:10:30 13:44:50+01:00
-#        GPS Position                    : 48 deg 48' 19.76" N, 2 deg 14' 24.23" E
+#echo $Coords
 
-
-
+while read -r Imageslist
+do
+echo $Imageslist Imageslist
+Long=$(echo "$Coords" | awk -F'|' '{print $1}')
+Lat=$(echo "$Coords" | awk -F'|' '{print $2}')
+echo "${white}---> Geotaging output image file "$Imageslist""
+echo "${bg_red}${white}---> -GPSLongitudeRef=E Property is set to East of Geenwich ${reset}"
+echo "${reset}${white}---> To chage -GPSLongitudeRef to West edit the file kmz2csv.sh & change -GPSLongitudeRef=E to -GPSLongitudeRef=W ${reset}"
+ImgFolder=$( echo "$line" | awk -F'<img src=\"' '{print $2}' | awk -F'\/' '{print $1"\/"}' )
+exiftool -GPSLongitudeRef=E -GPSLongitude=$Lat -GPSLatitudeRef=N -GPSLatitude=$Long "$fileout"/"$ImgFolder$Imageslist"
+#echo "$ImgFolder/$Imageslist"
+#echo $red$Long
+#echo $purple$Lat
+#echo "$Imageslist"
+done < tmp/imgs
 echo "$nme|$imgs|$Coordinates|$TimeStamp|$WKT" | awk '!/Point\(,\)/' >> "$fileout"/CSV2DRUPALtmp.csv
 
-done < "$fileout"/KML_tmp
+echo "${red}ImgFolder "$ImgFolder""
 
+done < "$fileout"/KML_tmp
 
 done
 echo "nme|imgs|Lat|Long|TimeStamp|WKT" > "$fileout"/CSV2DRUPAL.csv
