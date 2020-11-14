@@ -75,10 +75,10 @@ done
 }
 
 # Declare the array
-linux=('GeoRefIGC' 'ConvertHalf' 'kmz2csv' 'Obs' )
+Menu=('GeoRefIGC'  'kmz2csv' 'Geoserver_operations' 'Feuilles2Planches' 'Planche to feuilles' )
 
 # Call the subroutine to create the menu
-menu_from_array "${linux[@]}"
+menu_from_array "${Menu[@]}"
 
 if [ $item.sh = GeoRefIGC.sh ]
 then
@@ -87,7 +87,7 @@ fi
 
 if [ $item.sh = Obs.sh ]
 then
-./Obs.sh
+./Feuilles2Planches.sh
 fi
 
 if [ $item.sh = kmz2csv.sh ]
@@ -95,9 +95,9 @@ then
 ./kmz2csv.sh
 fi
 
-if [ $item.sh = ConvertHalf.sh ]
+if [ $item = Geoserver_operations ]
 then
-./ConvertHalf.sh
+./Geoserver.sh
 fi
 
 
