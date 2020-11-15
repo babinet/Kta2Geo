@@ -27,7 +27,7 @@ dir=$(
 cd -P -- "$(dirname -- "$0")" && pwd -P
 )
 cd $dir
-mkdir -p ../Output
+mkdir -p ../_Output
 
 # Zero de l'Observatoire 3857
 Observatoire=$(echo "260098.642816645 6247162.50356738")
@@ -122,11 +122,11 @@ if [ "$NameNoExt" == 4-41 ]||[ "$NameNoExt" == 04-41 ]
 then
 echo "${orange}---> Cas Particuliers - Transformation fixe${reset}"
 gdal_translate -a_srs EPSG:27561 -of GTiff -gcp 0 0 586500 129824 -gcp 0 "$HeightImage" 586500 129424 -gcp "$WidthImage" 0 587100 129824 -gcp "$WidthImage" "$HeightImage" 587100 129424 "$TiffSource" temp.tif
-if [ -f "../Output/"$NameNoExt"_"$Year".tif" ]
+if [ -f "../_Output/"$NameNoExt"_"$Year".tif" ]
 then
-rm "../Output/"$NameNoExt"_"$Year".tif"
+rm "../_Output/"$NameNoExt"_"$Year".tif"
 fi
-gdalwarp -co COMPRESS=NONE -s_srs "EPSG:27561" -t_srs "EPSG:3857"  temp.tif "../Output/"$NameNoExt"_"$Year".tif"
+gdalwarp -co COMPRESS=NONE -s_srs "EPSG:27561" -t_srs "EPSG:3857"  temp.tif "../_Output/"$NameNoExt"_"$Year".tif"
 rm temp.tif
 
 # Planche 07-58
@@ -137,31 +137,31 @@ WidthImage=7734
 HeightImage=5284
 gdal_translate -a_srs EPSG:27561 -of GTiff -gcp 0 0 588550 123024 -gcp 0 "$HeightImage" 588550 122574 -gcp "$WidthImage" 0 589200 123024 -gcp "$WidthImage" "$HeightImage" 589200 122574 "$TiffSource" temp.tif
 
-if [ -f "../Output/"$NameNoExt"_"$Year".tif" ]
+if [ -f "../_Output/"$NameNoExt"_"$Year".tif" ]
 then
-rm "../Output/"$NameNoExt"_"$Year".tif"
+rm "../_Output/"$NameNoExt"_"$Year".tif"
 fi
-gdalwarp -co COMPRESS=NONE -s_srs "EPSG:27561" -t_srs "EPSG:3857" temp.tif "../Output/"$NameNoExt"_"$Year".tif"
+gdalwarp -co COMPRESS=NONE -s_srs "EPSG:27561" -t_srs "EPSG:3857" temp.tif "../_Output/"$NameNoExt"_"$Year".tif"
 
 elif [ "$NameNoExt" == "8-9-51-52" ]
 then
 echo "${red}$NameOut NameOut ${green}$HeightImage HeightImage${reset}"
 gdal_translate -a_srs EPSG:27561 -of GTiff -gcp 0 0 589500 125624 -gcp 0 "$HeightImage" 589500 125224 -gcp "$WidthImage" 0 590100 125624 -gcp "$WidthImage" "$HeightImage" 590100 125224 "$TiffSource" temp.tif
-if [ -f "../Output/"$NameNoExt"_"$Year".tif" ]
+if [ -f "../_Output/"$NameNoExt"_"$Year".tif" ]
 then
-rm "../Output/"$NameNoExt"_"$Year".tif"
+rm "../_Output/"$NameNoExt"_"$Year".tif"
 fi
-gdalwarp -co COMPRESS=NONE -dstalpha -s_srs "EPSG:27561" -t_srs "EPSG:3857" temp.tif "../Output/"$NameNoExt"_"$Year".tif"
+gdalwarp -co COMPRESS=NONE -dstalpha -s_srs "EPSG:27561" -t_srs "EPSG:3857" temp.tif "../_Output/"$NameNoExt"_"$Year".tif"
 
 elif [ "$NameNoExt" == "08-44" ]
 then
 echo "${red}$NameOut NameOut ${green}$HeightImage HeightImage${reset}"
 gdal_translate -a_srs EPSG:27561 -of GTiff -gcp 0 0 589200 128624 -gcp 0 "$HeightImage" 589200 128124 -gcp "$WidthImage" 0 589800 128624 -gcp "$WidthImage" "$HeightImage" 589800 128124 "$TiffSource" temp.tif
-if [ -f "../Output/"$NameNoExt"_"$Year".tif" ]
+if [ -f "../_Output/"$NameNoExt"_"$Year".tif" ]
 then
-rm "../Output/"$NameNoExt"_"$Year".tif"
+rm "../_Output/"$NameNoExt"_"$Year".tif"
 fi
-gdalwarp -co COMPRESS=NONE -dstalpha -s_srs "EPSG:27561" -t_srs "EPSG:3857" temp.tif "../Output/"$NameNoExt"_"$Year".tif"
+gdalwarp -co COMPRESS=NONE -dstalpha -s_srs "EPSG:27561" -t_srs "EPSG:3857" temp.tif "../_Output/"$NameNoExt"_"$Year".tif"
 
 
 
@@ -172,11 +172,11 @@ else
 
 gdal_translate -a_srs EPSG:27561 -of GTiff -gcp 0 0 "$Ouest" "$Nord" -gcp 0 "$HeightImage" "$Ouest" "$Sud" -gcp "$WidthImage" 0 "$Est" "$Nord" -gcp "$WidthImage" "$HeightImage" "$Est" "$Sud" "$TiffSource" temp.tif
 
-if [ -f "../Output/"$NameNoExt"_"$Year".tif" ]
+if [ -f "../_Output/"$NameNoExt"_"$Year".tif" ]
 then
-rm "../Output/"$NameNoExt"_"$Year".tif"
+rm "../_Output/"$NameNoExt"_"$Year".tif"
 fi
-gdalwarp -co COMPRESS=NONE -dstalpha -s_srs "EPSG:27561" -t_srs "EPSG:3857"  temp.tif "../Output/"$NameNoExt"_"$Year".tif"
+gdalwarp -co COMPRESS=NONE -dstalpha -s_srs "EPSG:27561" -t_srs "EPSG:3857"  temp.tif "../_Output/"$NameNoExt"_"$Year".tif"
 rm temp.tif
 #mv temp.tif ../temp$NameNoExt.tif
 echo -e "${white}---> Fin des actions conditionnelles"

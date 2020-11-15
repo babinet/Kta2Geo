@@ -85,7 +85,7 @@ then
 ./GeoRefIGC.sh
 fi
 
-if [ $item.sh = Obs.sh ]
+if [ $item = Feuilles2Planches ]
 then
 ./Feuilles2Planches.sh
 fi

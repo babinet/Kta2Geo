@@ -71,7 +71,7 @@ echo "${orange}    ************* ${reset}"
 echo "${bg_red}${white}---> Enter the name of the workspace <---${reset}."
 read Workspace
 echo "$Workspace"
-curl -v -u "$UserName":"$Password" -XPOST -H "Content-type: text/xml" -d "<workspace><name>"$Workspace"</name></workspace>" https://exemple.com/geoserver/rest/workspaces
+curl -v -u "$UserName":"$Password" -XPOST -H "Content-type: text/xml" -d "<workspace><name>"$Workspace"</name></workspace>" https://sous-paris.com/geoserver/rest/workspaces
 
 fi
 

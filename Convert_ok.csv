@@ -1,296 +1,296 @@
-;;;;;;;
-;;;;;;;
-;;;;;;;
-;;;;;;;
-;;106;;;31-40;;
-;;106-107;;;;;
-;;107;;;32-40;;
-;;110;;;18-41;;
-;;111;;;19-41;;
-;;112;;;20-41;;
-;;113;;;21-41;;
-;;124;;;32-33-41;;
-;;124-125;;;;;
-;;126;;;34-41-42;;
-;;126-144;;;;;
-;;128;;;18-42;;
-;;129;;;19-42;;
-;;130;;;20-42;;
-;;14;;;25-34;;
-;;142;;;32-42;;
-;;143;;;33-42;;
-;;146;;;18-43;;
-;;147;;;19-43;;
-;;147-148;;;20-43;;
-;;15;;;26-34;;
-;;160;;;32-43;;
-;"if [ ""$NameOut"" == """;161;""" ];then NameTiff=""";25-50;""""";fi"
-;;161-162;;;;;
-;;162;;;34-43;;
-;;164;;;18-44;;
-;;165;;;19-44;;
-;;179;;;33-44;;
-;;207;;;24-46;;
-;;208;;;25-46;;
-;;209;;;26-46;;
-;;225;;;23-47;;
-;;226;;;24-47;;
-;;227;;;25-47;;
-;;228;;;26-47;;
-;;229;;;27-47;;
-;;230;;;28-47;;
-;;243;;;22-48;;
-;;244;;;23-48;;
-;;245;;;24-48;;
-;;246;;;25-48;;
-;;247;;;26-48;;
-;;248;;;27-48;;
-;;249;;;28-48;;
-;;253;;;32-48;;
-;;254-273;;;;;
-;;255;;;34-48-49;;
-;;26;;;25-35;;
-;;261;;;21-49;;
-;;262;;;22-49;;
-;;263;;;23-49;;
-;;264;;;24-49;;
-;;265;;;25-49;;
-;;266;;;26-49;;
-;;267;;;27-49;;
-;;268;;;28-49;;
-;;269;;;29-49;;
-;;27;;;26-35;;
-;;272;;;32-49;;
-;;273;;;33-48-49;;
-;;274;;;34-49-50;;
-;;275;;;35-49-50;;
-;;276;;;20-50;;
-;;276-277;;;;;
-;;277;;;21-50;;
-;;278;;;22-50;;
-;;279;;;23-50;;
-;;28;;;27-35;;
-;;280;;;24-50;;
-;;281;;;25-50;;
-;;282;;;26-50;;
-;;283;;;27-50;;
-;;284;;;28-50;;
-;;285;;;29-50;;
-;;288;;;32-50;;
-;;291;;;20-51;;
-;;292;;;21-51;;
-;;293;;;22-51;;
-;;294;;;23-51;;
-;;295;;;24-51;;
-;;296;;;25-51;;
-;;297;;;26-51;;
-;;298;;;27-51;;
-;;299;;;28-51;;
-;;300;;;29-51;;
-;;300-301;;;;;
-;;301;;;30-51;;
-;;304;;;33-34-51;;
-;;305;;;21-52;;
-;;306;;;22-52;;
-;;307;;;23-52;;
-;;308;;;24-52;;
-;;309;;;25-52;;
-;;310;;;26-52;;
-;;311;;;27-52;;
-;;312;;;28-52;;
-;;313;;;29-52;;
-;;314;;;30-52;;
-;;315;;;22-53;;
-;;316;;;23-53;;
-;;317;;;24-53;;
-;;318;;;25-53;;
-;;319;;;26-53;;
-;;321;;;28-53;;
-;;322;;;29-53;;
-;;323;;;30-53;;
-;;324;;;24-54;;
-;;325;;;25-54;;
-;;326;;;26-54;;
-;;328;;;28-54;;
-;;329;;;29-54;;
-;;330;;;30-54;;
-;;331;;;25-55;;
-;;332;;;26-55;;
-;;334;;;28-55;;
-;;335;;;29-55;;
-;;39;;;25-36;;
-;;40;;;26-36;;
-;;41;;;27-36;;
-;;42;;;28-35;;
-;;45;;;31-35;;
-;;46;;;32-36;;
-;;53;;;26-37;;
-;;54;;;27-37;;
-;;55;;;28-37;;
-;;56;;;29-37;;
-;;57;;;30-37;;
-;;58;;;31-37;;
-;;59;;;32-37;;
-;;60;;;33-37;;
-;;62;;;20-52;;
-;;66K;;;36-53;;
-;;67U;;;41-55;;
-;;71;;;29-38;;
-;;72;;;30-38;;
-;;73;;;31-38;;
-;;76;;;34-35-38;;
-;;77;;;19-39;;
-;;88;;;30-39;;
-;;89;;;31-39;;
-;;93;;;18-40;;
-;;96-113;;;;;
-;;;;;;;
-;;;;;;;
-;;;;;;;
-;;;;;;;
-;;;;;;;
-;;;;;;;
-;;;;;;;
-;;;;;;;
-;;;;;;;
-;;;;;;;
-;;;;;;;
-;;;;;;;
-;;;;;;;
-;;;;;;;
-;;;;;;;
-;;;;;;;
-;;;;;;;
-;;;;;;;
-;;;;;;;
-;;;;;;;
-;;;;;;;
-;;;;;;;
-;;;;;;;
-;;;;;;;
-;;;;;;;
-;;;;;;;
-;;;;;;;
-;;;;;;;
-;;;;;;;
-;;;;;;;
-;;;;;;;
-;;;;;;;
-;;;;;;;
-;;;;;;;
-;;;;;;;
-;;;;;;;
-;;;;;;;
-;;;;;;;
-;;;;;;;
-;;;;;;;
-;;;;;;;
-;;;;;;;
-;;;;;;;
-;;;;;;;
-;;;;;;;
-;;;;;;;
-;;;;;;;
-;;;;;;;
-;;;;;;;
-;;;;;;;
-;;;;;;;
-;;;;;;;
-;;;;;;;
-;;;;;;;
-;;;;;;;
-;;;;;;;
-;;;;;;;
-;;;;;;;
-;;;;;;;
-;;;;;;;
-;;;;;;;
-;;;;;;;
-;;;;;;;
-;;;;;;;
-;;;;;;;
-;;;;;;;
-;;;;;;;
-;;;;;;;
-;;;;;;;
-;;;;;;;
-;;;;;;;
-;;;;;;;
-;;;;;;;
-;;;;;;;
-;;;;;;;
-;;;;;;;
-;;;;;;;
-;;;;;;;
-;;;;;;;
-;;;;;;;
-;;;;;;;
-;;;;;;;
-;;;;;;;
-;;;;;;;
-;;;;;;;
-;;;;;;;
-;;;;;;;
-;;;;;;;
-;;;;;;;
-;;;;;;;
-;;;;;;;
-;;;;;;;
-;;;;;;;
-;;;;;;;
-;;;;;;;
-;;;;;;;
-;;;;;;;
-;;;;;;;
-;;;;;;;
-;;;;;;;
-;;;;;;;
-;;;;;;;
-;;;;;;;
-;;;;;;;
-;;;;;;;
-;;;;;;;
-;;;;;;;
-;;;;;;;
-;;;;;;;
-;;;;;;;
-;;;;;;;
-;;;;;;;
-;;;;;;;
-;;;;;;;
-;;;;;;;
-;;;;;;;
-;;;;;;;
-;;;;;;;
-;;;;;;;
-;;;;;;;
-;;;;;;;
-;;;;;;;
-;;;;;;;
-;;;;;;;
-;;;;;;;
-;;;;;;;
-;;;;;;;
-;;;;;;;
-;;;;;;;
-;;;;;;;
-;;;;;;;
-;;;;;;;
-;;;;;;;
-;;;;;;;
-;;;;;;;
-;;;;;;;
-;;;;;;;
-;;;;;;;
-;;;;;;;
-;;;;;;;
-;;;;;;;
-;;;;;;;
-;;;;;;;
-;;;;;;;
-;;;;;;;
-;;;;;;;
-;;;;;;;
-;;;;;;;
-;;;;;;;
-;;;;;25-51;;
+;;;;;;
+;;;;;;
+;;;;;;
+;;;;;;
+;"if [ ""$SourceName"" == """;106;""" ];then convert ""$Alltif"" ""../GOODNAME/";"convert ""$Alltif"" ""../GOODNAME/";31-40;"""$Version”_“$Year”.tif ;fi"
+;"if [ ""$SourceName"" == """;106-107;""" ];then convert ""$Alltif"" ""../GOODNAME/";;;"""$Version”_“$Year”.tif ;fi"
+;"if [ ""$SourceName"" == """;107;""" ];then convert ""$Alltif"" ""../GOODNAME/";;32-40;"""$Version”_“$Year”.tif ;fi"
+;"if [ ""$SourceName"" == """;110;""" ];then convert ""$Alltif"" ""../GOODNAME/";;18-41;"""$Version”_“$Year”.tif ;fi"
+;"if [ ""$SourceName"" == """;111;""" ];then convert ""$Alltif"" ""../GOODNAME/";;19-41;"""$Version”_“$Year”.tif ;fi"
+;"if [ ""$SourceName"" == """;112;""" ];then convert ""$Alltif"" ""../GOODNAME/";;20-41;"""$Version”_“$Year”.tif ;fi"
+;"if [ ""$SourceName"" == """;113;""" ];then convert ""$Alltif"" ""../GOODNAME/";;21-41;"""$Version”_“$Year”.tif ;fi"
+;"if [ ""$SourceName"" == """;124;""" ];then convert ""$Alltif"" ""../GOODNAME/";;32-33-41;"""$Version”_“$Year”.tif ;fi"
+;"if [ ""$SourceName"" == """;124-125;""" ];then convert ""$Alltif"" ""../GOODNAME/";;;"""$Version”_“$Year”.tif ;fi"
+;"if [ ""$SourceName"" == """;126;""" ];then convert ""$Alltif"" ""../GOODNAME/";;34-41-42;"""$Version”_“$Year”.tif ;fi"
+;"if [ ""$SourceName"" == """;126-144;""" ];then convert ""$Alltif"" ""../GOODNAME/";;;"""$Version”_“$Year”.tif ;fi"
+;"if [ ""$SourceName"" == """;128;""" ];then convert ""$Alltif"" ""../GOODNAME/";;18-42;"""$Version”_“$Year”.tif ;fi"
+;"if [ ""$SourceName"" == """;129;""" ];then convert ""$Alltif"" ""../GOODNAME/";;19-42;"""$Version”_“$Year”.tif ;fi"
+;"if [ ""$SourceName"" == """;130;""" ];then convert ""$Alltif"" ""../GOODNAME/";;20-42;"""$Version”_“$Year”.tif ;fi"
+;"if [ ""$SourceName"" == """;14;""" ];then convert ""$Alltif"" ""../GOODNAME/";;25-34;"""$Version”_“$Year”.tif ;fi"
+;"if [ ""$SourceName"" == """;142;""" ];then convert ""$Alltif"" ""../GOODNAME/";;32-42;"""$Version”_“$Year”.tif ;fi"
+;"if [ ""$SourceName"" == """;143;""" ];then convert ""$Alltif"" ""../GOODNAME/";;33-42;"""$Version”_“$Year”.tif ;fi"
+;"if [ ""$SourceName"" == """;146;""" ];then convert ""$Alltif"" ""../GOODNAME/";;18-43;"""$Version”_“$Year”.tif ;fi"
+;"if [ ""$SourceName"" == """;147;""" ];then convert ""$Alltif"" ""../GOODNAME/";;19-43;"""$Version”_“$Year”.tif ;fi"
+;"if [ ""$SourceName"" == """;147-148;""" ];then convert ""$Alltif"" ""../GOODNAME/";;20-43;"""$Version”_“$Year”.tif ;fi"
+;"if [ ""$SourceName"" == """;15;""" ];then convert ""$Alltif"" ""../GOODNAME/";;26-34;"""$Version”_“$Year”.tif ;fi"
+;"if [ ""$SourceName"" == """;160;""" ];then convert ""$Alltif"" ""../GOODNAME/";;32-43;"""$Version”_“$Year”.tif ;fi"
+;"if [ ""$SourceName"" == """;161;""" ];then convert ""$Alltif"" ""../GOODNAME/";25-50;""""";fi";"""$Version”_“$Year”.tif ;fi"
+;"if [ ""$SourceName"" == """;161-162;""" ];then convert ""$Alltif"" ""../GOODNAME/";;;"""$Version”_“$Year”.tif ;fi"
+;"if [ ""$SourceName"" == """;162;""" ];then convert ""$Alltif"" ""../GOODNAME/";;34-43;"""$Version”_“$Year”.tif ;fi"
+;"if [ ""$SourceName"" == """;164;""" ];then convert ""$Alltif"" ""../GOODNAME/";;18-44;"""$Version”_“$Year”.tif ;fi"
+;"if [ ""$SourceName"" == """;165;""" ];then convert ""$Alltif"" ""../GOODNAME/";;19-44;"""$Version”_“$Year”.tif ;fi"
+;"if [ ""$SourceName"" == """;179;""" ];then convert ""$Alltif"" ""../GOODNAME/";;33-44;"""$Version”_“$Year”.tif ;fi"
+;"if [ ""$SourceName"" == """;207;""" ];then convert ""$Alltif"" ""../GOODNAME/";;24-46;"""$Version”_“$Year”.tif ;fi"
+;"if [ ""$SourceName"" == """;208;""" ];then convert ""$Alltif"" ""../GOODNAME/";;25-46;"""$Version”_“$Year”.tif ;fi"
+;"if [ ""$SourceName"" == """;209;""" ];then convert ""$Alltif"" ""../GOODNAME/";;26-46;"""$Version”_“$Year”.tif ;fi"
+;"if [ ""$SourceName"" == """;225;""" ];then convert ""$Alltif"" ""../GOODNAME/";;23-47;"""$Version”_“$Year”.tif ;fi"
+;"if [ ""$SourceName"" == """;226;""" ];then convert ""$Alltif"" ""../GOODNAME/";;24-47;"""$Version”_“$Year”.tif ;fi"
+;"if [ ""$SourceName"" == """;227;""" ];then convert ""$Alltif"" ""../GOODNAME/";;25-47;"""$Version”_“$Year”.tif ;fi"
+;"if [ ""$SourceName"" == """;228;""" ];then convert ""$Alltif"" ""../GOODNAME/";;26-47;"""$Version”_“$Year”.tif ;fi"
+;"if [ ""$SourceName"" == """;229;""" ];then convert ""$Alltif"" ""../GOODNAME/";;27-47;"""$Version”_“$Year”.tif ;fi"
+;"if [ ""$SourceName"" == """;230;""" ];then convert ""$Alltif"" ""../GOODNAME/";;28-47;"""$Version”_“$Year”.tif ;fi"
+;"if [ ""$SourceName"" == """;243;""" ];then convert ""$Alltif"" ""../GOODNAME/";;22-48;"""$Version”_“$Year”.tif ;fi"
+;"if [ ""$SourceName"" == """;244;""" ];then convert ""$Alltif"" ""../GOODNAME/";;23-48;"""$Version”_“$Year”.tif ;fi"
+;"if [ ""$SourceName"" == """;245;""" ];then convert ""$Alltif"" ""../GOODNAME/";;24-48;"""$Version”_“$Year”.tif ;fi"
+;"if [ ""$SourceName"" == """;246;""" ];then convert ""$Alltif"" ""../GOODNAME/";;25-48;"""$Version”_“$Year”.tif ;fi"
+;"if [ ""$SourceName"" == """;247;""" ];then convert ""$Alltif"" ""../GOODNAME/";;26-48;"""$Version”_“$Year”.tif ;fi"
+;"if [ ""$SourceName"" == """;248;""" ];then convert ""$Alltif"" ""../GOODNAME/";;27-48;"""$Version”_“$Year”.tif ;fi"
+;"if [ ""$SourceName"" == """;249;""" ];then convert ""$Alltif"" ""../GOODNAME/";;28-48;"""$Version”_“$Year”.tif ;fi"
+;"if [ ""$SourceName"" == """;253;""" ];then convert ""$Alltif"" ""../GOODNAME/";;32-48;"""$Version”_“$Year”.tif ;fi"
+;"if [ ""$SourceName"" == """;254-273;""" ];then convert ""$Alltif"" ""../GOODNAME/";;;"""$Version”_“$Year”.tif ;fi"
+;"if [ ""$SourceName"" == """;255;""" ];then convert ""$Alltif"" ""../GOODNAME/";;34-48-49;"""$Version”_“$Year”.tif ;fi"
+;"if [ ""$SourceName"" == """;26;""" ];then convert ""$Alltif"" ""../GOODNAME/";;25-35;"""$Version”_“$Year”.tif ;fi"
+;"if [ ""$SourceName"" == """;261;""" ];then convert ""$Alltif"" ""../GOODNAME/";;21-49;"""$Version”_“$Year”.tif ;fi"
+;"if [ ""$SourceName"" == """;262;""" ];then convert ""$Alltif"" ""../GOODNAME/";;22-49;"""$Version”_“$Year”.tif ;fi"
+;"if [ ""$SourceName"" == """;263;""" ];then convert ""$Alltif"" ""../GOODNAME/";;23-49;"""$Version”_“$Year”.tif ;fi"
+;"if [ ""$SourceName"" == """;264;""" ];then convert ""$Alltif"" ""../GOODNAME/";;24-49;"""$Version”_“$Year”.tif ;fi"
+;"if [ ""$SourceName"" == """;265;""" ];then convert ""$Alltif"" ""../GOODNAME/";;25-49;"""$Version”_“$Year”.tif ;fi"
+;"if [ ""$SourceName"" == """;266;""" ];then convert ""$Alltif"" ""../GOODNAME/";;26-49;"""$Version”_“$Year”.tif ;fi"
+;"if [ ""$SourceName"" == """;267;""" ];then convert ""$Alltif"" ""../GOODNAME/";;27-49;"""$Version”_“$Year”.tif ;fi"
+;"if [ ""$SourceName"" == """;268;""" ];then convert ""$Alltif"" ""../GOODNAME/";;28-49;"""$Version”_“$Year”.tif ;fi"
+;"if [ ""$SourceName"" == """;269;""" ];then convert ""$Alltif"" ""../GOODNAME/";;29-49;"""$Version”_“$Year”.tif ;fi"
+;"if [ ""$SourceName"" == """;27;""" ];then convert ""$Alltif"" ""../GOODNAME/";;26-35;"""$Version”_“$Year”.tif ;fi"
+;"if [ ""$SourceName"" == """;272;""" ];then convert ""$Alltif"" ""../GOODNAME/";;32-49;"""$Version”_“$Year”.tif ;fi"
+;"if [ ""$SourceName"" == """;273;""" ];then convert ""$Alltif"" ""../GOODNAME/";;33-48-49;"""$Version”_“$Year”.tif ;fi"
+;"if [ ""$SourceName"" == """;274;""" ];then convert ""$Alltif"" ""../GOODNAME/";;34-49-50;"""$Version”_“$Year”.tif ;fi"
+;"if [ ""$SourceName"" == """;275;""" ];then convert ""$Alltif"" ""../GOODNAME/";;35-49-50;"""$Version”_“$Year”.tif ;fi"
+;"if [ ""$SourceName"" == """;276;""" ];then convert ""$Alltif"" ""../GOODNAME/";;20-50;"""$Version”_“$Year”.tif ;fi"
+;"if [ ""$SourceName"" == """;276-277;""" ];then convert ""$Alltif"" ""../GOODNAME/";;;"""$Version”_“$Year”.tif ;fi"
+;"if [ ""$SourceName"" == """;277;""" ];then convert ""$Alltif"" ""../GOODNAME/";;21-50;"""$Version”_“$Year”.tif ;fi"
+;"if [ ""$SourceName"" == """;278;""" ];then convert ""$Alltif"" ""../GOODNAME/";;22-50;"""$Version”_“$Year”.tif ;fi"
+;"if [ ""$SourceName"" == """;279;""" ];then convert ""$Alltif"" ""../GOODNAME/";;23-50;"""$Version”_“$Year”.tif ;fi"
+;"if [ ""$SourceName"" == """;28;""" ];then convert ""$Alltif"" ""../GOODNAME/";;27-35;"""$Version”_“$Year”.tif ;fi"
+;"if [ ""$SourceName"" == """;280;""" ];then convert ""$Alltif"" ""../GOODNAME/";;24-50;"""$Version”_“$Year”.tif ;fi"
+;"if [ ""$SourceName"" == """;281;""" ];then convert ""$Alltif"" ""../GOODNAME/";;25-50;"""$Version”_“$Year”.tif ;fi"
+;"if [ ""$SourceName"" == """;282;""" ];then convert ""$Alltif"" ""../GOODNAME/";;26-50;"""$Version”_“$Year”.tif ;fi"
+;"if [ ""$SourceName"" == """;283;""" ];then convert ""$Alltif"" ""../GOODNAME/";;27-50;"""$Version”_“$Year”.tif ;fi"
+;"if [ ""$SourceName"" == """;284;""" ];then convert ""$Alltif"" ""../GOODNAME/";;28-50;"""$Version”_“$Year”.tif ;fi"
+;"if [ ""$SourceName"" == """;285;""" ];then convert ""$Alltif"" ""../GOODNAME/";;29-50;"""$Version”_“$Year”.tif ;fi"
+;"if [ ""$SourceName"" == """;288;""" ];then convert ""$Alltif"" ""../GOODNAME/";;32-50;"""$Version”_“$Year”.tif ;fi"
+;"if [ ""$SourceName"" == """;291;""" ];then convert ""$Alltif"" ""../GOODNAME/";;20-51;"""$Version”_“$Year”.tif ;fi"
+;"if [ ""$SourceName"" == """;292;""" ];then convert ""$Alltif"" ""../GOODNAME/";;21-51;"""$Version”_“$Year”.tif ;fi"
+;"if [ ""$SourceName"" == """;293;""" ];then convert ""$Alltif"" ""../GOODNAME/";;22-51;"""$Version”_“$Year”.tif ;fi"
+;"if [ ""$SourceName"" == """;294;""" ];then convert ""$Alltif"" ""../GOODNAME/";;23-51;"""$Version”_“$Year”.tif ;fi"
+;"if [ ""$SourceName"" == """;295;""" ];then convert ""$Alltif"" ""../GOODNAME/";;24-51;"""$Version”_“$Year”.tif ;fi"
+;"if [ ""$SourceName"" == """;296;""" ];then convert ""$Alltif"" ""../GOODNAME/";;25-51;"""$Version”_“$Year”.tif ;fi"
+;"if [ ""$SourceName"" == """;297;""" ];then convert ""$Alltif"" ""../GOODNAME/";;26-51;"""$Version”_“$Year”.tif ;fi"
+;"if [ ""$SourceName"" == """;298;""" ];then convert ""$Alltif"" ""../GOODNAME/";;27-51;"""$Version”_“$Year”.tif ;fi"
+;"if [ ""$SourceName"" == """;299;""" ];then convert ""$Alltif"" ""../GOODNAME/";;28-51;"""$Version”_“$Year”.tif ;fi"
+;"if [ ""$SourceName"" == """;300;""" ];then convert ""$Alltif"" ""../GOODNAME/";;29-51;"""$Version”_“$Year”.tif ;fi"
+;"if [ ""$SourceName"" == """;300-301;""" ];then convert ""$Alltif"" ""../GOODNAME/";;;"""$Version”_“$Year”.tif ;fi"
+;"if [ ""$SourceName"" == """;301;""" ];then convert ""$Alltif"" ""../GOODNAME/";;30-51;"""$Version”_“$Year”.tif ;fi"
+;"if [ ""$SourceName"" == """;304;""" ];then convert ""$Alltif"" ""../GOODNAME/";;33-34-51;"""$Version”_“$Year”.tif ;fi"
+;"if [ ""$SourceName"" == """;305;""" ];then convert ""$Alltif"" ""../GOODNAME/";;21-52;"""$Version”_“$Year”.tif ;fi"
+;"if [ ""$SourceName"" == """;306;""" ];then convert ""$Alltif"" ""../GOODNAME/";;22-52;"""$Version”_“$Year”.tif ;fi"
+;"if [ ""$SourceName"" == """;307;""" ];then convert ""$Alltif"" ""../GOODNAME/";;23-52;"""$Version”_“$Year”.tif ;fi"
+;"if [ ""$SourceName"" == """;308;""" ];then convert ""$Alltif"" ""../GOODNAME/";;24-52;"""$Version”_“$Year”.tif ;fi"
+;"if [ ""$SourceName"" == """;309;""" ];then convert ""$Alltif"" ""../GOODNAME/";;25-52;"""$Version”_“$Year”.tif ;fi"
+;"if [ ""$SourceName"" == """;310;""" ];then convert ""$Alltif"" ""../GOODNAME/";;26-52;"""$Version”_“$Year”.tif ;fi"
+;"if [ ""$SourceName"" == """;311;""" ];then convert ""$Alltif"" ""../GOODNAME/";;27-52;"""$Version”_“$Year”.tif ;fi"
+;"if [ ""$SourceName"" == """;312;""" ];then convert ""$Alltif"" ""../GOODNAME/";;28-52;"""$Version”_“$Year”.tif ;fi"
+;"if [ ""$SourceName"" == """;313;""" ];then convert ""$Alltif"" ""../GOODNAME/";;29-52;"""$Version”_“$Year”.tif ;fi"
+;"if [ ""$SourceName"" == """;314;""" ];then convert ""$Alltif"" ""../GOODNAME/";;30-52;"""$Version”_“$Year”.tif ;fi"
+;"if [ ""$SourceName"" == """;315;""" ];then convert ""$Alltif"" ""../GOODNAME/";;22-53;"""$Version”_“$Year”.tif ;fi"
+;"if [ ""$SourceName"" == """;316;""" ];then convert ""$Alltif"" ""../GOODNAME/";;23-53;"""$Version”_“$Year”.tif ;fi"
+;"if [ ""$SourceName"" == """;317;""" ];then convert ""$Alltif"" ""../GOODNAME/";;24-53;"""$Version”_“$Year”.tif ;fi"
+;"if [ ""$SourceName"" == """;318;""" ];then convert ""$Alltif"" ""../GOODNAME/";;25-53;"""$Version”_“$Year”.tif ;fi"
+;"if [ ""$SourceName"" == """;319;""" ];then convert ""$Alltif"" ""../GOODNAME/";;26-53;"""$Version”_“$Year”.tif ;fi"
+;"if [ ""$SourceName"" == """;321;""" ];then convert ""$Alltif"" ""../GOODNAME/";;28-53;"""$Version”_“$Year”.tif ;fi"
+;"if [ ""$SourceName"" == """;322;""" ];then convert ""$Alltif"" ""../GOODNAME/";;29-53;"""$Version”_“$Year”.tif ;fi"
+;"if [ ""$SourceName"" == """;323;""" ];then convert ""$Alltif"" ""../GOODNAME/";;30-53;"""$Version”_“$Year”.tif ;fi"
+;"if [ ""$SourceName"" == """;324;""" ];then convert ""$Alltif"" ""../GOODNAME/";;24-54;"""$Version”_“$Year”.tif ;fi"
+;"if [ ""$SourceName"" == """;325;""" ];then convert ""$Alltif"" ""../GOODNAME/";;25-54;"""$Version”_“$Year”.tif ;fi"
+;"if [ ""$SourceName"" == """;326;""" ];then convert ""$Alltif"" ""../GOODNAME/";;26-54;"""$Version”_“$Year”.tif ;fi"
+;"if [ ""$SourceName"" == """;328;""" ];then convert ""$Alltif"" ""../GOODNAME/";;28-54;"""$Version”_“$Year”.tif ;fi"
+;"if [ ""$SourceName"" == """;329;""" ];then convert ""$Alltif"" ""../GOODNAME/";;29-54;"""$Version”_“$Year”.tif ;fi"
+;"if [ ""$SourceName"" == """;330;""" ];then convert ""$Alltif"" ""../GOODNAME/";;30-54;"""$Version”_“$Year”.tif ;fi"
+;"if [ ""$SourceName"" == """;331;""" ];then convert ""$Alltif"" ""../GOODNAME/";;25-55;"""$Version”_“$Year”.tif ;fi"
+;"if [ ""$SourceName"" == """;332;""" ];then convert ""$Alltif"" ""../GOODNAME/";;26-55;"""$Version”_“$Year”.tif ;fi"
+;"if [ ""$SourceName"" == """;334;""" ];then convert ""$Alltif"" ""../GOODNAME/";;28-55;"""$Version”_“$Year”.tif ;fi"
+;"if [ ""$SourceName"" == """;335;""" ];then convert ""$Alltif"" ""../GOODNAME/";;29-55;"""$Version”_“$Year”.tif ;fi"
+;"if [ ""$SourceName"" == """;39;""" ];then convert ""$Alltif"" ""../GOODNAME/";;25-36;"""$Version”_“$Year”.tif ;fi"
+;"if [ ""$SourceName"" == """;40;""" ];then convert ""$Alltif"" ""../GOODNAME/";;26-36;"""$Version”_“$Year”.tif ;fi"
+;"if [ ""$SourceName"" == """;41;""" ];then convert ""$Alltif"" ""../GOODNAME/";;27-36;"""$Version”_“$Year”.tif ;fi"
+;"if [ ""$SourceName"" == """;42;""" ];then convert ""$Alltif"" ""../GOODNAME/";;28-35;"""$Version”_“$Year”.tif ;fi"
+;"if [ ""$SourceName"" == """;45;""" ];then convert ""$Alltif"" ""../GOODNAME/";;31-35;"""$Version”_“$Year”.tif ;fi"
+;"if [ ""$SourceName"" == """;46;""" ];then convert ""$Alltif"" ""../GOODNAME/";;32-36;"""$Version”_“$Year”.tif ;fi"
+;"if [ ""$SourceName"" == """;53;""" ];then convert ""$Alltif"" ""../GOODNAME/";;26-37;"""$Version”_“$Year”.tif ;fi"
+;"if [ ""$SourceName"" == """;54;""" ];then convert ""$Alltif"" ""../GOODNAME/";;27-37;"""$Version”_“$Year”.tif ;fi"
+;"if [ ""$SourceName"" == """;55;""" ];then convert ""$Alltif"" ""../GOODNAME/";;28-37;"""$Version”_“$Year”.tif ;fi"
+;"if [ ""$SourceName"" == """;56;""" ];then convert ""$Alltif"" ""../GOODNAME/";;29-37;"""$Version”_“$Year”.tif ;fi"
+;"if [ ""$SourceName"" == """;57;""" ];then convert ""$Alltif"" ""../GOODNAME/";;30-37;"""$Version”_“$Year”.tif ;fi"
+;"if [ ""$SourceName"" == """;58;""" ];then convert ""$Alltif"" ""../GOODNAME/";;31-37;"""$Version”_“$Year”.tif ;fi"
+;"if [ ""$SourceName"" == """;59;""" ];then convert ""$Alltif"" ""../GOODNAME/";;32-37;"""$Version”_“$Year”.tif ;fi"
+;"if [ ""$SourceName"" == """;60;""" ];then convert ""$Alltif"" ""../GOODNAME/";;33-37;"""$Version”_“$Year”.tif ;fi"
+;"if [ ""$SourceName"" == """;62;""" ];then convert ""$Alltif"" ""../GOODNAME/";;20-52;"""$Version”_“$Year”.tif ;fi"
+;"if [ ""$SourceName"" == """;66K;""" ];then convert ""$Alltif"" ""../GOODNAME/";;36-53;"""$Version”_“$Year”.tif ;fi"
+;"if [ ""$SourceName"" == """;67U;""" ];then convert ""$Alltif"" ""../GOODNAME/";;41-55;"""$Version”_“$Year”.tif ;fi"
+;"if [ ""$SourceName"" == """;71;""" ];then convert ""$Alltif"" ""../GOODNAME/";;29-38;"""$Version”_“$Year”.tif ;fi"
+;"if [ ""$SourceName"" == """;72;""" ];then convert ""$Alltif"" ""../GOODNAME/";;30-38;"""$Version”_“$Year”.tif ;fi"
+;"if [ ""$SourceName"" == """;73;""" ];then convert ""$Alltif"" ""../GOODNAME/";;31-38;"""$Version”_“$Year”.tif ;fi"
+;"if [ ""$SourceName"" == """;76;""" ];then convert ""$Alltif"" ""../GOODNAME/";;34-35-38;"""$Version”_“$Year”.tif ;fi"
+;"if [ ""$SourceName"" == """;77;""" ];then convert ""$Alltif"" ""../GOODNAME/";;19-39;"""$Version”_“$Year”.tif ;fi"
+;"if [ ""$SourceName"" == """;88;""" ];then convert ""$Alltif"" ""../GOODNAME/";;30-39;"""$Version”_“$Year”.tif ;fi"
+;"if [ ""$SourceName"" == """;89;""" ];then convert ""$Alltif"" ""../GOODNAME/";;31-39;"""$Version”_“$Year”.tif ;fi"
+;"if [ ""$SourceName"" == """;93;""" ];then convert ""$Alltif"" ""../GOODNAME/";;18-40;"""$Version”_“$Year”.tif ;fi"
+;"if [ ""$SourceName"" == """;96-113;""" ];then convert ""$Alltif"" ""../GOODNAME/";;;"""$Version”_“$Year”.tif ;fi"
+;;;;;;
+;;;;;;
+;;;;;;
+;;;;;;
+;;;;;;
+;;;;;;
+;;;;;;
+;;;;;;
+;;;;;;
+;;;;;;
+;;;;;;
+;;;;;;
+;;;;;;
+;;;;;;
+;;;;;;
+;;;;;;
+;;;;;;
+;;;;;;
+;;;;;;
+;;;;;;
+;;;;;;
+;;;;;;
+;;;;;;
+;;;;;;
+;;;;;;
+;;;;;;
+;;;;;;
+;;;;;;
+;;;;;;
+;;;;;;
+;;;;;;
+;;;;;;
+;;;;;;
+;;;;;;
+;;;;;;
+;;;;;;
+;;;;;;
+;;;;;;
+;;;;;;
+;;;;;;
+;;;;;;
+;;;;;;
+;;;;;;
+;;;;;;
+;;;;;;
+;;;;;;
+;;;;;;
+;;;;;;
+;;;;;;
+;;;;;;
+;;;;;;
+;;;;;;
+;;;;;;
+;;;;;;
+;;;;;;
+;;;;;;
+;;;;;;
+;;;;;;
+;;;;;;
+;;;;;;
+;;;;;;
+;;;;;;
+;;;;;;
+;;;;;;
+;;;;;;
+;;;;;;
+;;;;;;
+;;;;;;
+;;;;;;
+;;;;;;
+;;;;;;
+;;;;;;
+;;;;;;
+;;;;;;
+;;;;;;
+;;;;;;
+;;;;;;
+;;;;;;
+;;;;;;
+;;;;;;
+;;;;;;
+;;;;;;
+;;;;;;
+;;;;;;
+;;;;;;
+;;;;;;
+;;;;;;
+;;;;;;
+;;;;;;
+;;;;;;
+;;;;;;
+;;;;;;
+;;;;;;
+;;;;;;
+;;;;;;
+;;;;;;
+;;;;;;
+;;;;;;
+;;;;;;
+;;;;;;
+;;;;;;
+;;;;;;
+;;;;;;
+;;;;;;
+;;;;;;
+;;;;;;
+;;;;;;
+;;;;;;
+;;;;;;
+;;;;;;
+;;;;;;
+;;;;;;
+;;;;;;
+;;;;;;
+;;;;;;
+;;;;;;
+;;;;;;
+;;;;;;
+;;;;;;
+;;;;;;
+;;;;;;
+;;;;;;
+;;;;;;
+;;;;;;
+;;;;;;
+;;;;;;
+;;;;;;
+;;;;;;
+;;;;;;
+;;;;;;
+;;;;;;
+;;;;;;
+;;;;;;
+;;;;;;
+;;;;;;
+;;;;;;
+;;;;;;
+;;;;;;
+;;;;;;
+;;;;;;
+;;;;;;
+;;;;;;
+;;;;;;
+;;;;;;
+;;;;;;
+;;;;;;
+;;;;;;
+;;;;;;
+;;;;;;
+;;;;;25-51;

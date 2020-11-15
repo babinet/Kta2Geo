@@ -27,7 +27,7 @@ dir=$(
 cd -P -- "$(dirname -- "$0")" && pwd -P
 )
 cd $dir
-mkdir -p ../Output
+mkdir -p ../_Output
 
 
 # Ask the user for their name
