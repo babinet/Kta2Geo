@@ -73,3 +73,17 @@ Folder/Output/Processed_KMZ_folder/csv
 ```
 Folder/Output/25-50-V1-11971.tif
 ```
+
+#### Special case :
+
+INSPECTION GÉNÉRALE DES CARRIÈRES DE LA SEINE
+
+ATLAS DES CARRIÈRES SOUTERRAINES DU DÉPARTEMENT - 1962
+
+TABLEAU DASSEMBLAGE
+
+Echelle: 1 :50000.
+
+```
+"Folder/_Atlas_des_Carrière_du_département_1962.tif"
+```
