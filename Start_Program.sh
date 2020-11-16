@@ -75,7 +75,7 @@ done
 }
 
 # Declare the array
-Menu=('GeoRefIGC'  'kmz2csv' 'Geoserver_operations' 'Feuilles2Planches' 'Planche to feuilles' )
+Menu=('GeoRefIGC'  'kmz2csv' 'Geoserver_operations' 'Feuilles2Planches' 'Planche to feuilles' 'Observatoire_Long_Lat-Conver' )
 
 # Call the subroutine to create the menu
 menu_from_array "${Menu[@]}"
@@ -100,6 +100,10 @@ then
 ./Geoserver.sh
 fi
 
+if [ $item = Observatoire_Long_Lat-Conver ]
+then
+./Observatoire_Long_Lat-Conver.sh
+fi
 
 
 cd - 
