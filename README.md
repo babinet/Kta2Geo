@@ -1,6 +1,6 @@
 # Kta2Géo
 
-* *Environement : #/bin/bash!*
+* *Environment : #/bin/bash!*
 * *Requirement : gdal exiftool wget imagemagick*
 
 ###### Usage :
@@ -32,11 +32,11 @@ NTF (Paris) / Lambert Nord France  EPSG:27561
 
 #### Observatoire_*Long_*Lat-Converter
 
-* Conversion Long/Lat from Paris meridian - unit : métre
+* Conversion Long/Lat from Paris meridian - unit : mètre
 
 ### Name convention :
 
-##### Maps pict format .jpg, .tif, and  .kmz  files. 
+##### Maps image format :  .jpg, .tif, and  .kmz  files. 
 
 Original .jpeg or .tif files must be stored in :
 
@@ -47,11 +47,11 @@ Folder/25-50_Whatever_1971.tif
 ```
 
 ```
-Folder/[Absis]-[Ordoné]_Whatever_version-numéro_Whatever_l'année.l'extenssion
+Folder/[Abscissa]-[Ordinate]_Whatever_version-numéro_Whatever_l'année.l'extension
 ```
 
 ```
-Folder/25-50_plan des carrièrres Denfert_V-1_Source_BHVP_1971.tif
+Folder/25-50_plan des carrières Denfert_V-1_Source_BHVP_1971.tif
 ```
 
 Output :
@@ -112,10 +112,10 @@ INSPECTION GÉNÉRALE DES CARRIÈRES DE LA SEINE
 
 ATLAS DES CARRIÈRES SOUTERRAINES DU DÉPARTEMENT - 1962
 
-TABLEAU DASSEMBLAGE
+TABLEAU D'ASSEMBLAGE
 
 Echelle: 1 :50000.
 
 ```
-"Folder/_Atlas_des_Carrière_du_département_1962.tif"
+"Folder/_Atlas_des_Carrières_du_département_1962.tif"
 ```
