@@ -13,48 +13,42 @@ Folder/Kta2Geo/Start_Program.sh
 
 #### GeoRefIGC :
 
-Georeference in EPSG:3857 from source Lambert1 EPSG:27561 maps based on filename.
+* Georeference maps in EPSG:3857 from source maps in Lambert1 EPSG:27561 based on filename.
+
+NTF (Paris) / Lambert Nord France  EPSG:27561 
 
 #### kmz2csv :
 
-Convert KMZ to CSV & Geotag images
+* Convert KMZ to CSV & Geotag images
 
 #### Feuilles2Planches :
 
-Convert name Old "feuille 281" to "25-50"
+* Convert name Old "feuille 281" to "25-50"
 
 #### Geoserver_operations
 
-1. Create a Workspace on Geoserver
-2. Post Geotif files to geoserver and set-up layers.
+* Create a Workspace on Geoserver
+* Post Geotif files to geoserver and set-up layers.
 
-\---> ################################### <---
+#### Observatoire_*Long_*Lat-Converter
 
-## Name convention:
+* Conversion Long/Lat from Paris meridian - unit : métre
 
-Original .tif files must be stored  in  :
+### Name convention :
+
+##### Maps pict format .jpg, .tif, and  .kmz  files. 
+
+Original .jpeg or .tif files must be stored in :
+
+###### I.G.C post 1968 E.g : 25-50
 
 ```
 Folder/25-50_Whatever_1971.tif
 ```
 
-Or
-
-```
-Folder/25-50_plan des carrièrres Denfert_V-1_Source_BHVP_1971.tif
-```
-
 ```
 Folder/[Absis]-[Ordoné]_Whatever_version-numéro_Whatever_l'année.l'extenssion
 ```
-
-Kmz files
-
-```
-Folder/WhateverName.kmz
-```
-
-Maps pict format .tif files
 
 ```
 Folder/25-50_plan des carrièrres Denfert_V-1_Source_BHVP_1971.tif
@@ -63,15 +57,53 @@ Folder/25-50_plan des carrièrres Denfert_V-1_Source_BHVP_1971.tif
 Output :
 
 ```
-Folder/Output/25-50-V1-11971.tif
+Folder/_Output/25-50-V1-1971.tif
+```
+
+###### I.G.C pre 1968 E.g : Feuille 281
+
+```
+Folder/281_V1-1931.tif
 ```
 
 ```
-Folder/Output/Processed_KMZ_folder/csv
+Folder/_Output/281_V1-1931.tif
 ```
 
+###### Département de la Seine
+
 ```
-Folder/Output/25-50-V1-11971.tif
+Folder/26Y_V1-1951.tif
+```
+
+output :
+
+```
+Folder/_Output/26Y_V1-1951.tif
+```
+
+###### De Fourcy 1858
+
+```
+Folder/P9_1957.tif
+```
+
+Otput :
+
+```
+Folder/_Output/P9_1957.tif
+```
+
+##### Kmz files
+
+```
+Folder/WhateverName.kmz
+```
+
+Ouput images & .csv
+
+```
+Folder/_Output/WhateverName(Folder)
 ```
 
 #### Special case :
