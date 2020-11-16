@@ -650,6 +650,26 @@ echo "${red}---> Absis suptitut : $Absis"
 
 
 
+
+
+
+
+
+
+#
+## Ancienne Numérotation 281 = 25-500
+#
+
+elif [ "$TiffSource" == ../324_* ]
+then
+Ordoned=24
+Absis=54
+echo "${red}---> Ordoned suptitut : $Ordoned"
+echo "${red}---> Absis suptitut : $Absis"
+
+
+
+
 #elif [ "$TiffSource" == ../70O_* ]
 #then
 #Ordoned=15
