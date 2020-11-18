@@ -669,7 +669,7 @@ Abscissa=41
 echo "${red}---> Ordinate suptitut : $Ordinate"
 echo "${red}---> Abscissa suptitut : $Abscissa"
 
-elif [ "$TiffSource" == ../61Y__* ]
+elif [ "$TiffSource" == ../61Y_* ]
 then
 Ordinate=15
 Abscissa=55
@@ -708,13 +708,6 @@ echo "${red}---> Abscissa suptitut : $Abscissa"
 elif [ "$TiffSource" == ../62U_* ]
 then
 Ordinate=16
-Abscissa=55
-echo "${red}---> Ordinate suptitut : $Ordinate"
-echo "${red}---> Abscissa suptitut : $Abscissa"
-
-elif [ "$TiffSource" == ../62V_* ]
-then
-Ordinate=17
 Abscissa=55
 echo "${red}---> Ordinate suptitut : $Ordinate"
 echo "${red}---> Abscissa suptitut : $Abscissa"
@@ -1113,12 +1106,12 @@ then
 
 gdal_translate -a_srs EPSG:27561 -of GTiff -gcp 0 0 609347 128673 -gcp 0 "$HeightImage" 609347 128570 -gcp "$WidthImage" 0 609500 128673 -gcp "$WidthImage" "$HeightImage" 609500 128570 "$TiffSource" temp.tif
 
-if [ -f "../_Output/"$NameNoExt"_"$Year".tif" ]
-then
+#if [ -f "../_Output/41-42_Encart_"$Year".tif" ]
+#then
 # rm "../_Output/"$NameNoExt"_"$Year".tif"
-mv "../_Output/"$NameNoExt"_"$Year".tif" ../_TRASH_TEMP/"$FileDate"_"$NameNoExt"_"$Year".tif
-fi
-gdalwarp -co COMPRESS=NONE -s_srs "EPSG:27561" -t_srs "EPSG:3857" temp.tif ../_Output/41-42_Encart_"$Year".tif
+#mv "../_Output/"$NameNoExt"_"$Year".tif" ../_TRASH_TEMP/"$FileDate"_"$NameNoExt"_"$Year".tif
+#fi
+gdalwarp -co COMPRESS=NONE -overwrite -s_srs "EPSG:27561" -t_srs "EPSG:3857" temp.tif ../_Output/41-42_Encart_"$Year".tif
 
 # Planche ../41-42-45_*
 elif [ "$TiffSource" == ../41-42-45_* ]
@@ -1145,11 +1138,11 @@ fi
 gdalwarp -co COMPRESS=NONE -s_srs "EPSG:27561" -t_srs "EPSG:3857" -dstalpha temp.tif "../_Output/"$NameNoExt"_"$Year".tif"
 
 
-# Planche ../41-42-46_*
-elif [ "$TiffSource" == ../41-42-46_* ]
+# Planche ../21-41_*
+elif [ "$TiffSource" == ../21-41-union* ]
 then
 
-gdal_translate -a_srs EPSG:27561 -of GTiff -gcp 0 0 609300 127824 -gcp 0 "$HeightImage" 609300 127424 -gcp "$WidthImage" 0 609900 127824 -gcp "$WidthImage" "$HeightImage" 609900 127424 "$TiffSource" temp.tif
+gdal_translate -a_srs EPSG:27561 -of GTiff -gcp 0 0 597000 130024 -gcp 0 "$HeightImage" 597000 129424 -gcp "$WidthImage" 0 597600 130024 -gcp "$WidthImage" "$HeightImage" 597600 129424 "$TiffSource" temp.tif
 if [ -f "../_Output/"$NameNoExt"_"$Year".tif" ]
 then
 # rm "../_Output/"$NameNoExt"_"$Year".tif"
@@ -1158,12 +1151,46 @@ fi
 gdalwarp -co COMPRESS=NONE -s_srs "EPSG:27561" -t_srs "EPSG:3857" -dstalpha temp.tif "../_Output/"$NameNoExt"_"$Year".tif"
 
 
+# Planche ../P11_Planche_7_DeFourcy_1858.tif
+elif [ "$TiffSource" == ../P11_Planche_7_DeFourcy_1858.tif ]
+then
+
+gdal_translate -a_srs EPSG:27561 -of GTiff -gcp 0 0 600000 126824 -gcp 0 "$HeightImage" 600000 126224  -gcp "$WidthImage" 0 601000 126824 -gcp "$WidthImage" "$HeightImage" 601000 126224 "$TiffSource" temp.tif
+if [ -f "../_Output/"$NameNoExt"_"$Year".tif" ]
+then
+# rm "../_Output/"$NameNoExt"_"$Year".tif"
+mv "../_Output/"$NameNoExt"_"$Year".tif" ../_TRASH_TEMP/"$FileDate"_"$NameNoExt"_"$Year".tif
+fi
+gdalwarp -co COMPRESS=NONE -s_srs "EPSG:27561" -t_srs "EPSG:3857" -dstalpha temp.tif "../_Output/"$NameNoExt"_"$Year".tif"
+
+# Planche ../P12_Planche_8_DeFourcy_1858.tif
+elif [ "$TiffSource" == ../P12_Planche_8_DeFourcy_1858.tif ]
+then
+
+gdal_translate -a_srs EPSG:27561 -of GTiff -gcp 0 0 600000 126224 -gcp 0 "$HeightImage" 600000 125624  -gcp "$WidthImage" 0 601000 126224 -gcp "$WidthImage" "$HeightImage" 601000 125624 "$TiffSource" temp.tif
+if [ -f "../_Output/"$NameNoExt"_"$Year".tif" ]
+then
+# rm "../_Output/"$NameNoExt"_"$Year".tif"
+mv "../_Output/"$NameNoExt"_"$Year".tif" ../_TRASH_TEMP/"$FileDate"_"$NameNoExt"_"$Year".tif
+fi
+gdalwarp -co COMPRESS=NONE -s_srs "EPSG:27561" -t_srs "EPSG:3857" -dstalpha temp.tif "../_Output/"$NameNoExt"_"$Year".tif"
+
+# Planche ../P16_Planche_12_DeFourcy_1958.tif
+elif [ "$TiffSource" == ../P16_Planche_12_DeFourcy_1958.tif ]
+then
+
+gdal_translate -a_srs EPSG:27561 -of GTiff -gcp 0 0 599000 126224 -gcp 0 "$HeightImage" 599000 125624  -gcp "$WidthImage" 0 600000 126224 -gcp "$WidthImage" "$HeightImage" 600000 125624 "$TiffSource" temp.tif
+if [ -f "../_Output/"$NameNoExt"_"$Year".tif" ]
+then
+# rm "../_Output/"$NameNoExt"_"$Year".tif"
+mv "../_Output/"$NameNoExt"_"$Year".tif" ../_TRASH_TEMP/"$FileDate"_"$NameNoExt"_"$Year".tif
+fi
+gdalwarp -co COMPRESS=NONE -s_srs "EPSG:27561" -t_srs "EPSG:3857" -dstalpha temp.tif "../_Output/"$NameNoExt"_"$Year".tif"
 
 #
 # Condition: if the filename corresponds to the pattern e.g: 25-50
 # Si c'est une planche IGC nouveaux numéros post 1968
 #
-
 else
 
 

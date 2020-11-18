@@ -143,9 +143,9 @@ ${white}---> Sud/Ouest                          : ${orange}$Ouest $Sud
 ${white}################################################################################"
 
 NordDeF=$(echo "$LatEPSG27561")
-SudDeF=$(echo $LatEPSG27561+600 |bc -l)
+SudDeF=$(echo $LatEPSG27561-600|bc -l)
 EstDeF=$(echo $LongEPSG27561)
-OuestDeF=$(echo $LongEPSG27561+10000 |bc -l)
+OuestDeF=$(echo $LongEPSG27561+1000 |bc -l)
 
 echo "                                        ${white}: ${green}$LongEPSG27561
                                 ${red}ORIGINE${white} : $LatEPSG27561${white}
