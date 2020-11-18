@@ -112,9 +112,9 @@ Position27561=$(echo $LongEPSG27561 $LatEPSG27561 |gdaltransform -s_srs "EPSG:27
 echo "${white}################################################################################
 ---> POSITION                                                      POSITION <---
 ${white}################################################################################
-${white}Position EPSG:${orange}27561                      : ${orange}$Position27561"
-echo "${white}Position EPSG:${orange}3857                       : ${orange}$Position3857"
-echo "${white}Position EPSG:${orange}4326                       : ${orange}$Position4326
+${white}Position EPSG:${orange}27561                     : ${orange}$Position27561"
+echo "${white}Position EPSG:${orange}3857                      : ${orange}$Position3857"
+echo "${white}Position EPSG:${orange}4326                      : ${orange}$Position4326
 ${white}################################################################################
 "
 Nord=$(echo "$LatEPSG27561")
@@ -122,8 +122,8 @@ Sud=$(echo $LatEPSG27561+400 |bc -l)
 Est=$(echo $LongEPSG27561)
 Ouest=$(echo $LongEPSG27561+600 |bc -l)
 
-echo "                                        ${white}: $LongEPSG27561
-                                ${red}ORIGINE${white} : $LatEPSG27561
+echo "                                        ${white}: ${green}$LongEPSG27561
+                                ${red}ORIGINE${white} : ${green}$LatEPSG27561${white}
                                          ---------------------------
                                         | NORD/OUEST       NORD/EST |
                                         |                           |
@@ -147,12 +147,12 @@ SudDeF=$(echo $LatEPSG27561+600 |bc -l)
 EstDeF=$(echo $LongEPSG27561)
 OuestDeF=$(echo $LongEPSG27561+10000 |bc -l)
 
-echo "                                        ${white}: $LongEPSG27561
-                                ${red}ORIGINE${white} : $LatEPSG27561
+echo "                                        ${white}: ${green}$LongEPSG27561
+                                ${red}ORIGINE${white} : $LatEPSG27561${white}
                                          ---------------------------
                                         | NORD/OUEST       NORD/EST |
                                         |                           |
-                                        |     De Fourcy 1858        |
+                                        |      De Fourcy 1858       |
                                         |     LARGEUR :  ${orange}1000m ${white}     |
                                         |     HAUTEUR :  ${orange}600m  ${white}     |
                                         |                           |

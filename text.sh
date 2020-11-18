@@ -27,7 +27,6 @@ echo "$purple IDCThirdLetter $IDCThirdLetter"
 #
 #[A-Z]{2}\d{6}
 
-#if [[ "$NameNoExt" =~ ^[0-9]+[A-Z]$* ]]
 if [[ $IDCThirdLetter =~ [A-B] ]]
 then
 echo $green YEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEES $purple $NameNoExt

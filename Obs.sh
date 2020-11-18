@@ -55,587 +55,587 @@ then
 echo hello
 elif [ "$TiffSource" == ../26Y_* ]
 then
-Ordoned=10
-Absis=35
-echo "${red}---> Ordoned suptitut : $Ordoned"
-echo "${red}---> Absis suptitut : $Absis"
+Ordinate=10
+Abscissa=35
+echo "${red}---> Ordinate suptitut : $Ordinate"
+echo "${red}---> Abscissa suptitut : $Abscissa"
 
 elif [ "$TiffSource" == ../72H_* ]
 then
-Ordoned=23
-Absis=57
-echo "${red}---> Ordoned suptitut : $Ordoned"
-echo "${red}---> Absis suptitut : $Absis"
+Ordinate=23
+Abscissa=57
+echo "${red}---> Ordinate suptitut : $Ordinate"
+echo "${red}---> Abscissa suptitut : $Abscissa"
 
 elif [ "$TiffSource" == ../27A_* ]
 then
-Ordoned=11
-Absis=31
-echo "${red}---> Ordoned suptitut : $Ordoned"
-echo "${red}---> Absis suptitut : $Absis"
+Ordinate=11
+Abscissa=31
+echo "${red}---> Ordinate suptitut : $Ordinate"
+echo "${red}---> Abscissa suptitut : $Abscissa"
 
 elif [ "$TiffSource" == ../27B_* ]
 then
-Ordoned=12
-Absis=31
-echo "${red}---> Ordoned suptitut : $Ordoned"
-echo "${red}---> Absis suptitut : $Absis"
+Ordinate=12
+Abscissa=31
+echo "${red}---> Ordinate suptitut : $Ordinate"
+echo "${red}---> Abscissa suptitut : $Abscissa"
 
 elif [ "$TiffSource" == ../27F_* ]
 then
-Ordoned=11
-Absis=32
-echo "${red}---> Ordoned suptitut : $Ordoned"
-echo "${red}---> Absis suptitut : $Absis"
+Ordinate=11
+Abscissa=32
+echo "${red}---> Ordinate suptitut : $Ordinate"
+echo "${red}---> Abscissa suptitut : $Abscissa"
 
 elif [ "$TiffSource" == ../27K_* ]
 then
-Ordoned=11
-Absis=33
-echo "${red}---> Ordoned suptitut : $Ordoned"
-echo "${red}---> Absis suptitut : $Absis"
+Ordinate=11
+Abscissa=33
+echo "${red}---> Ordinate suptitut : $Ordinate"
+echo "${red}---> Abscissa suptitut : $Abscissa"
 
 elif [ "$TiffSource" == ../27L_* ]
 then
-Ordoned=12
-Absis=33
-echo "${red}---> Ordoned suptitut : $Ordoned"
-echo "${red}---> Absis suptitut : $Absis"
+Ordinate=12
+Abscissa=33
+echo "${red}---> Ordinate suptitut : $Ordinate"
+echo "${red}---> Abscissa suptitut : $Abscissa"
 
 elif [ "$TiffSource" == ../27P_* ]
 then
-Ordoned=11
-Absis=34
-echo "${red}---> Ordoned suptitut : $Ordoned"
-echo "${red}---> Absis suptitut : $Absis"
+Ordinate=11
+Abscissa=34
+echo "${red}---> Ordinate suptitut : $Ordinate"
+echo "${red}---> Abscissa suptitut : $Abscissa"
 
 elif [ "$TiffSource" == ../27Q_* ]
 then
-Ordoned=12
-Absis=34
-echo "${red}---> Ordoned suptitut : $Ordoned"
-echo "${red}---> Absis suptitut : $Absis"
+Ordinate=12
+Abscissa=34
+echo "${red}---> Ordinate suptitut : $Ordinate"
+echo "${red}---> Abscissa suptitut : $Abscissa"
 
 elif [ "$TiffSource" == ../27X_* ]
 then
-Ordoned=14
-Absis=35
-echo "${red}---> Ordoned suptitut : $Ordoned"
-echo "${red}---> Absis suptitut : $Absis"
+Ordinate=14
+Abscissa=35
+echo "${red}---> Ordinate suptitut : $Ordinate"
+echo "${red}---> Abscissa suptitut : $Abscissa"
 
 elif [ "$TiffSource" == ../35D_* ]
 then
-Ordoned=9
-Absis=36
-echo "${red}---> Ordoned suptitut : $Ordoned"
-echo "${red}---> Absis suptitut : $Absis"
+Ordinate=9
+Abscissa=36
+echo "${red}---> Ordinate suptitut : $Ordinate"
+echo "${red}---> Abscissa suptitut : $Abscissa"
 
 elif [ "$TiffSource" == ../35O_* ]
 then
-Ordoned=10
-Absis=38
-echo "${red}---> Ordoned suptitut : $Ordoned"
-echo "${red}---> Absis suptitut : $Absis"
+Ordinate=10
+Abscissa=38
+echo "${red}---> Ordinate suptitut : $Ordinate"
+echo "${red}---> Abscissa suptitut : $Abscissa"
 
 elif [ "$TiffSource" == ../35Y_* ]
 then
-Ordoned=11
-Absis=38
-echo "${red}---> Ordoned suptitut : $Ordoned"
-echo "${red}---> Absis suptitut : $Absis"
+Ordinate=11
+Abscissa=38
+echo "${red}---> Ordinate suptitut : $Ordinate"
+echo "${red}---> Abscissa suptitut : $Abscissa"
 
 
 elif [ "$TiffSource" == ../95I_* ]
 then
-Ordoned=19
-Absis=72
-echo "${red}---> Ordoned suptitut : $Ordoned"
-echo "${red}---> Absis suptitut : $Absis"
+Ordinate=19
+Abscissa=72
+echo "${red}---> Ordinate suptitut : $Ordinate"
+echo "${red}---> Abscissa suptitut : $Abscissa"
 
 
 elif [ "$TiffSource" == ../70E_* ]
 then
-Ordoned=15
-Absis=56
-echo "${red}---> Ordoned suptitut : $Ordoned"
-echo "${red}---> Absis suptitut : $Absis"
+Ordinate=15
+Abscissa=56
+echo "${red}---> Ordinate suptitut : $Ordinate"
+echo "${red}---> Abscissa suptitut : $Abscissa"
 
 
 elif [ "$TiffSource" == ../70J_* ]
 then
-Ordoned=15
-Absis=57
-echo "${red}---> Ordoned suptitut : $Ordoned"
-echo "${red}---> Absis suptitut : $Absis"
+Ordinate=15
+Abscissa=57
+echo "${red}---> Ordinate suptitut : $Ordinate"
+echo "${red}---> Abscissa suptitut : $Abscissa"
 
 
 elif [ "$TiffSource" == ../70O_* ]
 then
-Ordoned=15
-Absis=58
-echo "${red}---> Ordoned suptitut : $Ordoned"
-echo "${red}---> Absis suptitut : $Absis"
+Ordinate=15
+Abscissa=58
+echo "${red}---> Ordinate suptitut : $Ordinate"
+echo "${red}---> Abscissa suptitut : $Abscissa"
 
 elif [ "$TiffSource" == ../71A_* ]
 then
-Ordoned=16
-Absis=56
-echo "${red}---> Ordoned suptitut : $Ordoned"
-echo "${red}---> Absis suptitut : $Absis"
+Ordinate=16
+Abscissa=56
+echo "${red}---> Ordinate suptitut : $Ordinate"
+echo "${red}---> Abscissa suptitut : $Abscissa"
 
 
 
 elif [ "$TiffSource" == ../71B_* ]
 then
-Ordoned=17
-Absis=56
-echo "${red}---> Ordoned suptitut : $Ordoned"
-echo "${red}---> Absis suptitut : $Absis"
+Ordinate=17
+Abscissa=56
+echo "${red}---> Ordinate suptitut : $Ordinate"
+echo "${red}---> Abscissa suptitut : $Abscissa"
 
 
 
 elif [ "$TiffSource" == ../71C_* ]
 then
-Ordoned=18
-Absis=56
-echo "${red}---> Ordoned suptitut : $Ordoned"
-echo "${red}---> Absis suptitut : $Absis"
+Ordinate=18
+Abscissa=56
+echo "${red}---> Ordinate suptitut : $Ordinate"
+echo "${red}---> Abscissa suptitut : $Abscissa"
 
 
 
 elif [ "$TiffSource" == ../71D_* ]
 then
-Ordoned=19
-Absis=56
-echo "${red}---> Ordoned suptitut : $Ordoned"
-echo "${red}---> Absis suptitut : $Absis"
+Ordinate=19
+Abscissa=56
+echo "${red}---> Ordinate suptitut : $Ordinate"
+echo "${red}---> Abscissa suptitut : $Abscissa"
 
 
 
 elif [ "$TiffSource" == ../71E_* ]
 then
-Ordoned=20
-Absis=56
-echo "${red}---> Ordoned suptitut : $Ordoned"
-echo "${red}---> Absis suptitut : $Absis"
+Ordinate=20
+Abscissa=56
+echo "${red}---> Ordinate suptitut : $Ordinate"
+echo "${red}---> Abscissa suptitut : $Abscissa"
 
 
 
 elif [ "$TiffSource" == ../71F_* ]
 then
-Ordoned=16
-Absis=57
-echo "${red}---> Ordoned suptitut : $Ordoned"
-echo "${red}---> Absis suptitut : $Absis"
+Ordinate=16
+Abscissa=57
+echo "${red}---> Ordinate suptitut : $Ordinate"
+echo "${red}---> Abscissa suptitut : $Abscissa"
 
 
 
 elif [ "$TiffSource" == ../71G_* ]
 then
-Ordoned=17
-Absis=57
-echo "${red}---> Ordoned suptitut : $Ordoned"
-echo "${red}---> Absis suptitut : $Absis"
+Ordinate=17
+Abscissa=57
+echo "${red}---> Ordinate suptitut : $Ordinate"
+echo "${red}---> Abscissa suptitut : $Abscissa"
 
 elif [ "$TiffSource" == ../71H_* ]
 then
-Ordoned=18
-Absis=57
-echo "${red}---> Ordoned suptitut : $Ordoned"
-echo "${red}---> Absis suptitut : $Absis"
+Ordinate=18
+Abscissa=57
+echo "${red}---> Ordinate suptitut : $Ordinate"
+echo "${red}---> Abscissa suptitut : $Abscissa"
 
 elif [ "$TiffSource" == ../71I_* ]
 then
-Ordoned=19
-Absis=57
-echo "${red}---> Ordoned suptitut : $Ordoned"
-echo "${red}---> Absis suptitut : $Absis"
+Ordinate=19
+Abscissa=57
+echo "${red}---> Ordinate suptitut : $Ordinate"
+echo "${red}---> Abscissa suptitut : $Abscissa"
 
 elif [ "$TiffSource" == ../71J_* ]
 then
-Ordoned=20
-Absis=57
-echo "${red}---> Ordoned suptitut : $Ordoned"
-echo "${red}---> Absis suptitut : $Absis"
+Ordinate=20
+Abscissa=57
+echo "${red}---> Ordinate suptitut : $Ordinate"
+echo "${red}---> Abscissa suptitut : $Abscissa"
 
 
 
 elif [ "$TiffSource" == ../71K_* ]
 then
-Ordoned=16
-Absis=58
-echo "${red}---> Ordoned suptitut : $Ordoned"
-echo "${red}---> Absis suptitut : $Absis"
+Ordinate=16
+Abscissa=58
+echo "${red}---> Ordinate suptitut : $Ordinate"
+echo "${red}---> Abscissa suptitut : $Abscissa"
 
 
 elif [ "$TiffSource" == ../71L_* ]
 then
-Ordoned=17
-Absis=58
-echo "${red}---> Ordoned suptitut : $Ordoned"
-echo "${red}---> Absis suptitut : $Absis"
+Ordinate=17
+Abscissa=58
+echo "${red}---> Ordinate suptitut : $Ordinate"
+echo "${red}---> Abscissa suptitut : $Abscissa"
 
 
 elif [ "$TiffSource" == ../71M_* ]
 then
-Ordoned=18
-Absis=58
-echo "${red}---> Ordoned suptitut : $Ordoned"
-echo "${red}---> Absis suptitut : $Absis"
+Ordinate=18
+Abscissa=58
+echo "${red}---> Ordinate suptitut : $Ordinate"
+echo "${red}---> Abscissa suptitut : $Abscissa"
 
 
 elif [ "$TiffSource" == ../71N_* ]
 then
-Ordoned=19
-Absis=58
-echo "${red}---> Ordoned suptitut : $Ordoned"
-echo "${red}---> Absis suptitut : $Absis"
+Ordinate=19
+Abscissa=58
+echo "${red}---> Ordinate suptitut : $Ordinate"
+echo "${red}---> Abscissa suptitut : $Abscissa"
 
 
 elif [ "$TiffSource" == ../71O_* ]
 then
-Ordoned=20
-Absis=58
-echo "${red}---> Ordoned suptitut : $Ordoned"
-echo "${red}---> Absis suptitut : $Absis"
+Ordinate=20
+Abscissa=58
+echo "${red}---> Ordinate suptitut : $Ordinate"
+echo "${red}---> Abscissa suptitut : $Abscissa"
 
 
 elif [ "$TiffSource" == ../71R_* ]
 then
-Ordoned=18
-Absis=59
-echo "${red}---> Ordoned suptitut : $Ordoned"
-echo "${red}---> Absis suptitut : $Absis"
+Ordinate=18
+Abscissa=59
+echo "${red}---> Ordinate suptitut : $Ordinate"
+echo "${red}---> Abscissa suptitut : $Abscissa"
 
 elif [ "$TiffSource" == ../71S_* ]
 then
-Ordoned=19
-Absis=59
-echo "${red}---> Ordoned suptitut : $Ordoned"
-echo "${red}---> Absis suptitut : $Absis"
+Ordinate=19
+Abscissa=59
+echo "${red}---> Ordinate suptitut : $Ordinate"
+echo "${red}---> Abscissa suptitut : $Abscissa"
 
 elif [ "$TiffSource" == ../71T_* ]
 then
-Ordoned=20
-Absis=59
-echo "${red}---> Ordoned suptitut : $Ordoned"
-echo "${red}---> Absis suptitut : $Absis"
+Ordinate=20
+Abscissa=59
+echo "${red}---> Ordinate suptitut : $Ordinate"
+echo "${red}---> Abscissa suptitut : $Abscissa"
 
 elif [ "$TiffSource" == ../71W_* ]
 then
-Ordoned=18
-Absis=60
-echo "${red}---> Ordoned suptitut : $Ordoned"
-echo "${red}---> Absis suptitut : $Absis"
+Ordinate=18
+Abscissa=60
+echo "${red}---> Ordinate suptitut : $Ordinate"
+echo "${red}---> Abscissa suptitut : $Abscissa"
 
 elif [ "$TiffSource" == ../71X_* ]
 then
-Ordoned=19
-Absis=60
-echo "${red}---> Ordoned suptitut : $Ordoned"
-echo "${red}---> Absis suptitut : $Absis"
+Ordinate=19
+Abscissa=60
+echo "${red}---> Ordinate suptitut : $Ordinate"
+echo "${red}---> Abscissa suptitut : $Abscissa"
 
 elif [ "$TiffSource" == ../71Y_* ]
 then
-Ordoned=20
-Absis=60
-echo "${red}---> Ordoned suptitut : $Ordoned"
-echo "${red}---> Absis suptitut : $Absis"
+Ordinate=20
+Abscissa=60
+echo "${red}---> Ordinate suptitut : $Ordinate"
+echo "${red}---> Abscissa suptitut : $Abscissa"
 
 elif [ "$TiffSource" == ../72A_* ]
 then
-Ordoned=21
-Absis=56
-echo "${red}---> Ordoned suptitut : $Ordoned"
-echo "${red}---> Absis suptitut : $Absis"
+Ordinate=21
+Abscissa=56
+echo "${red}---> Ordinate suptitut : $Ordinate"
+echo "${red}---> Abscissa suptitut : $Abscissa"
 
 
 
 elif [ "$TiffSource" == ../72B_* ]
 then
-Ordoned=22
-Absis=56
-echo "${red}---> Ordoned suptitut : $Ordoned"
-echo "${red}---> Absis suptitut : $Absis"
+Ordinate=22
+Abscissa=56
+echo "${red}---> Ordinate suptitut : $Ordinate"
+echo "${red}---> Abscissa suptitut : $Abscissa"
 
 
 
 elif [ "$TiffSource" == ../72C_* ]
 then
-Ordoned=23
-Absis=56
-echo "${red}---> Ordoned suptitut : $Ordoned"
-echo "${red}---> Absis suptitut : $Absis"
+Ordinate=23
+Abscissa=56
+echo "${red}---> Ordinate suptitut : $Ordinate"
+echo "${red}---> Abscissa suptitut : $Abscissa"
 
 
 
 elif [ "$TiffSource" == ../72D_* ]
 then
-Ordoned=24
-Absis=56
-echo "${red}---> Ordoned suptitut : $Ordoned"
-echo "${red}---> Absis suptitut : $Absis"
+Ordinate=24
+Abscissa=56
+echo "${red}---> Ordinate suptitut : $Ordinate"
+echo "${red}---> Abscissa suptitut : $Abscissa"
 
 
 
 elif [ "$TiffSource" == ../72F_* ]
 then
-Ordoned=21
-Absis=57
-echo "${red}---> Ordoned suptitut : $Ordoned"
-echo "${red}---> Absis suptitut : $Absis"
+Ordinate=21
+Abscissa=57
+echo "${red}---> Ordinate suptitut : $Ordinate"
+echo "${red}---> Abscissa suptitut : $Abscissa"
 
 
 
 elif [ "$TiffSource" == ../72G_* ]
 then
-Ordoned=22
-Absis=57
-echo "${red}---> Ordoned suptitut : $Ordoned"
-echo "${red}---> Absis suptitut : $Absis"
+Ordinate=22
+Abscissa=57
+echo "${red}---> Ordinate suptitut : $Ordinate"
+echo "${red}---> Abscissa suptitut : $Abscissa"
 
 
 
 elif [ "$TiffSource" == ../72H_* ]
 then
-Ordoned=23
-Absis=57
-echo "${red}---> Ordoned suptitut : $Ordoned"
-echo "${red}---> Absis suptitut : $Absis"
+Ordinate=23
+Abscissa=57
+echo "${red}---> Ordinate suptitut : $Ordinate"
+echo "${red}---> Abscissa suptitut : $Abscissa"
 
 
 
 elif [ "$TiffSource" == ../72I_* ]
 then
-Ordoned=24
-Absis=57
-echo "${red}---> Ordoned suptitut : $Ordoned"
-echo "${red}---> Absis suptitut : $Absis"
+Ordinate=24
+Abscissa=57
+echo "${red}---> Ordinate suptitut : $Ordinate"
+echo "${red}---> Abscissa suptitut : $Abscissa"
 
 
 
 elif [ "$TiffSource" == ../72K_* ]
 then
-Ordoned=21
-Absis=58
-echo "${red}---> Ordoned suptitut : $Ordoned"
-echo "${red}---> Absis suptitut : $Absis"
+Ordinate=21
+Abscissa=58
+echo "${red}---> Ordinate suptitut : $Ordinate"
+echo "${red}---> Abscissa suptitut : $Abscissa"
 
 
 
 elif [ "$TiffSource" == ../72L_* ]
 then
-Ordoned=22
-Absis=58
-echo "${red}---> Ordoned suptitut : $Ordoned"
-echo "${red}---> Absis suptitut : $Absis"
+Ordinate=22
+Abscissa=58
+echo "${red}---> Ordinate suptitut : $Ordinate"
+echo "${red}---> Abscissa suptitut : $Abscissa"
 
 
 
 elif [ "$TiffSource" == ../72M_* ]
 then
-Ordoned=23
-Absis=58
-echo "${red}---> Ordoned suptitut : $Ordoned"
-echo "${red}---> Absis suptitut : $Absis"
+Ordinate=23
+Abscissa=58
+echo "${red}---> Ordinate suptitut : $Ordinate"
+echo "${red}---> Abscissa suptitut : $Abscissa"
 
 elif [ "$TiffSource" == ../72N_* ]
 then
-Ordoned=24
-Absis=58
-echo "${red}---> Ordoned suptitut : $Ordoned"
-echo "${red}---> Absis suptitut : $Absis"
+Ordinate=24
+Abscissa=58
+echo "${red}---> Ordinate suptitut : $Ordinate"
+echo "${red}---> Abscissa suptitut : $Abscissa"
 
 
 elif [ "$TiffSource" == ../72P_* ]
 then
-Ordoned=21
-Absis=59
-echo "${red}---> Ordoned suptitut : $Ordoned"
-echo "${red}---> Absis suptitut : $Absis"
+Ordinate=21
+Abscissa=59
+echo "${red}---> Ordinate suptitut : $Ordinate"
+echo "${red}---> Abscissa suptitut : $Abscissa"
 
 
 
 elif [ "$TiffSource" == ../72Q_* ]
 then
-Ordoned=22
-Absis=59
-echo "${red}---> Ordoned suptitut : $Ordoned"
-echo "${red}---> Absis suptitut : $Absis"
+Ordinate=22
+Abscissa=59
+echo "${red}---> Ordinate suptitut : $Ordinate"
+echo "${red}---> Abscissa suptitut : $Abscissa"
 
 
 
 elif [ "$TiffSource" == ../72R_* ]
 then
-Ordoned=23
-Absis=59
-echo "${red}---> Ordoned suptitut : $Ordoned"
-echo "${red}---> Absis suptitut : $Absis"
+Ordinate=23
+Abscissa=59
+echo "${red}---> Ordinate suptitut : $Ordinate"
+echo "${red}---> Abscissa suptitut : $Abscissa"
 
 
 elif [ "$TiffSource" == ../72S_* ]
 then
-Ordoned=24
-Absis=59
-echo "${red}---> Ordoned suptitut : $Ordoned"
-echo "${red}---> Absis suptitut : $Absis"
+Ordinate=24
+Abscissa=59
+echo "${red}---> Ordinate suptitut : $Ordinate"
+echo "${red}---> Abscissa suptitut : $Abscissa"
 
 elif [ "$TiffSource" == ../72U_* ]
 then
-Ordoned=21
-Absis=60
-echo "${red}---> Ordoned suptitut : $Ordoned"
-echo "${red}---> Absis suptitut : $Absis"
+Ordinate=21
+Abscissa=60
+echo "${red}---> Ordinate suptitut : $Ordinate"
+echo "${red}---> Abscissa suptitut : $Abscissa"
 
 elif [ "$TiffSource" == ../72V_* ]
 then
-Ordoned=22
-Absis=60
-echo "${red}---> Ordoned suptitut : $Ordoned"
-echo "${red}---> Absis suptitut : $Absis"
+Ordinate=22
+Abscissa=60
+echo "${red}---> Ordinate suptitut : $Ordinate"
+echo "${red}---> Abscissa suptitut : $Abscissa"
 
 elif [ "$TiffSource" == ../72W_* ]
 then
-Ordoned=23
-Absis=60
-echo "${red}---> Ordoned suptitut : $Ordoned"
-echo "${red}---> Absis suptitut : $Absis"
+Ordinate=23
+Abscissa=60
+echo "${red}---> Ordinate suptitut : $Ordinate"
+echo "${red}---> Abscissa suptitut : $Abscissa"
 
 elif [ "$TiffSource" == ../72X_* ]
 then
-Ordoned=24
-Absis=60
-echo "${red}---> Ordoned suptitut : $Ordoned"
-echo "${red}---> Absis suptitut : $Absis"
+Ordinate=24
+Abscissa=60
+echo "${red}---> Ordinate suptitut : $Ordinate"
+echo "${red}---> Abscissa suptitut : $Abscissa"
 #
 #
 #
 
 elif [ "$TiffSource" == ../80C_* ]
 then
-Ordoned=18
-Absis=61
-echo "${red}---> Ordoned suptitut : $Ordoned"
-echo "${red}---> Absis suptitut : $Absis"
+Ordinate=18
+Abscissa=61
+echo "${red}---> Ordinate suptitut : $Ordinate"
+echo "${red}---> Abscissa suptitut : $Abscissa"
 
 elif [ "$TiffSource" == ../80D_* ]
 then
-Ordoned=19
-Absis=61
-echo "${red}---> Ordoned suptitut : $Ordoned"
-echo "${red}---> Absis suptitut : $Absis"
+Ordinate=19
+Abscissa=61
+echo "${red}---> Ordinate suptitut : $Ordinate"
+echo "${red}---> Abscissa suptitut : $Abscissa"
 
 elif [ "$TiffSource" == ../80E_* ]
 then
-Ordoned=20
-Absis=61
-echo "${red}---> Ordoned suptitut : $Ordoned"
-echo "${red}---> Absis suptitut : $Absis"
+Ordinate=20
+Abscissa=61
+echo "${red}---> Ordinate suptitut : $Ordinate"
+echo "${red}---> Abscissa suptitut : $Abscissa"
 
 elif [ "$TiffSource" == ../80J_* ]
 then
-Ordoned=20
-Absis=62
-echo "${red}---> Ordoned suptitut : $Ordoned"
-echo "${red}---> Absis suptitut : $Absis"
+Ordinate=20
+Abscissa=62
+echo "${red}---> Ordinate suptitut : $Ordinate"
+echo "${red}---> Abscissa suptitut : $Abscissa"
 
 elif [ "$TiffSource" == ../81A_* ]
 then
-Ordoned=21
-Absis=61
-echo "${red}---> Ordoned suptitut : $Ordoned"
-echo "${red}---> Absis suptitut : $Absis"
+Ordinate=21
+Abscissa=61
+echo "${red}---> Ordinate suptitut : $Ordinate"
+echo "${red}---> Abscissa suptitut : $Abscissa"
 
 elif [ "$TiffSource" == ../81B_* ]
 then
-Ordoned=22
-Absis=61
-echo "${red}---> Ordoned suptitut : $Ordoned"
-echo "${red}---> Absis suptitut : $Absis"
+Ordinate=22
+Abscissa=61
+echo "${red}---> Ordinate suptitut : $Ordinate"
+echo "${red}---> Abscissa suptitut : $Abscissa"
 
 elif [ "$TiffSource" == ../81C_* ]
 then
-Ordoned=23
-Absis=61
-echo "${red}---> Ordoned suptitut : $Ordoned"
-echo "${red}---> Absis suptitut : $Absis"
+Ordinate=23
+Abscissa=61
+echo "${red}---> Ordinate suptitut : $Ordinate"
+echo "${red}---> Abscissa suptitut : $Abscissa"
 
 elif [ "$TiffSource" == ../81F_* ]
 then
-Ordoned=21
-Absis=62
-echo "${red}---> Ordoned suptitut : $Ordoned"
-echo "${red}---> Absis suptitut : $Absis"
+Ordinate=21
+Abscissa=62
+echo "${red}---> Ordinate suptitut : $Ordinate"
+echo "${red}---> Abscissa suptitut : $Abscissa"
 
 elif [ "$TiffSource" == ../81G_* ]
 then
-Ordoned=22
-Absis=62
-echo "${red}---> Ordoned suptitut : $Ordoned"
-echo "${red}---> Absis suptitut : $Absis"
+Ordinate=22
+Abscissa=62
+echo "${red}---> Ordinate suptitut : $Ordinate"
+echo "${red}---> Abscissa suptitut : $Abscissa"
 
 elif [ "$TiffSource" == ../81H_* ]
 then
-Ordoned=23
-Absis=62
-echo "${red}---> Ordoned suptitut : $Ordoned"
-echo "${red}---> Absis suptitut : $Absis"
+Ordinate=23
+Abscissa=62
+echo "${red}---> Ordinate suptitut : $Ordinate"
+echo "${red}---> Abscissa suptitut : $Abscissa"
 
 elif [ "$TiffSource" == ../81L_* ]
 then
-Ordoned=22
-Absis=63
-echo "${red}---> Ordoned suptitut : $Ordoned"
-echo "${red}---> Absis suptitut : $Absis"
+Ordinate=22
+Abscissa=63
+echo "${red}---> Ordinate suptitut : $Ordinate"
+echo "${red}---> Abscissa suptitut : $Abscissa"
 
 elif [ "$TiffSource" == ../81D_* ]
 then
-Ordoned=24
-Absis=61
-echo "${red}---> Ordoned suptitut : $Ordoned"
-echo "${red}---> Absis suptitut : $Absis"
+Ordinate=24
+Abscissa=61
+echo "${red}---> Ordinate suptitut : $Ordinate"
+echo "${red}---> Abscissa suptitut : $Abscissa"
 
 elif [ "$TiffSource" == ../95D_* ]
 then
-Ordoned=19
-Absis=71
-echo "${red}---> Ordoned suptitut : $Ordoned"
-echo "${red}---> Absis suptitut : $Absis"
+Ordinate=19
+Abscissa=71
+echo "${red}---> Ordinate suptitut : $Ordinate"
+echo "${red}---> Abscissa suptitut : $Abscissa"
 
 elif [ "$TiffSource" == ../95E_* ]
 then
-Ordoned=20
-Absis=71
-echo "${red}---> Ordoned suptitut : $Ordoned"
-echo "${red}---> Absis suptitut : $Absis"
+Ordinate=20
+Abscissa=71
+echo "${red}---> Ordinate suptitut : $Ordinate"
+echo "${red}---> Abscissa suptitut : $Abscissa"
 
 elif [ "$TiffSource" == ../95I_* ]
 then
-Ordoned=19
-Absis=72
-echo "${red}---> Ordoned suptitut : $Ordoned"
-echo "${red}---> Absis suptitut : $Absis"
+Ordinate=19
+Abscissa=72
+echo "${red}---> Ordinate suptitut : $Ordinate"
+echo "${red}---> Abscissa suptitut : $Abscissa"
 
 elif [ "$TiffSource" == ../95J_* ]
 then
-Ordoned=20
-Absis=72
-echo "${red}---> Ordoned suptitut : $Ordoned"
-echo "${red}---> Absis suptitut : $Absis"
+Ordinate=20
+Abscissa=72
+echo "${red}---> Ordinate suptitut : $Ordinate"
+echo "${red}---> Abscissa suptitut : $Abscissa"
 
 elif [ "$TiffSource" == ../96A_* ]
 then
-Ordoned=21
-Absis=71
-echo "${red}---> Ordoned suptitut : $Ordoned"
-echo "${red}---> Absis suptitut : $Absis"
+Ordinate=21
+Abscissa=71
+echo "${red}---> Ordinate suptitut : $Ordinate"
+echo "${red}---> Abscissa suptitut : $Abscissa"
 
 elif [ "$TiffSource" == ../96F_* ]
 then
-Ordoned=21
-Absis=72
-echo "${red}---> Ordoned suptitut : $Ordoned"
-echo "${red}---> Absis suptitut : $Absis"
+Ordinate=21
+Abscissa=72
+echo "${red}---> Ordinate suptitut : $Ordinate"
+echo "${red}---> Abscissa suptitut : $Abscissa"
 
 
 
@@ -650,165 +650,165 @@ echo "${red}---> Absis suptitut : $Absis"
 
 elif [ "$TiffSource" == ../36U_* ]
 then
-Ordoned=11
-Absis=40
-echo "${red}---> Ordoned suptitut : $Ordoned"
-echo "${red}---> Absis suptitut : $Absis"
+Ordinate=11
+Abscissa=40
+echo "${red}---> Ordinate suptitut : $Ordinate"
+echo "${red}---> Abscissa suptitut : $Abscissa"
 
 elif [ "$TiffSource" == ../44E_* ]
 then
-Ordoned=10
-Absis=41
-echo "${red}---> Ordoned suptitut : $Ordoned"
-echo "${red}---> Absis suptitut : $Absis"
+Ordinate=10
+Abscissa=41
+echo "${red}---> Ordinate suptitut : $Ordinate"
+echo "${red}---> Abscissa suptitut : $Abscissa"
 
 elif [ "$TiffSource" == ../45A_* ]
 then
-Ordoned=11
-Absis=41
-echo "${red}---> Ordoned suptitut : $Ordoned"
-echo "${red}---> Absis suptitut : $Absis"
+Ordinate=11
+Abscissa=41
+echo "${red}---> Ordinate suptitut : $Ordinate"
+echo "${red}---> Abscissa suptitut : $Abscissa"
 
 elif [ "$TiffSource" == ../61Y__* ]
 then
-Ordoned=15
-Absis=55
-echo "${red}---> Ordoned suptitut : $Ordoned"
-echo "${red}---> Absis suptitut : $Absis"
+Ordinate=15
+Abscissa=55
+echo "${red}---> Ordinate suptitut : $Ordinate"
+echo "${red}---> Abscissa suptitut : $Abscissa"
 
 elif [ "$TiffSource" == ../62J_* ]
 then
-Ordoned=20
-Absis=62
-echo "${red}---> Ordoned suptitut : $Ordoned"
-echo "${red}---> Absis suptitut : $Absis"
+Ordinate=20
+Abscissa=62
+echo "${red}---> Ordinate suptitut : $Ordinate"
+echo "${red}---> Abscissa suptitut : $Abscissa"
 
 elif [ "$TiffSource" == ../62P_* ]
 then
-Ordoned=16
-Absis=54
-echo "${red}---> Ordoned suptitut : $Ordoned"
-echo "${red}---> Absis suptitut : $Absis"
+Ordinate=16
+Abscissa=54
+echo "${red}---> Ordinate suptitut : $Ordinate"
+echo "${red}---> Abscissa suptitut : $Abscissa"
 
 elif [ "$TiffSource" == ../62R_* ]
 then
-Ordoned=18
-Absis=54
-echo "${red}---> Ordoned suptitut : $Ordoned"
-echo "${red}---> Absis suptitut : $Absis"
+Ordinate=18
+Abscissa=54
+echo "${red}---> Ordinate suptitut : $Ordinate"
+echo "${red}---> Abscissa suptitut : $Abscissa"
 
 
 elif [ "$TiffSource" == ../62T_* ]
 then
-Ordoned=20
-Absis=54
-echo "${red}---> Ordoned suptitut : $Ordoned"
-echo "${red}---> Absis suptitut : $Absis"
+Ordinate=20
+Abscissa=54
+echo "${red}---> Ordinate suptitut : $Ordinate"
+echo "${red}---> Abscissa suptitut : $Abscissa"
 
 elif [ "$TiffSource" == ../62U_* ]
 then
-Ordoned=16
-Absis=55
-echo "${red}---> Ordoned suptitut : $Ordoned"
-echo "${red}---> Absis suptitut : $Absis"
+Ordinate=16
+Abscissa=55
+echo "${red}---> Ordinate suptitut : $Ordinate"
+echo "${red}---> Abscissa suptitut : $Abscissa"
 
 elif [ "$TiffSource" == ../62V_* ]
 then
-Ordoned=17
-Absis=55
-echo "${red}---> Ordoned suptitut : $Ordoned"
-echo "${red}---> Absis suptitut : $Absis"
+Ordinate=17
+Abscissa=55
+echo "${red}---> Ordinate suptitut : $Ordinate"
+echo "${red}---> Abscissa suptitut : $Abscissa"
 
 elif [ "$TiffSource" == ../62V_* ]
 then
-Ordoned=17
-Absis=55
-echo "${red}---> Ordoned suptitut : $Ordoned"
-echo "${red}---> Absis suptitut : $Absis"
+Ordinate=17
+Abscissa=55
+echo "${red}---> Ordinate suptitut : $Ordinate"
+echo "${red}---> Abscissa suptitut : $Abscissa"
 
 elif [ "$TiffSource" == ../62Y_* ]
 then
-Ordoned=20
-Absis=55
-echo "${red}---> Ordoned suptitut : $Ordoned"
-echo "${red}---> Absis suptitut : $Absis"
+Ordinate=20
+Abscissa=55
+echo "${red}---> Ordinate suptitut : $Ordinate"
+echo "${red}---> Abscissa suptitut : $Abscissa"
 
 elif [ "$TiffSource" == ../63K_* ]
 then
-Ordoned=21
-Absis=53
-echo "${red}---> Ordoned suptitut : $Ordoned"
-echo "${red}---> Absis suptitut : $Absis"
+Ordinate=21
+Abscissa=53
+echo "${red}---> Ordinate suptitut : $Ordinate"
+echo "${red}---> Abscissa suptitut : $Abscissa"
 
 elif [ "$TiffSource" == ../63P_* ]
 then
-Ordoned=21
-Absis=54
-echo "${red}---> Ordoned suptitut : $Ordoned"
-echo "${red}---> Absis suptitut : $Absis"
+Ordinate=21
+Abscissa=54
+echo "${red}---> Ordinate suptitut : $Ordinate"
+echo "${red}---> Abscissa suptitut : $Abscissa"
 
 elif [ "$TiffSource" == ../63Q_* ]
 then
-Ordoned=22
-Absis=54
-echo "${red}---> Ordoned suptitut : $Ordoned"
-echo "${red}---> Absis suptitut : $Absis"
+Ordinate=22
+Abscissa=54
+echo "${red}---> Ordinate suptitut : $Ordinate"
+echo "${red}---> Abscissa suptitut : $Abscissa"
 
 elif [ "$TiffSource" == ../63R_* ]
 then
-Ordoned=23
-Absis=54
-echo "${red}---> Ordoned suptitut : $Ordoned"
-echo "${red}---> Absis suptitut : $Absis"
+Ordinate=23
+Abscissa=54
+echo "${red}---> Ordinate suptitut : $Ordinate"
+echo "${red}---> Abscissa suptitut : $Abscissa"
 
 elif [ "$TiffSource" == ../63U_* ]
 then
-Ordoned=21
-Absis=55
-echo "${red}---> Ordoned suptitut : $Ordoned"
-echo "${red}---> Absis suptitut : $Absis"
+Ordinate=21
+Abscissa=55
+echo "${red}---> Ordinate suptitut : $Ordinate"
+echo "${red}---> Abscissa suptitut : $Abscissa"
 
 elif [ "$TiffSource" == ../63V_* ]
 then
-Ordoned=22
-Absis=55
-echo "${red}---> Ordoned suptitut : $Ordoned"
-echo "${red}---> Absis suptitut : $Absis"
+Ordinate=22
+Abscissa=55
+echo "${red}---> Ordinate suptitut : $Ordinate"
+echo "${red}---> Abscissa suptitut : $Abscissa"
 
 elif [ "$TiffSource" == ../63W_* ]
 then
-Ordoned=23
-Absis=55
-echo "${red}---> Ordoned suptitut : $Ordoned"
-echo "${red}---> Absis suptitut : $Absis"
+Ordinate=23
+Abscissa=55
+echo "${red}---> Ordinate suptitut : $Ordinate"
+echo "${red}---> Abscissa suptitut : $Abscissa"
 
 elif [ "$TiffSource" == ../63X_* ]
 then
-Ordoned=24
-Absis=55
-echo "${red}---> Ordoned suptitut : $Ordoned"
-echo "${red}---> Absis suptitut : $Absis"
+Ordinate=24
+Abscissa=55
+echo "${red}---> Ordinate suptitut : $Ordinate"
+echo "${red}---> Abscissa suptitut : $Abscissa"
 
 #elif [ "$TiffSource" == ../96F_* ]
 #then
-#Ordoned=21
-#Absis=72
-#echo "${red}---> Ordoned suptitut : $Ordoned"
-#echo "${red}---> Absis suptitut : $Absis"
+#Ordinate=21
+#Abscissa=72
+#echo "${red}---> Ordinate suptitut : $Ordinate"
+#echo "${red}---> Abscissa suptitut : $Abscissa"
 #
 #elif [ "$TiffSource" == ../96F_* ]
 #then
-#Ordoned=21
-#Absis=72
-#echo "${red}---> Ordoned suptitut : $Ordoned"
-#echo "${red}---> Absis suptitut : $Absis"
+#Ordinate=21
+#Abscissa=72
+#echo "${red}---> Ordinate suptitut : $Ordinate"
+#echo "${red}---> Abscissa suptitut : $Abscissa"
 #
 #elif [ "$TiffSource" == ../96F_* ]
 #then
-#Ordoned=21
-#Absis=72
-#echo "${red}---> Ordoned suptitut : $Ordoned"
-#echo "${red}---> Absis suptitut : $Absis"
+#Ordinate=21
+#Abscissa=72
+#echo "${red}---> Ordinate suptitut : $Ordinate"
+#echo "${red}---> Abscissa suptitut : $Abscissa"
 #
 
 
@@ -829,62 +829,62 @@ echo "${red}---> Absis suptitut : $Absis"
 
 elif [ "$TiffSource" == ../324_* ]
 then
-Ordoned=24
-Absis=54
-echo "${red}---> Ordoned suptitut : $Ordoned"
-echo "${red}---> Absis suptitut : $Absis"
+Ordinate=24
+Abscissa=54
+echo "${red}---> Ordinate suptitut : $Ordinate"
+echo "${red}---> Abscissa suptitut : $Abscissa"
 
 
 
 
 #elif [ "$TiffSource" == ../70O_* ]
 #then
-#Ordoned=15
-#Absis=58
-#echo "${red}---> Ordoned suptitut : $Ordoned"
-#echo "${red}---> Absis suptitut : $Absis"
+#Ordinate=15
+#Abscissa=58
+#echo "${red}---> Ordinate suptitut : $Ordinate"
+#echo "${red}---> Abscissa suptitut : $Abscissa"
 #
 #
 #
 #elif [ "$TiffSource" == ../70O_* ]
 #then
-#Ordoned=15
-#Absis=58
-#echo "${red}---> Ordoned suptitut : $Ordoned"
-#echo "${red}---> Absis suptitut : $Absis"
+#Ordinate=15
+#Abscissa=58
+#echo "${red}---> Ordinate suptitut : $Ordinate"
+#echo "${red}---> Abscissa suptitut : $Abscissa"
 #
 #
 #
 #elif [ "$TiffSource" == ../70O_* ]
 #then
-#Ordoned=15
-#Absis=58
-#echo "${red}---> Ordoned suptitut : $Ordoned"
-#echo "${red}---> Absis suptitut : $Absis"
+#Ordinate=15
+#Abscissa=58
+#echo "${red}---> Ordinate suptitut : $Ordinate"
+#echo "${red}---> Abscissa suptitut : $Abscissa"
 #
 #
 #
 #elif [ "$TiffSource" == ../70O_* ]
 #then
-#Ordoned=15
-#Absis=58
-#echo "${red}---> Ordoned suptitut : $Ordoned"
-#echo "${red}---> Absis suptitut : $Absis"
+#Ordinate=15
+#Abscissa=58
+#echo "${red}---> Ordinate suptitut : $Ordinate"
+#echo "${red}---> Abscissa suptitut : $Abscissa"
 #
 
 
 
 
 
-# END ABSIS FIX
+# END Abscissa FIX
 else
 
-Ordoned=$(echo $NameNoExt | awk -F'-' '{print $1}'| tr -d ' ' | sed 's/..\///g')
-Absis=$(echo $NameNoExt | awk -F'-' '{print $2}' | tr -d ' '  | awk -F'_' '{print $1}'| sed 's/..\///g')
-# END ABSIS
+Ordinate=$(echo $NameNoExt | awk -F'-' '{print $1}'| tr -d ' ' | sed 's/..\///g')
+Abscissa=$(echo $NameNoExt | awk -F'-' '{print $2}' | tr -d ' '  | awk -F'_' '{print $1}'| sed 's/..\///g')
+# END Abscissa
 fi
-echo "${white} ---> \$Absis $Absis"
-echo "${white} ---> \$Ordoned $Ordoned"
+echo "${white} ---> \$Abscissa $Abscissa"
+echo "${white} ---> \$Ordinate $Ordinate"
 
 
 
@@ -895,8 +895,8 @@ echo "${white} ---> \$Ordoned $Ordoned"
 
 
 
-AbsisMultiple=$(echo "$Absis"-50 |bc -l)
-OrdonedMultiple=$(echo "$Ordoned"-25 | bc -l)
+AbscissaMultiple=$(echo "$Abscissa"-50 |bc -l)
+OrdinateMultiple=$(echo "$Ordinate"-25 | bc -l)
 # Image Info
 ExifInfo=$(exiftool "$TiffSource")
 #echo $SerialPoster
@@ -905,10 +905,10 @@ HeightImage=$(echo $ExifInfo | awk -F'Image Height : ' '{print $2}' | awk '{prin
 
 # Position Origin (Mètres) 600000 126224 Zéro de l'observatoire de Paris
 
-Nord=$(echo 126224-$Hauteur*$AbsisMultiple |bc -l)
-Sud=$(echo 125824-$Hauteur*$AbsisMultiple|bc -l )
-Est=$(echo 600000+\($OrdonedMultiple*$Largeur\) |bc -l )
-Ouest=$(echo 599400+\($OrdonedMultiple*$Largeur\) |bc -l )
+Nord=$(echo 126224-$Hauteur*$AbscissaMultiple |bc -l)
+Sud=$(echo 125824-$Hauteur*$AbscissaMultiple|bc -l )
+Est=$(echo 600000+\($OrdinateMultiple*$Largeur\) |bc -l )
+Ouest=$(echo 599400+\($OrdinateMultiple*$Largeur\) |bc -l )
 
 # NW
 NordOuest4326=$(echo "$Ouest $Nord" | gdaltransform -s_srs EPSG:27561 -t_srs EPSG:4326 | awk '{print $1, $2}')
@@ -925,20 +925,20 @@ SudEst3857=$(echo "$Est $Sud" | gdaltransform -s_srs EPSG:27561 -t_srs EPSG:3857
 
 IDCFirst2Nbr=$(echo "$NameNoExt" |awk '{print substr($0,0,2)}')
 IDCThirdLetter=$(echo "$NameNoExt" | head -c 3 | tail -c 1 )
-IGCPatternOrdoned=$(echo $NameNoExt | awk -F'-' '{print $1}' )
-IGCPatternAbsis=$(echo $NameNoExt | awk -F'-' '{print $2}' )
+IGCPatternOrdinate=$(echo $NameNoExt | awk -F'-' '{print $1}' )
+IGCPatternAbscissa=$(echo $NameNoExt | awk -F'-' '{print $2}' )
 
 
 
 echo "${white}---> \$TiffSource -   -   -   -   -   -   -   -   -   -   -   -   -   ${orange}$TiffSource"
 echo "${white}---> \$NameNoExt  -   -   -   -   -   -   -   -   -   -   -   -   -   ${orange}$NameNoExt"
 echo "${white}---> \$Year   -   -   -   -   -   -   -   -   -   -   -   -   -   -   ${orange}$Year"
-echo "${white}---> \$Absis  -   -   -   -   -   -   -   -   -   -   -   -   -   -   ${orange}$Absis"
-echo "${white}---> \$Ordoned    -   -   -   -   -   -   -   -   -   -   -   -   -   ${orange}$Ordoned"
-echo "${white}---> \$AbsisMultiple  -   -   -   -   -   -   -   -   -   -   -   -   ${orange}$AbsisMultiple"
-echo "${white}---> \$OrdonedMultiple    -   -   -   -   -   -   -   -   -   -   -   ${orange}$OrdonedMultiple"
+echo "${white}---> \$Abscissa  -   -   -   -   -   -   -   -   -   -   -   -   -   -   ${orange}$Abscissa"
+echo "${white}---> \$Ordinate    -   -   -   -   -   -   -   -   -   -   -   -   -   ${orange}$Ordinate"
+echo "${white}---> \$AbscissaMultiple  -   -   -   -   -   -   -   -   -   -   -   -   ${orange}$AbscissaMultiple"
+echo "${white}---> \$OrdinateMultiple    -   -   -   -   -   -   -   -   -   -   -   ${orange}$OrdinateMultiple"
 echo "
-${white}############################### Planche ${green}$Ordoned $Absis $Version $Year ${white}###############################
+${white}############################### Planche ${green}$Ordinate $Abscissa $Version $Year ${white}###############################
 "
 echo "${white}---> NTF (Paris) / Lambert Nord France  ${green}27561                                   ${white}<---
 ${white}---> \"Nouvelle Triangulation Francaise (Paris)\""
@@ -1118,14 +1118,13 @@ then
 # rm "../_Output/"$NameNoExt"_"$Year".tif"
 mv "../_Output/"$NameNoExt"_"$Year".tif" ../_TRASH_TEMP/"$FileDate"_"$NameNoExt"_"$Year".tif
 fi
-gdalwarp -co COMPRESS=NONE -s_srs "EPSG:27561" -t_srs "EPSG:3857" temp.tif "../_Output/41-42_Encart_"/$Year".tif"
+gdalwarp -co COMPRESS=NONE -s_srs "EPSG:27561" -t_srs "EPSG:3857" temp.tif ../_Output/41-42_Encart_"$Year".tif
 
 # Planche ../41-42-45_*
 elif [ "$TiffSource" == ../41-42-45_* ]
 then
 
-gdal_translate -a_srs EPSG:27561 -of GTiff -gcp 0 0 609300 127424 -gcp 0 "$HeightImage" 609300 127424 -gcp "$WidthImage" 0 609900 127024 -gcp "$WidthImage" "$HeightImage" 609900 127024 "$TiffSource" temp.tif
-
+gdal_translate -a_srs EPSG:27561 -of GTiff -gcp 0 0 609300 128224 -gcp 0 "$HeightImage" 609300 127824 -gcp "$WidthImage" 0 609900 128224 -gcp "$WidthImage" "$HeightImage" 609900 127824 "$TiffSource" temp.tif
 if [ -f "../_Output/"$NameNoExt"_"$Year".tif" ]
 then
 # rm "../_Output/"$NameNoExt"_"$Year".tif"
@@ -1133,7 +1132,30 @@ mv "../_Output/"$NameNoExt"_"$Year".tif" ../_TRASH_TEMP/"$FileDate"_"$NameNoExt"
 fi
 gdalwarp -co COMPRESS=NONE -s_srs "EPSG:27561" -t_srs "EPSG:3857" -dstalpha temp.tif "../_Output/"$NameNoExt"_"$Year".tif"
 
-else
+# Planche ../41-42-46_*
+elif [ "$TiffSource" == ../41-42-46_* ]
+then
+
+gdal_translate -a_srs EPSG:27561 -of GTiff -gcp 0 0 609300 127824 -gcp 0 "$HeightImage" 609300 127424 -gcp "$WidthImage" 0 609900 127824 -gcp "$WidthImage" "$HeightImage" 609900 127424 "$TiffSource" temp.tif
+if [ -f "../_Output/"$NameNoExt"_"$Year".tif" ]
+then
+# rm "../_Output/"$NameNoExt"_"$Year".tif"
+mv "../_Output/"$NameNoExt"_"$Year".tif" ../_TRASH_TEMP/"$FileDate"_"$NameNoExt"_"$Year".tif
+fi
+gdalwarp -co COMPRESS=NONE -s_srs "EPSG:27561" -t_srs "EPSG:3857" -dstalpha temp.tif "../_Output/"$NameNoExt"_"$Year".tif"
+
+
+# Planche ../41-42-46_*
+elif [ "$TiffSource" == ../41-42-46_* ]
+then
+
+gdal_translate -a_srs EPSG:27561 -of GTiff -gcp 0 0 609300 127824 -gcp 0 "$HeightImage" 609300 127424 -gcp "$WidthImage" 0 609900 127824 -gcp "$WidthImage" "$HeightImage" 609900 127424 "$TiffSource" temp.tif
+if [ -f "../_Output/"$NameNoExt"_"$Year".tif" ]
+then
+# rm "../_Output/"$NameNoExt"_"$Year".tif"
+mv "../_Output/"$NameNoExt"_"$Year".tif" ../_TRASH_TEMP/"$FileDate"_"$NameNoExt"_"$Year".tif
+fi
+gdalwarp -co COMPRESS=NONE -s_srs "EPSG:27561" -t_srs "EPSG:3857" -dstalpha temp.tif "../_Output/"$NameNoExt"_"$Year".tif"
 
 
 
@@ -1142,9 +1164,12 @@ else
 # Si c'est une planche IGC nouveaux numéros post 1968
 #
 
-if echo "$IGCPatternOrdoned" | grep '[0-9]' &&  echo "$IGCPatternAbsis" | grep '[0-9]'
+else
+
+
+if echo "$IGCPatternOrdinate" | grep '[0-9]"_"' &&  echo "$IGCPatternAbscissa" | grep '[0-9]'
 then
-echo "${green}---> IGC New Name Post --> 1968                       ${orange}"$IGCPatternOrdoned"-"$IGCPatternAbsis""
+echo "${green}---> IGC New Name Post --> 1968                       ${orange}"$IGCPatternOrdinate"-"$IGCPatternAbscissa""
 
 gdal_translate -a_srs EPSG:27561 -of GTiff -gcp 0 0 "$Ouest" "$Nord" -gcp 0 "$HeightImage" "$Ouest" "$Sud" -gcp "$WidthImage" 0 "$Est" "$Nord" -gcp "$WidthImage" "$HeightImage" "$Est" "$Sud" "$TiffSource" temp.tif
 
@@ -1155,9 +1180,7 @@ mv "../_Output/"$NameNoExt"_"$Year".tif" ../_TRASH_TEMP/"$FileDate"_"$NameNoExt"
 fi
 gdalwarp -co COMPRESS=NONE -dstalpha -s_srs "EPSG:27561" -t_srs "EPSG:3857"  temp.tif "../_Output/"$NameNoExt"_"$Year".tif"
 
-
 #IDCFirst2Nbr
-
 #
 # Si c'est une planche IGC nouveaux numéros post 1968
 #
