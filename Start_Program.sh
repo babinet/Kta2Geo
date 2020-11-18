@@ -26,7 +26,7 @@ darkblue=`tput setaf 19`
 dir=$(
 cd -P -- "$(dirname -- "$0")" && pwd -P
 )
-cd $dir
+cd "$dir"
 echo "
              o    O                       .oOOOo.
              o   O                .oOOo. .O     o

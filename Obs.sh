@@ -26,7 +26,7 @@ darkblue=`tput setaf 19`
 dir=$(
 cd -P -- "$(dirname -- "$0")" && pwd -P
 )
-cd $dir
+cd "$dir" 2>&1 &>/dev/null
 mkdir -p ../_Output ../_TRASH_TEMP
 
 # Zero de l'Observatoire 3857
@@ -595,16 +595,6 @@ Absis=61
 echo "${red}---> Ordoned suptitut : $Ordoned"
 echo "${red}---> Absis suptitut : $Absis"
 
-
-
-
-
-
-
-
-
-
-
 elif [ "$TiffSource" == ../95D_* ]
 then
 Ordoned=19
@@ -646,6 +636,183 @@ Ordoned=21
 Absis=72
 echo "${red}---> Ordoned suptitut : $Ordoned"
 echo "${red}---> Absis suptitut : $Absis"
+
+
+
+
+
+#
+# lundi 16 octobre
+#
+
+
+
+
+elif [ "$TiffSource" == ../36U_* ]
+then
+Ordoned=11
+Absis=40
+echo "${red}---> Ordoned suptitut : $Ordoned"
+echo "${red}---> Absis suptitut : $Absis"
+
+elif [ "$TiffSource" == ../44E_* ]
+then
+Ordoned=10
+Absis=41
+echo "${red}---> Ordoned suptitut : $Ordoned"
+echo "${red}---> Absis suptitut : $Absis"
+
+elif [ "$TiffSource" == ../45A_* ]
+then
+Ordoned=11
+Absis=41
+echo "${red}---> Ordoned suptitut : $Ordoned"
+echo "${red}---> Absis suptitut : $Absis"
+
+elif [ "$TiffSource" == ../61Y__* ]
+then
+Ordoned=15
+Absis=55
+echo "${red}---> Ordoned suptitut : $Ordoned"
+echo "${red}---> Absis suptitut : $Absis"
+
+elif [ "$TiffSource" == ../62J_* ]
+then
+Ordoned=20
+Absis=62
+echo "${red}---> Ordoned suptitut : $Ordoned"
+echo "${red}---> Absis suptitut : $Absis"
+
+elif [ "$TiffSource" == ../62P_* ]
+then
+Ordoned=16
+Absis=54
+echo "${red}---> Ordoned suptitut : $Ordoned"
+echo "${red}---> Absis suptitut : $Absis"
+
+elif [ "$TiffSource" == ../62R_* ]
+then
+Ordoned=18
+Absis=54
+echo "${red}---> Ordoned suptitut : $Ordoned"
+echo "${red}---> Absis suptitut : $Absis"
+
+
+elif [ "$TiffSource" == ../62T_* ]
+then
+Ordoned=20
+Absis=54
+echo "${red}---> Ordoned suptitut : $Ordoned"
+echo "${red}---> Absis suptitut : $Absis"
+
+elif [ "$TiffSource" == ../62U_* ]
+then
+Ordoned=16
+Absis=55
+echo "${red}---> Ordoned suptitut : $Ordoned"
+echo "${red}---> Absis suptitut : $Absis"
+
+elif [ "$TiffSource" == ../62V_* ]
+then
+Ordoned=17
+Absis=55
+echo "${red}---> Ordoned suptitut : $Ordoned"
+echo "${red}---> Absis suptitut : $Absis"
+
+elif [ "$TiffSource" == ../62V_* ]
+then
+Ordoned=17
+Absis=55
+echo "${red}---> Ordoned suptitut : $Ordoned"
+echo "${red}---> Absis suptitut : $Absis"
+
+elif [ "$TiffSource" == ../62Y_* ]
+then
+Ordoned=20
+Absis=55
+echo "${red}---> Ordoned suptitut : $Ordoned"
+echo "${red}---> Absis suptitut : $Absis"
+
+elif [ "$TiffSource" == ../63K_* ]
+then
+Ordoned=21
+Absis=53
+echo "${red}---> Ordoned suptitut : $Ordoned"
+echo "${red}---> Absis suptitut : $Absis"
+
+elif [ "$TiffSource" == ../63P_* ]
+then
+Ordoned=21
+Absis=54
+echo "${red}---> Ordoned suptitut : $Ordoned"
+echo "${red}---> Absis suptitut : $Absis"
+
+elif [ "$TiffSource" == ../63Q_* ]
+then
+Ordoned=22
+Absis=54
+echo "${red}---> Ordoned suptitut : $Ordoned"
+echo "${red}---> Absis suptitut : $Absis"
+
+elif [ "$TiffSource" == ../63R_* ]
+then
+Ordoned=23
+Absis=54
+echo "${red}---> Ordoned suptitut : $Ordoned"
+echo "${red}---> Absis suptitut : $Absis"
+
+elif [ "$TiffSource" == ../63U_* ]
+then
+Ordoned=21
+Absis=55
+echo "${red}---> Ordoned suptitut : $Ordoned"
+echo "${red}---> Absis suptitut : $Absis"
+
+elif [ "$TiffSource" == ../63V_* ]
+then
+Ordoned=22
+Absis=55
+echo "${red}---> Ordoned suptitut : $Ordoned"
+echo "${red}---> Absis suptitut : $Absis"
+
+elif [ "$TiffSource" == ../63W_* ]
+then
+Ordoned=23
+Absis=55
+echo "${red}---> Ordoned suptitut : $Ordoned"
+echo "${red}---> Absis suptitut : $Absis"
+
+elif [ "$TiffSource" == ../63X_* ]
+then
+Ordoned=24
+Absis=55
+echo "${red}---> Ordoned suptitut : $Ordoned"
+echo "${red}---> Absis suptitut : $Absis"
+
+#elif [ "$TiffSource" == ../96F_* ]
+#then
+#Ordoned=21
+#Absis=72
+#echo "${red}---> Ordoned suptitut : $Ordoned"
+#echo "${red}---> Absis suptitut : $Absis"
+#
+#elif [ "$TiffSource" == ../96F_* ]
+#then
+#Ordoned=21
+#Absis=72
+#echo "${red}---> Ordoned suptitut : $Ordoned"
+#echo "${red}---> Absis suptitut : $Absis"
+#
+#elif [ "$TiffSource" == ../96F_* ]
+#then
+#Ordoned=21
+#Absis=72
+#echo "${red}---> Ordoned suptitut : $Ordoned"
+#echo "${red}---> Absis suptitut : $Absis"
+#
+
+
+
 
 
 
@@ -927,13 +1094,48 @@ fi
 gdalwarp -co COMPRESS=NONE -s_srs "EPSG:27561" -t_srs "EPSG:3857" -dstalpha temp.tif "../_Output/"$NameNoExt"_"$Year".tif"
 
 
+# Planche ../10-35
+elif [ "$TiffSource" == ../10-35_* ]
+then
 
+gdal_translate -a_srs EPSG:27561 -of GTiff -gcp 0 0 590400 132324 -gcp 0 "$HeightImage" 590400 131824 -gcp "$WidthImage" 0 591000 132324 -gcp "$WidthImage" "$HeightImage" 591000 131824 "$TiffSource" temp.tif
 
+if [ -f "../_Output/"$NameNoExt"_"$Year".tif" ]
+then
+# rm "../_Output/"$NameNoExt"_"$Year".tif"
+mv "../_Output/"$NameNoExt"_"$Year".tif" ../_TRASH_TEMP/"$FileDate"_"$NameNoExt"_"$Year".tif
+fi
+gdalwarp -co COMPRESS=NONE -s_srs "EPSG:27561" -t_srs "EPSG:3857" -dstalpha temp.tif "../_Output/"$NameNoExt"_"$Year".tif"
 
+# Planche ../41-42_Encart*
+elif [ "$TiffSource" == ../41-42_Encart* ]
+then
 
+gdal_translate -a_srs EPSG:27561 -of GTiff -gcp 0 0 609347 128673 -gcp 0 "$HeightImage" 609347 128570 -gcp "$WidthImage" 0 609500 128673 -gcp "$WidthImage" "$HeightImage" 609500 128570 "$TiffSource" temp.tif
 
+if [ -f "../_Output/"$NameNoExt"_"$Year".tif" ]
+then
+# rm "../_Output/"$NameNoExt"_"$Year".tif"
+mv "../_Output/"$NameNoExt"_"$Year".tif" ../_TRASH_TEMP/"$FileDate"_"$NameNoExt"_"$Year".tif
+fi
+gdalwarp -co COMPRESS=NONE -s_srs "EPSG:27561" -t_srs "EPSG:3857" temp.tif "../_Output/41-42_Encart_"/$Year".tif"
+
+# Planche ../41-42-45_*
+elif [ "$TiffSource" == ../41-42-45_* ]
+then
+
+gdal_translate -a_srs EPSG:27561 -of GTiff -gcp 0 0 609300 127424 -gcp 0 "$HeightImage" 609300 127424 -gcp "$WidthImage" 0 609900 127024 -gcp "$WidthImage" "$HeightImage" 609900 127024 "$TiffSource" temp.tif
+
+if [ -f "../_Output/"$NameNoExt"_"$Year".tif" ]
+then
+# rm "../_Output/"$NameNoExt"_"$Year".tif"
+mv "../_Output/"$NameNoExt"_"$Year".tif" ../_TRASH_TEMP/"$FileDate"_"$NameNoExt"_"$Year".tif
+fi
+gdalwarp -co COMPRESS=NONE -s_srs "EPSG:27561" -t_srs "EPSG:3857" -dstalpha temp.tif "../_Output/"$NameNoExt"_"$Year".tif"
 
 else
+
+
 
 #
 # Condition: if the filename corresponds to the pattern e.g: 25-50
@@ -952,9 +1154,6 @@ then
 mv "../_Output/"$NameNoExt"_"$Year".tif" ../_TRASH_TEMP/"$FileDate"_"$NameNoExt"_"$Year".tif
 fi
 gdalwarp -co COMPRESS=NONE -dstalpha -s_srs "EPSG:27561" -t_srs "EPSG:3857"  temp.tif "../_Output/"$NameNoExt"_"$Year".tif"
-
-
-
 
 
 #IDCFirst2Nbr
@@ -1114,7 +1313,7 @@ fi
 
 
 
-cd -
+cd - 2>&1 &>/dev/null
 
 
 
