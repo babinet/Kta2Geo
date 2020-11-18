@@ -15,7 +15,7 @@ Folder/Kta2Geo/Start_Program.sh
 
 * Georeference maps in EPSG:3857 from source maps in Lambert1 EPSG:27561 based on filename.
 
-NTF (Paris) / Lambert Nord France  EPSG:27561 
+NTF (Paris) / Lambert Nord France  EPSG:27561
 
 #### kmz2csv :
 
@@ -30,13 +30,13 @@ NTF (Paris) / Lambert Nord France  EPSG:27561
 * Create a Workspace on Geoserver
 * Post Geotif files to geoserver and set-up layers.
 
-#### Observatoire_*Long_*Lat-Converter
+#### Observatoire_\*Long_\*Lat-Converter
 
-* Conversion Long/Lat from Paris meridian - unit : mètre
+* Conversion Long/Lat from Paris meridian Observatoire - unit : mètre
 
 ### Name convention :
 
-##### Maps image format :  .jpg, .tif, and  .kmz  files. 
+##### Maps image format : .jpg, .tif, and .kmz files.
 
 Original .jpeg or .tif files must be stored in :
 
@@ -85,13 +85,29 @@ Folder/_Output/26Y_V1-1951.tif
 ###### De Fourcy 1858
 
 ```
-Folder/P9_1957.tif
+Folder/P00_Planche_0_Assemblage_DeFourcy_1958.tif
+Folder/P05_Planche_1_DeFourcy_1958.tif
+Folder/P06_Planche_2_DeFourcy_1958.tif
+Folder/P07_Planche_3_DeFourcy_1958.tif
+Folder/P08_Planche_4_DeFourcy_1958.tif
+Folder/P09_Planche_5_DeFourcy_1958.tif
+Folder/P10_Planche_6_DeFourcy_1958.tif
+Folder/P11_Planche_7_DeFourcy_1958.tif
+Folder/P12_Planche_8_DeFourcy_1958.tif
+Folder/P13_Planche_9_DeFourcy_1958.tif
+Folder/P14_Planche_10_DeFourcy_1958.tif
+Folder/P15_Planche_11_DeFourcy_1958.tif
+Folder/P16_Detail_Ossuaire_1860.tif
+Folder/P16_Planche_12_DeFourcy_1958.tif
+Folder/P17_Planche_13_DeFourcy_1958.tif
+Folder/P18_Planche_14_DeFourcy_1958.tif
+Folder/P19_Planche_15_DeFourcy_1958.tif
+Folder/P20_Planche_16_DeFourcy_1958.tif
+Folder/P21_Planche_17_DeFourcy_1958.tif
 ```
 
-Otput :
-
 ```
-Folder/_Output/P9_1957.tif
+Folder/_Output/PXX_Planche_XX_DeFourcy_1958.tif
 ```
 
 ##### Kmz files
