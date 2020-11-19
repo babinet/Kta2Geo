@@ -1174,6 +1174,39 @@ mv "../_Output/"$NameNoExt"_"$Year".tif" ../_TRASH_TEMP/"$FileDate"_"$NameNoExt"
 fi
 gdalwarp -co COMPRESS=NONE -s_srs "EPSG:27561" -t_srs "EPSG:3857" -dstalpha temp.tif "../_Output/"$NameNoExt"_"$Year".tif"
 
+# Planche ../32-33-41_
+elif [ "$TiffSource" == ../32-33-41_* ]
+then
+
+gdal_translate -a_srs EPSG:27561 -of GTiff -gcp 0 0 603700 130224 -gcp 0 "$HeightImage" 603700 129624 -gcp "$WidthImage" 0 604700 130224 -gcp "$WidthImage" "$HeightImage" 604700 129624 "$TiffSource" temp.tif
+if [ -f "../_Output/"$NameNoExt"_"$Year".tif" ]
+then
+# rm "../_Output/"$NameNoExt"_"$Year".tif"
+mv "../_Output/"$NameNoExt"_"$Year".tif" ../_TRASH_TEMP/"$FileDate"_"$NameNoExt"_"$Year".tif
+fi
+gdalwarp -co COMPRESS=NONE -s_srs "EPSG:27561" -t_srs "EPSG:3857" -dstalpha temp.tif "../_Output/"$NameNoExt"_"$Year".tif"
+
+# Planche ../34-41-42_
+elif [ "$TiffSource" == ../34-41-42_* ]
+then
+
+#---> Nord/Est                           : 605100 131424
+#---> Sud/Est                            : 605100 131024
+#---> Nord/Ouest                         : 605700 131424
+#---> Sud/Ouest                          : 605700 131024
+
+gdal_translate -a_srs EPSG:27561 -of GTiff -gcp 0 0 605100 131424 -gcp 0 "$HeightImage" 605100 131024 -gcp "$WidthImage" 0 605700 131424 -gcp "$WidthImage" "$HeightImage" 605700 131024 "$TiffSource" temp.tif
+if [ -f "../_Output/"$NameNoExt"_"$Year".tif" ]
+then
+# rm "../_Output/"$NameNoExt"_"$Year".tif"
+mv "../_Output/"$NameNoExt"_"$Year".tif" ../_TRASH_TEMP/"$FileDate"_"$NameNoExt"_"$Year".tif
+fi
+gdalwarp -co COMPRESS=NONE -s_srs "EPSG:27561" -t_srs "EPSG:3857" -dstalpha temp.tif "../_Output/"$NameNoExt"_"$Year".tif"
+
+#
+## De Fourcy 1858
+#
+
 
 # Planche ../P11_Planche_7_DeFourcy_1858.tif
 elif [ "$TiffSource" == ../P11_Planche_7_DeFourcy_1858.tif ]
@@ -1199,8 +1232,8 @@ mv "../_Output/"$NameNoExt"_"$Year".tif" ../_TRASH_TEMP/"$FileDate"_"$NameNoExt"
 fi
 gdalwarp -co COMPRESS=NONE -s_srs "EPSG:27561" -t_srs "EPSG:3857" -dstalpha temp.tif "../_Output/"$NameNoExt"_"$Year".tif"
 
-# Planche ../P16_Planche_12_DeFourcy_1958.tif
-elif [ "$TiffSource" == ../P16_Planche_12_DeFourcy_1958.tif ]
+# Planche ../P16_Planche_12_DeFourcy_1858.tif
+elif [ "$TiffSource" == ../P16_Planche_12_DeFourcy_1858.tif ]
 then
 
 gdal_translate -a_srs EPSG:27561 -of GTiff -gcp 0 0 599000 126224 -gcp 0 "$HeightImage" 599000 125624  -gcp "$WidthImage" 0 600000 126224 -gcp "$WidthImage" "$HeightImage" 600000 125624 "$TiffSource" temp.tif
@@ -1216,7 +1249,6 @@ gdalwarp -co COMPRESS=NONE -s_srs "EPSG:27561" -t_srs "EPSG:3857" -dstalpha temp
 # Si c'est une planche IGC nouveaux numéros post 1968
 #
 else
-
 
 if echo "$IGCPatternOrdinate" | grep '[0-9]"_"' &&  echo "$IGCPatternAbscissa" | grep '[0-9]'
 then

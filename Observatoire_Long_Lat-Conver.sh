@@ -118,9 +118,9 @@ echo "${white}Position EPSG:${orange}4326                      : ${orange}$Posit
 ${white}################################################################################
 "
 Nord=$(echo "$LatEPSG27561")
-Sud=$(echo $LatEPSG27561+400 |bc -l)
-Est=$(echo $LongEPSG27561)
-Ouest=$(echo $LongEPSG27561+600 |bc -l)
+Sud=$(echo $LatEPSG27561-400 |bc -l)
+Est=$(echo $LongEPSG27561+600|bc -l)
+Ouest=$(echo $LongEPSG27561)
 
 echo "                                        ${white}: ${green}$LongEPSG27561
                                 ${red}ORIGINE${white} : ${green}$LatEPSG27561${white}
@@ -132,9 +132,8 @@ echo "                                        ${white}: ${green}$LongEPSG27561
                                         |     HAUTEUR :  ${orange}400m  ${white}     |
                                         |                           |
                                         | SUD/OUEST         SUD/EST |
-                                         --–------------------------
-"
-
+                                         --–------------------------"
+echo "${green}gdal_translate -a_srs EPSG:27561 -of GTiff -gcp 0 0 ${orange}$Est $Nord ${white}-gcp 0 \"\$HeightImage\" ${orange}"$Est" "$Sud"${green} -gcp \"\$WidthImage\" 0 ${orange}"$Est" "$Nord"${green} -gcp \"\$WidthImage\" \"\$HeightImage\" ${orange}"$Est" "$Sud"${green} \"\$TiffSource\""
 echo "################################################################################
 ${white}---> Nord/Est                           : ${orange}$Est $Nord
 ${white}---> Sud/Est                            : ${orange}$Est $Sud
@@ -143,7 +142,7 @@ ${white}---> Sud/Ouest                          : ${orange}$Ouest $Sud
 ${white}################################################################################"
 
 NordDeF=$(echo "$LatEPSG27561")
-SudDeF=$(echo $LatEPSG27561-600|bc -l)
+SudDeF=$(echo $LatEPSG27561-600 |bc -l)
 EstDeF=$(echo $LongEPSG27561)
 OuestDeF=$(echo $LongEPSG27561+1000 |bc -l)
 
