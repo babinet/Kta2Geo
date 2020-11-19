@@ -4,8 +4,9 @@
 
 
 * *Requirement : **gdal exiftool wget imagemagick***
+* EPSG:27561 --> EPSG:3857
 
-  ![Kta2Geo.jpg](/index.php/core/preview?fileId=518513&x=1024&y=1024&a=true#mimetype=image%2Fjpeg&hasPreview=true&fileId=518513)EPSG:27561 --> EPSG:3857
+  ![Kta2Geo.jpg](/index.php/core/preview?fileId=518513&x=1024&y=1024&a=true#mimetype=image%2Fjpeg&hasPreview=true&fileId=518513)
 
 Usage : Start program > then choose menu
 
