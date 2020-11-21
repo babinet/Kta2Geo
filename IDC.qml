@@ -29,7 +29,7 @@
           <prop v="3x:0,0,0,0,0,0" k="outline_width_map_unit_scale"/>
           <prop v="MM" k="outline_width_unit"/>
           <prop v="diameter" k="scale_method"/>
-          <prop v="4" k="size"/>
+          <prop v="2" k="size"/>
           <prop v="3x:0,0,0,0,0,0" k="size_map_unit_scale"/>
           <prop v="MM" k="size_unit"/>
           <prop v="1" k="vertical_anchor_point"/>
@@ -47,17 +47,17 @@
     <sizescale/>
   </renderer-v2>
   <labeling type="rule-based">
-    <rules key="{93565fde-db3f-4dd5-a659-0f7ee1ca828f}">
-      <rule key="{714e1022-0a42-4a83-9954-ce08344c156a}">
+    <rules key="{c8a0fa8e-35a6-4f4d-b513-49a4d86a7334}">
+      <rule key="{80cbc237-a14c-4279-9754-a6f8f7fe8629}" description="NEWNUM">
         <settings calloutType="simple">
-          <text-style fontSizeUnit="Point" fontSize="40" isExpression="0" namedStyle="Regular" fontKerning="1" fieldName="NewNum" fontItalic="0" fontStrikeout="0" useSubstitutions="0" allowHtml="0" textColor="0,0,0,255" textOpacity="1" textOrientation="horizontal" multilineHeight="1" fontSizeMapUnitScale="3x:0,0,0,0,0,0" previewBkgrdColor="255,255,255,255" fontWeight="87" blendMode="0" fontFamily="Helvetica Neue" fontLetterSpacing="0" fontWordSpacing="0" fontUnderline="0" capitalization="0">
+          <text-style fontSizeUnit="Point" fontSize="30" isExpression="0" namedStyle="Condensed Black" fontKerning="1" fieldName="NouvNum" fontItalic="0" fontStrikeout="0" useSubstitutions="0" allowHtml="0" textColor="0,0,0,255" textOpacity="1" textOrientation="horizontal" multilineHeight="1" fontSizeMapUnitScale="3x:0,0,0,0,0,0" previewBkgrdColor="255,255,255,255" fontWeight="87" blendMode="0" fontFamily="Helvetica Neue" fontLetterSpacing="0" fontWordSpacing="0" fontUnderline="0" capitalization="0">
             <text-buffer bufferSize="1" bufferDraw="0" bufferColor="255,255,255,255" bufferJoinStyle="128" bufferSizeMapUnitScale="3x:0,0,0,0,0,0" bufferNoFill="1" bufferSizeUnits="MM" bufferOpacity="1" bufferBlendMode="0"/>
             <text-mask maskSize="1.5" maskOpacity="1" maskSizeMapUnitScale="3x:0,0,0,0,0,0" maskedSymbolLayers="" maskSizeUnits="MM" maskJoinStyle="128" maskType="0" maskEnabled="0"/>
             <background shapeBorderWidthMapUnitScale="3x:0,0,0,0,0,0" shapeJoinStyle="64" shapeSizeX="0" shapeRotation="0" shapeSizeMapUnitScale="3x:0,0,0,0,0,0" shapeDraw="0" shapeOffsetY="0" shapeType="0" shapeSizeUnit="MM" shapeOpacity="1" shapeSizeType="0" shapeBorderWidthUnit="MM" shapeOffsetX="0" shapeSVGFile="" shapeRadiiUnit="MM" shapeSizeY="0" shapeFillColor="255,255,255,255" shapeRadiiY="0" shapeRotationType="0" shapeRadiiX="0" shapeBorderColor="128,128,128,255" shapeBorderWidth="0" shapeBlendMode="0" shapeOffsetUnit="MM" shapeRadiiMapUnitScale="3x:0,0,0,0,0,0" shapeOffsetMapUnitScale="3x:0,0,0,0,0,0">
               <symbol force_rhr="0" name="markerSymbol" type="marker" alpha="1" clip_to_extent="1">
                 <layer class="SimpleMarker" pass="0" enabled="1" locked="0">
                   <prop v="0" k="angle"/>
-                  <prop v="164,113,88,255" k="color"/>
+                  <prop v="141,90,153,255" k="color"/>
                   <prop v="1" k="horizontal_anchor_point"/>
                   <prop v="bevel" k="joinstyle"/>
                   <prop v="circle" k="name"/>
@@ -84,7 +84,7 @@
                 </layer>
               </symbol>
             </background>
-            <shadow shadowOffsetGlobal="1" shadowOpacity="0.69999999999999996" shadowDraw="0" shadowRadiusUnit="MM" shadowOffsetDist="1" shadowRadiusAlphaOnly="0" shadowRadiusMapUnitScale="3x:0,0,0,0,0,0" shadowColor="0,0,0,255" shadowOffsetAngle="135" shadowOffsetMapUnitScale="3x:0,0,0,0,0,0" shadowScale="100" shadowRadius="1.5" shadowBlendMode="6" shadowOffsetUnit="MM" shadowUnder="0"/>
+            <shadow shadowOffsetGlobal="1" shadowOpacity="0.69999999999999996" shadowDraw="1" shadowRadiusUnit="MM" shadowOffsetDist="1" shadowRadiusAlphaOnly="0" shadowRadiusMapUnitScale="3x:0,0,0,0,0,0" shadowColor="147,147,147,255" shadowOffsetAngle="135" shadowOffsetMapUnitScale="3x:0,0,0,0,0,0" shadowScale="100" shadowRadius="1.5" shadowBlendMode="6" shadowOffsetUnit="MM" shadowUnder="0"/>
             <dd_properties>
               <Option type="Map">
                 <Option name="name" type="QString" value=""/>
@@ -95,7 +95,7 @@
             <substitutions/>
           </text-style>
           <text-format placeDirectionSymbol="0" plussign="0" multilineAlign="3" wrapChar="" autoWrapLength="0" addDirectionSymbol="0" rightDirectionSymbol=">" useMaxLineLengthForAutoWrap="1" leftDirectionSymbol="&lt;" formatNumbers="0" decimals="3" reverseDirectionSymbol="0"/>
-          <placement maxCurvedCharAngleOut="-25" priority="5" offsetType="0" layerType="PointGeometry" offsetUnits="MM" distUnits="MM" rotationAngle="0" centroidWhole="0" dist="0" repeatDistance="0" fitInPolygonOnly="0" placementFlags="10" labelOffsetMapUnitScale="3x:0,0,0,0,0,0" overrunDistance="0" geometryGeneratorType="PointGeometry" placement="1" repeatDistanceUnits="MM" geometryGeneratorEnabled="0" lineAnchorType="0" quadOffset="4" yOffset="-15" xOffset="0" repeatDistanceMapUnitScale="3x:0,0,0,0,0,0" lineAnchorPercent="0.5" geometryGenerator="" preserveRotation="1" polygonPlacementFlags="2" centroidInside="0" overrunDistanceUnit="MM" distMapUnitScale="3x:0,0,0,0,0,0" predefinedPositionOrder="TR,TL,BR,BL,R,L,TSR,BSR" overrunDistanceMapUnitScale="3x:0,0,0,0,0,0" maxCurvedCharAngleIn="25"/>
+          <placement maxCurvedCharAngleOut="-25" priority="5" offsetType="0" layerType="PointGeometry" offsetUnits="MM" distUnits="MM" rotationAngle="0" centroidWhole="0" dist="0" repeatDistance="0" fitInPolygonOnly="0" placementFlags="10" labelOffsetMapUnitScale="3x:0,0,0,0,0,0" overrunDistance="0" geometryGeneratorType="PointGeometry" placement="1" repeatDistanceUnits="MM" geometryGeneratorEnabled="0" lineAnchorType="0" quadOffset="4" yOffset="-10" xOffset="0" repeatDistanceMapUnitScale="3x:0,0,0,0,0,0" lineAnchorPercent="0.5" geometryGenerator="" preserveRotation="1" polygonPlacementFlags="2" centroidInside="0" overrunDistanceUnit="MM" distMapUnitScale="3x:0,0,0,0,0,0" predefinedPositionOrder="TR,TL,BR,BL,R,L,TSR,BSR" overrunDistanceMapUnitScale="3x:0,0,0,0,0,0" maxCurvedCharAngleIn="25"/>
           <rendering labelPerPart="0" obstacleFactor="1" fontLimitPixelSize="0" mergeLines="0" maxNumLabels="2000" fontMinPixelSize="3" scaleVisibility="0" drawLabels="1" obstacle="1" minFeatureSize="0" fontMaxPixelSize="10000" scaleMax="0" displayAll="0" zIndex="0" scaleMin="0" upsidedownLabels="0" limitNumLabels="0" obstacleType="1"/>
           <dd_properties>
             <Option type="Map">
@@ -129,16 +129,16 @@
           </callout>
         </settings>
       </rule>
-      <rule key="{518c152d-1c83-4c11-a074-f716499a7eec}">
+      <rule key="{576c69ba-8bcd-4e20-af3c-7500ec1a0eca}" description="OLDNUM">
         <settings calloutType="simple">
-          <text-style fontSizeUnit="Point" fontSize="40" isExpression="0" namedStyle="Book" fontKerning="1" fieldName="OldNum" fontItalic="0" fontStrikeout="0" useSubstitutions="0" allowHtml="0" textColor="0,0,0,255" textOpacity="1" textOrientation="horizontal" multilineHeight="1" fontSizeMapUnitScale="3x:0,0,0,0,0,0" previewBkgrdColor="255,255,255,255" fontWeight="50" blendMode="0" fontFamily="Bodoni 72 Oldstyle" fontLetterSpacing="0" fontWordSpacing="0" fontUnderline="0" capitalization="0">
+          <text-style fontSizeUnit="Point" fontSize="30" isExpression="0" namedStyle="Bold" fontKerning="1" fieldName="OldNum" fontItalic="0" fontStrikeout="0" useSubstitutions="0" allowHtml="0" textColor="0,0,0,255" textOpacity="1" textOrientation="horizontal" multilineHeight="1" fontSizeMapUnitScale="3x:0,0,0,0,0,0" previewBkgrdColor="255,255,255,255" fontWeight="75" blendMode="0" fontFamily="Bodoni 72 Oldstyle" fontLetterSpacing="0" fontWordSpacing="0" fontUnderline="0" capitalization="0">
             <text-buffer bufferSize="1" bufferDraw="0" bufferColor="255,255,255,255" bufferJoinStyle="128" bufferSizeMapUnitScale="3x:0,0,0,0,0,0" bufferNoFill="1" bufferSizeUnits="MM" bufferOpacity="1" bufferBlendMode="0"/>
             <text-mask maskSize="1.5" maskOpacity="1" maskSizeMapUnitScale="3x:0,0,0,0,0,0" maskedSymbolLayers="" maskSizeUnits="MM" maskJoinStyle="128" maskType="0" maskEnabled="0"/>
             <background shapeBorderWidthMapUnitScale="3x:0,0,0,0,0,0" shapeJoinStyle="64" shapeSizeX="0" shapeRotation="0" shapeSizeMapUnitScale="3x:0,0,0,0,0,0" shapeDraw="0" shapeOffsetY="0" shapeType="0" shapeSizeUnit="MM" shapeOpacity="1" shapeSizeType="0" shapeBorderWidthUnit="MM" shapeOffsetX="0" shapeSVGFile="" shapeRadiiUnit="MM" shapeSizeY="0" shapeFillColor="255,255,255,255" shapeRadiiY="0" shapeRotationType="0" shapeRadiiX="0" shapeBorderColor="128,128,128,255" shapeBorderWidth="0" shapeBlendMode="0" shapeOffsetUnit="MM" shapeRadiiMapUnitScale="3x:0,0,0,0,0,0" shapeOffsetMapUnitScale="3x:0,0,0,0,0,0">
               <symbol force_rhr="0" name="markerSymbol" type="marker" alpha="1" clip_to_extent="1">
                 <layer class="SimpleMarker" pass="0" enabled="1" locked="0">
                   <prop v="0" k="angle"/>
-                  <prop v="125,139,143,255" k="color"/>
+                  <prop v="232,113,141,255" k="color"/>
                   <prop v="1" k="horizontal_anchor_point"/>
                   <prop v="bevel" k="joinstyle"/>
                   <prop v="circle" k="name"/>
@@ -165,7 +165,7 @@
                 </layer>
               </symbol>
             </background>
-            <shadow shadowOffsetGlobal="1" shadowOpacity="0.69999999999999996" shadowDraw="0" shadowRadiusUnit="MM" shadowOffsetDist="1" shadowRadiusAlphaOnly="0" shadowRadiusMapUnitScale="3x:0,0,0,0,0,0" shadowColor="0,0,0,255" shadowOffsetAngle="135" shadowOffsetMapUnitScale="3x:0,0,0,0,0,0" shadowScale="100" shadowRadius="1.5" shadowBlendMode="6" shadowOffsetUnit="MM" shadowUnder="0"/>
+            <shadow shadowOffsetGlobal="1" shadowOpacity="0.69999999999999996" shadowDraw="1" shadowRadiusUnit="MM" shadowOffsetDist="1" shadowRadiusAlphaOnly="0" shadowRadiusMapUnitScale="3x:0,0,0,0,0,0" shadowColor="125,125,125,255" shadowOffsetAngle="135" shadowOffsetMapUnitScale="3x:0,0,0,0,0,0" shadowScale="100" shadowRadius="1.5" shadowBlendMode="6" shadowOffsetUnit="MM" shadowUnder="0"/>
             <dd_properties>
               <Option type="Map">
                 <Option name="name" type="QString" value=""/>
@@ -176,8 +176,8 @@
             <substitutions/>
           </text-style>
           <text-format placeDirectionSymbol="0" plussign="0" multilineAlign="3" wrapChar="" autoWrapLength="0" addDirectionSymbol="0" rightDirectionSymbol=">" useMaxLineLengthForAutoWrap="1" leftDirectionSymbol="&lt;" formatNumbers="0" decimals="3" reverseDirectionSymbol="0"/>
-          <placement maxCurvedCharAngleOut="-25" priority="5" offsetType="0" layerType="PointGeometry" offsetUnits="MM" distUnits="MM" rotationAngle="0" centroidWhole="0" dist="0" repeatDistance="0" fitInPolygonOnly="0" placementFlags="10" labelOffsetMapUnitScale="3x:0,0,0,0,0,0" overrunDistance="0" geometryGeneratorType="PointGeometry" placement="1" repeatDistanceUnits="MM" geometryGeneratorEnabled="0" lineAnchorType="0" quadOffset="4" yOffset="10" xOffset="-20" repeatDistanceMapUnitScale="3x:0,0,0,0,0,0" lineAnchorPercent="0.5" geometryGenerator="" preserveRotation="1" polygonPlacementFlags="2" centroidInside="0" overrunDistanceUnit="MM" distMapUnitScale="3x:0,0,0,0,0,0" predefinedPositionOrder="TR,TL,BR,BL,R,L,TSR,BSR" overrunDistanceMapUnitScale="3x:0,0,0,0,0,0" maxCurvedCharAngleIn="25"/>
-          <rendering labelPerPart="1" obstacleFactor="1" fontLimitPixelSize="0" mergeLines="0" maxNumLabels="2000" fontMinPixelSize="3" scaleVisibility="0" drawLabels="1" obstacle="1" minFeatureSize="0" fontMaxPixelSize="10000" scaleMax="0" displayAll="0" zIndex="-2" scaleMin="0" upsidedownLabels="0" limitNumLabels="0" obstacleType="1"/>
+          <placement maxCurvedCharAngleOut="-25" priority="5" offsetType="0" layerType="PointGeometry" offsetUnits="MM" distUnits="MM" rotationAngle="0" centroidWhole="0" dist="0" repeatDistance="0" fitInPolygonOnly="0" placementFlags="10" labelOffsetMapUnitScale="3x:0,0,0,0,0,0" overrunDistance="0" geometryGeneratorType="PointGeometry" placement="1" repeatDistanceUnits="MM" geometryGeneratorEnabled="0" lineAnchorType="0" quadOffset="4" yOffset="7" xOffset="-15" repeatDistanceMapUnitScale="3x:0,0,0,0,0,0" lineAnchorPercent="0.5" geometryGenerator="" preserveRotation="1" polygonPlacementFlags="2" centroidInside="0" overrunDistanceUnit="MM" distMapUnitScale="3x:0,0,0,0,0,0" predefinedPositionOrder="TR,TL,BR,BL,R,L,TSR,BSR" overrunDistanceMapUnitScale="3x:0,0,0,0,0,0" maxCurvedCharAngleIn="25"/>
+          <rendering labelPerPart="0" obstacleFactor="1" fontLimitPixelSize="0" mergeLines="0" maxNumLabels="2000" fontMinPixelSize="3" scaleVisibility="0" drawLabels="1" obstacle="1" minFeatureSize="0" fontMaxPixelSize="10000" scaleMax="0" displayAll="0" zIndex="0" scaleMin="0" upsidedownLabels="0" limitNumLabels="0" obstacleType="1"/>
           <dd_properties>
             <Option type="Map">
               <Option name="name" type="QString" value=""/>
@@ -210,16 +210,16 @@
           </callout>
         </settings>
       </rule>
-      <rule key="{5e1cc2f2-b551-4b91-a48d-a649a6c7e15e}" description="OLD_NAME">
+      <rule key="{21a69757-f15f-4eff-a400-eee7ff522198}" description="NUMPOST1962">
         <settings calloutType="simple">
-          <text-style fontSizeUnit="Point" fontSize="40" isExpression="0" namedStyle="Book" fontKerning="1" fieldName="NumLetter" fontItalic="0" fontStrikeout="0" useSubstitutions="0" allowHtml="0" textColor="0,0,0,255" textOpacity="1" textOrientation="horizontal" multilineHeight="1" fontSizeMapUnitScale="3x:0,0,0,0,0,0" previewBkgrdColor="255,255,255,255" fontWeight="50" blendMode="0" fontFamily="Bodoni 72 Oldstyle" fontLetterSpacing="0" fontWordSpacing="0" fontUnderline="0" capitalization="0">
+          <text-style fontSizeUnit="Point" fontSize="30" isExpression="0" namedStyle="Bold" fontKerning="1" fieldName="Post1962" fontItalic="0" fontStrikeout="0" useSubstitutions="0" allowHtml="0" textColor="0,0,0,255" textOpacity="1" textOrientation="horizontal" multilineHeight="1" fontSizeMapUnitScale="3x:0,0,0,0,0,0" previewBkgrdColor="255,255,255,255" fontWeight="75" blendMode="0" fontFamily="Bodoni 72 Oldstyle" fontLetterSpacing="0" fontWordSpacing="0" fontUnderline="0" capitalization="0">
             <text-buffer bufferSize="1" bufferDraw="0" bufferColor="255,255,255,255" bufferJoinStyle="128" bufferSizeMapUnitScale="3x:0,0,0,0,0,0" bufferNoFill="1" bufferSizeUnits="MM" bufferOpacity="1" bufferBlendMode="0"/>
             <text-mask maskSize="1.5" maskOpacity="1" maskSizeMapUnitScale="3x:0,0,0,0,0,0" maskedSymbolLayers="" maskSizeUnits="MM" maskJoinStyle="128" maskType="0" maskEnabled="0"/>
             <background shapeBorderWidthMapUnitScale="3x:0,0,0,0,0,0" shapeJoinStyle="64" shapeSizeX="0" shapeRotation="0" shapeSizeMapUnitScale="3x:0,0,0,0,0,0" shapeDraw="0" shapeOffsetY="0" shapeType="0" shapeSizeUnit="MM" shapeOpacity="1" shapeSizeType="0" shapeBorderWidthUnit="MM" shapeOffsetX="0" shapeSVGFile="" shapeRadiiUnit="MM" shapeSizeY="0" shapeFillColor="255,255,255,255" shapeRadiiY="0" shapeRotationType="0" shapeRadiiX="0" shapeBorderColor="128,128,128,255" shapeBorderWidth="0" shapeBlendMode="0" shapeOffsetUnit="MM" shapeRadiiMapUnitScale="3x:0,0,0,0,0,0" shapeOffsetMapUnitScale="3x:0,0,0,0,0,0">
               <symbol force_rhr="0" name="markerSymbol" type="marker" alpha="1" clip_to_extent="1">
                 <layer class="SimpleMarker" pass="0" enabled="1" locked="0">
                   <prop v="0" k="angle"/>
-                  <prop v="133,182,111,255" k="color"/>
+                  <prop v="232,113,141,255" k="color"/>
                   <prop v="1" k="horizontal_anchor_point"/>
                   <prop v="bevel" k="joinstyle"/>
                   <prop v="circle" k="name"/>
@@ -246,7 +246,7 @@
                 </layer>
               </symbol>
             </background>
-            <shadow shadowOffsetGlobal="1" shadowOpacity="0.69999999999999996" shadowDraw="0" shadowRadiusUnit="MM" shadowOffsetDist="1" shadowRadiusAlphaOnly="0" shadowRadiusMapUnitScale="3x:0,0,0,0,0,0" shadowColor="0,0,0,255" shadowOffsetAngle="135" shadowOffsetMapUnitScale="3x:0,0,0,0,0,0" shadowScale="100" shadowRadius="1.5" shadowBlendMode="6" shadowOffsetUnit="MM" shadowUnder="0"/>
+            <shadow shadowOffsetGlobal="1" shadowOpacity="0.69999999999999996" shadowDraw="1" shadowRadiusUnit="MM" shadowOffsetDist="1" shadowRadiusAlphaOnly="0" shadowRadiusMapUnitScale="3x:0,0,0,0,0,0" shadowColor="147,147,147,255" shadowOffsetAngle="135" shadowOffsetMapUnitScale="3x:0,0,0,0,0,0" shadowScale="100" shadowRadius="1.5" shadowBlendMode="6" shadowOffsetUnit="MM" shadowUnder="0"/>
             <dd_properties>
               <Option type="Map">
                 <Option name="name" type="QString" value=""/>
@@ -257,7 +257,7 @@
             <substitutions/>
           </text-style>
           <text-format placeDirectionSymbol="0" plussign="0" multilineAlign="3" wrapChar="" autoWrapLength="0" addDirectionSymbol="0" rightDirectionSymbol=">" useMaxLineLengthForAutoWrap="1" leftDirectionSymbol="&lt;" formatNumbers="0" decimals="3" reverseDirectionSymbol="0"/>
-          <placement maxCurvedCharAngleOut="-25" priority="5" offsetType="0" layerType="PointGeometry" offsetUnits="Point" distUnits="MM" rotationAngle="0" centroidWhole="0" dist="0" repeatDistance="0" fitInPolygonOnly="0" placementFlags="10" labelOffsetMapUnitScale="3x:0,0,0,0,0,0" overrunDistance="0" geometryGeneratorType="PointGeometry" placement="1" repeatDistanceUnits="MM" geometryGeneratorEnabled="0" lineAnchorType="0" quadOffset="4" yOffset="20" xOffset="50" repeatDistanceMapUnitScale="3x:0,0,0,0,0,0" lineAnchorPercent="0.5" geometryGenerator="" preserveRotation="1" polygonPlacementFlags="2" centroidInside="0" overrunDistanceUnit="MM" distMapUnitScale="3x:0,0,0,0,0,0" predefinedPositionOrder="TR,TL,BR,BL,R,L,TSR,BSR" overrunDistanceMapUnitScale="3x:0,0,0,0,0,0" maxCurvedCharAngleIn="25"/>
+          <placement maxCurvedCharAngleOut="-25" priority="5" offsetType="0" layerType="PointGeometry" offsetUnits="MM" distUnits="MM" rotationAngle="0" centroidWhole="0" dist="0" repeatDistance="0" fitInPolygonOnly="0" placementFlags="10" labelOffsetMapUnitScale="3x:0,0,0,0,0,0" overrunDistance="0" geometryGeneratorType="PointGeometry" placement="1" repeatDistanceUnits="MM" geometryGeneratorEnabled="0" lineAnchorType="0" quadOffset="4" yOffset="7" xOffset="15" repeatDistanceMapUnitScale="3x:0,0,0,0,0,0" lineAnchorPercent="0.5" geometryGenerator="" preserveRotation="1" polygonPlacementFlags="2" centroidInside="0" overrunDistanceUnit="MM" distMapUnitScale="3x:0,0,0,0,0,0" predefinedPositionOrder="TR,TL,BR,BL,R,L,TSR,BSR" overrunDistanceMapUnitScale="3x:0,0,0,0,0,0" maxCurvedCharAngleIn="25"/>
           <rendering labelPerPart="0" obstacleFactor="1" fontLimitPixelSize="0" mergeLines="0" maxNumLabels="2000" fontMinPixelSize="3" scaleVisibility="0" drawLabels="1" obstacle="1" minFeatureSize="0" fontMaxPixelSize="10000" scaleMax="0" displayAll="0" zIndex="0" scaleMin="0" upsidedownLabels="0" limitNumLabels="0" obstacleType="1"/>
           <dd_properties>
             <Option type="Map">
@@ -357,13 +357,6 @@
   <legend type="default-vector"/>
   <referencedLayers/>
   <fieldConfiguration>
-    <field configurationFlags="None" name="id">
-      <editWidget type="TextEdit">
-        <config>
-          <Option/>
-        </config>
-      </editWidget>
-    </field>
     <field configurationFlags="None" name="OldNum">
       <editWidget type="TextEdit">
         <config>
@@ -371,14 +364,35 @@
         </config>
       </editWidget>
     </field>
-    <field configurationFlags="None" name="NewNum">
+    <field configurationFlags="None" name="Post1962">
       <editWidget type="TextEdit">
         <config>
           <Option/>
         </config>
       </editWidget>
     </field>
-    <field configurationFlags="None" name="NumLetter">
+    <field configurationFlags="None" name="NouvNum">
+      <editWidget type="TextEdit">
+        <config>
+          <Option/>
+        </config>
+      </editWidget>
+    </field>
+    <field configurationFlags="None" name="CentroidX">
+      <editWidget type="TextEdit">
+        <config>
+          <Option/>
+        </config>
+      </editWidget>
+    </field>
+    <field configurationFlags="None" name="CentroidY">
+      <editWidget type="TextEdit">
+        <config>
+          <Option/>
+        </config>
+      </editWidget>
+    </field>
+    <field configurationFlags="None" name="WKT">
       <editWidget type="TextEdit">
         <config>
           <Option/>
@@ -387,28 +401,36 @@
     </field>
   </fieldConfiguration>
   <aliases>
-    <alias index="0" name="" field="id"/>
-    <alias index="1" name="" field="OldNum"/>
-    <alias index="2" name="" field="NewNum"/>
-    <alias index="3" name="" field="NumLetter"/>
+    <alias index="0" name="" field="OldNum"/>
+    <alias index="1" name="" field="Post1962"/>
+    <alias index="2" name="" field="NouvNum"/>
+    <alias index="3" name="" field="CentroidX"/>
+    <alias index="4" name="" field="CentroidY"/>
+    <alias index="5" name="" field="WKT"/>
   </aliases>
   <defaults>
-    <default expression="" applyOnUpdate="0" field="id"/>
     <default expression="" applyOnUpdate="0" field="OldNum"/>
-    <default expression="" applyOnUpdate="0" field="NewNum"/>
-    <default expression="" applyOnUpdate="0" field="NumLetter"/>
+    <default expression="" applyOnUpdate="0" field="Post1962"/>
+    <default expression="" applyOnUpdate="0" field="NouvNum"/>
+    <default expression="" applyOnUpdate="0" field="CentroidX"/>
+    <default expression="" applyOnUpdate="0" field="CentroidY"/>
+    <default expression="" applyOnUpdate="0" field="WKT"/>
   </defaults>
   <constraints>
-    <constraint constraints="0" notnull_strength="0" exp_strength="0" field="id" unique_strength="0"/>
     <constraint constraints="0" notnull_strength="0" exp_strength="0" field="OldNum" unique_strength="0"/>
-    <constraint constraints="0" notnull_strength="0" exp_strength="0" field="NewNum" unique_strength="0"/>
-    <constraint constraints="0" notnull_strength="0" exp_strength="0" field="NumLetter" unique_strength="0"/>
+    <constraint constraints="0" notnull_strength="0" exp_strength="0" field="Post1962" unique_strength="0"/>
+    <constraint constraints="0" notnull_strength="0" exp_strength="0" field="NouvNum" unique_strength="0"/>
+    <constraint constraints="0" notnull_strength="0" exp_strength="0" field="CentroidX" unique_strength="0"/>
+    <constraint constraints="0" notnull_strength="0" exp_strength="0" field="CentroidY" unique_strength="0"/>
+    <constraint constraints="0" notnull_strength="0" exp_strength="0" field="WKT" unique_strength="0"/>
   </constraints>
   <constraintExpressions>
-    <constraint exp="" desc="" field="id"/>
     <constraint exp="" desc="" field="OldNum"/>
-    <constraint exp="" desc="" field="NewNum"/>
-    <constraint exp="" desc="" field="NumLetter"/>
+    <constraint exp="" desc="" field="Post1962"/>
+    <constraint exp="" desc="" field="NouvNum"/>
+    <constraint exp="" desc="" field="CentroidX"/>
+    <constraint exp="" desc="" field="CentroidY"/>
+    <constraint exp="" desc="" field="WKT"/>
   </constraintExpressions>
   <expressionfields/>
   <attributeactions>
@@ -416,10 +438,12 @@
   </attributeactions>
   <attributetableconfig actionWidgetStyle="dropDown" sortOrder="0" sortExpression="">
     <columns>
-      <column width="-1" name="id" hidden="0" type="field"/>
       <column width="-1" name="OldNum" hidden="0" type="field"/>
-      <column width="-1" name="NewNum" hidden="0" type="field"/>
-      <column width="-1" name="NumLetter" hidden="0" type="field"/>
+      <column width="-1" name="Post1962" hidden="0" type="field"/>
+      <column width="-1" name="NouvNum" hidden="0" type="field"/>
+      <column width="-1" name="CentroidX" hidden="0" type="field"/>
+      <column width="-1" name="CentroidY" hidden="0" type="field"/>
+      <column width="-1" name="WKT" hidden="0" type="field"/>
       <column width="-1" hidden="1" type="actions"/>
     </columns>
   </attributetableconfig>
@@ -451,20 +475,24 @@ def my_form_open(dialog, layer, feature):
   <featformsuppress>0</featformsuppress>
   <editorlayout>generatedlayout</editorlayout>
   <editable>
-    <field editable="1" name="NewNum"/>
-    <field editable="1" name="NumLetter"/>
+    <field editable="1" name="CentroidX"/>
+    <field editable="1" name="CentroidY"/>
+    <field editable="1" name="NouvNum"/>
     <field editable="1" name="OldNum"/>
-    <field editable="1" name="id"/>
+    <field editable="1" name="Post1962"/>
+    <field editable="1" name="WKT"/>
   </editable>
   <labelOnTop>
-    <field labelOnTop="0" name="NewNum"/>
-    <field labelOnTop="0" name="NumLetter"/>
+    <field labelOnTop="0" name="CentroidX"/>
+    <field labelOnTop="0" name="CentroidY"/>
+    <field labelOnTop="0" name="NouvNum"/>
     <field labelOnTop="0" name="OldNum"/>
-    <field labelOnTop="0" name="id"/>
+    <field labelOnTop="0" name="Post1962"/>
+    <field labelOnTop="0" name="WKT"/>
   </labelOnTop>
   <dataDefinedFieldProperties/>
   <widgets/>
-  <previewExpression>"id"</previewExpression>
+  <previewExpression>"CentroidX"</previewExpression>
   <mapTip></mapTip>
   <layerGeometryType>0</layerGeometryType>
 </qgis>
