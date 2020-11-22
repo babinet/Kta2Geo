@@ -110,7 +110,7 @@ Position27561=$(echo $LongEPSG27561 $LatEPSG27561 |gdaltransform -s_srs "EPSG:27
 
 
 echo "${white}################################################################################
----> POSITION                                                      POSITION <---
+---> POSITION                                                     POSITION <---
 ${white}################################################################################
 ${white}Position EPSG:${orange}27561                     : ${orange}$Position27561"
 echo "${white}Position EPSG:${orange}3857                      : ${orange}$Position3857"
@@ -120,7 +120,7 @@ ${white}########################################################################
 Nord=$(echo "$LatEPSG27561")
 Sud=$(echo $LatEPSG27561-400 |bc -l)
 Est=$(echo $LongEPSG27561+600|bc -l)
-Ouest=$(echo $LongEPSG27561)
+Ouest=$(echo "$LongEPSG27561")
 
 echo "                                        ${white}: ${green}$LongEPSG27561
                                 ${red}ORIGINE${white} : ${green}$LatEPSG27561${white}
@@ -133,7 +133,7 @@ echo "                                        ${white}: ${green}$LongEPSG27561
                                         |                           |
                                         | SUD/OUEST         SUD/EST |
                                          --–------------------------"
-echo "${green}gdal_translate -a_srs EPSG:27561 -of GTiff -gcp 0 0 ${orange}$Est $Nord ${white}-gcp 0 \"\$HeightImage\" ${orange}"$Est" "$Sud"${green} -gcp \"\$WidthImage\" 0 ${orange}"$Est" "$Nord"${green} -gcp \"\$WidthImage\" \"\$HeightImage\" ${orange}"$Est" "$Sud"${green} \"\$TiffSource\""
+echo "${green}gdal_translate -a_srs EPSG:27561 -of GTiff -gcp 0 0 ${orange}$Ouest $Nord ${white}-gcp 0 \"\$HeightImage\" ${orange}"$Ouest" "$Sud"${green} -gcp \"\$WidthImage\" 0 ${orange}"$Est" "$Nord"${green} -gcp \"\$WidthImage\" \"\$HeightImage\" ${orange}"$Est" "$Sud"${green} \"\$TiffSource\""
 echo "################################################################################
 ${white}---> Nord/Est                           : ${orange}$Est $Nord
 ${white}---> Sud/Est                            : ${orange}$Est $Sud
