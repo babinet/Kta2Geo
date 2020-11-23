@@ -974,21 +974,21 @@ fi
 gdalwarp -co COMPRESS=NONE -s_srs "EPSG:27561" -t_srs "EPSG:3857"  temp.tif "../_Output/"$NameNoExt"_"$Year".tif"
 rm temp.tif
 
-# Planche 07-58
-elif [ "$NameNoExt" == 07-58 ]
-then
-echo "${purple}$NameOut NameOut ${green}$HeightImage HeightImage${reset}"
-WidthImage=7734
-HeightImage=5284
-gdal_translate -a_srs EPSG:27561 -of GTiff -gcp 0 0 588550 123024 -gcp 0 "$HeightImage" 588550 122574 -gcp "$WidthImage" 0 589200 123024 -gcp "$WidthImage" "$HeightImage" 589200 122574 "$TiffSource" temp.tif
-
-if [ -f "../_Output/"$NameNoExt"_"$Year".tif" ]
-then
-# rm "../_Output/"$NameNoExt"_"$Year".tif"
-mv "../_Output/"$NameNoExt"_"$Year".tif" ../_TRASH_TEMP/"$FileDate"_"$NameNoExt"_"$Year".tif
-
-fi
-gdalwarp -co COMPRESS=NONE -s_srs "EPSG:27561" -t_srs "EPSG:3857" temp.tif "../_Output/"$NameNoExt"_"$Year".tif"
+## Planche 07-58
+#elif [ "$NameNoExt" == 07-58 ]
+#then
+#echo "${purple}$NameOut NameOut ${green}$HeightImage HeightImage${reset}"
+#WidthImage=7734
+#HeightImage=5284
+#gdal_translate -a_srs EPSG:27561 -of GTiff -gcp 0 0 588550 123024 -gcp 0 "$HeightImage" 588550 122574 -gcp "$WidthImage" 0 589200 123024 -gcp "$WidthImage" "$HeightImage" 589200 122574 "$TiffSource" temp.tif
+#
+#if [ -f "../_Output/"$NameNoExt"_"$Year".tif" ]
+#then
+## rm "../_Output/"$NameNoExt"_"$Year".tif"
+#mv "../_Output/"$NameNoExt"_"$Year".tif" ../_TRASH_TEMP/"$FileDate"_"$NameNoExt"_"$Year".tif
+#
+#fi
+#gdalwarp -co COMPRESS=NONE -s_srs "EPSG:27561" -t_srs "EPSG:3857" temp.tif "../_Output/"$NameNoExt"_"$Year".tif"
 
 elif [ "$TiffSource" == ../8-9-51-52_* ]
 then
@@ -999,17 +999,6 @@ then
 # rm "../_Output/"$NameNoExt"_"$Year".tif"
 mv "../_Output/"$NameNoExt"_"$Year".tif" ../_TRASH_TEMP/"$FileDate"_"$NameNoExt"_"$Year".tif
 
-fi
-gdalwarp -co COMPRESS=NONE -dstalpha -s_srs "EPSG:27561" -t_srs "EPSG:3857" temp.tif "../_Output/"$NameNoExt"_"$Year".tif"
-
-elif [ "$NameNoExt" == "08-44" ]
-then
-echo "${red}$NameOut NameOut ${green}$HeightImage HeightImage${reset}"
-gdal_translate -a_srs EPSG:27561 -of GTiff -gcp 0 0 589200 128624 -gcp 0 "$HeightImage" 589200 128124 -gcp "$WidthImage" 0 589800 128624 -gcp "$WidthImage" "$HeightImage" 589800 128124 "$TiffSource" temp.tif
-if [ -f "../_Output/"$NameNoExt"_"$Year".tif" ]
-then
-# rm "../_Output/"$NameNoExt"_"$Year".tif"
-mv "../_Output/"$NameNoExt"_"$Year".tif" ../_TRASH_TEMP/"$FileDate"_"$NameNoExt"_"$Year".tif
 fi
 gdalwarp -co COMPRESS=NONE -dstalpha -s_srs "EPSG:27561" -t_srs "EPSG:3857" temp.tif "../_Output/"$NameNoExt"_"$Year".tif"
 
@@ -1241,18 +1230,6 @@ mv "../_Output/"$NameNoExt"_"$Year".tif" ../_TRASH_TEMP/"$FileDate"_"$NameNoExt"
 fi
 gdalwarp -co COMPRESS=NONE -s_srs "EPSG:27561" -t_srs "EPSG:3857" -dstalpha temp.tif "../_Output/"$NameNoExt"_"$Year".tif"
 
-## Planche ../35-49-50-union_*
-#elif [ "$TiffSource" == ../35-49-50-union_* ]
-#then
-#
-#gdal_translate -a_srs EPSG:27561 -of GTiff -gcp 0 0 605400 126624 -gcp 0 "$HeightImage" 605400 126024 -gcp "$WidthImage" 0 606000  126624 -gcp "$WidthImage" "$HeightImage" 606000 126024 "$TiffSource" temp.tif
-#if [ -f "../_Output/"$NameNoExt"_"$Year".tif" ]
-#then
-## rm "../_Output/"$NameNoExt"_"$Year".tif"
-#mv "../_Output/"$NameNoExt"_"$Year".tif" ../_TRASH_TEMP/"$FileDate"_"$NameNoExt"_"$Year".tif
-#fi
-#gdalwarp -co COMPRESS=NONE -s_srs "EPSG:27561" -t_srs "EPSG:3857" -dstalpha temp.tif "../_Output/"$NameNoExt"_"$Year".tif"
-
 # Planche ../37-58-59_*
 elif [ "$TiffSource" == ../37-58-59_* ]
 then
@@ -1300,15 +1277,6 @@ mv "../_Output/"$NameNoExt"_"$Year".tif" ../_TRASH_TEMP/"$FileDate"_"$NameNoExt"
 fi
 gdalwarp -co COMPRESS=NONE -s_srs "EPSG:27561" -t_srs "EPSG:3857" -dstalpha temp.tif "../_Output/"$NameNoExt"_"$Year".tif"
 
----> $Nord   Lambert Nord    -   - EPSG:27561-   -   -   -   -   -   130624
-                                                                     Sud Lambert 1
----> $Sud    Lambert Nord    -   - EPSG:27561-   -   -   -   -   -   130224
-                                                                     Est Lambert 1
----> $Est    Lambert Nord    -   - EPSG:27561-   -   -   -   -   -   612600
-                                                                     Ouest Lambert 1
----> $Ouest  Lambert Nord    -   - EPSG:27561-   -   -   -   -   -   612000
-
-
 # Planche ../46-39-union_*
 elif [ "$TiffSource" == ../46-39-union_* ]
 then
@@ -1320,13 +1288,112 @@ mv "../_Output/"$NameNoExt"_"$Year".tif" ../_TRASH_TEMP/"$FileDate"_"$NameNoExt"
 fi
 gdalwarp -co COMPRESS=NONE -s_srs "EPSG:27561" -t_srs "EPSG:3857" -dstalpha temp.tif "../_Output/"$NameNoExt"_"$Year".tif"
 
+# Planche ../48-38-39_*
+elif [ "$TiffSource" == ../48-38-39_* ]
+then
+gdal_translate -a_srs EPSG:27561 -of GTiff -gcp 0 0 613100 130824 -gcp 0 "$HeightImage" 613100 130424 -gcp "$WidthImage" 0 613800  130824 -gcp "$WidthImage" "$HeightImage" 613800 130424 "$TiffSource" temp.tif
+if [ -f "../_Output/"$NameNoExt"_"$Year".tif" ]
+then
+# rm "../_Output/"$NameNoExt"_"$Year".tif"
+mv "../_Output/"$NameNoExt"_"$Year".tif" ../_TRASH_TEMP/"$FileDate"_"$NameNoExt"_"$Year".tif
+fi
+gdalwarp -co COMPRESS=NONE -s_srs "EPSG:27561" -t_srs "EPSG:3857" -dstalpha temp.tif "../_Output/"$NameNoExt"_"$Year".tif"
+
+# Planche ../48-38-39_*
+elif [ "$TiffSource" == ../08-44-union_* ]
+then
+echo "${red}$NameOut NameOut ${green}$HeightImage HeightImage${reset}"
+gdal_translate -a_srs EPSG:27561 -of GTiff -gcp 0 0 589200 128624 -gcp 0 "$HeightImage" 589200 128124 -gcp "$WidthImage" 0 589800 128624 -gcp "$WidthImage" "$HeightImage" 589800 128124 "$TiffSource" temp.tif
+if [ -f "../_Output/"$NameNoExt"_"$Year".tif" ]
+then
+# rm "../_Output/"$NameNoExt"_"$Year".tif"
+mv "../_Output/"$NameNoExt"_"$Year".tif" ../_TRASH_TEMP/"$FileDate"_"$NameNoExt"_"$Year".tif
+fi
+gdalwarp -co COMPRESS=NONE -dstalpha -s_srs "EPSG:27561" -t_srs "EPSG:3857" temp.tif "../_Output/"$NameNoExt"_"$Year".tif"
 
 
 
 
 
+#
+# OBSERVATOIRE + Alpha Escalier Obs = + 100 mètres  25-49    29-49   25-50   26-50
+#
 
 
+
+---> $Nord   Lambert Nord    -   - EPSG:27561-   -   -   -   -   -   126624
+                                                                     Sud Lambert 1
+---> $Sud    Lambert Nord    -   - EPSG:27561-   -   -   -   -   -   126224
+                                                                     Est Lambert 1
+---> $Est    Lambert Nord    -   - EPSG:27561-   -   -   -   -   -   600000
+                                                                     Ouest Lambert 1
+---> $Ouest  Lambert Nord    -   - EPSG:27561-   -   -   -   -   -   599400
+
+# Planche ../25-49-union*
+elif [ "$TiffSource" == ../25-49-union* ]
+then
+gdal_translate -a_srs EPSG:27561 -of GTiff -gcp 0 0 599400 126624 -gcp 0 "$HeightImage" 599400 126124 -gcp "$WidthImage" 0 600100  126624 -gcp "$WidthImage" "$HeightImage" 600100 126124 "$TiffSource" temp.tif
+if [ -f "../_Output/"$NameNoExt"_"$Year".tif" ]
+then
+# rm "../_Output/"$NameNoExt"_"$Year".tif"
+mv "../_Output/"$NameNoExt"_"$Year".tif" ../_TRASH_TEMP/"$FileDate"_"$NameNoExt"_"$Year".tif
+fi
+gdalwarp -co COMPRESS=NONE -s_srs "EPSG:27561" -t_srs "EPSG:3857" -dstalpha temp.tif "../_Output/"$NameNoExt"_"$Year".tif"
+
+#--> $Nord   Lambert Nord    -   - EPSG:27561-   -   -   -   -   -   126624
+#                                                                     Sud Lambert 1
+#---> $Sud    Lambert Nord    -   - EPSG:27561-   -   -   -   -   -   126224
+#                                                                     Est Lambert 1
+#---> $Est    Lambert Nord    -   - EPSG:27561-   -   -   -   -   -   600600
+#                                                                     Ouest Lambert 1
+#---> $Ouest  Lambert Nord    -   - EPSG:27561-   -   -   -   -   -   600000
+
+# Planche ../26-49-union*
+elif [ "$TiffSource" == ../26-49-union* ]
+then
+gdal_translate -a_srs EPSG:27561 -of GTiff -gcp 0 0 599900 126624 -gcp 0 "$HeightImage" 599900 126124 -gcp "$WidthImage" 0 600600  126624 -gcp "$WidthImage" "$HeightImage" 600600 126124 "$TiffSource" temp.tif
+if [ -f "../_Output/"$NameNoExt"_"$Year".tif" ]
+then
+mv "../_Output/"$NameNoExt"_"$Year".tif" ../_TRASH_TEMP/"$FileDate"_"$NameNoExt"_"$Year".tif
+fi
+gdalwarp -co COMPRESS=NONE -s_srs "EPSG:27561" -t_srs "EPSG:3857" -dstalpha temp.tif "../_Output/"$NameNoExt"_"$Year".tif"
+
+---> $Nord   Lambert Nord    -   - EPSG:27561-   -   -   -   -   -   126224
+                                                                     Sud Lambert 1
+---> $Sud    Lambert Nord    -   - EPSG:27561-   -   -   -   -   -   125824
+                                                                     Est Lambert 1
+---> $Est    Lambert Nord    -   - EPSG:27561-   -   -   -   -   -   600000
+                                                                     Ouest Lambert 1
+---> $Ouest  Lambert Nord    -   - EPSG:27561-   -   -   -   -   -   599400
+
+# Planche ../25-50-union*
+elif [ "$TiffSource" == ../25-50-union* ]
+then
+gdal_translate -a_srs EPSG:27561 -of GTiff -gcp 0 0 599400 130824 -gcp 0 "$HeightImage" 599400 125824 -gcp "$WidthImage" 0 600000  126324 -gcp "$WidthImage" "$HeightImage" 600000 125824 "$TiffSource" temp.tif
+if [ -f "../_Output/"$NameNoExt"_"$Year".tif" ]
+then
+# rm "../_Output/"$NameNoExt"_"$Year".tif"
+mv "../_Output/"$NameNoExt"_"$Year".tif" ../_TRASH_TEMP/"$FileDate"_"$NameNoExt"_"$Year".tif
+fi
+gdalwarp -co COMPRESS=NONE -s_srs "EPSG:27561" -t_srs "EPSG:3857" -dstalpha temp.tif "../_Output/"$NameNoExt"_"$Year".tif"
+---> $Nord   Lambert Nord    -   - EPSG:27561-   -   -   -   -   -   126224
+                                                                     Sud Lambert 1
+---> $Sud    Lambert Nord    -   - EPSG:27561-   -   -   -   -   -   125824
+                                                                     Est Lambert 1
+---> $Est    Lambert Nord    -   - EPSG:27561-   -   -   -   -   -   600600
+                                                                     Ouest Lambert 1
+---> $Ouest  Lambert Nord    -   - EPSG:27561-   -   -   -   -   -   600000
+
+# Planche ../26-50-union*
+elif [ "$TiffSource" == ../26-50-union* ]
+then
+gdal_translate -a_srs EPSG:27561 -of GTiff -gcp 0 0 613100 130824 -gcp 0 "$HeightImage" 613100 125824 -gcp "$WidthImage" 0 613800  130824 -gcp "$WidthImage" "$HeightImage" 613800 125824 "$TiffSource" temp.tif
+if [ -f "../_Output/"$NameNoExt"_"$Year".tif" ]
+then
+# rm "../_Output/"$NameNoExt"_"$Year".tif"
+mv "../_Output/"$NameNoExt"_"$Year".tif" ../_TRASH_TEMP/"$FileDate"_"$NameNoExt"_"$Year".tif
+fi
+gdalwarp -co COMPRESS=NONE -s_srs "EPSG:27561" -t_srs "EPSG:3857" -dstalpha temp.tif "../_Output/"$NameNoExt"_"$Year".tif"
 
 
 
@@ -1546,3 +1613,14 @@ cd - 2>&1 &>/dev/null
 # tesseract -l fra --dpi 300 NB.tif   Out.txt
 #tesseract -l fra --dpi 72 NB.tif   Out.txt
 
+
+
+
+
+
+
+# .md
+#            ![](images/table 1-1.png)
+#            to:
+#
+#            ![](images/table%201-1.png)
