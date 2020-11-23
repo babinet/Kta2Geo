@@ -8,7 +8,7 @@
 ```
 Folder/Kta2Geo/Start_Program.sh
 ```
-
+![Screenshot](Kta2Geo.jpg)
 #### GeoRefIGC :
 
 * Georeference maps in EPSG:3857 from source maps in Lambert1 EPSG:27561 based on filename.
