@@ -1,21 +1,19 @@
 # Kta2Géo
 
 * *Environment : #/bin/bash!*
-* *Requirement : gdal exiftool wget imagemagick*
-
-###### Usage :
-
-Start program > then choose menu
+* *Requirement : **gdal exiftool wget imagemagick***
+* EPSG:27561 --> EPSG:3857
+![Screenshot](Observatoire.jpg)
+* Usage : Start program > then choose menu
 
 ```
 Folder/Kta2Geo/Start_Program.sh
 ```
-
 #### GeoRefIGC :
 
 * Georeference maps in EPSG:3857 from source maps in Lambert1 EPSG:27561 based on filename.
 
-NTF (Paris) / Lambert Nord France  EPSG:27561
+NTF (Paris) / Lambert Nord France  EPSG:27561
 
 #### kmz2csv :
 
@@ -28,9 +26,9 @@ NTF (Paris) / Lambert Nord France  EPSG:27561
 #### Geoserver_operations
 
 * Create a Workspace on Geoserver
-* Post Geotif files to geoserver and set-up layers.
+* Post Geotif files to geoserver and set-up layers using REST.
 
-#### Observatoire_\*Long_\*Lat-Converter
+#### Observatoire_Long_Lat-Converter
 
 * Conversion Long/Lat from Paris meridian Observatoire - unit : mètre
 
@@ -83,6 +81,8 @@ Folder/_Output/26Y_V1-1951.tif
 ```
 
 ###### De Fourcy 1858
+
+ATLAS SOUTERRAIN DE LA VILLE DE PARIS.
 
 ```
 Folder/P00_Planche_0_Assemblage_DeFourcy_1958.tif
