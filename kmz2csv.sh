@@ -26,16 +26,17 @@ darkblue=`tput setaf 19`
 dir=$(
 cd -P -- "$(dirname -- "$0")" && pwd -P
 )
-cd $dir
-
+cd "$dir"
 mkdir -p tmp ../_Output
 for basekmz in ../*.kmz
 do
 fileout=$(echo "$basekmz" | sed 's/.kmz//g' | sed 's/..\///g')
-mkdir ../_Output/"$fileout"
-python unzip_utf8 "$basekmz" ../_Output/"$fileout"
-echo fileout $fileout
+mkdir ../_Output/
+unar "$basekmz"
 
+echo mv "$fileout" ../_Output/
+
+mv "$fileout" ../_Output/
 if [ -f ../_Output/"$fileout"/CSV2DRUPALtmp.csv ]
 then
 rm ../_Output/"$fileout"/CSV2DRUPALtmp.csv
@@ -45,7 +46,6 @@ for filekml in ../_Output/"$fileout"/*.kml
 do
 cat ../_Output/"$fileout"/*.kml | tr -d '\n' | sed -e 's/<Placemark>/\
 <Placemark>/g' >  ../_Output/"$fileout"/KML_tmp
-
 
 while read -r line; do
 # Name
