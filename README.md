@@ -31,7 +31,7 @@ NTF (Paris) / Lambert Nord France  EPSG:27561
 * Post Geotif files to geoserver and set-up layers using REST.
 
 #### Observatoire_Long_Lat-Converter
-
+![Screenshot](ConvertTo27561.jpg)
 * Conversion Long/Lat from Paris meridian Observatoire - unit : mètre
 
 ### Name convention :
