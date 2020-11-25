@@ -108,6 +108,8 @@ Folder/P20_Planche_16_DeFourcy_1958.tif
 Folder/P21_Planche_17_DeFourcy_1958.tif
 ```
 
+![Screenshot](Encarts_Planche_5.jpg)
+
 ```
 Folder/_Output/PXX_Planche_XX_DeFourcy_1958.tif
 ```
