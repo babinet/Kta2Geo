@@ -1,6 +1,6 @@
 # Kta2Géo
 
-* *Environment : #/bin/bash!*
+* *Environment : #!/bin/bash*
 * *Requirement : **gdal exiftool wget imagemagick***
 * EPSG:27561 --> EPSG:3857
 
