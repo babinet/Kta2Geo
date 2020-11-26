@@ -14,6 +14,7 @@ Folder/Kta2Geo/Start_Program.sh
 #### GeoRefIGC :
 
 * Georeference maps in EPSG:3857 from source maps in Lambert1 EPSG:27561 based on filename.
+![Screenshot](ConvertTo27561.jpg)
 
 NTF (Paris) / Lambert Nord France  EPSG:27561
 
@@ -31,9 +32,9 @@ NTF (Paris) / Lambert Nord France  EPSG:27561
 * Post Geotif files to geoserver and set-up layers using REST.
 
 #### Observatoire_Long_Lat-Converter
-![Screenshot](ConvertTo27561.jpg)
-* Conversion Long/Lat from Paris meridian Observatoire - unit : mètre
 
+* Conversion Long/Lat from Paris meridian Observatoire - unit : mètre
+![Screenshot](ObsConverter.jpg)
 ### Name convention :
 
 ##### Maps image format : .jpg, .tif, and .kmz files.
