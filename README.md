@@ -82,6 +82,15 @@ output :
 ```
 Folder/_Output/26Y_V1-1951.tif
 ```
+###### Name-union_* 
+append 100m
+```
+Folder/25-50-union_2007.tif
+```
+Color           :
+![Screenshot](_Color-union.jpg)
+Mask Alpha (Band 4)  :
+![Screenshot](_Mask-union)
 
 ###### De Fourcy 1858
 
