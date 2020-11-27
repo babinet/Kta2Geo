@@ -87,7 +87,8 @@ append 100m
 ```
 Folder/25-50-union_2007.tif
 ```
-Color           :
+Color RGBA :
+
 ![Screenshot](_Color-union.jpg)
 
 Mask Alpha (Band 4)  :
