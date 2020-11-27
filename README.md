@@ -89,8 +89,10 @@ Folder/25-50-union_2007.tif
 ```
 Color           :
 ![Screenshot](_Color-union.jpg)
+
 Mask Alpha (Band 4)  :
-![Screenshot](_Mask-union)
+
+![Screenshot](_Mask-union.jpg)
 
 ###### De Fourcy 1858
 
