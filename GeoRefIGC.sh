@@ -1674,6 +1674,9 @@ gdalwarp -co COMPRESS=NONE -s_srs "EPSG:27561" -t_srs "EPSG:3857" -dstalpha temp
 #
 
 else
+#
+# Processing Standard $Abscissa & $Ordinate
+#
 
 #
 # Condition: if the filename corresponds to the pattern: Feuille-*
