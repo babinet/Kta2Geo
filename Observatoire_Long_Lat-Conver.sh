@@ -67,7 +67,7 @@ echo "
                                              | |___\__ \ |_   / /   | |_| | |_| |  __/\__ \ |_
                                              |_____|___/\__| /_/     \___/ \__,_|\___||___/\__|
 
-${white}---> Distance en mètre du Zéro l'Observatoire de paris Longitue ${orange}Est ${white}+ ${orange}Ouest ${white}- ? :"
+${white}---> Distance en mètre du Zéro de l'Observatoire de paris Longitue ${orange}Est ${white}+ ${orange}Ouest ${white}- ? :"
 echo "${white}---> NTF (Paris) / Lambert Nord France  ${green}27561
 ${white}---> \"Nouvelle Triangulation Francaise (Paris)\""
 
