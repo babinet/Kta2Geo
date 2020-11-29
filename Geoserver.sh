@@ -28,7 +28,7 @@ darkblue=`tput setaf 19`
 dir=$(
 cd -P -- "$(dirname -- "$0")" && pwd -P
 )
-cd $dir
+cd "$dir" 2>&1 &>/dev/null
 
 
 
@@ -54,9 +54,36 @@ menu_from_array "${Menu[@]}"
 
 if [ $item = Post_Geotif ]
 then
-echo Post Geotif
-fi
+echo "${white}---> Post Geotif files on Geoserver using REST <---${reset}"
+echo "${bg_red}${white}---> Enter the Geoserver User Name :  <---${reset}"
+read UserName
+echo "$UserName"
 
+echo "${bg_red}${white}---> Enter "$UserName" password on Geoserver. <---${reset}"
+read -s Password
+echo "${orange}    ************* ${reset}"
+
+echo "${bg_red}${white}---> Enter the name of the workspace <---${reset}."
+read Workspace
+echo "$Workspace"
+
+
+
+echo "${bg_red}${white}---> Drop the folder to upload. <---${reset}"
+read -p "${white}---> (The folder where are stored the Geotif to upload) :" Folder2Upload
+echo "${orange}$Folder2Upload ${reset}"
+File2Upload=$(find "$Folder2Upload" -name "*.tif" | sed 's/\/\//\//g' | tr ' ' '\n' )
+echo "$File2Upload" > listRest.txt
+while read Geotif
+do
+FileNameSeul=$(echo "$Geotif" | awk -F'/' '{print $NF}' | sed 's/.tif//g')
+echo "$Geotif"
+echo "$FileNameSeul"
+curl -u "$UserName":"$Password" -XPUT -H "Content-type:image/tiff" --data-binary @"$Geotif" https://sous-paris.com/geoserver/rest/workspaces/"$Workspace"/coveragestores/"$FileNameSeul"/file.geotiff
+done < listRest.txt
+cd - 2>&1 &>/dev/null
+fi
+echo $Geotif
 if [ $item = Create_Workspace ]
 then
 echo "${white}---> Create a Workspace on Geoserver using REST <---${reset}"
@@ -76,4 +103,4 @@ curl -v -u "$UserName":"$Password" -XPOST -H "Content-type: text/xml" -d "<works
 fi
 
 
-cd -
+cd - 2>&1 &>/dev/null
