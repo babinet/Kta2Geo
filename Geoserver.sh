@@ -48,7 +48,7 @@ fi
 done
 }
 
-Menu=('Post_Geotif' 'Create_Workspace' )
+Menu=('Create_Workspace' 'Post_Geotif' 'Create_LayerGroup' )
 
 menu_from_array "${Menu[@]}"
 
@@ -67,31 +67,51 @@ echo "${bg_red}${white}---> Enter the name of the workspace <---${reset}."
 read Workspace
 echo "$Workspace"
 
+#if [ -f LayerGroup.txt ]
+#then
+#rm LayerGroup.xml
+#fi
 
-
-echo "${bg_red}${white}---> Drop the folder to upload. <---${reset}"
-read -p "${white}---> (The folder where are stored the Geotif to upload) :" Folder2Upload
-echo "${orange}$Folder2Upload ${reset}"
 File2Upload=$(find "$Folder2Upload" -name "*.tif" | sed 's/\/\//\//g' | tr ' ' '\n' )
 echo "$File2Upload" > listRest.txt
 while read Geotif
 do
 FileNameSeul=$(echo "$Geotif" | awk -F'/' '{print $NF}' | sed 's/.tif//g')
-echo "$Geotif"
-echo "$FileNameSeul"
+echo "${green}\$FileNameSeul                    ${orange}$FileNameSeul"
+echo "${white}---> Uploading file ${orange}             "$Geotif"${reset}"
 curl -u "$UserName":"$Password" -XPUT -H "Content-type:image/tiff" --data-binary @"$Geotif" https://sous-paris.com/geoserver/rest/workspaces/"$Workspace"/coveragestores/"$FileNameSeul"/file.geotiff
+
+echo "    <layer>"$FileNameSeul"</layer>" >> "$Folder2Upload"/LayerGrouptemp.xml
+echo "    <style>raster</style>" >> "$Folder2Upload"/StyleTemp.xml
+
+
+
 done < listRest.txt
-cd - 2>&1 &>/dev/null
+
+echo "<layerGroup>
+  <name>LAYERGROUPNAME</name>
+  <layers>" > "$Folder2Upload"/LayerGroup.xml
+cat "$Folder2Upload"/LayerGrouptemp.xml >> "$Folder2Upload"/LayerGroup.xml
+echo "  </layers>
+  <styles>" >> "$Folder2Upload"/LayerGroup.xml
+cat "$Folder2Upload"/StyleTemp.xml >> "$Folder2Upload"/LayerGroup.xml
+echo "  </styles>
+</layerGroup>
+" >> "$Folder2Upload"/LayerGroup.xml
+rm "$Folder2Upload"/LayerGrouptemp.xml "$Folder2Upload"/StyleTemp.xml
 fi
-echo $Geotif
+
+cd - 2>&1 &>/dev/null
+
 if [ $item = Create_Workspace ]
 then
-echo "${white}---> Create a Workspace on Geoserver using REST <---${reset}"
-echo "${bg_red}${white}---> Enter the Geoserver User Name. <---${reset}"
+
+echo "${white}---> Create a Workspace on Geoserver using REST   <---${reset}"
+echo "${bg_red}${white}---> Enter the Geoserver User Name.              <---${reset}"
 read UserName
 echo "$UserName"
 
-echo "${bg_red}${white}---> Enter "$UserName" password on Geoserver. <---${reset}"
+echo "${bg_red}${white}---> Enter "$UserName" password on Geoserver.    <---${reset}"
 read -s Password
 echo "${orange}    ************* ${reset}"
 
@@ -99,8 +119,33 @@ echo "${bg_red}${white}---> Enter the name of the workspace <---${reset}."
 read Workspace
 echo "$Workspace"
 curl -v -u "$UserName":"$Password" -XPOST -H "Content-type: text/xml" -d "<workspace><name>"$Workspace"</name></workspace>" https://sous-paris.com/geoserver/rest/workspaces
-
 fi
 
+if [ $item = Create_LayerGroup ]
+then
+
+
+echo "${white}---> Create a Layers Group on Geoserver using REST   <---${reset}"
+echo "${bg_red}${white}---> Enter the Geoserver User Name.                  <---${reset}"
+read UserName
+echo "$UserName"
+
+echo "${bg_red}${white}---> Enter "$UserName" password on Geoserver.             <---${reset}"
+read -s Password
+echo "${orange}    ************* ${reset}"
+
+
+read -p "${white}---> Drop the .xml file into to the curent shell :" LayerGroupXML
+echo "${orange}$LayerGroupXML ${reset}"
+
+read -p "${white}---> Enter the name of the Layer Group:" LayerGroupName
+echo "${orange}$LayerGroupXML${reset}"
+sed "s/LAYERGROUPNAME/$LayerGroupName/g" "$LayerGroupXML" > "$LayerGroupXML"tmp"" && mv "$LayerGroupXML"tmp"" "$LayerGroupXML"
+
+curl -u "$UserName":"$Password" -XPOST -d @"$LayerGroupXML" -H "Content-type: text/xml" https://sous-paris.com/geoserver/rest/layergroups
+
+
+echo "---> In order to serve the created LayerGroup go to geoserver with you browser & choose -> Layer Groups / Select the new LayerGroup and parent it to the workspace that the LayerGroup depends"
+fi
 
 cd - 2>&1 &>/dev/null
