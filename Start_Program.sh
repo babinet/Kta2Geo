@@ -23,11 +23,57 @@ bleuetern=`tput setaf 45`
 ilghtpurple=`tput setaf 33`
 lightred=`tput setaf 161`
 darkblue=`tput setaf 19`
+### INSTALL CHECK
+if ! [ -x "$(command -v gdal-config)" ]; then
+  echo "${bg_red}${white}---> Error: gdal is not installed.         <---${reset}" >&2
+  exit 1
+else
+gdaloutputinfo=$(gdal-config --version)
+echo "${white}---> Installed version of ${orange}Gdal${white} is ${green}"$gdaloutputinfo""
+fi
+if ! [ -x "$(command -v awk)" ]; then
+  echo "${bg_red}${white}---> Error: awk is not installed.          <---${reset}" >&2
+  exit 1
+else
+awkloutputinfo=$(awk --version)
+echo "${white}---> Installed version of ${orange}Awk${white} is ${green}"$awkloutputinfo""
+
+fi
+if ! [ -x "$(command -v wget)" ]; then
+  echo "${bg_red}${white}---> Error: wget is not installed.         <---${reset}" >&2
+  exit 1
+else
+wgetoutputinfo=$(wget --version | sed -n 1p)
+echo "${white}---> Installed version of ${orange}Wget${white} is ${green}"$wgetoutputinfo""
+fi
+if ! [ -x "$(command -v convert)" ]; then
+  echo "${bg_red}${white}---> Error: ImageMagick is not installed.  <---${reset}" >&2
+  exit 1
+else
+convertoutputinfo=$(convert --version | sed -n 1p)
+echo "${white}---> Installed version of ${orange}ImageMagick${white} is ${green}"$convertoutputinfo""
+fi
+if ! [ -x "$(command -v exiftool)" ]; then
+  echo "${bg_red}${white}---> Error: ExifTool is not installed.     <---${reset}" >&2
+  exit 1
+else
+awkoutputinfo=$(exiftool --version)
+echo "${white}---> Installed version of ${orange}Exiftool${white} is ${green}"$gdaloutputinfo""
+fi
+if ! [ -x "$(command -v unar)" ]; then
+  echo "${bg_red}${white}---> Error: Unar is not installed.     <---${reset}" >&2
+  exit 1
+else
+unaroutputinfo=$(unar --version)
+echo "${white}---> Installed version of ${orange}Unar${white} is ${green}"$unaroutputinfo""
+fi
+### INSTALL CHECK END
+#
 dir=$(
 cd -P -- "$(dirname -- "$0")" && pwd -P
 )
 cd "$dir"
-echo "
+echo "${green}
              o    O                       .oOOOo.
              o   O                .oOOo. .O     o
              O  O      O               O o
@@ -36,28 +82,10 @@ echo "
              O   O     O   O   o     O   o.      O OooO' O   o
              o    o    o   o   O   .O     O.    oO O     o   O
              O     O   \`oO \`OoO'o oOoOoO   \`OooO'  \`OoO' \`OoO'
-"
-
-echo "${white}---> Checking install & datas..."
-
-#Check
-if [[ -f servers/osxiconutils/icns2image ]]
-then
-echo -e "${green}---> Osxiconutils is installed in :${orange}\t\t\t\t\t\t\t\tservers/osxiconutils"
-else
-echo "${orange}--->Installing Osxiconutils in servers/osxiconutils"
-mkdir -p servers/osxiconutils servers/osxiconutils/temp
-wget -O servers/osxiconutils.zip https://sveinbjorn.org/files/software/osxiconutils.zip
-unzip servers/osxiconutils.zip -d servers/osxiconutils/temp
-cp -Rap servers/osxiconutils/temp/bin/* servers/osxiconutils/
-rm -R servers/osxiconutils/temp servers/osxiconutils.zip
-chmod +x servers/osxiconutils/image2icns servers/osxiconutils/seticon servers/osxiconutils/icns2image servers/osxiconutils/geticon
-fi
+${white}"
 
 
-#read input_variable
-#echo "You entered: $input_variable"
-#
+
 menu_from_array ()
 {
 
@@ -75,7 +103,7 @@ done
 }
 
 # Declare the array
-Menu=('GeoRefIGC'  'kmz2csv' 'Geoserver_operations' 'Feuilles2Planches' 'Planche to feuilles' 'Observatoire_Long_Lat-Conver' )
+Menu=('GeoRefIGC'  'kmz2csv' 'Geoserver_operations' 'Feuilles2Planches' 'Observatoire_Long_Lat-Conver' )
 
 # Call the subroutine to create the menu
 menu_from_array "${Menu[@]}"
