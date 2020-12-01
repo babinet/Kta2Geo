@@ -23,7 +23,9 @@ NTF (Paris) / Lambert Nord France  EPSG:27561
 #### kmz2csv :
 
 * Convert KMZ to CSV & Geotag images
+
 ![Screenshot](img/GeoTagImages.jpg)
+
 #### Feuilles2Planches :
 
 * Convert name Old "feuille 281" to "25-50"
