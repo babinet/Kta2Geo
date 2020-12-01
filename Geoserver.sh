@@ -47,7 +47,6 @@ echo "${bg_red}${white}Erreur - Choisir parmis 1-$#${reset}"
 fi
 done
 }
-
 Menu=('Create_Workspace' 'Post_Geotif' 'Create_LayerGroup' )
 
 menu_from_array "${Menu[@]}"
@@ -67,10 +66,8 @@ echo "${bg_red}${white}---> Enter the name of the workspace <---${reset}."
 read Workspace
 echo "$Workspace"
 
-#if [ -f LayerGroup.txt ]
-#then
-#rm LayerGroup.xml
-#fi
+read -p "${white}---> Drop the 📁 Folder containing the GeoTiff to upload to Geoserver:" Folder2Upload
+echo "${orange}$Folder2Upload ${reset}"
 
 File2Upload=$(find "$Folder2Upload" -name "*.tif" | sed 's/\/\//\//g' | tr ' ' '\n' )
 echo "$File2Upload" > listRest.txt
@@ -113,7 +110,7 @@ echo "$UserName"
 
 echo "${bg_red}${white}---> Enter "$UserName" password on Geoserver.    <---${reset}"
 read -s Password
-echo "${orange}    ************* ${reset}"
+echo "${orange}        ************* ${reset}"
 
 echo "${bg_red}${white}---> Enter the name of the workspace <---${reset}."
 read Workspace
@@ -130,22 +127,87 @@ echo "${bg_red}${white}---> Enter the Geoserver User Name.                  <---
 read UserName
 echo "$UserName"
 
-echo "${bg_red}${white}---> Enter "$UserName" password on Geoserver.             <---${reset}"
+echo "${bg_red}${white}---> Enter "$UserName" password on Geoserver.              <---${reset}"
 read -s Password
 echo "${orange}    ************* ${reset}"
 
 
-read -p "${white}---> Drop the .xml file into to the curent shell :" LayerGroupXML
-echo "${orange}$LayerGroupXML ${reset}"
+read -p "${white}---> Name Of The Group :" NameOfTheGroup
+echo "${orange}$NameOfTheGroup${reset}"
 
-read -p "${white}---> Enter the name of the Layer Group:" LayerGroupName
-echo "${orange}$LayerGroupXML${reset}"
-sed "s/LAYERGROUPNAME/$LayerGroupName/g" "$LayerGroupXML" > "$LayerGroupXML"tmp"" && mv "$LayerGroupXML"tmp"" "$LayerGroupXML"
+curl -u "$UserName":"$Password" https://sous-paris.com/geoserver/rest/layers > layers.tmp
+workspacelist=$(cat layers.tmp |tr '{' '\n'| awk -F'\"name\":\"' '{print $2}' | awk -v Workspace2group="$Workspace2group" '$0 ~ Workspace2group {print $1}' | awk -F'\"' '{print $1}' | awk -F":" '{print $1}' | awk '!a[$1]++')
 
-curl -u "$UserName":"$Password" -XPOST -d @"$LayerGroupXML" -H "Content-type: text/xml" https://sous-paris.com/geoserver/rest/layergroups
+ListLayersOfTheWorkspace=$(cat layers.tmp |tr '{' '\n'| awk -F'\"name\":\"' '{print $2}' | awk -v Workspace2group="$Workspace2group" '$0 ~ Workspace2group {print $1}' | awk -F'\"' '{print $1}' | awk -F":" '{print $2}')
 
+echo "$ListLayersOfTheWorkspace" | awk 'NF' > ListLayersOfTheWorkspace.txt
+echo "$workspacelist" | awk 'NF' > workspacelist.txt
 
-echo "---> In order to serve the created LayerGroup go to geoserver with you browser & choose -> Layer Groups / Select the new LayerGroup and parent it to the workspace that the LayerGroup depends"
+# Menu begin.
+if [ -s workspacelist.txt ]
+then
+
+# ### Menu select workspace ####
+# ### Menu select début
+echo "${reset}${white}---> List of workspaces"
+NbrOfResult=$( awk 'NF' workspacelist.txt | wc -l | awk -F'\ ' '{print $1}')
+if [[ "$NbrOfResult" == "1" ]]
+then
+echo -e "${white}---> Nombre de résultat \$NbrOfResult\t\t\t\t\t${orange}1"
+elif [[ "$NbrOfResult" < "1" ]]
+then
+echo -e "${white}---> \$NbrOfResult inférieur à ${red}1"
+echo "NbrOfResult $NbrOfResult"
+elif [[ "$NbrOfResult" -ge "1" ]]
+then
+ResultatsMultiples=$(cat workspacelist.txt | awk 'NF')
+SELECTION=1
+while read -r line; do
+echo "${orange}####################################################################################################################
+$SELECTION) $line${reset}"
+((SELECTION++))
+done <<< "$ResultatsMultiples"
+((SELECTION--))
+echo "${white}
+####################################################################################################################
+#${rest}    Choose Workspace from 1 to ${NbrOfResult} - Then hit enter
+${white}####################################################################################################################${reset}"
+read -r opt
+if [[ `seq 1 $SELECTION` =~ $opt ]]; then
+ResultatsMultiplesOUT=$( sed -n "${opt}p" <<< "$ResultatsMultiples" |  awk -F'|' '{print $3}' | tr -d '\t' | awk 'NF' )
+echo "$ResultatsMultiplesOUT" | awk 'NF' > workspace
+#cp ../.film_id ../FILM_ID.txt
+SelectedID=$(
+sed -n "${opt}p" <<< "$ResultatsMultiples"
+)
+#awk -v selectedid="$SelectedID" -F':' '$1 == selectedid' ../.Temp.film > ../.temp.film_prime
+echo -e "${white}---> You have chosen\t\t\t\t$SelectedID"
+ListLayersOfTheWorkspace=$(cat layers.tmp |tr '{' '\n'| awk -F'\"name\":\"' '{print $2}' | awk -v SelectedID="$SelectedID" '$0 ~ SelectedID {print $1}' | awk -F'\"' '{print $1}' | awk -F":" '{print $2}')
+echo "$ListLayersOfTheWorkspace" | awk '{print "<layer>"$0"</layer>"}' > AllLayers.txt
+numberofL=$(cat AllLayers.txt | wc -l | awk -F'\ ' '{print $1}')
+n=0; while (( n++ < "$numberofL" )); do echo "<style>raster</style>" >> stylesRastertmp.txt; done
+fi #end select workspace
+fi #fin du menu condition
+# # Menu de séléction fin ##
+# ### Menu de séléction ####
 fi
+
+echo "<layerGroup>
+  <name>"$NameOfTheGroup"</name>
+  <layers>" > ../LayerGroup.xml
+cat "$dir"/AllLayers.txt >> ../LayerGroup.xml
+echo "  </layers>
+  <styles>" >> ../LayerGroup.xml
+cat "$dir"/stylesRastertmp.txt >> ../LayerGroup.xml
+echo "  </styles>
+</layerGroup>
+" >> ../LayerGroup.xml
+rm "$dir"/LayerGrouptemp.xml "$dir"/stylesRastertmp.txt
+
+curl -u "$UserName":"$Password" -XPOST -d @"../LayerGroup.xml" -H "Content-type: text/xml" https://sous-paris.com/geoserver/rest/layergroups
+
+echo "---> In order to serve the created LayerGroup go to geoserver with you browser & choose -> Layer Groups / Select the group${orange}$NameOfTheGroup${white} and parent it to the workspace that the layers of the group depends"
+fi
+
 
 cd - 2>&1 &>/dev/null
