@@ -11,11 +11,11 @@
 ```
 Folder/Kta2Geo/Start_Program.sh
 ```
-![Screenshot](img/ConvertTo27561.jpg)
 
 #### GeoRefIGC :
 
 * Georeference maps in EPSG:3857 from source maps in Lambert1 EPSG:27561 based on filename.
+
 ![Screenshot](img/ConvertTo27561.jpg)
 
 NTF (Paris) / Lambert Nord France  EPSG:27561
