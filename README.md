@@ -4,17 +4,19 @@
 * *Requirement : **gdal exiftool wget imagemagick***
 * EPSG:27561 --> EPSG:3857
 
-![Screenshot](Observatoire.jpg)
+![Screenshot](img/Invit.jpg)
 
 * Usage : Start program > then choose menu
 
 ```
 Folder/Kta2Geo/Start_Program.sh
 ```
+![Screenshot](img/ConvertTo27561.jpg)
+
 #### GeoRefIGC :
 
 * Georeference maps in EPSG:3857 from source maps in Lambert1 EPSG:27561 based on filename.
-![Screenshot](ConvertTo27561.jpg)
+![Screenshot](img/ConvertTo27561.jpg)
 
 NTF (Paris) / Lambert Nord France  EPSG:27561
 
@@ -34,7 +36,7 @@ NTF (Paris) / Lambert Nord France  EPSG:27561
 #### Observatoire_Long_Lat-Converter
 
 * Conversion Long/Lat from Paris meridian Observatoire - unit : mètre
-![Screenshot](ObsConverter.jpg)
+![Screenshot](img/ObsConverter.jpg)
 ### Name convention :
 
 ##### Maps image format : .jpg, .tif, and .kmz files.
@@ -89,11 +91,11 @@ Folder/25-50-union_2007.tif
 ```
 Color RGBA :
 
-![Screenshot](_Color-union.jpg)
+![Screenshot](img/_Color-union.jpg)
 
 Mask Alpha (Band 4)  :
 
-![Screenshot](_Mask-union.jpg)
+![Screenshot](img/_Mask-union.jpg)
 
 ###### De Fourcy 1858
 
@@ -126,7 +128,7 @@ P09_Planche_5_DeFourcy-Encart-A_1858.tif
 P09_Planche_5_DeFourcy-Encart-B_1858.tif
 P09_Planche_5_DeFourcy-Encart-C_1858.tif
 ```
-![Screenshot](Encarts_Planche_5.jpg)
+![Screenshot](img/Encarts_Planche_5.jpg)
 
 ```
 Folder/_Output/PXX_Planche_XX_DeFourcy_1958.tif
