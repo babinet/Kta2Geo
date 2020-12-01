@@ -30,8 +30,9 @@ NTF (Paris) / Lambert Nord France  EPSG:27561
 
 #### Geoserver_operations
 
-* Create a Workspace on Geoserver
+* Create a Workspace on Geoserver using REST.
 * Post Geotif files to geoserver and set-up layers using REST.
+* Create Layer Group from workspace using REST.
 
 #### Observatoire_Long_Lat-Converter
 
