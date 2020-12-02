@@ -119,7 +119,7 @@ Folder/P12_Planche_8_DeFourcy_1958.tif
 Folder/P13_Planche_9_DeFourcy_1958.tif
 Folder/P14_Planche_10_DeFourcy_1958.tif
 Folder/P15_Planche_11_DeFourcy_1958.tif
-Folder/P16_Detail_Ossuaire_1860.tif
+Folder/P16_Planche_12_Encart_DeFourcy_1860.tif
 Folder/P16_Planche_12_DeFourcy_1958.tif
 Folder/P17_Planche_13_DeFourcy_1958.tif
 Folder/P18_Planche_14_DeFourcy_1958.tif
@@ -129,9 +129,9 @@ Folder/P21_Planche_17_DeFourcy_1958.tif
 ```
 
 ```
-P09_Planche_5_DeFourcy-Encart-A_1858.tif
-P09_Planche_5_DeFourcy-Encart-B_1858.tif
-P09_Planche_5_DeFourcy-Encart-C_1858.tif
+Folder/P09_Planche_5_DeFourcy-Encart-A_1858.tif
+Folder/P09_Planche_5_DeFourcy-Encart-B_1858.tif
+Folder/P09_Planche_5_DeFourcy-Encart-C_1858.tif
 ```
 ![Screenshot](img/Encarts_Planche_5.jpg)
 
