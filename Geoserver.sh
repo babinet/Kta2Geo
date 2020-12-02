@@ -47,9 +47,32 @@ echo "${bg_red}${white}Erreur - Choisir parmis 1-$#${reset}"
 fi
 done
 }
-Menu=('Create_Workspace' 'Post_Geotif' 'Create_LayerGroup' )
+Menu=('Create_Workspace' 'Post_Geotif' 'Create_LayerGroup' 'Server_setup' )
 
 menu_from_array "${Menu[@]}"
+
+ServerAddress=$(cat Server.cfg)
+
+if [ -f Server.cfg ]
+then
+echo "---> ${orange}WEB SERVER ADDRESS : ${green}$ServerAddress"
+else
+echo "${white}---> Enter the Server Name e.g: ${orange}https://DeFourcy.com:8080/geoserver    <---${reset}"
+read -p "Enter Server :${orange}" ServerName
+echo "                   ${white}$ServerName"
+echo "$ServerName" > Server.cfg
+fi
+
+
+if [ $item = Server_setup ]
+then
+echo "${white}---> Enter the Server Name e.g: ${orange}https://DeFourcy.com:8080/geoserver    <---${reset}"
+read -p "Enter Server :${orange}" ServerName
+echo "                   ${white}$ServerName"
+echo "$ServerName" > Server.cfg
+fi
+
+
 
 if [ $item = Post_Geotif ]
 then
@@ -76,7 +99,7 @@ do
 FileNameSeul=$(echo "$Geotif" | awk -F'/' '{print $NF}' | sed 's/.tif//g')
 echo "${green}\$FileNameSeul                    ${orange}$FileNameSeul"
 echo "${white}---> Uploading file ${orange}             "$Geotif"${reset}"
-curl -u "$UserName":"$Password" -XPUT -H "Content-type:image/tiff" --data-binary @"$Geotif" https://sous-paris.com/geoserver/rest/workspaces/"$Workspace"/coveragestores/"$FileNameSeul"/file.geotiff
+curl -u "$UserName":"$Password" -XPUT -H "Content-type:image/tiff" --data-binary @"$Geotif" "$ServerAddress"/rest/workspaces/"$Workspace"/coveragestores/"$FileNameSeul"/file.geotiff
 
 echo "    <layer>"$FileNameSeul"</layer>" >> "$Folder2Upload"/LayerGrouptemp.xml
 echo "    <style>raster</style>" >> "$Folder2Upload"/StyleTemp.xml
@@ -115,13 +138,11 @@ echo "${orange}        ************* ${reset}"
 echo "${bg_red}${white}---> Enter the name of the workspace <---${reset}."
 read Workspace
 echo "$Workspace"
-curl -v -u "$UserName":"$Password" -XPOST -H "Content-type: text/xml" -d "<workspace><name>"$Workspace"</name></workspace>" https://sous-paris.com/geoserver/rest/workspaces
+curl -u "$UserName":"$Password" -XPOST -H "Content-type: text/xml" -d "<workspace><name>"$Workspace"</name></workspace>" https://sous-paris.com/geoserver/rest/workspaces
 fi
 
 if [ $item = Create_LayerGroup ]
 then
-
-
 echo "${white}---> Create a Layers Group on Geoserver using REST   <---${reset}"
 echo "${bg_red}${white}---> Enter the Geoserver User Name.                  <---${reset}"
 read -p "${white}USER NAME              : ${orange}" UserName
@@ -135,7 +156,7 @@ read -p "${white}PASSWORD               :
 read -p "${white}---> Layer Group Name  : ${orange}" NameOfTheGroup
 echo "${orange}$NameOfTheGroup${reset}"
 
-curl -u "$UserName":"$Password" https://sous-paris.com/geoserver/rest/layers > layers.tmp
+curl -u "$UserName":"$Password" "$ServerAddress"/rest/layers > layers.tmp
 workspacelist=$(cat layers.tmp |tr '{' '\n'| awk -F'\"name\":\"' '{print $2}' | awk -v Workspace2group="$Workspace2group" '$0 ~ Workspace2group {print $1}' | awk -F'\"' '{print $1}' | awk -F":" '{print $1}' | awk '!a[$1]++')
 
 ListLayersOfTheWorkspace=$(cat layers.tmp |tr '{' '\n'| awk -F'\"name\":\"' '{print $2}' | awk -v Workspace2group="$Workspace2group" '$0 ~ Workspace2group {print $1}' | awk -F'\"' '{print $1}' | awk -F":" '{print $2}')
@@ -204,7 +225,7 @@ echo "  </styles>
 " >> ../LayerGroup.xml
 rm "$dir"/LayerGrouptemp.xml "$dir"/stylesRastertmp.txt
 
-curl -u "$UserName":"$Password" -XPOST -d @"../LayerGroup.xml" -H "Content-type: text/xml" https://sous-paris.com/geoserver/rest/layergroups
+curl -u "$UserName":"$Password" -XPOST -d @"../LayerGroup.xml" -H "Content-type: text/xml" "$ServerAddress"/rest/layergroups
 
 echo "---> In order to serve the created LayerGroup go to geoserver with you browser & choose -> Layer Groups / Select the group${orange} $NameOfTheGroup${white} and parent it to the workspace that the layers of the group depends."
 fi
