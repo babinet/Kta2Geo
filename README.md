@@ -52,7 +52,7 @@ Modified img with exif data updated :
 
 ### Name convention :
 
-##### Maps image format : .jpg, .tif, and .kmz files.
+##### Maps image format : .tif, and .kmz files.
 
 Original .jpeg or .tif files must be stored in :
 
@@ -97,8 +97,12 @@ output :
 ```
 Folder/_Output/26Y_V1-1951.tif
 ```
+## File Name exemple
+
+![Screenshot](img/Files.jpg)
+
 ###### Name-union_* 
-append 100m
+Append 100m - 10 cm (paper) 
 ```
 Folder/25-50-union_2007.tif
 ```
