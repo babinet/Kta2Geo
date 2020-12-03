@@ -26,6 +26,14 @@ NTF (Paris) / Lambert Nord France  EPSG:27561
 
 ![Screenshot](img/GeoTagImages.jpg)
 
+Geotage Images
+
+![Screenshot](img/convertKmz.png)
+
+Modified img with exif data updated :
+
+![Screenshot](img/LongLatImg.jpg)
+
 #### Feuilles2Planches :
 
 * Convert name Old "feuille 281" to "25-50"
