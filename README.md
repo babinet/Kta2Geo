@@ -31,7 +31,7 @@ Print exif data with Long/Lat et description
 Output datas from csv to image tags et to csv
 ```
 nme|Long, Lat EPSG:27561|imgs|Lat|Long|TimeStamp|WKT
-25-50|599724.58, 126005.20||48.8345218857581|2.33275406062603||Point(2.33275406062603,48.8345218857581)
+RUE DENFER SOUS LE MUR DES CHARTREUX|599724.58, 126005.20||48.8345218857581|2.33275406062603|image2.jpg|Point(2.33275406062603,48.8345218857581)
 ```
 
 ![Screenshot](img/convertKmz.png)
