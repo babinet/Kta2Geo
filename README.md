@@ -131,6 +131,14 @@ Folder/P06_Planche_2_DeFourcy_1958.tif
 Folder/P07_Planche_3_DeFourcy_1958.tif
 Folder/P08_Planche_4_DeFourcy_1958.tif
 Folder/P09_Planche_5_DeFourcy_1958.tif
+```
+
+![Screenshot](img/Encarts_Planche_5.jpg)
+
+```
+Folder/P09_Planche_5_DeFourcy-Encart-A_1858.tif
+Folder/P09_Planche_5_DeFourcy-Encart-B_1858.tif
+Folder/P09_Planche_5_DeFourcy-Encart-C_1858.tif
 Folder/P10_Planche_6_DeFourcy_1958.tif
 Folder/P11_Planche_7_DeFourcy_1958.tif
 Folder/P12_Planche_8_DeFourcy_1958.tif
@@ -138,6 +146,11 @@ Folder/P13_Planche_9_DeFourcy_1958.tif
 Folder/P14_Planche_10_DeFourcy_1958.tif
 Folder/P15_Planche_11_DeFourcy_1958.tif
 Folder/P16_Planche_12_Encart_DeFourcy_1860.tif
+```
+
+![Screenshot](img/Encarts_Planche_16.jpg)
+
+```
 Folder/P16_Planche_12_DeFourcy_1958.tif
 Folder/P17_Planche_13_DeFourcy_1958.tif
 Folder/P18_Planche_14_DeFourcy_1958.tif
@@ -145,13 +158,6 @@ Folder/P19_Planche_15_DeFourcy_1958.tif
 Folder/P20_Planche_16_DeFourcy_1958.tif
 Folder/P21_Planche_17_DeFourcy_1958.tif
 ```
-
-```
-Folder/P09_Planche_5_DeFourcy-Encart-A_1858.tif
-Folder/P09_Planche_5_DeFourcy-Encart-B_1858.tif
-Folder/P09_Planche_5_DeFourcy-Encart-C_1858.tif
-```
-![Screenshot](img/Encarts_Planche_5.jpg)
 
 ```
 Folder/_Output/PXX_Planche_XX_DeFourcy_1958.tif
