@@ -51,7 +51,7 @@ Menu=('Create_Workspace' 'Post_Geotif' 'Create_LayerGroup' 'Server_setup' )
 
 menu_from_array "${Menu[@]}"
 
-ServerAddress=$(cat Server.cfg)
+ServerAddress=$(cat "$dir"/Server.cfg)
 
 if [ -f Server.cfg ]
 then
@@ -60,7 +60,7 @@ else
 echo "${white}---> Enter the Server Name e.g: ${orange}https://DeFourcy.com:8080/geoserver    <---${reset}"
 read -p "Enter Server :${orange}" ServerName
 echo "                   ${white}$ServerName"
-echo "$ServerName" > Server.cfg
+echo "$ServerName" > "$dir"/Server.cfg
 fi
 
 
@@ -69,7 +69,7 @@ then
 echo "${white}---> Enter the Server Name e.g: ${orange}https://DeFourcy.com:8080/geoserver    <---${reset}"
 read -p "Enter Server :${orange}" ServerName
 echo "                   ${white}$ServerName"
-echo "$ServerName" > Server.cfg
+echo "$ServerName" > "$dir"/Server.cfg
 fi
 
 
@@ -98,7 +98,7 @@ while read Geotif
 do
 FileNameSeul=$(echo "$Geotif" | awk -F'/' '{print $NF}' | sed 's/.tif//g')
 echo "${white}
----> \$FileNameSeul                    ${orange}$FileNameSeul"
+---> \$FileNameSeul                ${orange}$FileNameSeul"
 echo "${white}---> Uploading file ${orange}             "$Geotif"${reset}"
 curl -u "$UserName":"$Password" -XPUT -H "Content-type:image/tiff" --data-binary @"$Geotif" "$ServerAddress"/rest/workspaces/"$Workspace"/coveragestores/"$FileNameSeul"/file.geotiff
 
