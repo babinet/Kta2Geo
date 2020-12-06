@@ -97,7 +97,8 @@ echo "$File2Upload" > listRest.txt
 while read Geotif
 do
 FileNameSeul=$(echo "$Geotif" | awk -F'/' '{print $NF}' | sed 's/.tif//g')
-echo "${green}\$FileNameSeul                    ${orange}$FileNameSeul"
+echo "${white}
+---> \$FileNameSeul                    ${orange}$FileNameSeul"
 echo "${white}---> Uploading file ${orange}             "$Geotif"${reset}"
 curl -u "$UserName":"$Password" -XPUT -H "Content-type:image/tiff" --data-binary @"$Geotif" "$ServerAddress"/rest/workspaces/"$Workspace"/coveragestores/"$FileNameSeul"/file.geotiff
 

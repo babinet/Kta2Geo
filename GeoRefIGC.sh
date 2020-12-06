@@ -57,13 +57,6 @@ Abscissa=35
 echo "${white}---> Ordinate substitut : ${green}$Ordinate"
 echo "${white}---> Abscissa substitut : ${green}${green}$Abscissa"
 
-elif [ "$TiffSource" == ../72H_* ]
-then
-Ordinate=23
-Abscissa=57
-echo "${white}---> Ordinate substitut : ${green}$Ordinate"
-echo "${white}---> Abscissa substitut : ${green}$Abscissa"
-
 elif [ "$TiffSource" == ../27A_* ]
 then
 Ordinate=11
@@ -141,10 +134,143 @@ Abscissa=38
 echo "${white}---> Ordinate substitut : ${green}$Ordinate"
 echo "${white}---> Abscissa substitut : ${green}$Abscissa"
 
-elif [ "$TiffSource" == ../95I_* ]
+elif [ "$TiffSource" == ../36U_* ]
 then
-Ordinate=19
-Abscissa=72
+Ordinate=11
+Abscissa=40
+echo "${white}---> Ordinate substitut : ${green}$Ordinate"
+echo "${white}---> Abscissa substitut : ${green}$Abscissa"
+
+elif [ "$TiffSource" == ../44E_* ]
+then
+Ordinate=10
+Abscissa=41
+echo "${white}---> Ordinate substitut : ${green}$Ordinate"
+echo "${white}---> Abscissa substitut : ${green}$Abscissa"
+
+elif [ "$TiffSource" == ../45A_* ]
+then
+Ordinate=11
+Abscissa=41
+echo "${white}---> Ordinate substitut : ${green}$Ordinate"
+echo "${white}---> Abscissa substitut : ${green}$Abscissa"
+
+elif [ "$TiffSource" == ../61Y_* ]
+then
+Ordinate=15
+Abscissa=55
+echo "${white}---> Ordinate substitut : ${green}$Ordinate"
+echo "${white}---> Abscissa substitut : ${green}$Abscissa"
+
+elif [ "$TiffSource" == ../62J_* ]
+then
+Ordinate=20
+Abscissa=62
+echo "${white}---> Ordinate substitut : ${green}$Ordinate"
+echo "${white}---> Abscissa substitut : ${green}$Abscissa"
+
+elif [ "$TiffSource" == ../62P_* ]
+then
+Ordinate=16
+Abscissa=54
+echo "${white}---> Ordinate substitut : ${green}$Ordinate"
+echo "${white}---> Abscissa substitut : ${green}$Abscissa"
+
+elif [ "$TiffSource" == ../62R_* ]
+then
+Ordinate=18
+Abscissa=54
+echo "${white}---> Ordinate substitut : ${green}$Ordinate"
+echo "${white}---> Abscissa substitut : ${green}$Abscissa"
+
+elif [ "$TiffSource" == ../62T_* ]
+then
+Ordinate=20
+Abscissa=54
+echo "${white}---> Ordinate substitut : ${green}$Ordinate"
+echo "${white}---> Abscissa substitut : ${green}$Abscissa"
+
+elif [ "$TiffSource" == ../62U_* ]
+then
+Ordinate=16
+Abscissa=55
+echo "${white}---> Ordinate substitut : ${green}$Ordinate"
+echo "${white}---> Abscissa substitut : ${green}$Abscissa"
+
+elif [ "$TiffSource" == ../62V_* ]
+then
+Ordinate=17
+Abscissa=55
+echo "${white}---> Ordinate substitut : ${green}$Ordinate"
+echo "${white}---> Abscissa substitut : ${green}$Abscissa"
+
+elif [ "$TiffSource" == ../62Y_* ]
+then
+Ordinate=20
+Abscissa=55
+echo "${white}---> Ordinate substitut : ${green}$Ordinate"
+echo "${white}---> Abscissa substitut : ${green}$Abscissa"
+
+elif [ "$TiffSource" == ../63K_* ]
+then
+Ordinate=21
+Abscissa=53
+echo "${white}---> Ordinate substitut : ${green}$Ordinate"
+echo "${white}---> Abscissa substitut : ${green}$Abscissa"
+
+elif [ "$TiffSource" == ../63P_* ]
+then
+Ordinate=21
+Abscissa=54
+echo "${white}---> Ordinate substitut : ${green}$Ordinate"
+echo "${white}---> Abscissa substitut : ${green}$Abscissa"
+
+elif [ "$TiffSource" == ../63Q_* ]
+then
+Ordinate=22
+Abscissa=54
+echo "${white}---> Ordinate substitut : ${green}$Ordinate"
+echo "${white}---> Abscissa substitut : ${green}$Abscissa"
+
+elif [ "$TiffSource" == ../63R_* ]
+then
+Ordinate=23
+Abscissa=54
+echo "${white}---> Ordinate substitut : ${green}$Ordinate"
+echo "${white}---> Abscissa substitut : ${green}$Abscissa"
+
+elif [ "$TiffSource" == ../63U_* ]
+then
+Ordinate=21
+Abscissa=55
+echo "${white}---> Ordinate substitut : ${green}$Ordinate"
+echo "${white}---> Abscissa substitut : ${green}$Abscissa"
+
+elif [ "$TiffSource" == ../63V_* ]
+then
+Ordinate=22
+Abscissa=55
+echo "${white}---> Ordinate substitut : ${green}$Ordinate"
+echo "${white}---> Abscissa substitut : ${green}$Abscissa"
+
+elif [ "$TiffSource" == ../63W_* ]
+then
+Ordinate=23
+Abscissa=55
+echo "${white}---> Ordinate substitut : ${green}$Ordinate"
+echo "${white}---> Abscissa substitut : ${green}$Abscissa"
+
+elif [ "$TiffSource" == ../63X_* ]
+then
+Ordinate=24
+Abscissa=55
+echo "${white}---> Ordinate substitut : ${green}$Ordinate"
+echo "${white}---> Abscissa substitut : ${green}$Abscissa"
+
+elif [ "$TiffSource" == ../66K_* ]
+then
+Ordinate=36
+Abscissa=53
 echo "${white}---> Ordinate substitut : ${green}$Ordinate"
 echo "${white}---> Abscissa substitut : ${green}$Abscissa"
 
@@ -582,270 +708,137 @@ Abscissa=72
 echo "${white}---> Ordinate substitut : ${green}$Ordinate"
 echo "${white}---> Abscissa substitut : ${green}$Abscissa"
 
-elif [ "$TiffSource" == ../36U_* ]
-then
-Ordinate=11
-Abscissa=40
-echo "${white}---> Ordinate substitut : ${green}$Ordinate"
-echo "${white}---> Abscissa substitut : ${green}$Abscissa"
-
-elif [ "$TiffSource" == ../44E_* ]
-then
-Ordinate=10
-Abscissa=41
-echo "${white}---> Ordinate substitut : ${green}$Ordinate"
-echo "${white}---> Abscissa substitut : ${green}$Abscissa"
-
-elif [ "$TiffSource" == ../45A_* ]
-then
-Ordinate=11
-Abscissa=41
-echo "${white}---> Ordinate substitut : ${green}$Ordinate"
-echo "${white}---> Abscissa substitut : ${green}$Abscissa"
-
-elif [ "$TiffSource" == ../61Y_* ]
-then
-Ordinate=15
-Abscissa=55
-echo "${white}---> Ordinate substitut : ${green}$Ordinate"
-echo "${white}---> Abscissa substitut : ${green}$Abscissa"
-
-elif [ "$TiffSource" == ../62J_* ]
-then
-Ordinate=20
-Abscissa=62
-echo "${white}---> Ordinate substitut : ${green}$Ordinate"
-echo "${white}---> Abscissa substitut : ${green}$Abscissa"
-
-elif [ "$TiffSource" == ../62P_* ]
-then
-Ordinate=16
-Abscissa=54
-echo "${white}---> Ordinate substitut : ${green}$Ordinate"
-echo "${white}---> Abscissa substitut : ${green}$Abscissa"
-
-elif [ "$TiffSource" == ../62R_* ]
-then
-Ordinate=18
-Abscissa=54
-echo "${white}---> Ordinate substitut : ${green}$Ordinate"
-echo "${white}---> Abscissa substitut : ${green}$Abscissa"
-
-elif [ "$TiffSource" == ../62T_* ]
-then
-Ordinate=20
-Abscissa=54
-echo "${white}---> Ordinate substitut : ${green}$Ordinate"
-echo "${white}---> Abscissa substitut : ${green}$Abscissa"
-
-elif [ "$TiffSource" == ../62U_* ]
-then
-Ordinate=16
-Abscissa=55
-echo "${white}---> Ordinate substitut : ${green}$Ordinate"
-echo "${white}---> Abscissa substitut : ${green}$Abscissa"
-
-elif [ "$TiffSource" == ../62V_* ]
-then
-Ordinate=17
-Abscissa=55
-echo "${white}---> Ordinate substitut : ${green}$Ordinate"
-echo "${white}---> Abscissa substitut : ${green}$Abscissa"
-
-elif [ "$TiffSource" == ../62Y_* ]
-then
-Ordinate=20
-Abscissa=55
-echo "${white}---> Ordinate substitut : ${green}$Ordinate"
-echo "${white}---> Abscissa substitut : ${green}$Abscissa"
-
-elif [ "$TiffSource" == ../63K_* ]
-then
-Ordinate=21
-Abscissa=53
-echo "${white}---> Ordinate substitut : ${green}$Ordinate"
-echo "${white}---> Abscissa substitut : ${green}$Abscissa"
-
-elif [ "$TiffSource" == ../63P_* ]
-then
-Ordinate=21
-Abscissa=54
-echo "${white}---> Ordinate substitut : ${green}$Ordinate"
-echo "${white}---> Abscissa substitut : ${green}$Abscissa"
-
-elif [ "$TiffSource" == ../63Q_* ]
-then
-Ordinate=22
-Abscissa=54
-echo "${white}---> Ordinate substitut : ${green}$Ordinate"
-echo "${white}---> Abscissa substitut : ${green}$Abscissa"
-
-elif [ "$TiffSource" == ../63R_* ]
-then
-Ordinate=23
-Abscissa=54
-echo "${white}---> Ordinate substitut : ${green}$Ordinate"
-echo "${white}---> Abscissa substitut : ${green}$Abscissa"
-
-elif [ "$TiffSource" == ../63U_* ]
-then
-Ordinate=21
-Abscissa=55
-echo "${white}---> Ordinate substitut : ${green}$Ordinate"
-echo "${white}---> Abscissa substitut : ${green}$Abscissa"
-
-elif [ "$TiffSource" == ../63V_* ]
-then
-Ordinate=22
-Abscissa=55
-echo "${white}---> Ordinate substitut : ${green}$Ordinate"
-echo "${white}---> Abscissa substitut : ${green}$Abscissa"
-
-elif [ "$TiffSource" == ../63W_* ]
-then
-Ordinate=23
-Abscissa=55
-echo "${white}---> Ordinate substitut : ${green}$Ordinate"
-echo "${white}---> Abscissa substitut : ${green}$Abscissa"
-
-elif [ "$TiffSource" == ../63X_* ]
-then
-Ordinate=24
-Abscissa=55
-echo "${white}---> Ordinate substitut : ${green}$Ordinate"
-echo "${white}---> Abscissa substitut : ${green}$Abscissa"
-
 #
 ## Ancienne Numérotation / EXEMPLE: Feuille 25-50 = Feuille 281
 #
 
-elif [ "$TiffSource" == ../29T_* ]||[ "$TiffSource" == ../Feuille-14_* ]
+elif [ "$TiffSource" == ../Feuille-14_* ]||[ "$TiffSource" == ../29T_* ]
 then
 Ordinate=25
 Abscissa=34
 echo "${white}---> Ordinate substitut : ${green}$Ordinate"
 echo "${white}---> Abscissa substitut : ${green}$Abscissa"
 
-elif [ "$TiffSource" == ../30P_* ]||[ "$TiffSource" == ../Feuille-15_* ]
+elif [ "$TiffSource" == ../Feuille-15_* ]||[ "$TiffSource" == ../30P_* ]
 then
 Ordinate=26
 Abscissa=34
 echo "${white}---> Ordinate substitut : ${green}$Ordinate"
 echo "${white}---> Abscissa substitut : ${green}$Abscissa"
 
-elif [ "$TiffSource" == ../29Y_* ]||[ "$TiffSource" == ../Feuille-26_* ]
+elif [ "$TiffSource" == ../Feuille-26_* ]||[ "$TiffSource" == ../29Y_* ]
 then
 Ordinate=25
 Abscissa=35
 echo "${white}---> Ordinate substitut : ${green}$Ordinate"
 echo "${white}---> Abscissa substitut : ${green}$Abscissa"
 
-elif [ "$TiffSource" == ../30U_* ]||[ "$TiffSource" == ../Feuille-27_* ]
+elif [ "$TiffSource" == ../Feuille-27_* ]||[ "$TiffSource" == ../30U_* ]
 then
 Ordinate=26
 Abscissa=35
 echo "${white}---> Ordinate substitut : ${green}$Ordinate"
 echo "${white}---> Abscissa substitut : ${green}$Abscissa"
 
-elif [ "$TiffSource" == ../30V_* ]||[ "$TiffSource" == ../Feuille-28_* ]
+elif [ "$TiffSource" == ../Feuille-28_* ]||[ "$TiffSource" == ../30V_* ]
 then
 Ordinate=27
 Abscissa=35
 echo "${white}---> Ordinate substitut : ${green}$Ordinate"
 echo "${white}---> Abscissa substitut : ${green}$Abscissa"
 
-elif [ "$TiffSource" == ../38E_* ]||[ "$TiffSource" == ../Feuille-39_* ]
+elif [ "$TiffSource" == ../Feuille-39_* ]||[ "$TiffSource" == ../38E_* ]
 then
 Ordinate=25
 Abscissa=36
 echo "${white}---> Ordinate substitut : ${green}$Ordinate"
 echo "${white}---> Abscissa substitut : ${green}$Abscissa"
 
-elif [ "$TiffSource" == ../39A_* ]||[ "$TiffSource" == ../Feuille-40_* ]
+elif [ "$TiffSource" == ../Feuille-40_* ]||[ "$TiffSource" == ../39A_* ]
 then
 Ordinate=26
 Abscissa=36
 echo "${white}---> Ordinate substitut : ${green}$Ordinate"
 echo "${white}---> Abscissa substitut : ${green}$Abscissa"
 
-elif [ "$TiffSource" == ../39B_* ]||[ "$TiffSource" == ../Feuille-41_* ]
+elif [ "$TiffSource" == ../Feuille-41_* ]||[ "$TiffSource" == ../39B_* ]
 then
 Ordinate=27
 Abscissa=36
 echo "${white}---> Ordinate substitut : ${green}$Ordinate"
 echo "${white}---> Abscissa substitut : ${green}$Abscissa"
 
-elif [ "$TiffSource" == ../39C_* ]||[ "$TiffSource" == ../Feuille-42_* ]
+elif [ "$TiffSource" == ../Feuille-42_* ]||[ "$TiffSource" == ../39C_* ]
 then
 Ordinate=28
 Abscissa=36
 echo "${white}---> Ordinate substitut : ${green}$Ordinate"
 echo "${white}---> Abscissa substitut : ${green}$Abscissa"
 
-elif [ "$TiffSource" == ../40A_* ]||[ "$TiffSource" == ../Feuille-45_* ]
+elif [ "$TiffSource" == ../Feuille-45_* ]||[ "$TiffSource" == ../40A_* ]
 then
 Ordinate=31
 Abscissa=36
 echo "${white}---> Ordinate substitut : ${green}$Ordinate"
 echo "${white}---> Abscissa substitut : ${green}$Abscissa"
 
-elif [ "$TiffSource" == ../40B_* ]||[ "$TiffSource" == ../Feuille-46_* ]
+elif [ "$TiffSource" == ../Feuille-46_* ]||[ "$TiffSource" == ../40B_* ]
 then
 Ordinate=32
 Abscissa=36
 echo "${white}---> Ordinate substitut : ${green}$Ordinate"
 echo "${white}---> Abscissa substitut : ${green}$Abscissa"
 
-elif [ "$TiffSource" == ../40C_* ]||[ "$TiffSource" == ../Feuille-47_* ]
+elif [ "$TiffSource" == ../Feuille-47_* ]||[ "$TiffSource" == ../40C_* ]
 then
 Ordinate=33
 Abscissa=36
 echo "${white}---> Ordinate substitut : ${green}$Ordinate"
 echo "${white}---> Abscissa substitut : ${green}$Abscissa"
 
-elif [ "$TiffSource" == ../39F_* ]||[ "$TiffSource" == ../Feuille-53_* ]
+elif [ "$TiffSource" == ../Feuille-53_* ]||[ "$TiffSource" == ../39F_* ]
 then
 Ordinate=26
 Abscissa=37
 echo "${white}---> Ordinate substitut : ${green}$Ordinate"
 echo "${white}---> Abscissa substitut : ${green}$Abscissa"
 
-elif [ "$TiffSource" == ../39G_* ]||[ "$TiffSource" == ../Feuille-54_* ]
+elif [ "$TiffSource" == ../Feuille-54_* ]||[ "$TiffSource" == ../39G_* ]
 then
 Ordinate=27
 Abscissa=37
 echo "${white}---> Ordinate substitut : ${green}$Ordinate"
 echo "${white}---> Abscissa substitut : ${green}$Abscissa"
 
-elif [ "$TiffSource" == ../39H_* ]||[ "$TiffSource" == ../Feuille-55_* ]
+elif [ "$TiffSource" == ../Feuille-55_* ]||[ "$TiffSource" == ../39H_* ]
 then
 Ordinate=28
 Abscissa=37
 echo "${white}---> Ordinate substitut : ${green}$Ordinate"
 echo "${white}---> Abscissa substitut : ${green}$Abscissa"
 
-elif [ "$TiffSource" == ../39J_* ]||[ "$TiffSource" == ../Feuille-57_* ]
+elif [ "$TiffSource" == ../Feuille-57_* ]||[ "$TiffSource" == ../39J_* ]
 then
 Ordinate=30
 Abscissa=37
 echo "${white}---> Ordinate substitut : ${green}$Ordinate"
 echo "${white}---> Abscissa substitut : ${green}$Abscissa"
 
-elif [ "$TiffSource" == ../40F_* ]||[ "$TiffSource" == ../Feuille-58_* ]
+elif [ "$TiffSource" == ../Feuille-58_* ]||[ "$TiffSource" == ../40F_* ]
 then
 Ordinate=31
 Abscissa=37
 echo "${white}---> Ordinate substitut : ${green}$Ordinate"
 echo "${white}---> Abscissa substitut : ${green}$Abscissa"
 
-elif [ "$TiffSource" == ../39O_* ]||[ "$TiffSource" == ../Feuille-72_* ]
+elif [ "$TiffSource" == ../Feuille-72_* ]||[ "$TiffSource" == ../39O_* ]
 then
 Ordinate=30
 Abscissa=38
 echo "${white}---> Ordinate substitut : ${green}$Ordinate"
 echo "${white}---> Abscissa substitut : ${green}$Abscissa"
 
-elif [ "$TiffSource" == ../40K_* ]||[ "$TiffSource" == ../Feuille-73_* ]
+elif [ "$TiffSource" == ../Feuille-73_* ]||[ "$TiffSource" == ../40K_* ]
 then
 Ordinate=31
 Abscissa=38
@@ -859,28 +852,28 @@ Abscissa=39
 echo "${white}---> Ordinate substitut : ${green}$Ordinate"
 echo "${white}---> Abscissa substitut : ${green}$Abscissa"
 
-elif [ "$TiffSource" == ../39T_* ]||[ "$TiffSource" == ../Feuille-88_* ]
+elif [ "$TiffSource" == ../Feuille-88_* ]||[ "$TiffSource" == ../39T_* ]
 then
 Ordinate=30
 Abscissa=39
 echo "${white}---> Ordinate substitut : ${green}$Ordinate"
 echo "${white}---> Abscissa substitut : ${green}$Abscissa"
 
-elif [ "$TiffSource" == ../40P_* ]||[ "$TiffSource" == ../Feuille-89_* ]
+elif [ "$TiffSource" == ../Feuille-89_* ]||[ "$TiffSource" == ../40P_* ]
 then
 Ordinate=31
 Abscissa=39
 echo "${white}---> Ordinate substitut : ${green}$Ordinate"
 echo "${white}---> Abscissa substitut : ${green}$Abscissa"
 
-elif [ "$TiffSource" == ../40U_* ]||[ "$TiffSource" == ../Feuille-106_* ]
+elif [ "$TiffSource" == ../Feuille-106_* ]||[ "$TiffSource" == ../40U_* ]
 then
 Ordinate=31
 Abscissa=40
 echo "${white}---> Ordinate substitut : ${green}$Ordinate"
 echo "${white}---> Abscissa substitut : ${green}$Abscissa"
 
-elif [ "$TiffSource" == ../40V_* ]||[ "$TiffSource" == ../Feuille-107_* ]
+elif [ "$TiffSource" == ../Feuille-107_* ]||[ "$TiffSource" == ../40V_* ]
 then
 Ordinate=32
 Abscissa=40
@@ -1538,13 +1531,6 @@ Abscissa=55
 echo "${white}---> Ordinate substitut : ${green}$Ordinate"
 echo "${white}---> Abscissa substitut : ${green}$Abscissa"
 
-elif [ "$TiffSource" == ../66K_* ]
-then
-Ordinate=36
-Abscissa=53
-echo "${white}---> Ordinate substitut : ${green}$Ordinate"
-echo "${white}---> Abscissa substitut : ${green}$Abscissa"
-
 
 
 #elif [ "$TiffSource" == ../Feuille-274_* ]||[ "$TiffSource" == ../57S-X_* ]
@@ -1677,8 +1663,8 @@ mv "../_Output/"$NameNoExt"_"$Year".tif" ../_TRASH_TEMP/"$FileDate"_"$NameNoExt"
 fi
 gdalwarp -co COMPRESS=NONE -r bilinear -dstalpha -s_srs "EPSG:27561" -t_srs "EPSG:3857"  temp.tif "../_Output/"$NameNoExt"_"$Year".tif"
 
-# Planche 36K_*
-elif [ "$TiffSource" == ../36K_* ]
+# Planche 36K_* or ../11-38_*
+elif [ "$TiffSource" == ../36K_* ]||[ "$TiffSource" == ../11-38_* ]
 then
 echo "${orange}---> Cas Particuliers - Transformation fixe${reset}"
 gdal_translate -co COMPRESS=NONE -a_srs EPSG:27561 -of GTiff -gcp 0 0 591000 131024 -gcp 0 "$HeightImage" 591000 130524 -gcp "$WidthImage" 0 591600 131024 -gcp "$WidthImage" "$HeightImage" 591600 130524 "$TiffSource" temp.tif
@@ -2014,7 +2000,6 @@ mv "../_Output/"$NameNoExt"_"$Year".tif" ../_TRASH_TEMP/"$FileDate"_"$NameNoExt"
 fi
 gdalwarp -co COMPRESS=NONE -r bilinear -s_srs "EPSG:27561" -t_srs "EPSG:3857" -dstalpha temp.tif "../_Output/"$NameNoExt"_"$Year".tif"
 
-609900 121824,610500 121824,609900 122224,609900 122224,609900 121824
 # Planche ../42-43-60_*
 elif [ "$TiffSource" == ../42-43-60_* ]||[ "$TiffSource" == ../76V-W_* ]
 then
@@ -2024,6 +2009,17 @@ then
 mv "../_Output/"$NameNoExt"_"$Year".tif" ../_TRASH_TEMP/"$FileDate"_"$NameNoExt"_"$Year".tif
 fi
 gdalwarp -co COMPRESS=NONE -r bilinear -s_srs "EPSG:27561" -t_srs "EPSG:3857" -dstalpha temp.tif "../_Output/"$NameNoExt"_"$Year".tif"
+
+# Planche ../42-67-union_*
+elif [ "$TiffSource" == ../42-67-union_* ]||[ "$TiffSource" == ../76V-W_* ]
+then
+gdal_translate -co ALPHA=YES -co COMPRESS=NONE -a_srs EPSG:27561 -of GTiff -gcp 0 0 609600 119424 -gcp 0 "$HeightImage" 609600 118924 -gcp "$WidthImage" 0 610200 119424 -gcp "$WidthImage" "$HeightImage" 610200 118924 "$TiffSource" temp.tif
+if [ -f "../_Output/"$NameNoExt"_"$Year".tif" ]
+then
+mv "../_Output/"$NameNoExt"_"$Year".tif" ../_TRASH_TEMP/"$FileDate"_"$NameNoExt"_"$Year".tif
+fi
+gdalwarp -co COMPRESS=NONE -r bilinear -s_srs "EPSG:27561" -t_srs "EPSG:3857" -dstalpha temp.tif "../_Output/"$NameNoExt"_"$Year".tif"
+
 
 # Planche ../34-35-38_*
 elif [ "$TiffSource" == ../34-35-38_* ]||[ "$TiffSource" == ../Feuille-76_* ]||[ "$TiffSource" == ../40N-O_* ]
@@ -2166,7 +2162,7 @@ fi
 gdalwarp -co COMPRESS=NONE -r bilinear -s_srs "EPSG:27561" -t_srs "EPSG:3857" -dstalpha temp.tif "../_Output/"$NameNoExt"_"$Year".tif"
 
 # Planche ../46-57*
-elif [ "$TiffSource" == ../46-57* ]
+elif [ "$TiffSource" == ../46-57* ]||[ "$TiffSource" == ../77F_* ]
 then
 gdal_translate -co COMPRESS=NONE -a_srs EPSG:27561 -of GTiff -gcp 0 0 612100 123424 -gcp 0 "$HeightImage" 612100 123024 -gcp "$WidthImage" 0 612700 123424 -gcp "$WidthImage" "$HeightImage" 612700 123024 "$TiffSource" temp.tif
 if [ -f "../_Output/"$NameNoExt"_"$Year".tif" ]
@@ -2176,7 +2172,7 @@ fi
 gdalwarp -co COMPRESS=NONE -r bilinear -s_srs "EPSG:27561" -t_srs "EPSG:3857" -dstalpha temp.tif "../_Output/"$NameNoExt"_"$Year".tif"
 
 # Planche ../46-58*
-elif [ "$TiffSource" == ../46-58* ]
+elif [ "$TiffSource" == ../46-58* ]||[ "$TiffSource" == ../77K_* ]
 then
 gdal_translate -co COMPRESS=NONE -a_srs EPSG:27561 -of GTiff -gcp 0 0 612100 123024 -gcp 0 "$HeightImage" 612100 122624 -gcp "$WidthImage" 0 612700  123024 -gcp "$WidthImage" "$HeightImage" 612700 122624 "$TiffSource" temp.tif
 if [ -f "../_Output/"$NameNoExt"_"$Year".tif" ]
@@ -2186,7 +2182,7 @@ fi
 gdalwarp -co COMPRESS=NONE -r bilinear -s_srs "EPSG:27561" -t_srs "EPSG:3857" -dstalpha temp.tif "../_Output/"$NameNoExt"_"$Year".tif"
 
 # Planche ../46-59*_
-elif [ "$TiffSource" == ../46-59_* ]
+elif [ "$TiffSource" == ../46-59_* ]||[ "$TiffSource" == ../77P_* ]
 then
 gdal_translate -co COMPRESS=NONE -a_srs EPSG:27561 -of GTiff -gcp 0 0 612100 122624 -gcp 0 "$HeightImage" 612100 122224 -gcp "$WidthImage" 0 612700 122624 -gcp "$WidthImage" "$HeightImage" 612700 122224 "$TiffSource" temp.tif
 if [ -f "../_Output/"$NameNoExt"_"$Year".tif" ]
