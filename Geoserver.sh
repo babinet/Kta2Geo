@@ -145,6 +145,30 @@ fi
 if [ $item = Create_LayerGroup ]
 then
 echo "${white}---> Create a Layers Group on Geoserver using REST   <---${reset}"
+echo "${white}---> Manualy (For old Geoserver verion) choose 2     <---${reset}"
+echo "${white}---> Automatic (For new Geoserver verion) choose 1   <---${reset}"
+
+menu_from_array2 ()
+{
+
+select Geoversion; do
+if [ 1 -le "$REPLY" ] && [ "$REPLY" -le $# ];
+
+then
+echo "Running $Geoversion.."
+break;
+else
+echo "${bg_red}${white}Erreur - Choisir parmis 1-$#${reset}"
+fi
+done
+}
+Menu=('New_Geoserver_Verion' 'OLD_Geoserver_Verion' )
+
+menu_from_array2 "${Menu[@]}"
+
+if [ $Geoversion = New_Geoserver_Verion ]
+then
+
 echo "${bg_red}${white}---> Enter the Geoserver User Name.                  <---${reset}"
 read -p "${white}USER NAME              : ${orange}" UserName
 echo "$UserName"
@@ -215,11 +239,11 @@ fi #fin du menu condition
 fi
 
 echo "<layerGroup>
-  <name>"$NameOfTheGroup"</name>
-  <layers>" > ../LayerGroup.xml
+<name>"$NameOfTheGroup"</name>
+<layers>" > ../LayerGroup.xml
 cat "$dir"/AllLayers.txt >> ../LayerGroup.xml
 echo "  </layers>
-  <styles>" >> ../LayerGroup.xml
+<styles>" >> ../LayerGroup.xml
 cat "$dir"/stylesRastertmp.txt >> ../LayerGroup.xml
 echo "  </styles>
 </layerGroup>
@@ -227,6 +251,61 @@ echo "  </styles>
 rm "$dir"/LayerGrouptemp.xml "$dir"/stylesRastertmp.txt
 
 curl -u "$UserName":"$Password" -XPOST -d @"../LayerGroup.xml" -H "Content-type: text/xml" "$ServerAddress"/rest/layergroups
+
+
+fi
+
+if [ $Geoversion = OLD_Geoserver_Verion ]
+then
+echo "${bg_red}${white}---> Enter the Geoserver User Name.                  <---${reset}"
+read -p "${white}USER NAME              : ${orange}" UserName
+echo "$UserName"
+
+echo "${bg_red}${white}---> Enter "$UserName" password on Geoserver.              <---${reset}"
+read -p "${white}PASSWORD               :
+" -s  Password
+
+read -p "${white}---> Layer Group Name  : ${orange}" NameOfTheGroup
+echo "${orange}$NameOfTheGroup${reset}"
+
+curl -u "$UserName":"$Password" "$ServerAddress"/rest/layers.xml  > ../All_layers.xml
+cat ../All_layers.xml | awk '/    <name>/' | sed 's/    <name>//g' | sed 's/<\/name>//g'> ../All_layers.txt
+
+echo "${white}---> An xml of all the layers in geoserver has been downloaded from geoserver ${orange}All_layers.xml"
+echo "${white}---> A text file ${orange}(All_layers.txt)${white} of all the layers in geoserver has been genrated from All_layers.xml
+---> Edit the file ${orange}All_layers.txt${white}. Remove the layers you don't want
+---> ! Keep layers Only from the same workspace ! Or it won't work !"
+
+read -p "${white}---> Drop the modified file ${orange}All_layers.txt then press enter : ${orange}" LayerListTXT
+echo "${orange}$LayerListTXT${reset}"
+
+
+
+cat "$LayerListTXT" | awk '{print "<layer>"$0"</layer>"}' > "$dir"/AllLayersTMP
+
+if [ -f "$dir"/stylesRastertmp.txt ]
+then
+rm "$dir"/stylesRastertmp.txt
+fi
+
+numberofL=$(cat "$dir"/AllLayersTMP | wc -l | awk -F'\ ' '{print $1}')
+n=0; while (( n++ < "$numberofL" )); do echo "<style>raster</style>" >> "$dir"/stylesRastertmp.txt; done
+
+echo "<layerGroup>
+<name>"$NameOfTheGroup"</name>
+<layers>" > ../LayerGroup_"$NameOfTheGroup".xml
+cat "$dir"/AllLayersTMP >> ../LayerGroup_"$NameOfTheGroup".xml
+echo "  </layers>
+<styles>" >> ../LayerGroup_"$NameOfTheGroup".xml
+cat "$dir"/stylesRastertmp.txt >> ../LayerGroup_"$NameOfTheGroup".xml
+echo "  </styles>
+</layerGroup>
+" >> ../LayerGroup_"$NameOfTheGroup".xml
+rm "$dir"/LayerGrouptemp.xml "$dir"/stylesRastertmp.txt
+
+curl -u "$UserName":"$Password" -XPOST -d @"../LayerGroup_"$NameOfTheGroup".xml" -H "Content-type: text/xml" "$ServerAddress"/rest/layergroups
+
+fi
 
 echo "---> In order to serve the created LayerGroup go to geoserver with you browser & choose -> Layer Groups / Select the group${orange} $NameOfTheGroup${white} and parent it to the workspace that the layers of the group depends."
 fi
