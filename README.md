@@ -28,7 +28,7 @@ NTF (Paris) / Lambert Nord France  EPSG:27561
 
 Geotag Images
 Print exif data with Long/Lat et description
-Output datas from csv to image tags et to csv
+Output datas from .kml to csv and print image geotags in exif infomation & tag image description from .kml. 
 ```
 nme|Long, Lat EPSG:27561|imgs|Lat|Long|TimeStamp|WKT
 RUE DENFER SOUS LE MUR DES CHARTREUX|599724.58, 126005.20|image2.jpg|48.8345218857581|2.33275406062603|2020-11-23 16:16:58|Point(2.33275406062603,48.8345218857581)
