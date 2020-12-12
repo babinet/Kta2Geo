@@ -1,7 +1,7 @@
 # Kta2Géo
 
 * *Environment : #!/bin/bash*
-* *Requirement : **gdal exiftool wget imagemagick***
+* *Requirement : **gdal exiftool wget imagemagick unar***
 * EPSG:27561 --> EPSG:3857
 
 ![Screenshot](img/Invit.jpg)
