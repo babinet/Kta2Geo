@@ -2691,7 +2691,7 @@ done
 
 
 
-if [ -f "../_Atlas_des_Carrière_du_département_1962.tif" ]
+if [ -f "../_Atlas_des_Carrière_du_département_1962.tif" ]
 then
 echo "${white}
             #############################################
@@ -2711,45 +2711,16 @@ echo "${white}
             au Nord de la façade méridionale de l'Observatoire.
             Feuilles de l’Atlas des Carrières Souterraines de Paris.
 "
-gdal_translate -co COMPRESS=NONE -a_srs EPSG:27561 -of GTiff -gcp 0 0 582000 141874 -gcp 0 "$HeightImage" 582000 113824 -gcp "$WidthImage" 0 617210 141874 -gcp "$WidthImage" "$HeightImage" 617210 113824 "../_Atlas_des_Carrière_du_département_1962.tif" temp.tif
-if [ -f "../_Output/_Atlas_des_Carrière_du_département_1962.tif" ]
+gdal_translate -co COMPRESS=NONE -a_srs EPSG:27561 -of GTiff -gcp 0 0 582000 141874 -gcp 0 "$HeightImage" 582000 113824 -gcp "$WidthImage" 0 617210 141874 -gcp "$WidthImage" "$HeightImage" 617210 113824 "../_Atlas_des_Carrière_du_département_1962.tif" temp.tif
+if [ -f "../_Output/_Atlas_des_Carrière_du_département_1962.tif" ]
 then
-mv "../_Output/_Atlas_des_Carrière_du_département_1962.tif" "../_TRASH_TEMP/"$FileDate"_Atlas_des_Carrière_du_département_1962.tif"
+mv "../_Output/_Atlas_des_Carrière_du_département_1962.tif" "../_TRASH_TEMP/"$FileDate"_Atlas_des_Carrière_du_département_1962.tif"
 fi
 
-gdalwarp -co COMPRESS=NONE -dstalpha -s_srs "EPSG:27561" -t_srs "EPSG:3857" temp.tif "../_Output/_Atlas_des_Carrière_du_département_1962.tif"
+gdalwarp -co COMPRESS=NONE -dstalpha -s_srs "EPSG:27561" -t_srs "EPSG:3857" temp.tif "../_Output/_Atlas_des_Carrière_du_département_1962.tif"
 
 fi
 
 rm temp.tif
 
 cd - 2>&1 &>/dev/null
-
-
-
-
-
-
-
-
-
-
-#tesseract -l fra 25-50-2003.tif  Out.txt
-# tesseract -l fra --dpi 300 25-50-2003.tif  Out.txt
-
-#convert   -colorspace Gray NB.tif
-# tesseract -l fra --dpi 300 NB.tif   Out.txt
-#tesseract -l fra --dpi 72 NB.tif   Out.txt
-
-
-
-
-
-
-
-# .md
-#            ![](images/table 1-1.png)
-#            to:
-#
-#            ![](images/table%201-1.png)
-
