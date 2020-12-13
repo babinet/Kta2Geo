@@ -151,16 +151,16 @@ Folder/P16_Planche_12_Encart_DeFourcy_1860.tif
 ![Screenshot](img/Encarts_Planche_16.jpg)
 
 ```
-Folder/P16_Planche_12_DeFourcy_1958.tif
-Folder/P17_Planche_13_DeFourcy_1958.tif
-Folder/P18_Planche_14_DeFourcy_1958.tif
-Folder/P19_Planche_15_DeFourcy_1958.tif
-Folder/P20_Planche_16_DeFourcy_1958.tif
-Folder/P21_Planche_17_DeFourcy_1958.tif
+Folder/P16_Planche_12_DeFourcy_1858.tif
+Folder/P17_Planche_13_DeFourcy_1858.tif
+Folder/P18_Planche_14_DeFourcy_1858.tif
+Folder/P19_Planche_15_DeFourcy_1858.tif
+Folder/P20_Planche_16_DeFourcy_1858.tif
+Folder/P21_Planche_17_DeFourcy_1858.tif
 ```
 
 ```
-Folder/_Output/PXX_Planche_XX_DeFourcy_1958.tif
+Folder/_Output/PXX_Planche_XX_DeFourcy_1858.tif
 ```
 
 ##### Kmz files
