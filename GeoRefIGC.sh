@@ -2035,6 +2035,16 @@ mv "../_Output/"$NameNoExt"_"$Year".tif" ../_TRASH_TEMP/"$FileDate"_"$NameNoExt"
 fi
 gdalwarp -co COMPRESS=NONE -r bilinear -s_srs "EPSG:27561" -t_srs "EPSG:3857" -dstalpha temp.tif "../_Output/"$NameNoExt"_"$Year".tif"
 
+# Planche ../34-48-49_*
+elif [[ "$TiffSource" =~ "../34-48-49_"* ]]||[[ "$TiffSource" =~ "../Feuille-255_"* ]]||[[ "$TiffSource" =~ "../57N-S_"* ]]
+then
+gdal_translate -co ALPHA=YES -co COMPRESS=NONE -a_srs EPSG:27561 -of GTiff -gcp 0 0 604800 126924 -gcp 0 "$HeightImage" 604800 126524 -gcp "$WidthImage" 0 605400  126924 -gcp "$WidthImage" "$HeightImage" 605400 126524 "$TiffSource" temp.tif
+if [ -f "../_Output/"$NameNoExt"_"$Year".tif" ]
+then
+mv "../_Output/"$NameNoExt"_"$Year".tif" ../_TRASH_TEMP/"$FileDate"_"$NameNoExt"_"$Year".tif
+fi
+gdalwarp -co COMPRESS=NONE -r bilinear -s_srs "EPSG:27561" -t_srs "EPSG:3857" -dstalpha temp.tif "../_Output/"$NameNoExt"_"$Year".tif"
+
 # Planche ../34-49-50_*
 elif [[ "$TiffSource" =~ "../34-49-50_"* ]]||[[ "$TiffSource" =~ "../Feuille-274_"* ]]||[[ "$TiffSource" =~ "../57S-X_"* ]]
 then
@@ -2199,6 +2209,16 @@ gdalwarp -co COMPRESS=NONE -r bilinear -dstalpha -s_srs "EPSG:27561" -t_srs "EPS
 elif [[ "$TiffSource" =~ "../48-38-39-union_"* ]]||[[ "$TiffSource" =~ "../43M-R-union_"* ]]
 then
 gdal_translate -co ALPHA=YES -co COMPRESS=NONE -a_srs EPSG:27561 -of GTiff -gcp 0 0 613100 130824 -gcp 0 "$HeightImage" 613100 130424 -gcp "$WidthImage" 0 613800 130824 -gcp "$WidthImage" "$HeightImage" 613800 130424 "$TiffSource" temp.tif
+if [ -f "../_Output/"$NameNoExt"_"$Year".tif" ]
+then
+mv "../_Output/"$NameNoExt"_"$Year".tif" ../_TRASH_TEMP/"$FileDate"_"$NameNoExt"_"$Year".tif
+fi
+gdalwarp -co COMPRESS=NONE -r bilinear -dstalpha -s_srs "EPSG:27561" -t_srs "EPSG:3857" temp.tif "../_Output/"$NameNoExt"_"$Year".tif"
+
+# Planche ../56-24-union_*
+elif [[ "$TiffSource" =~ "../56-24-union_"* ]]
+then
+gdal_translate -co ALPHA=YES -co COMPRESS=NONE -a_srs EPSG:27561 -of GTiff -gcp 0 0 618000 136624 -gcp 0 "$HeightImage" 618000 136124 -gcp "$WidthImage" 0 618600 136624 -gcp "$WidthImage" "$HeightImage" 618600 136124 "$TiffSource" temp.tif
 if [ -f "../_Output/"$NameNoExt"_"$Year".tif" ]
 then
 mv "../_Output/"$NameNoExt"_"$Year".tif" ../_TRASH_TEMP/"$FileDate"_"$NameNoExt"_"$Year".tif
@@ -2487,7 +2507,7 @@ gdalwarp -co COMPRESS=NONE -r bilinear -s_srs "EPSG:27561" -t_srs "EPSG:3857" -d
 # De Fourcy 1858 ../P21_Planche_17_DeFourcy_1858
 elif [ "$TiffSource" == ../P21_Planche_17_DeFourcy_1858.tif ]
 then
-gdal_translate -co ALPHA=YES -co COMPRESS=NONE -a_srs EPSG:27561 -of GTiff -gcp 0 0 596000 129224 -gcp 0 "$HeightImage" 596000 128424  -gcp "$WidthImage" 0 597000 129224 -gcp "$WidthImage" "$HeightImage" 597000 128424 "$TiffSource" temp.tif
+gdal_translate -co ALPHA=YES -co COMPRESS=NONE -a_srs EPSG:27561 -of GTiff -gcp 0 0 596000 129224 -gcp 0 "$HeightImage" 596000 128624  -gcp "$WidthImage" 0 597000 129224 -gcp "$WidthImage" "$HeightImage" 597000 128624 "$TiffSource" temp.tif
 if [ -f ../_Output/P21_Planche_17_DeFourcy_1858.tif ]
 then
 mv ../_Output/P21_Planche_17_DeFourcy_1858.tif ../_TRASH_TEMP/"$FileDate"_P21_Planche_17_DeFourcy_1858.tif
@@ -2635,7 +2655,7 @@ echo "${white}---> \$Year   -   -   -   -   -   -   -   -   -   -   -   -   -   
 echo "
 ${white}############################### Planche ${green}$Ordinate $Abscissa $Version $Year ${white}###############################
 "
-echo "${white}---> NTF (Paris) / Lambert Nord France  ${green}27561 ${white}                  :       ${green}meters          ${white}<---
+echo "${white}---> NTF (Paris) / Lambert Nord France  ${green}27561 ${white}            unit  :       ${green}meter           ${white}<---
 ${white}---> \"Nouvelle Triangulation Francaise (Paris)\""
 echo "                                                                     Nord      Lambert 1"
 echo "${white}---> \$Nord   Lambert Nord    -   - EPSG:${green}27561${white}-   -   -   -   -   -   ${orange}$Nord"
@@ -2656,15 +2676,15 @@ echo "${white}---> \$NordEst4326    -   -   -   - EPSG:${green}4326${white} -   
 echo "${white}---> \$SudEst4326 -   -   -   -   - EPSG:${green}4326${white} -   -   -   -   -   -   ${orange}$SudEst4326"
 
 echo "
-${white}---> WGS 84 / Pseudo-Mercator      EPSG:${green}3857 ${white}Corners unit       :       ${green}meters          ${white}<---
+${white}---> WGS 84 / Pseudo-Mercator      EPSG:${green}3857 ${white}Corners      unit  :       ${green}meter           ${white}<---
 ${white}---> \"World Geodetic System 1984\""
 echo "${white}---> \$NordOuest3857  -   -   -   - EPSG:${green}3857${white} -   -   -   -   -   -   ${orange}$NordOuest3857"
 echo "${white}---> \$SudEst3857 -   -   -   -   - EPSG:${green}3857${white} -   -   -   -   -   -   ${orange}$SudEst3857"
 echo "${white}---> \$NordEst3857    -   -   -   - EPSG:${green}3857${white} -   -   -   -   -   -   ${orange}$NordEst3857"
 echo "${white}---> \$SudEst3857 -   -   -   -   - EPSG:${green}3857${white} -   -   -   -   -   -   ${orange}$SudEst3857"
 
-echo "${white}---> \$WidthImage${white} -   -   -   -   -   -   -   -   -   -   -   -   -   ${orange}$WidthImage"
-echo "${white}---> \$HeightImage${white}    -   -   -   -   -   -   -   -   -   -   -   -   ${orange}$HeightImage"
+echo "${white}---> \$WidthImage${white} -   -   -   -   -   -   -   -   -   -   -   -   -   ${orange}$WidthImage px"
+echo "${white}---> \$HeightImage${white}    -   -   -   -   -   -   -   -   -   -   -   -   ${orange}$HeightImage px"
 
 
 
@@ -2691,7 +2711,7 @@ done
 
 
 
-if [ -f "../_Atlas_des_Carrière_du_département_1962.tif" ]
+if [ -f "../_Atlas_des_Carrière_du_département_1962.tif" ]
 then
 echo "${white}
             #############################################
@@ -2711,16 +2731,45 @@ echo "${white}
             au Nord de la façade méridionale de l'Observatoire.
             Feuilles de l’Atlas des Carrières Souterraines de Paris.
 "
-gdal_translate -co COMPRESS=NONE -a_srs EPSG:27561 -of GTiff -gcp 0 0 582000 141874 -gcp 0 "$HeightImage" 582000 113824 -gcp "$WidthImage" 0 617210 141874 -gcp "$WidthImage" "$HeightImage" 617210 113824 "../_Atlas_des_Carrière_du_département_1962.tif" temp.tif
-if [ -f "../_Output/_Atlas_des_Carrière_du_département_1962.tif" ]
+gdal_translate -co COMPRESS=NONE -a_srs EPSG:27561 -of GTiff -gcp 0 0 582000 141874 -gcp 0 "$HeightImage" 582000 113824 -gcp "$WidthImage" 0 617210 141874 -gcp "$WidthImage" "$HeightImage" 617210 113824 "../_Atlas_des_Carrière_du_département_1962.tif" temp.tif
+if [ -f "../_Output/_Atlas_des_Carrière_du_département_1962.tif" ]
 then
-mv "../_Output/_Atlas_des_Carrière_du_département_1962.tif" "../_TRASH_TEMP/"$FileDate"_Atlas_des_Carrière_du_département_1962.tif"
+mv "../_Output/_Atlas_des_Carrière_du_département_1962.tif" "../_TRASH_TEMP/"$FileDate"_Atlas_des_Carrière_du_département_1962.tif"
 fi
 
-gdalwarp -co COMPRESS=NONE -dstalpha -s_srs "EPSG:27561" -t_srs "EPSG:3857" temp.tif "../_Output/_Atlas_des_Carrière_du_département_1962.tif"
+gdalwarp -co COMPRESS=NONE -dstalpha -s_srs "EPSG:27561" -t_srs "EPSG:3857" temp.tif "../_Output/_Atlas_des_Carrière_du_département_1962.tif"
 
 fi
 
 rm temp.tif
 
 cd - 2>&1 &>/dev/null
+
+
+
+
+
+
+
+
+
+
+#tesseract -l fra 25-50-2003.tif  Out.txt
+# tesseract -l fra --dpi 300 25-50-2003.tif  Out.txt
+
+#convert   -colorspace Gray NB.tif
+# tesseract -l fra --dpi 300 NB.tif   Out.txt
+#tesseract -l fra --dpi 72 NB.tif   Out.txt
+
+
+
+
+
+
+
+# .md
+#            ![](images/table 1-1.png)
+#            to:
+#
+#            ![](images/table%201-1.png)
+
