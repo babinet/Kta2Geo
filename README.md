@@ -125,12 +125,12 @@ Mask Alpha (Band 4)  :
 ATLAS SOUTERRAIN DE LA VILLE DE PARIS.
 
 ```
-Folder/P00_Planche_0_Assemblage_DeFourcy_1958.tif
-Folder/P05_Planche_1_DeFourcy_1958.tif
-Folder/P06_Planche_2_DeFourcy_1958.tif
-Folder/P07_Planche_3_DeFourcy_1958.tif
-Folder/P08_Planche_4_DeFourcy_1958.tif
-Folder/P09_Planche_5_DeFourcy_1958.tif
+Folder/P00_Planche_0_Assemblage_DeFourcy_1858.tif
+Folder/P05_Planche_1_DeFourcy_1858.tif
+Folder/P06_Planche_2_DeFourcy_1858.tif
+Folder/P07_Planche_3_DeFourcy_1858.tif
+Folder/P08_Planche_4_DeFourcy_1858.tif
+Folder/P09_Planche_5_DeFourcy_1858.tif
 ```
 
 ![Screenshot](img/Encarts_Planche_5.jpg)
@@ -139,12 +139,12 @@ Folder/P09_Planche_5_DeFourcy_1958.tif
 Folder/P09_Planche_5_DeFourcy-Encart-A_1858.tif
 Folder/P09_Planche_5_DeFourcy-Encart-B_1858.tif
 Folder/P09_Planche_5_DeFourcy-Encart-C_1858.tif
-Folder/P10_Planche_6_DeFourcy_1958.tif
-Folder/P11_Planche_7_DeFourcy_1958.tif
-Folder/P12_Planche_8_DeFourcy_1958.tif
-Folder/P13_Planche_9_DeFourcy_1958.tif
-Folder/P14_Planche_10_DeFourcy_1958.tif
-Folder/P15_Planche_11_DeFourcy_1958.tif
+Folder/P10_Planche_6_DeFourcy_1858.tif
+Folder/P11_Planche_7_DeFourcy_1858.tif
+Folder/P12_Planche_8_DeFourcy_1858.tif
+Folder/P13_Planche_9_DeFourcy_1858.tif
+Folder/P14_Planche_10_DeFourcy_1858.tif
+Folder/P15_Planche_11_DeFourcy_1858.tif
 Folder/P16_Planche_12_Encart_DeFourcy_1860.tif
 ```
 
