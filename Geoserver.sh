@@ -145,8 +145,8 @@ fi
 if [ $item = Create_LayerGroup ]
 then
 echo "${white}---> Create a Layers Group on Geoserver using REST   <---${reset}"
-echo "${white}---> Manualy (For old Geoserver verion) choose 2     <---${reset}"
-echo "${white}---> Automatic (For new Geoserver verion) choose 1   <---${reset}"
+echo "${white}---> Manualy (For old Geoserver version) choose 2     <---${reset}"
+echo "${white}---> Automatic (For new Geoserver version) choose 1   <---${reset}"
 
 menu_from_array2 ()
 {
