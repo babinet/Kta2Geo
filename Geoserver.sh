@@ -162,11 +162,11 @@ echo "${bg_red}${white}Erreur - Choisir parmis 1-$#${reset}"
 fi
 done
 }
-Menu=('New_Geoserver_Verion' 'OLD_Geoserver_Verion' )
+Menu=('New_Geoserver_Version' 'OLD_Geoserver_Version' )
 
 menu_from_array2 "${Menu[@]}"
 
-if [ $Geoversion = New_Geoserver_Verion ]
+if [ $Geoversion = New_Geoserver_Version ]
 then
 
 echo "${bg_red}${white}---> Enter the Geoserver User Name.                  <---${reset}"
@@ -255,7 +255,7 @@ curl -u "$UserName":"$Password" -XPOST -d @"../LayerGroup.xml" -H "Content-type:
 
 fi
 
-if [ $Geoversion = OLD_Geoserver_Verion ]
+if [ $Geoversion = OLD_Geoserver_Version ]
 then
 echo "${bg_red}${white}---> Enter the Geoserver User Name.                  <---${reset}"
 read -p "${white}USER NAME              : ${orange}" UserName
