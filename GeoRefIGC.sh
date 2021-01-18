@@ -1533,6 +1533,12 @@ Abscissa=55
 echo "${white}---> Ordinate substitut : ${green}$Ordinate"
 echo "${white}---> Abscissa substitut : ${green}$Abscissa"
 
+elif [[ "$TiffSource" == "../65I_"* ]]
+then
+Ordinate=34
+Abscissa=52
+echo "${white}---> Ordinate substitut : ${green}$Ordinate"
+echo "${white}---> Abscissa substitut : ${green}$Abscissa"
 
 # END Abscissa FIX
 else
@@ -1974,6 +1980,17 @@ then
 gdal_translate -co COMPRESS=NONE -a_srs EPSG:27561 -of GTiff -gcp 0 0 609347 128673 -gcp 0 "$HeightImage" 609347 128570 -gcp "$WidthImage" 0 609500 128673 -gcp "$WidthImage" "$HeightImage" 609500 128570 "$TiffSource" temp.tif
 gdalwarp -co COMPRESS=NONE -overwrite -s_srs "EPSG:27561" -t_srs "EPSG:3857" temp.tif ../_Output/41-45-42-Encart_"$Year".tif
 
+# Planche ../41-45-42-union*
+# La planche sans l'encart, mais avec l'alpha
+elif [[ "$TiffSource" == ../41-45-42-union_* ]]||[[ "$TiffSource" =~ "../51U-V-union_"* ]]
+then
+gdal_translate -co ALPHA=YES -co COMPRESS=NONE -a_srs EPSG:27561 -of GTiff -gcp 0 0 609300 128224 -gcp 0 "$HeightImage" 609300 127824 -gcp "$WidthImage" 0 609900 128224 -gcp "$WidthImage" "$HeightImage" 609900 127824 "$TiffSource" temp.tif
+if [ -f "../_Output/"$NameNoExt"_"$Year".tif" ]
+then
+mv "../_Output/"$NameNoExt"_"$Year".tif" ../_TRASH_TEMP/"$FileDate"_"$NameNoExt"_"$Year".tif
+fi
+gdalwarp -co COMPRESS=NONE -s_srs "EPSG:27561" -t_srs "EPSG:3857" -dstalpha temp.tif "../_Output/"$NameNoExt"_"$Year".tif"
+
 # Planche ../41-45-42_*
 elif [[ "$TiffSource" =~ "../41-45-42_"* ]]||[[ "$TiffSource" =~ "../51U-V_"* ]]
 then
@@ -1982,7 +1999,7 @@ if [ -f "../_Output/"$NameNoExt"_"$Year".tif" ]
 then
 mv "../_Output/"$NameNoExt"_"$Year".tif" ../_TRASH_TEMP/"$FileDate"_"$NameNoExt"_"$Year".tif
 fi
-gdalwarp -co COMPRESS=NONE -r bilinear -s_srs "EPSG:27561" -t_srs "EPSG:3857" -dstalpha temp.tif "../_Output/"$NameNoExt"_"$Year".tif"
+gdalwarp -co COMPRESS=NONE -r bilinear -s_srs "EPSG:27561" -t_srs "EPSG:3857" temp.tif "../_Output/"$NameNoExt"_"$Year".tif"
 
 # Planche ../41-42-46_*
 elif [[ "$TiffSource" =~ "../41-42-46_"* ]]||[[ "$TiffSource" =~ "../59A-B_"* ]]
@@ -2434,14 +2451,14 @@ fi
 gdalwarp -co COMPRESS=NONE -r bilinear -s_srs "EPSG:27561" -t_srs "EPSG:3857" -dstalpha temp.tif ../_Output/P14_Planche_10_DeFourcy_1858.tif
 
 # De Fourcy 1858 ../P15_Planche_11_DeFourcy_1858*
-elif [ "$TiffSource" == ../P15_Planche_11_DeFourcy_1858 ]
+elif [ "$TiffSource" == ../P15_Planche_11_DeFourcy_1858.tif ]
 then
 gdal_translate -co ALPHA=YES -co COMPRESS=NONE -a_srs EPSG:27561 -of GTiff -gcp 0 0 599000 126824 -gcp 0 "$HeightImage" 599000 126224  -gcp "$WidthImage" 0 600000 126824 -gcp "$WidthImage" "$HeightImage" 600000 126224 "$TiffSource" temp.tif
 if [ -f ../_Output/P15_Planche_11_DeFourcy_1858.tif ]
 then
 mv ../_Output/P15_Planche_11_DeFourcy_1858.tif ../_TRASH_TEMP/P15_Planche_11_DeFourcy_1858.tif
 fi
-gdalwarp -co COMPRESS=NONE -r bilinear -s_srs "EPSG:27561" -t_srs "EPSG:3857" -dstalpha -overwrite temp.tif ../_Output/P15_Planche_11_DeFourcy_1858.tif
+gdalwarp -co COMPRESS=NONE -r bilinear -s_srs "EPSG:27561" -t_srs "EPSG:3857" -overwrite temp.tif ../_Output/P15_Planche_11_DeFourcy_1858.tif
 
 # De Fourcy 1858 ../P16_Planche_12_DeFourcy_1858.tif
 elif [ "$TiffSource" == ../P16_Planche_12_DeFourcy_1858.tif ]
