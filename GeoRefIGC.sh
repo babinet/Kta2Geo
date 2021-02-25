@@ -1594,6 +1594,29 @@ mv "../_Output/"$NameNoExt"_"$Year".tif" ../_TRASH_TEMP/"$FileDate"_"$NameNoExt"
 fi
 gdalwarp -co COMPRESS=NONE -r bilinear -s_srs "EPSG:27561" -t_srs "EPSG:3857"  temp.tif "../_Output/"$NameNoExt"_"$Year".tif"
 
+# PLAN DES CARRIERES DU DEPARTEMENT DES HAUTS DE SEINE
+elif [[ "$TiffSource" == ../Plan_des_Carrieres_du_departement_des_Hauts_de_seine_partie_sud_1989.tif ]]
+then
+echo "${white} #############################################
+
+            INSPECTION GÉNÉRALE DES CARRIÈRES
+            
+            PLAN DES CARRIERES DU DEPARTEMENT DES HAUTS DE SEINE
+
+            PARTIE SUD
+
+            Echelle: 1/20 000
+"
+gdal_translate -co COMPRESS=NONE -a_srs EPSG:27561 -of GTiff -gcp 0 0 585200 127800 -gcp 0 "$HeightImage" 585200 113700 -gcp "$WidthImage" 0 600800 127800 -gcp "$WidthImage" "$HeightImage" 600800 113700 "../Plan_des_Carrieres_du_departement_des_Hauts_de_seine_partie_sud_1989.tif" temp.tif
+if [ -f "../_Output/Plan_des_Carrieres_du_departement_des_Hauts_de_seine_partie_sud_1989.tif" ]
+then
+mv "../_Output/Plan_des_Carrieres_du_departement_des_Hauts_de_seine_partie_sud_1989.tif" "../_TRASH_TEMP/"$FileDate"_Plan_des_Carrieres_du_departement_des_Hauts_de_seine_partie_sud_1989.tif"
+fi
+
+gdalwarp -co COMPRESS=NONE -s_srs "EPSG:27561" -t_srs "EPSG:3857" temp.tif "../_Output/Plan_des_Carrieres_du_departement_des_Hauts_de_seine_partie_sud_1989.tif"
+
+
+
 elif [[ "$TiffSource" =~ "../8-9-51-52_"* ]]
 then
 gdal_translate -co COMPRESS=NONE -a_srs EPSG:27561 -of GTiff -gcp 0 0 589500 125624 -gcp 0 "$HeightImage" 589500 125224 -gcp "$WidthImage" 0 590100 125624 -gcp "$WidthImage" "$HeightImage" 590100 125224 "$TiffSource" temp.tif
@@ -2725,7 +2748,6 @@ echo "${white}---> \$HeightImage${white}    -   -   -   -   -   -   -   -   -   
 fi
 
 done
-
 
 
 
