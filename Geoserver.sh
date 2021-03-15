@@ -265,14 +265,15 @@ echo "${bg_red}${white}---> Enter "$UserName" password on Geoserver.            
 read -p "${white}PASSWORD               :
 " -s  Password
 
+read -p "${white}---> Workspace Name (where the layers are) : ${orange}" Workspace
+echo "${orange}$Workspace${reset}"
+
 read -p "${white}---> Layer Group Name  : ${orange}" NameOfTheGroup
 echo "${orange}$NameOfTheGroup${reset}"
-
-curl -u "$UserName":"$Password" "$ServerAddress"/rest/layers.xml  > ../All_layers.xml
-cat ../All_layers.xml | awk '/    <name>/' | sed 's/    <name>//g' | sed 's/<\/name>//g'> ../All_layers.txt
+curl -u "$UserName":"$Password" ""$ServerAddress"/gwc/service/wms?SERVICE=WMS&VERSION=1.1.1&REQUEST=getcapabilities&TILED=true" | awk "/<Layers>$Workspace/" | awk '!NF || !seen[$0]++'  > ../All_layers.txt
 
 echo "${white}---> An xml of all the layers in geoserver has been downloaded from geoserver ${orange}All_layers.xml"
-echo "${white}---> A text file ${orange}(All_layers.txt)${white} of all the layers in geoserver has been genrated from All_layers.xml
+echo "${white}---> A text file ${orange}(All_layers.txt)${white} of all the layers in geoserver has been genrated from geoserver's workspace $Workspace
 ---> Edit the file ${orange}All_layers.txt${white}. Remove the layers you don't want
 ---> ! Keep layers Only from the same workspace ! Or it won't work !"
 
@@ -280,9 +281,10 @@ read -p "${white}---> Drop the modified file ${orange}All_layers.txt then press 
 echo "${orange}$LayerListTXT${reset}"
 
 
-
-cat "$LayerListTXT" | awk '{print "<layer>"$0"</layer>"}' > "$dir"/AllLayersTMP
-
+linetoremove="$NameOfTheGroup:$NameOfTheGroup"
+otherlinetoremove="$Workspace:$Workspace"
+cat "$LayerListTXT" | awk '!/$linetoremove/' | awk '!/$otherlinetoremove/'  > "$dir"/AllLayersTMP
+#cat LayerGroup_DeptDeLaSeineHaussmann1866.xml | awk '!/$linetoremove/'
 if [ -f "$dir"/stylesRastertmp.txt ]
 then
 rm "$dir"/stylesRastertmp.txt
@@ -301,7 +303,7 @@ cat "$dir"/stylesRastertmp.txt >> ../LayerGroup_"$NameOfTheGroup".xml
 echo "  </styles>
 </layerGroup>
 " >> ../LayerGroup_"$NameOfTheGroup".xml
-rm "$dir"/LayerGrouptemp.xml "$dir"/stylesRastertmp.txt
+#rm "$dir"/LayerGrouptemp.xml "$dir"/stylesRastertmp.txt
 
 curl -u "$UserName":"$Password" -XPOST -d @"../LayerGroup_"$NameOfTheGroup".xml" -H "Content-type: text/xml" "$ServerAddress"/rest/layergroups
 
