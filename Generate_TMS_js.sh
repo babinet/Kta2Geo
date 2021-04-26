@@ -60,19 +60,18 @@ echo "${orange}$workspacelist${reset}"
 echo "$workspacelist" | sed 's/ /\/ \|\| \//g' |awk -v workspacelist="$workspacelist" '{print "echo "workspacelist" | awk '\''/"$0"/'\''\ ../AllPNGsLayers.txt > ../AllSelectedLayers.txt"}'  > run.sh
 chmod +x run.sh
 ./run.sh
-#| awk '/DeptDeLaSeineHaussmann1866/ || /Verniquet/{print}'
-
-while read lineAllChoosenLayers
-do
-echo heloo
-done < ../AllSelectedLayers.txt
-
-
-
 
 if [ -f ../TMPJS.js ]
 then
 rm ../TMPJS.js
+fi
+if [ -f HidendSeekTMP.js ]
+then
+rm HidendSeekTMP.js
+fi
+if [ -f ../ListGroups.txt ]
+then
+rm ../ListGroups.txt
 fi
 #LayerListTXT=Map_in_Geoserver.csv
 while read lineAllChoosenLayers
@@ -93,6 +92,15 @@ echo "---> Genrating the javascript file"
 
 cat ModelJS.txt | sed "s/MachineNameMap/$machinename/g" | sed "s/HumanReadable_Name/$TitleHumanReadable/g" | sed "s/WokspaceLayerName/$WorspaceName:$titlewhileread/g" | sed "s/SetMapCenter/$Center/g" | sed "s/SetZoomLevel/18/g" >> ../TMPJS.js
 echo "<div class=\"list-group-item add-layer\" style=\"display:none\" id=\"add_"$machinename"\">"$TitleHumanReadable"</div>" >> ../ListGroups.txt
+
+
+echo  "var $machinename = new OpenLayers.LonLat($Center)
+    if (mapbounds.containsLonLat($machinename)) {
+        \$(\"#add_$machinename\").show();" >> HidendSeekTMP.js
+echo  "} else { \$(\"#add_$machinename\").hide(); }" >> HidendSeekTMP.js
+
+#HidendSeek
+
 
 #echo "${bg_red}${white}---> Enter the Machine name of the layer in low cap eg. idc_hd.                  <---${reset}"
 #read -p "${white}MachineNameMap             : ${orange}" MachineNameMap
@@ -135,21 +143,25 @@ echo "<div class=\"list-group-item add-layer\" style=\"display:none\" id=\"add_"
 #$});
 
 
-done < AllSelectedLayers.txt
+done < ../AllSelectedLayers.txt
 
+echo 'jQuery(document).ready(function($) {
 
+map.openlayers.events.register("moveend", map, function(){
+    var mapbounds = map.openlayers.getExtent();
+    bbox = mapbounds.toArray();
+    var bleft = bbox[0];
+    var bbottom = bbox[1];
+    var bright = bbox[2];
+    var btop = bbox[3];
+    ' > ../HidendSeek.js
+
+cat HidendSeekTMP.js >> ../HidendSeek.js
+echo '
+});' >> ../HidendSeek.js
 
 #echo 'jQuery(document).ready(function($) {
 #
-#map.openlayers.events.register("moveend", map, function(){
-#    var mapbounds = map.openlayers.getExtent();
-#    bbox = mapbounds.toArray();
-#    var bleft = bbox[0];
-#    var bbottom = bbox[1];
-#    var bright = bbox[2];
-#    var btop = bbox[3];
-#
-#    ' > ../AllLayers.js
 cat ../TMPJS.js >> ../AllLayers.js
 #echo '});
 #});' >> ../AllLayers.js
