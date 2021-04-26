@@ -47,7 +47,7 @@ echo "${bg_red}${white}Erreur - Choisir parmis 1-$#${reset}"
 fi
 done
 }
-Menu=('Create_Workspace' 'Post_Geotif' 'Create_LayerGroup' 'Server_setup' )
+Menu=('Create_Workspace' 'Post_Geotif' 'Create_LayerGroup' 'Generate_TMS_js' 'Server_setup' )
 
 menu_from_array "${Menu[@]}"
 
@@ -123,6 +123,15 @@ rm "$Folder2Upload"/LayerGrouptemp.xml "$Folder2Upload"/StyleTemp.xml
 fi
 
 cd - 2>&1 &>/dev/null
+
+if [ $item = Generate_TMS_js ]
+then
+./Generate_TMS_js.sh
+fi
+
+
+
+
 
 if [ $item = Create_Workspace ]
 then
@@ -311,6 +320,23 @@ fi
 
 echo "---> In order to serve the created LayerGroup go to geoserver with you browser & choose -> Layer Groups / Select the group${orange} $NameOfTheGroup${white} and parent it to the workspace that the layers of the group depends."
 fi
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 cd - 2>&1 &>/dev/null

@@ -103,7 +103,7 @@ done
 }
 
 # Declare the array
-Menu=('GeoRefIGC'  'kmz2csv' 'Geoserver_operations' 'Feuilles2Planches' 'Observatoire_Long_Lat-Conver' )
+Menu=('GeoRefIGC'  'kmz2csv' 'Geoserver_operations' 'Observatoire_Long_Lat-Conver' )
 
 # Call the subroutine to create the menu
 menu_from_array "${Menu[@]}"
@@ -134,5 +134,4 @@ then
 fi
 
 
-cd - 
-
+cd -
