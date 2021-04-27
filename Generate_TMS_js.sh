@@ -124,7 +124,7 @@ echo '
 });
 });' >> ../HidendSeek.js
 
-cat ../TMPJS.js >> ../AllLayers.js
+cat ../TMPJS.js
 
 
 cd - 2>&1 &>/dev/null
