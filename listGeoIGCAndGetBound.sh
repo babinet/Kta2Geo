@@ -33,8 +33,9 @@ if [ -f list_temp ]
 then
 rm list_temp
 fi
-
-allgeotif=$(sudo find . -name *.geotiff | sed 's/\/\//\//g')
+extension=$(cat extensiontif.cfg)
+Place2seek=$(cat Place2seek.cfg)
+allgeotif=$(find "$Place2seek" -name *."$extension" | sed 's/\/\//\//g')
 
 echo "$allgeotif"  > AllTiffinServer
 while read TiffinServer
@@ -55,13 +56,13 @@ done < gdalinfo
 )
 MachineName=$(echo planche"$GeotiffName" |tr '-' '_' | awk '{print tolower($0)}'| sed 's/.geotiff//g'|tr ' ' '_')
 Allcoord=$(echo "$coodinate"| tr -d '\n')
-Name=$(echo $GeotiffName | sed 's/.geotiff//g')
+Name=$(echo $GeotiffName | sed 's/.geotiff//g'| sed 's/.tif//g' | sed 's/-uninon_/ /g' | sed 's/_/ /g')
 echo "$Name|$GeotiffName|$Allcoord$MachineName" >> list_temp
 done < AllTiffinServer
 
 echo "Name|Filname|Size|Upper_Left|Lower_Left|Upper_Right|Lower_Right|Center|MachineName" > Map_in_Geoserver.csv
-cat list_temp | awk '!NF || !seen[$0]++' >> Map_in_Geoserver.csv
-
+cat list_temp | awk '!NF || !seen[$0]++' | awk 'NF' | sort -t'|' -nk1 >> Map_in_Geoserver.csv
+cat list_temp | awk '!NF || !seen[$0]++' | awk 'NF' | sort -t'|' -nk1 >> ../AllSelectedLayers.txt
 
 if [ -f list_temp ]
 then
