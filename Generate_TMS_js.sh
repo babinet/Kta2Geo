@@ -28,38 +28,48 @@ dir=$(
 cd -P -- "$(dirname -- "$0")" && pwd -P
 )
 cd "$dir" 2>&1 &>/dev/null
-if [ -f Server.cfg ]
+
+if [ -f ../AllSelectedLayers.txt ]
 then
-ServerAddress=$(cat Server.cfg)
-echo "${white}---> the actual server address is : ${orange}$ServerAddress"
-else
-echo "${white}---> Enter the Server Name e.g: ${orange}https://DeFourcy.com:8080/geoserver    <---${reset}"
-read -p "Geoserver Address :${orange}" geoserveradress
-echo "$geoserveradress" > Server.cfg
+rm ../AllSelectedLayers.txt
 fi
 
 
+if [ -f TMSServer.cfg ]
+then
+TMSServerAddress=$(cat TMSServer.cfg)
+echo "${white}---> the actual server address is : ${orange}$TMSServerAddress"
+else
+echo "${white}---> Enter the Server Name e.g: ${orange}https://DeFourcy.com/geoserver/gwc/service/${green}tms/    <---${reset}"
+read -p "T.M.S Address :${orange}" tmsgeoserveradress
+echo "$tmsgeoserveradress" | awk 'NF' > TMSServer.cfg
+fi
 
-echo "${white}---> Downloading the TMS list and address from Geoserver ../AllTMSLAyers.xml${reset}"
-wget -O ../AllTMSLAyers.xml "$ServerAddress"/gwc/service/tms/1.0.0
-echo "wget -O ../AllTMSLAyers.xml "$ServerAddress"/gwc/service/tms/1.0.0"
-echo "${white}---> Filter with awk only the png layers ../AllTMSLAyers.xml${reset}"
-cat ../AllTMSLAyers.xml | awk '/@png/' > ../AllPNGsLayers.txt
+read -p "${white}---> Drop the folder where the geotiff are stored in the current shell then press enter : ${orange}" Place2seek
+echo "${orange}$Place2seek${reset}"
+echo "$Place2seek" | awk 'NF' > Place2seek.cfg
 
-echo "${white}---> Execute the script ${orange}\"listGeoIGCAndGetBound.sh\"${white} in the root folder of geoserver on the remote machine"
+read -p "${white}---> What is the file extension of the geotagged raster file : tif geotiff ? ${red}No Dot • ! ${orange}" extensiontif
+echo "${orange}$extensiontif${reset}"
+echo "$extensiontif" | awk 'NF' > extensiontif.cfg
 
-read -p "${white}---> Drop the output file ${orange}\"Map_in_Geoserver.csv\"${white} in the current shel then press enter : ${orange}" LayerListTXT
-echo "${orange}$LayerListTXT${reset}"
+read -p "${white}---> What is the name of the workspace in geoserver to fit the needs e.g : Workspace  ${orange}" workspace
+echo "${orange}$extensiontif${reset}"
+echo "$workspace" | awk 'NF' > workspace.cfg
 
-cat ../AllTMSLAyers.xml | awk -F'/gwc/service/tms/1.0.0/' '{print $2}' | awk -F'%3A' '{print $1}' | awk '!NF || !seen[$0]++'|awk NF
-#echo "${white}---> scp ${orange}AllTiffinServer${white} file in the directory "$dir"" | sed 's/Kt2Geo//g'
-echo "${white}---> Write the list of the workspaces you want from the list on top"
-read -p "${white}---> Space separated. Exemple : ${orange}IDC IGN${white} in the current shel then press enter : ${orange}" workspacelist
-echo "${orange}$workspacelist${reset}"
+./listGeoIGCAndGetBound.sh
 
-echo "$workspacelist" | sed 's/ /\/ \|\| \//g' |awk -v workspacelist="$workspacelist" '{print "echo "workspacelist" | awk '\''/"$0"/'\''\ ../AllPNGsLayers.txt > ../AllSelectedLayers.txt"}'  > run.sh
-chmod +x run.sh
-./run.sh
+
+
+#cat ../AllTMSLAyers.xml | awk -F'/gwc/service/tms/1.0.0/' '{print $2}' | awk -F'%3A' '{print $1}' | awk '!NF || !seen[$0]++'|awk NF
+##echo "${white}---> scp ${orange}AllTiffinServer${white} file in the directory "$dir"" | sed 's/Kt2Geo//g'
+#echo "${white}---> Write the list of the workspaces you want from the list on top"
+#read -p "${white}---> Space separated. Exemple : ${orange}IDC IGN${white} in the current shel then press enter : ${orange}" workspacelist
+#echo "${orange}$workspacelist${reset}"
+#
+#echo "$workspacelist" | sed 's/ /\/ \|\| \//g' |awk -v workspacelist="$workspacelist" '{print "echo "workspacelist" | awk '\''/"$0"/'\''\ ../AllPNGsLayers.txt > ../AllSelectedLayers.txt"}'  > run.sh
+#chmod +x run.sh
+#./run.sh
 
 if [ -f ../TMPJS.js ]
 then
@@ -76,21 +86,16 @@ fi
 #LayerListTXT=Map_in_Geoserver.csv
 while read lineAllChoosenLayers
 do
-#echo $lineAllChoosenLayers
-titlewhileread=$(echo $lineAllChoosenLayers | awk -F'title="' '{print $2}' | awk -F'"' '{print $1}')
-#echo $titlewhileread
-TheCsvLinewitGeoData=$(awk -v titlewhileread="$titlewhileread" -F'|' '$1==titlewhileread' "$LayerListTXT")
-TitleHumanReadable=$(echo $titlewhileread | tr '_' ' ')
-Center=$(echo $TheCsvLinewitGeoData | awk -F'|' '{print $8}')
-machinename=$(echo $TheCsvLinewitGeoData | awk -F'|' '{print $9}'| awk '{print $1}')
+titlewhileread=$(echo $lineAllChoosenLayers | awk -F'|' '{print $2}' | sed 's/.geotiff//g'| sed 's/.tif//g')
+TitleHumanReadable=$(echo $lineAllChoosenLayers | awk -F'|' '{print $1}'| sed 's/-uninon_/ /g' | sed 's/_/ /g')
+Center=$(echo $lineAllChoosenLayers | awk -F'|' '{print $8}')
+machinename=$(echo $lineAllChoosenLayers | awk -F'|' '{print $9}'| sed 's/.geotiff//g'| sed 's/.tif//g' )
 zoom=18
-WorspaceName=$(echo $lineAllChoosenLayers | awk -F'/tms/1.0.0/' '{print $2}' | awk -F'%' '{print $1}')
-echo $machinename machinename $Center Center $titlewhileread titlewhileread $TitleHumanReadable TitleHumanReadable $WorspaceName WorspaceName
+echo $machinename machinename $Center Center $titlewhileread titlewhileread $TitleHumanReadable TitleHumanReadable $workspace workspace
 echo "---> Genrating the javascript file"
 
-# jQuery(document).ready(function($) {
 
-cat ModelJS.txt | sed "s/MachineNameMap/$machinename/g" | sed "s/HumanReadable_Name/$TitleHumanReadable/g" | sed "s/WokspaceLayerName/$WorspaceName:$titlewhileread/g" | sed "s/SetMapCenter/$Center/g" | sed "s/SetZoomLevel/18/g" >> ../TMPJS.js
+cat ModelJS.txt | sed "s/MachineNameMap/$machinename/g" | sed "s/HumanReadable_Name/$TitleHumanReadable/g" | sed "s/WokspaceLayerName/$workspace:$titlewhileread/g" | sed "s/SetMapCenter/$Center/g" | sed "s/SetZoomLevel/18/g" >> ../TMPJS.js
 echo "<div class=\"list-group-item add-layer\" style=\"display:none\" id=\"add_"$machinename"\">"$TitleHumanReadable"</div>" >> ../ListGroups.txt
 
 
@@ -99,48 +104,6 @@ echo  "var $machinename = new OpenLayers.LonLat($Center)
         \$(\"#add_$machinename\").show();" >> HidendSeekTMP.js
 echo  "} else { \$(\"#add_$machinename\").hide(); }" >> HidendSeekTMP.js
 
-#HidendSeek
-
-
-#echo "${bg_red}${white}---> Enter the Machine name of the layer in low cap eg. idc_hd.                  <---${reset}"
-#read -p "${white}MachineNameMap             : ${orange}" MachineNameMap
-#echo "$MachineNameMap"
-#
-#echo "${bg_red}${white}---> Enter the HumanReadable_Name of the layer eg. Plans I.G.C Edition 1988.     <---${reset}"
-#read -p "${white}HumanReadable_Name             : ${orange}" HumanReadable_Name
-#echo "$HumanReadable_Name"
-#
-#echo "${bg_red}${white}---> Enter the Wokspace:LayerName of the layer eg. IDC:25-50.                    <---${reset}"
-#read -p "${white}Wokspace:LayerName             : ${orange}" WokspaceLayerName
-#echo "$WokspaceLayerName"
-#
-#echo "${bg_red}${white}---> Enter the SetMapCenter of the layer EPSG:3857 eg. IDC:25-50                 <---${reset}"
-#read -p "${white}Long,Lat             : ${orange}" SetMapCenter
-#echo "$SetMapCenter"
-#
-#echo "${bg_red}${white}---> Enter the SetZoomLevel of the layer eg. 17                                  <---${reset}"
-#read -p "${white}SetZoomLevel             : ${orange}" SetZoomLevel
-#echo "$SetZoomLevel"
-#
-#cat model.txt | sed "s/MachineNameMap/$MachineNameMap/g" | sed "s/HumanReadable_Name/$HumanReadable_Name/g" | sed "s/WokspaceLayerName/$WokspaceLayerName/g" | sed "s/SetMapCenter/$SetMapCenter/g" | sed "s/SetZoomLevel/$SetZoomLevel/g" > ../"$MachineNameMap".js
-#
-#echo "${white}---> Declare the JS in template"
-#echo -e "
-#${green}    drupal_add_js(drupal_get_path('theme', 'cdm') .'/js/production/add_layers/TMS/$MachineNameMap.js');"
-#echo "
-#${white}---> Declare the main div of the layer"
-#echo -e "
-#${green}           <div class=\"list-group-item add-layer\" id=\"add_$MachineNameMap\">$HumanReadable_Name</div>"
-
-
-
-
-
-
-
-
-
-#$});
 
 
 done < ../AllSelectedLayers.txt
@@ -158,15 +121,20 @@ map.openlayers.events.register("moveend", map, function(){
 
 cat HidendSeekTMP.js >> ../HidendSeek.js
 echo '
+});
 });' >> ../HidendSeek.js
 
-#echo 'jQuery(document).ready(function($) {
-#
 cat ../TMPJS.js >> ../AllLayers.js
-#echo '});
-#});' >> ../AllLayers.js
-
-
 
 
 cd - 2>&1 &>/dev/null
+
+
+
+
+# remove duplicate
+# | awk '!NF || !seen[$0]++'
+# Remove blank lines
+#awk 'NF'
+# Sort $3 with comma t, separator
+#sort -t, -nk3
