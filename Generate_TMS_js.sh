@@ -57,6 +57,21 @@ read -p "${white}---> What is the name of the workspace in geoserver to fit the 
 echo "${orange}$extensiontif${reset}"
 echo "$workspace" | awk 'NF' > workspace.cfg
 
+if [ -f exif.cfg ]
+then
+rm exif.cfg
+fi
+
+
+read -p "${white}---> Would you like to use exif data stored in the .tiff file the generate the Title Human Readable Name ${orange} Y/N" answer
+ # if echo "$answer" | grep -iq "^y" ;then
+if [ "$answer" != "${answer#[Yy]}" ] ;then
+    echo touch > exif.cfg
+else
+    echo "---> The LayerName will be generated from the file name"
+fi
+
+
 ./listGeoIGCAndGetBound.sh
 
 
@@ -87,7 +102,16 @@ fi
 while read lineAllChoosenLayers
 do
 titlewhileread=$(echo $lineAllChoosenLayers | awk -F'|' '{print $2}' | sed 's/.geotiff//g'| sed 's/.tif//g')
+
+if [ -f exif.cfg ]
+then
+filePath=$(cat Place2seek.cfg)
+filenameexif=$(echo $lineAllChoosenLayers | awk -F'|' '{print $2}')
+TitleHumanReadable=$(exiftool $filePath/$filenameexif | awk '/Title                           : /'| awk -F': ' '{print $2}')
+else
 TitleHumanReadable=$(echo $lineAllChoosenLayers | awk -F'|' '{print $1}'| sed 's/-uninon_/ /g' | sed 's/_/ /g')
+fi
+
 Center=$(echo $lineAllChoosenLayers | awk -F'|' '{print $8}')
 machinename=$(echo $lineAllChoosenLayers | awk -F'|' '{print $9}'| sed 's/.geotiff//g'| sed 's/.tif//g' )
 zoom=18
@@ -124,7 +148,7 @@ echo '
 });
 });' >> ../HidendSeek.js
 
-cat ../TMPJS.js
+#cat ../TMPJS.js
 
 
 cd - 2>&1 &>/dev/null
