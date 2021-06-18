@@ -2066,7 +2066,7 @@ gdalwarp -co COMPRESS=NONE -r bilinear -s_srs "EPSG:27561" -t_srs "EPSG:3857" -d
 # Planche ../42-43-60_*
 elif [[ "$TiffSource" =~ "../42-43-60_"* ]]||[[ "$TiffSource" =~ "../76V-W_"* ]]
 then
-gdal_translate -co COMPRESS=NONE -a_srs EPSG:27561 -of GTiff -gcp 0 0 609900 121824 -gcp 0 "$HeightImage" 609900 122224 -gcp "$WidthImage" 0 610500 121824 -gcp "$WidthImage" "$HeightImage" 610500 122224 "$TiffSource" temp.tif
+gdal_translate -co COMPRESS=NONE -a_srs EPSG:27561 -of GTiff -gcp 0 0 609900 122224 -gcp 0 "$HeightImage" 609900 121824 -gcp "$WidthImage" 0 610500 122224 -gcp "$WidthImage" "$HeightImage" 610500 121824 "$TiffSource" temp.tif
 if [ -f "../_Output/"$NameNoExt"_"$Year".tif" ]
 then
 mv "../_Output/"$NameNoExt"_"$Year".tif" ../_TRASH_TEMP/"$FileDate"_"$NameNoExt"_"$Year".tif
