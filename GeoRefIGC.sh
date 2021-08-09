@@ -1986,8 +1986,19 @@ mv "../_Output/"$NameNoExt"_"$Year".tif" ../_TRASH_TEMP/"$FileDate"_"$NameNoExt"
 fi
 gdalwarp -co COMPRESS=NONE -r bilinear -s_srs "EPSG:27561" -t_srs "EPSG:3857" -dstalpha temp.tif "../_Output/"$NameNoExt"_"$Year".tif"
 
+# Planche ../33-48-49_*
+elif [[ "$TiffSource" =~ "../33-48-49-union_"* ]]||[[ "$TiffSource" =~ "../Feuille-254-273-union"* ]]
+then
+gdal_translate -co ALPHA=YES -co COMPRESS=NONE -a_srs EPSG:27561 -of GTiff -gcp 0 0 604200 126824 -gcp 0 "$HeightImage" 604200 126224 -gcp "$WidthImage" 0 604800 126824 -gcp "$WidthImage" "$HeightImage" 604800 126224 -dstalpha "$TiffSource" temp.tif
+if [ -f "../_Output/"$NameNoExt"_"$Year".tif" ]
+then
+mv "../_Output/"$NameNoExt"_"$Year".tif" ../_TRASH_TEMP/"$FileDate"_"$NameNoExt"_"$Year".tif
+fi
+gdalwarp -co COMPRESS=NONE -r bilinear -s_srs "EPSG:27561" -t_srs "EPSG:3857" -dstalpha temp.tif "../_Output/"$NameNoExt"_"$Year".tif"
+
+
 # Planche ../36-40-41_*
-elif [[ "$TiffSource" =~ "../36-40-41_"* ]]||[[ "$TiffSource" =~ "../Feuille-254-273_"* ]]||[[ "$TiffSource" =~ "../41U-50A_"* ]]
+elif [[ "$TiffSource" =~ "../36-40-41_"* ]]||[[ "$TiffSource" =~ "../41U-50A_"* ]]
 then
 gdal_translate -co ALPHA=YES -co COMPRESS=NONE -a_srs EPSG:27561 -of GTiff -gcp 0 0 606000 130124 -gcp 0 "$HeightImage" 606000 129724 -gcp "$WidthImage" 0 606600 130124 -gcp "$WidthImage" "$HeightImage" 606600 129724 "$TiffSource" temp.tif
 if [ -f "../_Output/"$NameNoExt"_"$Year".tif" ]
