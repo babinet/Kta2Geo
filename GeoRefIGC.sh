@@ -1626,6 +1626,20 @@ mv "../_Output/"$NameNoExt"_"$Year".tif" ../_TRASH_TEMP/"$FileDate"_"$NameNoExt"
 fi
 gdalwarp -co COMPRESS=NONE -r bilinear  -dstalpha -s_srs "EPSG:27561" -t_srs "EPSG:3857" temp.tif "../_Output/"$NameNoExt"_"$Year".tif"
 
+
+# Planche ../07-58-union_*
+elif [[ "$TiffSource" =~ "../07-58-union_"* ]]||[[ "$TiffSource" =~ "../44S-union_"* ]]
+then
+echo "${orange}---> Cas Particuliers - Transformation fixe${reset}"
+gdal_translate -co ALPHA=YES -co COMPRESS=NONE -a_srs EPSG:27561 -of GTiff -gcp 0 0 588500 123024 -gcp 0 "$HeightImage" 588500 122524 -gcp "$WidthImage" 0 589200 123024 -gcp "$WidthImage" "$HeightImage" 589200 122524 "$TiffSource" temp.tif
+if [ -f "../_Output/"$NameNoExt"_"$Year".tif" ]
+then
+mv "../_Output/"$NameNoExt"_"$Year".tif" ../_TRASH_TEMP/"$FileDate"_"$NameNoExt"_"$Year".tif
+fi
+gdalwarp -co COMPRESS=NONE -r bilinear -s_srs "EPSG:27561" -t_srs "EPSG:3857" temp.tif -dstalpha "../_Output/"$NameNoExt"_"$Year".tif"
+
+
+
 # Planche ../08-44-union_*
 elif [[ "$TiffSource" =~ "../08-44-union_"* ]]||[[ "$TiffSource" =~ "../44S-union_"* ]]
 then
