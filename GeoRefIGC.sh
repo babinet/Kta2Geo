@@ -428,6 +428,15 @@ Abscissa=60
 echo "${white}---> Ordinate substitut : ${green}$Ordinate"
 echo "${white}---> Abscissa substitut : ${green}$Abscissa"
 
+elif [[ "$TiffSource" == "../71V_"* ]]
+then
+Ordinate=17
+Abscissa=60
+echo "${white}---> Ordinate substitut : ${green}$Ordinate"
+echo "${white}---> Abscissa substitut : ${green}$Abscissa"
+
+
+
 elif [[ "$TiffSource" == "../71X_"* ]]
 then
 Ordinate=19
@@ -748,11 +757,17 @@ echo "${white}---> Ordinate substitut : ${green}$Ordinate"
 echo "${white}---> Abscissa substitut : ${green}$Abscissa"
 
 
-
 elif [[ "$TiffSource" =~ "../36K_"* ]]
 then
 Ordinate=11
 Abscissa=38
+echo "${white}---> Ordinate substitut : ${green}$Ordinate"
+echo "${white}---> Abscissa substitut : ${green}$Abscissa"
+
+elif [[ "$TiffSource" =~ "../36P_"* ]]
+then
+Ordinate=11
+Abscissa=39
 echo "${white}---> Ordinate substitut : ${green}$Ordinate"
 echo "${white}---> Abscissa substitut : ${green}$Abscissa"
 
@@ -1669,6 +1684,17 @@ fi
 gdalwarp -co COMPRESS=NONE -r bilinear -s_srs "EPSG:27561" -t_srs "EPSG:3857" temp.tif -dstalpha "../_Output/"$NameNoExt"_"$Year".tif"
 gdaladdo -r average "../_Output/"$NameNoExt"_"$Year".tif" 2 4 8 16
 
+# Planche ../12-30-union_*
+elif [[ "$TiffSource" =~ "../12-30-union_"* ]]
+then
+echo "${orange}---> Cas Particuliers - Transformation fixe${reset}"
+gdal_translate -co ALPHA=YES -co COMPRESS=NONE -a_srs EPSG:27561 -of GTiff -r bilinear -gcp 0 0 591500 134224 -gcp 0 "$HeightImage" 591500 133824 -gcp "$WidthImage" 0 592200 134224 -gcp "$WidthImage" "$HeightImage" 592200 133824 "$TiffSource" temp.tif
+if [ -f "../_Output/"$NameNoExt"_"$Year".tif" ]
+then
+mv "../_Output/"$NameNoExt"_"$Year".tif" ../_TRASH_TEMP/"$FileDate"_"$NameNoExt"_"$Year".tif
+fi
+gdalwarp -co COMPRESS=NONE -r bilinear -s_srs "EPSG:27561" -t_srs "EPSG:3857" temp.tif -dstalpha "../_Output/"$NameNoExt"_"$Year".tif"
+gdaladdo -r average "../_Output/"$NameNoExt"_"$Year".tif" 2 4 8 16
 
 # Planche 29-37
 elif [[ "$TiffSource" =~ "../29-37_"* ]]||[[ "$TiffSource" =~ "../Feuille-56_"* ]]||[[ "$TiffSource" =~ "../39I_"* ]]
@@ -1746,7 +1772,7 @@ gdaladdo -r average "../_Output/"$NameNoExt"_"$Year".tif" 2 4 8 16
 # Planche ../17-60-union_*
 elif [[ "$TiffSource" =~ "../71V-union_"* ]]||[[ "$TiffSource" =~ "../17-60-union_"* ]]
 then
-gdal_translate -co ALPHA=YES -co COMPRESS=NONE -a_srs EPSG:27561 -of GTiff -r bilinear -gcp 0 0 594600 122324 -gcp 0 "$HeightImage" 594600 121664 -gcp "$WidthImage" 0 595200 122324 -gcp "$WidthImage" "$HeightImage" 595200 121664 "$TiffSource" temp.tif
+gdal_translate -co ALPHA=YES -co COMPRESS=NONE -a_srs EPSG:27561 -of GTiff -r bilinear -gcp 0 0 594600 122324 -gcp 0 "$HeightImage" 594600 121624 -gcp "$WidthImage" 0 595200 122324 -gcp "$WidthImage" "$HeightImage" 595200 121624 "$TiffSource" temp.tif
 
 if [ -f "../_Output/"$NameNoExt"_"$Year".tif" ]
 then
