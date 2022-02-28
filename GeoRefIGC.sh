@@ -1672,6 +1672,20 @@ gdaladdo -r average "../_Output/"$NameNoExt"_"$Year".tif" 2 4 8 16
 
 
 
+# Planche ../Feuille-161-union_*
+elif [[ "$TiffSource" =~ "../Feuille-161-union_"* ]]
+then
+echo "${orange}---> Cas Particuliers - Transformation fixe${reset}"
+gdal_translate -co ALPHA=YES -co COMPRESS=NONE -a_srs EPSG:27561 -of GTiff -r bilinear -gcp 0 0 604200 129024 -gcp 0 "$HeightImage" 604200 128524 -gcp "$WidthImage" 0 604900 129024 -gcp "$WidthImage" "$HeightImage" 604900 128524 "$TiffSource" temp.tif
+if [ -f "../_Output/"$NameNoExt"_"$Year".tif" ]
+then
+mv "../_Output/"$NameNoExt"_"$Year".tif" ../_TRASH_TEMP/"$FileDate"_"$NameNoExt"_"$Year".tif
+fi
+gdalwarp -co COMPRESS=NONE -r bilinear -s_srs "EPSG:27561" -t_srs "EPSG:3857" temp.tif -dstalpha "../_Output/"$NameNoExt"_"$Year".tif"
+gdaladdo -r average "../_Output/"$NameNoExt"_"$Year".tif" 2 4 8 16
+
+
+
 # Planche ../08-44-union_*
 elif [[ "$TiffSource" =~ "../08-44-union_"* ]]||[[ "$TiffSource" =~ "../44S-union_"* ]]
 then
@@ -1957,11 +1971,6 @@ fi
 gdalwarp -co COMPRESS=NONE -r bilinear -s_srs "EPSG:27561" -t_srs "EPSG:3857" -dstalpha temp.tif "../_Output/"$NameNoExt"_"$Year".tif"
 gdaladdo -r average "../_Output/"$NameNoExt"_"$Year".tif" 2 4 8 16
 
-
-
-
-
-
 # Planche ../30-55-union_*
 elif [[ "$TiffSource" =~ "../30-55-union_"* ]]||[[ "$TiffSource" =~ "../Feuille-59_"* ]]
 then
@@ -2082,7 +2091,6 @@ mv "../_Output/"$NameNoExt"_"$Year".tif" ../_TRASH_TEMP/"$FileDate"_"$NameNoExt"
 fi
 gdalwarp -co COMPRESS=NONE -r bilinear -s_srs "EPSG:27561" -t_srs "EPSG:3857" -dstalpha temp.tif "../_Output/"$NameNoExt"_"$Year".tif"
 gdaladdo -r average "../_Output/"$NameNoExt"_"$Year".tif" 2 4 8 16
-
 
 # Planche ../36-40-41_*
 elif [[ "$TiffSource" =~ "../36-40-41_"* ]]||[[ "$TiffSource" =~ "../41U-50A_"* ]]
