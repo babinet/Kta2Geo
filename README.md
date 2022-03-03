@@ -4,7 +4,7 @@
 * *Requirement : **gdal exiftool wget imagemagick unar***
 * EPSG:27561 --> EPSG:3857
 
-![Screenshot](img/Invit.jpg)
+![Screenshot](img/Kta2geoInAction.gif)
 
 * Usage : Start program > then choose menu
 
