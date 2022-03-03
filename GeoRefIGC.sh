@@ -42,10 +42,12 @@ for TiffSource in ../*.tif
 do
 # Definitions
 FileDate=$(echo $(date +%Y_%m_%d_%Hh%Mm%Ss) | tr "/" "_")
-NameNoExt=$(echo "$TiffSource" | sed 's/.tif//g' | sed 's/..\///g')
+#NameNoExt=$(echo "$TiffSource" | sed 's/.tif//g' | sed 's/..\///g')
 Year=$( echo "$TiffSource" | tail -c -9 | awk -F'.tif' '{print $1}')
-NameNoExt=$( echo "$TiffSource" | awk -F'.tif' '{print $1}' | awk -F'\_' '{print $1}' | sed 's/..\///g')
-# Ancienne_Numérotation
+
+NameNoExt=$(echo "$TiffSource"|sed 's/.tif//g'| sed 's/..\///g'| sed 's/.....$//')
+echo $purple $NameNoExt NameNoExt
+
 
 if [ "$NameNoExt" == ../2222Y_*  ]
 then
