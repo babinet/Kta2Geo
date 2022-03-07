@@ -34,13 +34,13 @@ echo "${bg_blue}Hello I'm GeoRefIGC_N_Make_WFS.sh${reset}
 ${white}I do georeferencing of IGC maps, print Keywords with geographic information in the GeoTiff file
 And I generate a CSV with all the key value"
 
-read -p "${orange}What is the name of the workspace in geoserver" geoserverworkspace
+read -p "${orange}What is the name of the workspace in geoserver ${white} : " geoserverworkspace
 
-echo "geoserverworkspace=\"$geoserverworkspace\" > tmp/tmp_bash
+echo geoserverworkspace=\"$geoserverworkspace\" > tmp/tmp_bash
 
 
-echo "${white}---> Generating special Maps information
-./Generate_WFS_GRID_FROM_GeoRefIGC.sh
+echo "${white}---> Generating special Maps information"
+#./Generate_WFS_GRID_FROM_GeoRefIGC.sh
 
 source tmp/tmp_bash
 
@@ -3026,22 +3026,67 @@ fi
 # For exiftool
 PlancheName_Simple=$(echo $NameNoExt| sed 's/-union//g'| sed 's/-minute//g')
 Char3=$(echo "$PlancheName_Simple" | sed 's/..//')
-echo $purple $Char3 Char3
+#echo $purple $Char3 Char3
 
 
 
-if [[ "$Char3" == [A-Z] ]]
+#if [[ "$Char3" == [A-Z] ]]
+#then
+#echo $orange PlancheName_Simple $PlancheName_Simple
+#planchesNamesTMP=$(echo "$PlancheName_Simple")
+#planchesNames=$(awk -F'|' -v "le_nom_complet"="$planchesNamesTMP" '$2=='le_nom_complet''  CODEX_PLANCHES.csv | awk -F'|'  '{print $1, $2, $3}' OFS='|' | awk '{print "|"$0"|"}')
+#
+#elif [[ "$PlancheName_Simple" == Feuille-* ]]
+#then
+#echo $green PlancheName_Simple $PlancheName_Simple
+#planchesNamesTMP=$(echo "$PlancheName_Simple")
+#planchesNames=$(awk -F'|' -v "le_nom_complet"="$planchesNamesTMP" '$3=='le_nom_complet''  CODEX_PLANCHES.csv | awk -F'|'  '{print $1, $2, $3}' OFS='|' | awk '{print "|"$0"|"}')
+#
+#else
+#echo $red PlancheName_Simple $PlancheName_Simple
+#planchesNamesTMP=$(echo "$PlancheName_Simple")
+#
+#planchesNames=$(awk -F'|' -v "le_nom_complet"="$planchesNamesTMP" '$1=='le_nom_complet''  CODEX_PLANCHES.csv | awk -F'|'  '{print $1, $2, $3}' OFS='|' | awk '{print "|"$0"|"}')
+##awk -F'|' -v "le_nom_complet"="$planchesNamesTMP" '$2=='le_nom_complet'' CODEX_PLANCHES.csv
+#
+#fi
+
+
+
+
+
+
+
+planchesNamesTMP=$(echo "$PlancheName_Simple"|  awk '{sub(/^0*/,"");}1'|awk -F'_' '{print $1}')
+
+
+
+if [[ $Char3 == [A-Z] ]]
 then
-planchesNames="|||$PlancheName_Simple"
-echo $purple THIRD LETTER ZZZZZZZZZZ "$Char3"
-elif [[ "$PlancheName_Simple" =~ Feuille-* ]]
+echo $orange XXXXXXXXXXXX ZZZZZZZZZZZZZZ PlancheName_Simple $PlancheName_Simple
+planchesNames=$(awk -F'|' -v "le_nom_completa"="$planchesNamesTMP" '$3=='le_nom_completa''  CODEX_PLANCHES.csv | awk -F'|'  '{print $2, $3, $4}' OFS='|' | awk '{print $0"|"}' )
+
+elif [[ $PlancheName_Simple == Feuille-* ]]
 then
-planchesNames="||$PlancheName_Simple|"
+echo $purple XXXXXXXXXXXX ZZZZZZZZZZZZZZ PlancheName_Simple $PlancheName_Simple
+PlancheFeuille=$( echo "$PlancheName_Simple"| sed 's/Feuille-//g' )
+planchesNames=$(awk -F'|' -v "le_nom_completb"="$PlancheFeuille" '$4=='le_nom_completb''  CODEX_PLANCHES.csv | awk -F'|'  '{print $2, $3, $4}' OFS='|'| awk '{print $0"|"}' )
+
 else
-planchesNames="|$PlancheName_Simple||"
-fi
-echo $purple planchesNames planchesNames planchesNames "$planchesNames"
+echo $green XXXXXXXXXXXX ZZZZZZZZZZZZZZ PlancheName_Simple $PlancheName_Simple
 
+
+planchesNames=$(awk -F'|' -v "lenomcompletc"="$planchesNamesTMP"  '$2=='lenomcompletc''  CODEX_PLANCHES.csv | awk -F'|'  '{print $2, $3, $4}' OFS='|' | awk '{print $0"|"}')
+
+#awk -F'|' -v "le_nom_complet"="$Title_Name" '$3=='le_nom_complet'' Cleaned_db/title.basics_movie.csv | awk -F'|' -v "year"="$Year" '$6=='year'' > ../.Temp.film
+
+fi
+
+
+
+
+#echo $purple planchesNames planchesNames $planchesNames "$planchesNames"
+#
 
 
 
@@ -3057,10 +3102,46 @@ if [[ "$InfoSpecialMap" == "" ]]
 then
 echo $white top left = $red Nord Ouest $Nord $Ouest $TiffSource
 else
-#echo $purple InfoSpecialMap $InfoSpecialMap
 echo special info rule
 fi
-#echo $purple Nord Est $Nord $Est $TiffSource
+
+
+
+filesizePX=$(exiftool ../_Output/"$Lastrender" | awk '/Image Size/' |sed 's/x/ X /g' |awk -F' : ' '{print $2" PX "}')
+filesizeMO=$(exiftool ../_Output/"$Lastrender" | awk '/File Size/' |sed 's/x/ X /g' |awk -F' : ' '{print $2}'| sed 's/MB/MO/g' | sed 's/MiB/MO/g'  )
+FileName=$(exiftool ../_Output/"$Lastrender" | awk '/File Name/' |sed 's/x/ X /g' |awk -F' : ' '{print $2}' | awk -F'_' '{print $1, $2}' |awk -F'.' '{print $1}'  )
+ResolutionX=$(exiftool ../_Output/"$Lastrender" | awk '/X Resolution/' |awk -F' : ' '{print $2}')
+ResolutionY=$(exiftool ../_Output/"$Lastrender" | awk '/Y Resolution/' |awk -F' : ' '{print $2}')
+ResolutionY_rounded=`printf "%.0f" $ResolutionY`
+ResolutionX_rounded=`printf "%.0f" $ResolutionX`
+echo ""$FileName" - "$geoserverworkspace" - Size: "$filesizePX"- Res : "$ResolutionX_rounded" pixels/pouce - "$filesizeMO" - GeoTiff" >> tmp/GeoTiffList
+
+
+gdal_translate -co "TFW=YES" ../_Output/"$Lastrender" temp.tif
+LastrenderNoExt=$(echo "$Lastrender"| sed 's/\.tif//g')
+convert temp.tif "$LastrenderNoExt".jpg
+exiftool -m -keywords="$Lastrender|$planchesNames|$InfoSpecialMap||" -artist="sous-paris.com" -Software="Kta2geo 1.1" "$LastrenderNoExt".jpg
+
+mv temp.tfw "$LastrenderNoExt".wld
+#proj
+echo 'PROJCS["WGS_1984_Web_Mercator_Auxiliary_Sphere",GEOGCS["GCS_WGS_1984",DATUM["D_WGS_1984",SPHEROID["WGS_1984",6378137.0,298.257223563]],PRIMEM["Greenwich",0.0],UNIT["Degree",0.0174532925199433]],PROJECTION["Mercator_Auxiliary_Sphere"],PARAMETER["False_Easting",0.0],PARAMETER["False_Northing",0.0],PARAMETER["Central_Meridian",0.0],PARAMETER["Standard_Parallel_1",0.0],PARAMETER["Auxiliary_Sphere_Type",0.0],UNIT["Meter",1.0]]' > "$LastrenderNoExt".prj
+
+echo ""$FileName" - "$geoserverworkspace" - Size: "$filesizePX"- Res : "$ResolutionX_rounded" pixels/pouce - "$filesizeMO" - GeoTiff" >> tmp/GeoTiffList
+
+
+echo ""$FileName" - "$geoserverworkspace" - Size: "$filesizePX"- Res : "$ResolutionX_rounded"  pixels/pouce - Mètre - EPSG:3857 .wld + .prj" > "$LastrenderNoExt"_info.txt
+zip "$LastrenderNoExt".zip "$LastrenderNoExt".jpg "$LastrenderNoExt".wld "$LastrenderNoExt".prj "$LastrenderNoExt"_info.txt
+
+if [ -f ../_Output/"$LastrenderNoExt".zip ]
+then
+mv ../_Output/"$LastrenderNoExt".zip ../_TRASH_TEMP/"$FileDate"_"$LastrenderNoExt".zip
+fi
+mv "$LastrenderNoExt".zip ../_Output/
+rm "$LastrenderNoExt".jpg "$LastrenderNoExt".wld "$LastrenderNoExt".prj "$LastrenderNoExt"_info.txt
+if [ -f "$LastrenderNoExt".jpg_original ]
+then
+rm "$LastrenderNoExt".jpg_original
+fi
 
 
 
@@ -3069,13 +3150,16 @@ if [[ "$InfoSpecialMap" == "" ]]
 then
 echo "$Lastrender$planchesNames|$Nord $Ouest|$Sud $Ouest|$Sud $Est|$Nord $Est|$NordOuest3857|$SudOuest3857|$SudEst3857|$NordEst3857|$NordOuest4326|$SudOuest4326|$SudEst3857|$NordEst4326|Polygon (($NordOuest3857, $SudOuest3857, $SudEst3857, $NordEst3857, $NordOuest3857))||"
 
-exiftool -r -overwrite_original -keywords= -m -keywords="$Lastrender$planchesNames|$Nord $Ouest|$Sud $Ouest|$Sud $Est|$Nord $Est|$NordOuest3857|$SudOuest3857|$SudEst3857|$NordEst3857|$NordOuest4326|$SudOuest4326|$SudEst4326|$NordEst4326|Polygon (($NordOuest3857, $SudOuest3857, $SudEst3857, $NordEst3857, $NordOuest3857))" ../_Output/"$Lastrender"
+exiftool -r -overwrite_original -keywords= -m -keywords="$Lastrender|$planchesNames$Nord $Ouest|$Sud $Ouest|$Sud $Est|$Nord $Est|$NordOuest3857|$SudOuest3857|$SudEst3857|$NordEst3857|$NordOuest4326|$SudOuest4326|$SudEst4326|$NordEst4326|Polygon (($NordOuest3857, $SudOuest3857, $SudEst3857, $NordEst3857, $NordOuest3857))||" ../_Output/"$Lastrender"
 else
-echo "$white$Lastrender$planchesNames|$InfoSpecialMap"
-exiftool -r -overwrite_original -keywords= -m -keywords="$Lastrender$planchesNames|$InfoSpecialMap||" -artist="sous-paris.com" -Software="Kta2geo 1.1" ../_Output/"$Lastrender"
+echo "$white$Lastrender|$planchesNames|$InfoSpecialMap TTTTTTTTTTT"
+exiftool -r -overwrite_original -keywords= -m -keywords="$Lastrender|$planchesNames$InfoSpecialMap||" -artist="sous-paris.com" -Software="Kta2geo 1.1" ../_Output/"$Lastrender"
 fi
 # For exiftool
 echo $green processing planche : $PlancheName_Simple
+
+
+echo $purple $Year ZZZZZZZZZZZ $geoserverworkspace
 
 done
 
@@ -3083,6 +3167,10 @@ if [ -f tmp/computed_MapsTMP.csv ]
 then
 rm tmp/computed_MapsTMP.csv
 fi
+
+
+
+
 
 for ListGeoreferenced in ../_Output/*.tif
 do
