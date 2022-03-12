@@ -176,7 +176,7 @@ echo "${grey}---> \$InfoSpecialMap${grey}   :  ${orange}$InfoSpecialMap"
 #"Filename|nodetitle|OldNum|field_deptf_seine|top_left27561|bottom_left27561|bottom_right27561|top_right27561|top_left|bottom_left|bottom_right|top_right|top_left4326|bottom_left4326|bottom_right4326|top_left4326|WKT|RawMapUri|RawMapName|StorageLocation|PreviewPNGLocation|Year|nodeID|WKT_Map_Extent|geoserverworkspace"
 RawMapName=$(echo "$NameNoExt" - "$Year" - "$geoserverworkspace" - "$ResolutionX X $ResolutionY" PX - "$ResolutionX_rounded"  pixels/pouce - Mètre - EPSG:3857| tr '_' ' ')
 RawMapUri=$(echo "$StorageLocation"_Output_3857/"$NameNoExt"_"$Year".tif)
-ZipRawMapUri=$(echo "$StorageLocation"/_Output_wld_zip/"$NameNoExt"_"$Year".zip)
+ZipRawMapUri=$(echo "$StorageLocation"_Output_wld_zip/"$NameNoExt"_"$Year".zip)
 PreviewPNGLocation=$(echo "$StorageLocation"/_Output_PNG_Preview/"$NameNoExt"_"$Year".png)
 
 if [[ "$InfoSpecialMap" == "" ]]
@@ -199,7 +199,8 @@ CSV_INFO=$(cat tmp/csv_tmp)
 gdal_translate -co "TFW=YES" ../_Output/"$Lastrender" temp.tif
 LastrenderNoExt=$(echo "$Lastrender"| sed 's/\.tif//g')
 convert temp.tif "$LastrenderNoExt".jpg
-convert "$Lastrender"  -define png:swap-bytes -resize x200 ../_Output_PNG_Preview/"$NameNoExt"_"$Year".png
+convert ../_Output/"$Lastrender"[1]  -define png:swap-bytes -resize x200 ../_Output_PNG_Preview/"$NameNoExt"_"$Year".png
+
 exiftool -all= -m -Keywords="$CSV_INFO" -Software="Kta2geo 1.1" -artist="sous-paris.com" ../_Output_PNG_Preview/"$NameNoExt"_"$Year".png
 if [ -f ../_Output_PNG_Preview/"$NameNoExt"_"$Year".png_original ]
 then
