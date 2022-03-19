@@ -393,51 +393,100 @@ echo "${green}-----------------END INSIDE THE SUBSTRING-----------------------"
 
 echo "${white}---> Reorder from here with new path and new fields"
 
-S41_Tiff_FilesHardPath=$(cat tmp/NodeID_PlanchesOutputOrdered | awk -F'|' '{print $26}'|tr '\n' '@' |sed 's/\@$//')
 
+
+
+
+
+
+
+
+
+
+
+S63_The_Definitive_private_Tifffile=$(cat tmp/NodeID_PlanchesOutputOrdered | awk -F'|' '{print $26}'|tr '\n' '@' |sed 's/\@$//')
+
+S62_The_File_Date_LAST_SAVED=$(cat tmp/NodeID_PlanchesOutputOrdered | awk -F'|' '{print $25}'|tr '\n' '@' |sed 's/\@$//')
+
+
+S61_png_system_link=$(cat tmp/NodeID_PlanchesOutputOrdered | awk -F'|' '{print $23}'|tr '\n' '@' |sed 's/\@$//')
+#4326 Emprise Map
+S60_top_right_planches4326=$(cat tmp/NodeID_PlanchesOutputOrdered | awk -F'|' '{print $22}'|tr '\n' '@' |sed 's/\@$//')
+S59_bottom_right_planches4326=$(cat tmp/NodeID_PlanchesOutputOrdered | awk -F'|' '{print $21}'|tr '\n' '@' |sed 's/\@$//')
+S58_bottom_left_planches4326=$(cat tmp/NodeID_PlanchesOutputOrdered | awk -F'|' '{print $20}'|tr '\n' '@' |sed 's/\@$//')
+S57_top_left_planches4326=$(cat tmp/NodeID_PlanchesOutputOrdered | awk -F'|' '{print $19}'|tr '\n' '@' |sed 's/\@$//')
+#3857 Emprise Map
+S56_top_right_planches3857=$(cat tmp/NodeID_PlanchesOutputOrdered | awk -F'|' '{print $18}'|tr '\n' '@' |sed 's/\@$//')
+S55_bottom_right_planches3857=$(cat tmp/NodeID_PlanchesOutputOrdered | awk -F'|' '{print $17}'|tr '\n' '@' |sed 's/\@$//')
+S54_bottom_left_planches3857=$(cat tmp/NodeID_PlanchesOutputOrdered | awk -F'|' '{print $16}'|tr '\n' '@' |sed 's/\@$//')
+S53_top_left_planches3857=$(cat tmp/NodeID_PlanchesOutputOrdered | awk -F'|' '{print $15}'|tr '\n' '@' |sed 's/\@$//')
+#27561 Emprise Map
+S52_top_right_planches27561=$(cat tmp/NodeID_PlanchesOutputOrdered | awk -F'|' '{print $14}'|tr '\n' '@' |sed 's/\@$//')
+S51_bottom_right_planches27561=$(cat tmp/NodeID_PlanchesOutputOrdered | awk -F'|' '{print $13}'|tr '\n' '@' |sed 's/\@$//')
+S50_bottom_left_planches27561=$(cat tmp/NodeID_PlanchesOutputOrdered | awk -F'|' '{print $12}'|tr '\n' '@' |sed 's/\@$//')
+S49_top_left_planches27561=$(cat tmp/NodeID_PlanchesOutputOrdered | awk -F'|' '{print $11}'|tr '\n' '@' |sed 's/\@$//')
+#
+S48_Zip_short_info=$(cat tmp/NodeID_PlanchesOutputOrdered | awk -F'|' '{print $9}'|tr '\n' '@' |sed 's/\@$//')
+S47_PlancheMachineNameRM=$(cat tmp/NodeID_PlanchesOutputOrdered | awk -F'|' '{print $8}'|tr '\n' '@' |sed 's/\@$//')
+S46_Set_center_PlancheMachineName=$(cat tmp/NodeID_PlanchesOutputOrdered | awk -F'|' '{print $7}'|tr '\n' '@' |sed 's/\@$//')
+S45_AddPlancheMachineName=$(cat tmp/NodeID_PlanchesOutputOrdered | awk -F'|' '{print $6}'|tr '\n' '@' |sed 's/\@$//')
+S44_PlancheMachineName=$(cat tmp/NodeID_PlanchesOutputOrdered | awk -F'|' '{print $5}'|tr '\n' '@' |sed 's/\@$//')
+#
+S43_TheHttpFileSystemLink=$(cat tmp/NodeID_PlanchesOutputOrdered | awk -F'|' '{print $4}'|tr '\n' '@' |sed 's/\@$//')
+#
+S42_ShorNameID=$(cat tmp/NodeID_PlanchesOutputOrdered | awk -F'|' '{print $2}'|tr '\n' '@' |sed 's/\@$//')
+#
+S41_Tiff_FilesHardPath=$(cat tmp/NodeID_PlanchesOutputOrdered | awk -F'|' '{print $26}'|tr '\n' '@' |sed 's/\@$//')
 S40_Body=$(cat tmp/buttons.csv)
 
+###
 
+S39_LastModified_GeoTiff=$(cat tmp/NodeID_PlanchesOutputOrdered | awk -F'|' '{print $25}'|tr '\n' '@' |sed 's/\@$//')
+S38_NordEstBasic=$(awk -F'|' -v 'TheNodeID'="$TheNodeID" '$23=='TheNodeID'' OFS='|' ../_First_import_Planches.csv | awk -F'|' '{print $38}')
+S37_SudEstBasic=$(awk -F'|' -v 'TheNodeID'="$TheNodeID" '$23=='TheNodeID'' OFS='|' ../_First_import_Planches.csv | awk -F'|' '{print $37}')
+S36_SudOuestBasic=$(awk -F'|' -v 'TheNodeID'="$TheNodeID" '$23=='TheNodeID'' OFS='|' ../_First_import_Planches.csv | awk -F'|' '{print $36}')
+S35_NordOuestBasic=$(awk -F'|' -v 'TheNodeID'="$TheNodeID" '$23=='TheNodeID'' OFS='|' ../_First_import_Planches.csv | awk -F'|' '{print $35}')
+S34_NordEstBasic4326=$(awk -F'|' -v 'TheNodeID'="$TheNodeID" '$23=='TheNodeID'' OFS='|' ../_First_import_Planches.csv | awk -F'|' '{print $34}')
+S33_SudEstBasic4326=$(awk -F'|' -v 'TheNodeID'="$TheNodeID" '$23=='TheNodeID'' OFS='|' ../_First_import_Planches.csv | awk -F'|' '{print $33}')
+S32_SudOuestBasic4326=$(awk -F'|' -v 'TheNodeID'="$TheNodeID" '$23=='TheNodeID'' OFS='|' ../_First_import_Planches.csv | awk -F'|' '{print $32}')
+S31_NordOuestBasic4326=$(awk -F'|' -v 'TheNodeID'="$TheNodeID" '$23=='TheNodeID'' OFS='|' ../_First_import_Planches.csv | awk -F'|' '{print $31}')
+S30_NordEstBasic2571=$(awk -F'|' -v 'TheNodeID'="$TheNodeID" '$23=='TheNodeID'' OFS='|' ../_First_import_Planches.csv | awk -F'|' '{print $30}')
+S29_SudEstBasic2571=$(awk -F'|' -v 'TheNodeID'="$TheNodeID" '$23=='TheNodeID'' OFS='|' ../_First_import_Planches.csv | awk -F'|' '{print $29}')
+S28_SudOuestBasic2571=$(awk -F'|' -v 'TheNodeID'="$TheNodeID" '$23=='TheNodeID'' OFS='|' ../_First_import_Planches.csv | awk -F'|' '{print $28}')
+S27_NordOuestBasic2571=$(awk -F'|' -v 'TheNodeID'="$TheNodeID" '$23=='TheNodeID'' OFS='|' ../_First_import_Planches.csv | awk -F'|' '{print $27}')
 S26_Zip_FilesINPlace=$(cat tmp/NodeID_PlanchesOutputOrdered | awk -F'|' '{print $24}'|tr '\n' '@' |sed 's/\@$//')
-
-
 S25_Workspace=$(awk -F'|' -v 'TheNodeID'="$TheNodeID" '$23=='TheNodeID'' OFS='|' ../_First_import_Planches.csv | awk -F'|' '{print $25}')
-
-
-
-
-
-
-
-
-
+S24_WKT_Map_Extent=$(awk -F'|' -v 'TheNodeID'="$TheNodeID" '$23=='TheNodeID'' OFS='|' ../_First_import_Planches.csv | awk -F'|' '{print $24}'|tr '\n' '@' |sed 's/\@$//')
+S23_NodeID=$(awk -F'|' -v 'TheNodeID'="$TheNodeID" '$23=='TheNodeID'' OFS='|' ../_First_import_Planches.csv | awk -F'|' '{print $23}')
+S22_Year=$(awk -F'|' -v 'TheNodeID'="$TheNodeID" '$23=='TheNodeID'' OFS='|' ../_First_import_Planches.csv | awk -F'|' '{print $22}'|tr '\n' '@' |sed 's/\@$//')
+S21_Original_PreviewPNGLocation=$(awk -F'|' -v 'TheNodeID'="$TheNodeID" '$23=='TheNodeID'' OFS='|' ../_First_import_Planches.csv | awk -F'|' '{print $21}'|tr '\n' '@' |sed 's/\@$//')
+S20_Original_StorageLocation=$(awk -F'|' -v 'TheNodeID'="$TheNodeID" '$23=='TheNodeID'' OFS='|' ../_First_import_Planches.csv | awk -F'|' '{print $20}')
+S19_Original_RawMapName=$(awk -F'|' -v 'TheNodeID'="$TheNodeID" '$23=='TheNodeID'' OFS='|' ../_First_import_Planches.csv | awk -F'|' '{print $19}'|tr '\n' '@' |sed 's/\@$//')
+S18_Original_Tiff_Sources=$(awk -F'|' -v 'TheNodeID'="$TheNodeID" '$23=='TheNodeID'' OFS='|' ../_First_import_Planches.csv | awk -F'|' '{print $18}'|tr '\n' '@' |sed 's/\@$//')
 S17_WKT=$(awk -F'|' -v 'TheNodeID'="$TheNodeID" '$23=='TheNodeID'' OFS='|' ../_First_import_Planches.csv | awk -F'|' '{print $17}')
 S16_top_right4326=$(awk -F'|' -v 'TheNodeID'="$TheNodeID" '$23=='TheNodeID'' OFS='|' ../_First_import_Planches.csv | awk -F'|' '{print $16}'|tr '\n' '@' |sed 's/\@$//')
 S15_bottom_right4326=$(awk -F'|' -v 'TheNodeID'="$TheNodeID" '$23=='TheNodeID'' OFS='|' ../_First_import_Planches.csv | awk -F'|' '{print $15}'|tr '\n' '@' |sed 's/\@$//')
 S14_bottom_left4326=$(awk -F'|' -v 'TheNodeID'="$TheNodeID" '$23=='TheNodeID'' OFS='|' ../_First_import_Planches.csv | awk -F'|' '{print $14}'|tr '\n' '@' |sed 's/\@$//')
 S13_top_left4326=$(awk -F'|' -v 'TheNodeID'="$TheNodeID" '$23=='TheNodeID'' OFS='|' ../_First_import_Planches.csv | awk -F'|' '{print $13}'|tr '\n' '@' |sed 's/\@$//')
-
 S12_top_right=$(awk -F'|' -v 'TheNodeID'="$TheNodeID" '$23=='TheNodeID'' OFS='|' ../_First_import_Planches.csv | awk -F'|' '{print $12}'|tr '\n' '@' |sed 's/\@$//')
 S11_bottom_right=$(awk -F'|' -v 'TheNodeID'="$TheNodeID" '$23=='TheNodeID'' OFS='|' ../_First_import_Planches.csv | awk -F'|' '{print $11}'|tr '\n' '@' |sed 's/\@$//')
 S10_bottom_left=$(awk -F'|' -v 'TheNodeID'="$TheNodeID" '$23=='TheNodeID'' OFS='|' ../_First_import_Planches.csv | awk -F'|' '{print $10}'|tr '\n' '@' |sed 's/\@$//')
 S9_top_left=$(awk -F'|' -v 'TheNodeID'="$TheNodeID" '$23=='TheNodeID'' OFS='|' ../_First_import_Planches.csv | awk -F'|' '{print $9}'|tr '\n' '@' |sed 's/\@$//')
-
 S8_top_right27561=$(awk -F'|' -v 'TheNodeID'="$TheNodeID" '$23=='TheNodeID'' OFS='|' ../_First_import_Planches.csv | awk -F'|' '{print $8}'|tr '\n' '@' |sed 's/\@$//')
 S7_bottom_right27561=$(awk -F'|' -v 'TheNodeID'="$TheNodeID" '$23=='TheNodeID'' OFS='|' ../_First_import_Planches.csv | awk -F'|' '{print $7}'|tr '\n' '@' |sed 's/\@$//')
 S6_bottom_left27561=$(awk -F'|' -v 'TheNodeID'="$TheNodeID" '$23=='TheNodeID'' OFS='|' ../_First_import_Planches.csv | awk -F'|' '{print $6}'|tr '\n' '@' |sed 's/\@$//')
 S5_top_left27561=$(awk -F'|' -v 'TheNodeID'="$TheNodeID" '$23=='TheNodeID'' OFS='|' ../_First_import_Planches.csv | awk -F'|' '{print $5}'|tr '\n' '@' |sed 's/\@$//')
-
 S4_OldNum=$(awk -F'|' -v 'TheNodeID'="$TheNodeID" '$23=='TheNodeID'' OFS='|' ../_First_import_Planches.csv | awk -F'|' '{print $4}')
 S3_field_deptf_seine=$(awk -F'|' -v 'TheNodeID'="$TheNodeID" '$23=='TheNodeID'' OFS='|' ../_First_import_Planches.csv | awk -F'|' '{print $3}')
 S2_nodetitle=$(awk -F'|' -v 'TheNodeID'="$TheNodeID" '$23=='TheNodeID'' OFS='|' ../_First_import_Planches.csv | awk -F'|' '{print $2}')
 S1_Original_Filename=$(awk -F'|' -v 'TheNodeID'="$TheNodeID" '$23=='TheNodeID'' OFS='|' ../_First_import_Planches.csv | awk -F'|' '{print $1}'|tr '\n' '@' |sed 's/\@$//')
 
-echo "$red   $S1_Original_Filename|$S2_nodetitle|$S3_field_deptf_seine|$S4_OldNum $green|$S5_top_left27561|$S6_bottom_left27561|$S7_bottom_right27561|$S8_top_right27561|$S9_top_left|$S10_bottom_left|$S11_bottom_right|$S12_top_right|$lightblue$S13_top_left4326|$S14_bottom_left4326|$S15_bottom_right4326|$S16_top_right4326|$S17_WKT|$S26_Zip_FilesINPlace| $white $S40_Body|$green$S41_Tiff_FilesHardPath"
+echo "$red   I'm bad ordered $S1_Original_Filename|$S2_nodetitle|$S3_field_deptf_seine|$S4_OldNum|$S5_top_left27561|$S6_bottom_left27561|$S7_bottom_right27561|$S8_top_right27561|$S9_top_left|$S10_bottom_left|$S11_bottom_right|$S12_top_right|$lightblue$S13_top_left4326|$S14_bottom_left4326|$S15_bottom_right4326|$S16_top_right4326|$S17_WKT|$green$S18_Original_Tiff_Sources|$S19_Original_RawMapName|$S20_Original_StorageLocation|$S21_Original_PreviewPNGLocation|$S22_Year|$S23_NodeID|$S24_WKT_Map_Extent|$green$S25_Workspace$red|$S26_Zip_FilesINPlace|$purple$S27_NordOuestBasic2571|$S28_SudOuestBasic2571|$S29_SudEstBasic2571|$S30_NordEstBasic2571|$S31_NordOuestBasic4326|$S32_SudOuestBasic4326|$S33_SudEstBasic4326|$S34_NordEstBasic4326|$S35_NordOuestBasic|$S36_SudOuestBasic|$S37_SudEstBasic|$S38_NordEstBasic|$S39_LastModified_GeoTiff|$white$S40_Body|$red$S41_Tiff_FilesHardPath|$S42_ShorNameID|$S43_TheHttpFileSystemLink|$S44_PlancheMachineName|$S45_AddPlancheMachineName|$S46_Set_center_PlancheMachineName|$S47_PlancheMachineNameRM|$purple$S48_Zip_short_info|$S49_top_left_planches27561|$S50_bottom_left_planches27561|$S51_bottom_right_planches27561|$S52_top_right_planches27561|$S53_top_left_planches3857|$S54_bottom_left_planches3857|$S55_bottom_right_planches3857|$S56_top_right_planches3857|$S57_top_left_planches4326|$S58_bottom_left_planches4326|$S59_bottom_right_planches4326|$S60_top_right_planches4326|$red$S61_png_system_link|$lightblue$S62_The_File_Date_LAST_SAVED|$S63_The_Definitive_private_Tifffile"
 
-echo "${green}Filename|nodetitle|field_deptf_seine|OldNum|top_left27561|bottom_left27561|bottom_right27561|top_right27561|top_left|bottom_left|bottom_right|top_right|top_left4326|bottom_left4326|bottom_right4326|top_left4326|WKT|RawMapUri|RawMapName|StorageLocation|PreviewPNGLocation|Year|nodeID|WKT_Map_Extent
-${white}$TheDefinitiveFileHardpath|$nodetitle|$field_deptf_seine|$OldNum|$top_left27561|$bottom_left27561|$bottom_right27561|$top_right27561|||||||||||$TheDefinitiveFileHardpath|$TheTiffsDescription|||$TheNodeID
-purple NEW Variables : echo $lightblue $zip_name $purple$LayerMachineName
-"
+#echo "${green}Filename|nodetitle|field_deptf_seine|OldNum|top_left27561|bottom_left27561|bottom_right27561|top_right27561|top_left|bottom_left|bottom_right|top_right|top_left4326|bottom_left4326|bottom_right4326|top_left4326|WKT|RawMapUri|RawMapName|StorageLocation|PreviewPNGLocation|Year|nodeID|WKT_Map_Extent
+#${white}$TheDefinitiveFileHardpath|$nodetitle|$field_deptf_seine|$OldNum|$top_left27561|$bottom_left27561|$bottom_right27561|$top_right27561|||||||||||$TheDefinitiveFileHardpath|$TheTiffsDescription|||$TheNodeID
+#purple NEW Variables : echo $lightblue $zip_name $purple$LayerMachineName
+#"
 
 
 
