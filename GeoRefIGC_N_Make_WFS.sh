@@ -49,7 +49,7 @@ StorageLocation=$(cat tmp/StorageLocation)
 #echo "${white}---> The current Storage Location is                                 :${orange}$StorageLocation"
 read -p "${white}---> The current Storage Location is                                 : ${orange}$StorageLocation (y/n) ? :" RESP
 if [ "$RESP" = "y" ]; then
-  echo "${white}---> Using $StorageLocation as default Storage Location"
+echo "${white}---> Using $StorageLocation as default Storage Location"
 else
 echo "${white}---> The source files path must be as fellow
 eg. /my_folder/3857 /my_folder/pngpreview"
@@ -63,7 +63,6 @@ Do not forget the tailing / ${green} :  " StorageLocation
 echo "$StorageLocation" > tmp/StorageLocation
 fi
 StorageLocation=$(cat tmp/StorageLocation)
-#/var/www/cloud/data/admin/files/Maps/PLANS_SOURCE/IDC_BG
 
 
 echo geoserverworkspace=\"$geoserverworkspace\" > tmp/variable_invariable
@@ -3118,45 +3117,216 @@ echo "${white}---> Back from ${orange}CsvNWfs.sh${orange}"
 source tmp/tmp_bash tmp/variable_invariable
 
 done
-echo "Filename|nodetitle|OldNum|field_deptf_seine|top_left27561|bottom_left27561|bottom_right27561|top_right27561|top_left|bottom_left|bottom_right|top_right|top_left4326|bottom_left4326|bottom_right4326|top_left4326|WKT|RawMapUri|RawMapName|StorageLocation|PreviewPNGLocation|Year|nodeID|WKT_Map_Extent|geoserverworkspace|ZipRawMapUri" > ../Computed_Maps.csv
-cat tmp/computed_MapsTMP.csv >> ../Computed_Maps.csv
+echo "Filename|nodetitle|field_deptf_seine|OldNum|top_left27561|bottom_left27561|bottom_right27561|top_right27561|top_left|bottom_left|bottom_right|top_right|top_left4326|bottom_left4326|bottom_right4326|top_left4326|WKT|RawMapUri|RawMapName|StorageLocation|PreviewPNGLocation|Year|nodeID|WKT_Map_Extent|geoserverworkspace|ZipRawMapUri|NordOuestBasic2571|SudOuestBasic2571|SudEstBasic2571|NordEstBasic2571|NordOuestBasic4326|SudOuestBasic4326|SudEstBasic4326|NordEstBasic4326|NordOuestBasic|SudOuestBasic|SudEstBasic|NordEstBasic|LastModified_GeoTiff" > ../Computed_Maps.csv
+cat tmp/computed_MapsTMP.csv| sort -k23 -n >> ../Computed_Maps.csv
 
 
 
+# Almost happy ending
 
 
-
-
-
-if [ -f "../_Atlas_des_Carrière_du_département_1962.tif" ]
+if [ -f tmp/nodes_IDs ]
 then
-echo "${white}
-            #############################################
-
-            INSPECTION GÉNÉRALE DES CARRIÈRES DE LA SEINE
-
-
-            ATLAS DES CARRIÈRES SOUTERRAINES DU DÉPARTEMENT
-
-            TABLEAU DASSEMBLAGE
-
-            Echelle: 1 :50000.
-
-            NOTA : Le quadrillage du Tableau a pour origine un point situé, d'une part,
-            sur le méridien de Paris et, d'autre part, sur un parallèle passant à l6 m 90
-
-            au Nord de la façade méridionale de l'Observatoire.
-            Feuilles de l’Atlas des Carrières Souterraines de Paris.
-"
-gdal_translate -co COMPRESS=NONE -a_srs EPSG:27561 -of GTiff -gcp 0 0 582000 141874 -gcp 0 "$HeightImage" 582000 113824 -gcp "$WidthImage" 0 617210 141874 -gcp "$WidthImage" "$HeightImage" 617210 113824 "../_Atlas_des_Carrière_du_département_1962.tif" temp.tif
-if [ -f "../_Output/_Atlas_des_Carrière_du_département_1962.tif" ]
-then
-mv "../_Output/_Atlas_des_Carrière_du_département_1962.tif" "../_TRASH_TEMP/"$FileDate"_Atlas_des_Carrière_du_département_1962.tif"
+rm tmp/nodes_IDs
 fi
 
-gdalwarp -co COMPRESS=NONE -dstalpha -s_srs "EPSG:27561" -t_srs "EPSG:3857" temp.tif "../_Output/_Atlas_des_Carrière_du_département_1962.tif"
+if [ -f tmp/tmp_First_Import ]
+then
+rm tmp/tmp_First_Import
+fi
+
+
+
+IFS=$'\n'       # Processing directory
+set -f          # disable globbing
+for TheLine in $(cat ../Computed_Maps.csv|sed '1d')
+do
+echo "$TheLine" | awk -F'|' '{print $23}' |awk '!/./ || !seen[$0]++' >> tmp/nodes_IDs
+done
+
+awk '!/./ || !seen[$0]++' tmp/nodes_IDs > tmp/nodes_IDsTMP && mv tmp/nodes_IDsTMP tmp/nodes_IDs
+IFS=$'\n'       # Processing directory
+set -f          # disable globbing
+for TheLine in $(cat tmp/nodes_IDs)
+do
+CurentNodID="$TheLine"
+#echo "$CurentNodID"
+
+#awk -F'|' -v 'CurentNodID'="$CurentNodID" '$23=='CurentNodID'' OFS='|' ../Computed_Maps.csv |awk -F'|' '{print $18}' OFS='|'
+
+NodID=$(awk -F'|' -v 'CurentNodID'="$CurentNodID" '$23=='CurentNodID'' OFS='|' ../Computed_Maps.csv |awk -F'|' '{print $23}'|tr '\n' '@'|sed 's/\@$//')
+
+Filename=$(awk -F'|' -v 'CurentNodID'="$CurentNodID" '$23=='CurentNodID'' OFS='|' ../Computed_Maps.csv |awk -F'|' '{print $1}' OFS='|'|tr '\n' '@'|sed 's/\@$//')
+nodetitle=$(awk -F'|' -v 'CurentNodID'="$CurentNodID" '$23=='CurentNodID'' OFS='|' ../Computed_Maps.csv |awk -F'|' '{print $2}' |tr '\n' '@'| awk -F'@' '{print $1}')
+field_deptf_seine=$(awk -F'|' -v 'CurentNodID'="$CurentNodID" '$23=='CurentNodID'' OFS='|' ../Computed_Maps.csv |awk -F'|' '{print $3}' |tr '\n' '@'| awk -F'@' '{print $1}')
+OldNum=$(awk -F'|' -v 'CurentNodID'="$CurentNodID" '$23=='CurentNodID'' OFS='|' ../Computed_Maps.csv |awk -F'|' '{print $4}'|tr '\n' '@'| awk -F'@' '{print $1}')
+# 27561
+top_left27561=$(awk -F'|' -v 'CurentNodID'="$CurentNodID" '$23=='CurentNodID'' OFS='|' ../Computed_Maps.csv |awk -F'|' '{print $5}' OFS='|'|tr '\n' '@'|sed 's/\@$//')
+bottom_left27561=$(awk -F'|' -v 'CurentNodID'="$CurentNodID" '$23=='CurentNodID'' OFS='|' ../Computed_Maps.csv |awk -F'|' '{print $6}' OFS='|'|tr '\n' '@'|sed 's/\@$//')
+bottom_right27561=$(awk -F'|' -v 'CurentNodID'="$CurentNodID" '$23=='CurentNodID'' OFS='|' ../Computed_Maps.csv |awk -F'|' '{print $7}' OFS='|'|tr '\n' '@'|sed 's/\@$//')
+top_right27561=$(awk -F'|' -v 'CurentNodID'="$CurentNodID" '$23=='CurentNodID'' OFS='|' ../Computed_Maps.csv |awk -F'|' '{print $8}' OFS='|'|tr '\n' '@'|sed 's/\@$//')
+# 3857
+top_left=$(awk -F'|' -v 'CurentNodID'="$CurentNodID" '$23=='CurentNodID'' OFS='|' ../Computed_Maps.csv |awk -F'|' '{print $9}' OFS='|'|tr '\n' '@'|sed 's/\@$//')
+bottom_left=$(awk -F'|' -v 'CurentNodID'="$CurentNodID" '$23=='CurentNodID'' OFS='|' ../Computed_Maps.csv |awk -F'|' '{print $10}' OFS='|'|tr '\n' '@'|sed 's/\@$//')
+bottom_right=$(awk -F'|' -v 'CurentNodID'="$CurentNodID" '$23=='CurentNodID'' OFS='|' ../Computed_Maps.csv |awk -F'|' '{print $11}' OFS='|'|tr '\n' '@'|sed 's/\@$//')
+top_right=$(awk -F'|' -v 'CurentNodID'="$CurentNodID" '$23=='CurentNodID'' OFS='|' ../Computed_Maps.csv |awk -F'|' '{print $12}' OFS='|'|tr '\n' '@'|sed 's/\@$//')
+# 4326
+top_left4326=$(awk -F'|' -v 'CurentNodID'="$CurentNodID" '$23=='CurentNodID'' OFS='|' ../Computed_Maps.csv |awk -F'|' '{print $13}' OFS='|'|tr '\n' '@'|sed 's/\@$//')
+bottom_left4326=$(awk -F'|' -v 'CurentNodID'="$CurentNodID" '$23=='CurentNodID'' OFS='|' ../Computed_Maps.csv |awk -F'|' '{print $14}' OFS='|'|tr '\n' '@'|sed 's/\@$//')
+bottom_right4326=$(awk -F'|' -v 'CurentNodID'="$CurentNodID" '$23=='CurentNodID'' OFS='|' ../Computed_Maps.csv |awk -F'|' '{print $15}' OFS='|'|tr '\n' '@'|sed 's/\@$//')
+top_right4326=$(awk -F'|' -v 'CurentNodID'="$CurentNodID" '$23=='CurentNodID'' OFS='|' ../Computed_Maps.csv |awk -F'|' '{print $16}' OFS='|'|tr '\n' '@'|sed 's/\@$//')
+
+
+
+RawMapUri=$(awk -F'|' -v 'CurentNodID'="$CurentNodID" '$23=='CurentNodID'' OFS='|' ../Computed_Maps.csv |awk -F'|' '{print $18}' OFS='|'|tr '\n' '@')
+RawMapName=$(awk -F'|' -v 'CurentNodID'="$CurentNodID" '$23=='CurentNodID'' OFS='|' ../Computed_Maps.csv |awk -F'|' '{print $19}' OFS='|'|tr '\n' '@')
+Filezippath=$(echo ""$StorageLocation"_Output_wld_zip/")
+FileNoZip=$(awk -F'|' -v 'CurentNodID'="$CurentNodID" '$23=='CurentNodID'' OFS='|' ../Computed_Maps.csv |awk -F'|' '{print $26}'|tr '\n' '@')
+FileNoPNG=$(awk -F'|' -v 'CurentNodID'="$CurentNodID" '$23=='CurentNodID'' OFS='|' ../Computed_Maps.csv |awk -F'|' '{print $21}'|tr '\n' '@')
+WKTBASE=$(awk -F'|' -v 'CurentNodID'="$CurentNodID" '$23=='CurentNodID'' OFS='|' ../Computed_Maps.csv |awk -F'|' '{print $17}'|tr '\n' '@'| awk -F'@' '{print $1}')
+Years=$(awk -F'|' -v 'CurentNodID'="$CurentNodID" '$23=='CurentNodID'' OFS='|' ../Computed_Maps.csv |awk -F'|' '{print $22}'|tr '\n' '@'|sed 's/\@$//')
+WKT_Map_Extent=$(awk -F'|' -v 'CurentNodID'="$CurentNodID" '$23=='CurentNodID'' OFS='|' ../Computed_Maps.csv |awk -F'|' '{print $24}'|tr '\n' '@'|sed 's/\@$//')
+
+
+# Basic Coord
+#27561
+geoserverworkspace=$(awk -F'|' -v 'CurentNodID'="$CurentNodID" '$23=='CurentNodID'' OFS='|' ../Computed_Maps.csv |awk -F'|' '{print $25}'|tr '\n' '@'| awk -F'@' '{print $1}')
+NordOuestBasic2571=$(awk -F'|' -v 'CurentNodID'="$CurentNodID" '$23=='CurentNodID'' OFS='|' ../Computed_Maps.csv |awk -F'|' '{print $27}'|tr '\n' '@'| awk -F'@' '{print $1}')
+SudOuestBasic2571=$(awk -F'|' -v 'CurentNodID'="$CurentNodID" '$23=='CurentNodID'' OFS='|' ../Computed_Maps.csv |awk -F'|' '{print $28}'|tr '\n' '@'| awk -F'@' '{print $1}')
+SudEstBasic2571=$(awk -F'|' -v 'CurentNodID'="$CurentNodID" '$23=='CurentNodID'' OFS='|' ../Computed_Maps.csv |awk -F'|' '{print $29}'|tr '\n' '@'| awk -F'@' '{print $1}')
+NordEstBasic2571=$(awk -F'|' -v 'CurentNodID'="$CurentNodID" '$23=='CurentNodID'' OFS='|' ../Computed_Maps.csv |awk -F'|' '{print $30}'|tr '\n' '@'| awk -F'@' '{print $1}')
+#4326
+NordOuestBasic4326=$(awk -F'|' -v 'CurentNodID'="$CurentNodID" '$23=='CurentNodID'' OFS='|' ../Computed_Maps.csv |awk -F'|' '{print $31}'|tr '\n' '@'| awk -F'@' '{print $1}')
+SudOuestBasic4326=$(awk -F'|' -v 'CurentNodID'="$CurentNodID" '$23=='CurentNodID'' OFS='|' ../Computed_Maps.csv |awk -F'|' '{print $32}'|tr '\n' '@'| awk -F'@' '{print $1}')
+SudEstBasic4326=$(awk -F'|' -v 'CurentNodID'="$CurentNodID" '$23=='CurentNodID'' OFS='|' ../Computed_Maps.csv |awk -F'|' '{print $33}'|tr '\n' '@'| awk -F'@' '{print $1}')
+NordEstBasic4326=$(awk -F'|' -v 'CurentNodID'="$CurentNodID" '$23=='CurentNodID'' OFS='|' ../Computed_Maps.csv |awk -F'|' '{print $34}'|tr '\n' '@'| awk -F'@' '{print $1}')
+#3857
+NordOuestBasic=$(awk -F'|' -v 'CurentNodID'="$CurentNodID" '$23=='CurentNodID'' OFS='|' ../Computed_Maps.csv |awk -F'|' '{print $35}'|tr '\n' '@'| awk -F'@' '{print $1}')
+SudOuestBasic=$(awk -F'|' -v 'CurentNodID'="$CurentNodID" '$23=='CurentNodID'' OFS='|' ../Computed_Maps.csv |awk -F'|' '{print $36}'|tr '\n' '@'| awk -F'@' '{print $1}')
+SudEstBasic=$(awk -F'|' -v 'CurentNodID'="$CurentNodID" '$23=='CurentNodID'' OFS='|' ../Computed_Maps.csv |awk -F'|' '{print $37}'|tr '\n' '@'| awk -F'@' '{print $1}')
+NordEstBasic=$(awk -F'|' -v 'CurentNodID'="$CurentNodID" '$23=='CurentNodID'' OFS='|' ../Computed_Maps.csv |awk -F'|' '{print $38}'|tr '\n' '@'| awk -F'@' '{print $1}')
+
+
+RawMapUri=$(awk -F'|' -v 'CurentNodID'="$CurentNodID" '$23=='CurentNodID'' OFS='|' ../Computed_Maps.csv |awk -F'|' '{print $18}' OFS='|'|tr '\n' '@')
+
+LastModified_GeoTiff=$(awk -F'|' -v 'CurentNodID'="$CurentNodID" '$23=='CurentNodID'' OFS='|' ../Computed_Maps.csv |awk -F'|' '{print $39}' OFS='|'|tr '\n' '@'|sed 's/\@$//')
+
+if [ -f tmp/TheaTiffSourcePath ]
+then
+rm tmp/TheaTiffSourcePath
+fi
+
+IFS=$'\n'       # Processing directory
+set -f          # disable globbing
+for TheaTiffSourcePath in $(echo "$RawMapUri")
+do
+echo "$TheaTiffSourcePath" |sed 's/\@$//' >> tmp/TheaTiffSourcePath
+echo $green "-------"
+done
+# For Tiff Name
+
+if [ -f tmp/TheaTiffMapName ]
+then
+rm tmp/TheaTiffMapName
+fi
+IFS=$'\n'       # Processing directory
+set -f          # disable globbing
+for TheaTiffMapName in $(echo "$RawMapName")
+do
+echo "$TheaTiffMapName" |sed 's/\@$//' >> tmp/TheaTiffMapName
+echo $orange "-------"
+done
+# For jpg + wld + .prj
+if [ -f tmp/TheZipfile ]
+then
+rm tmp/TheZipfile
+fi
+IFS=$'\n'       # Processing directory
+set -f          # disable globbing
+for TheZipfile in $(echo "$FileNoZip")
+do
+echo "$TheZipfile" |sed 's/\@$//' >> tmp/TheZipfile
+echo $green "-------"
+done
+# For png preview
+if [ -f tmp/ThePNGfile ]
+then
+rm tmp/ThePNGfile
+fi
+IFS=$'\n'       # Processing directory
+set -f          # disable globbing
+for ThePNGfile in $(echo "$FileNoPNG")
+do
+echo "$ThePNGfile" |sed 's/\@$//' >> tmp/ThePNGfile
+echo $green "-------"
+done
+
+
+echo $red "-------"
+TheaTiffMapName=$(cat tmp/TheaTiffMapName)
+TheaTiffSourcePath=$(cat tmp/TheaTiffSourcePath)
+TheZipfile=$(cat tmp/TheZipfile)
+ThePNGfile=$(cat tmp/ThePNGfile)
+
+
+
+
+
+
+echo "$Filename|$nodetitle|$field_deptf_seine|$OldNum|$top_left27561|$bottom_left27561|$bottom_right27561|$top_right27561|$top_left|$bottom_left|$bottom_right|$top_right|$top_left4326|$bottom_left4326|$bottom_right4326|$top_right4326|$WKTBASE|$TheaTiffSourcePath|$TheaTiffMapName|$StorageLocation|$ThePNGfile|$Years|$CurentNodID|$WKT_Map_Extent|$geoserverworkspace|$TheZipfile|$NordOuestBasic2571|$SudOuestBasic2571|$SudEstBasic2571|$NordEstBasic2571|$NordOuestBasic4326|$SudOuestBasic4326|$SudEstBasic4326|$NordEstBasic4326|$NordOuestBasic|$SudOuestBasic|$SudEstBasic|$NordEstBasic|$LastModified_GeoTiff" >> tmp/tmp_First_Import
+done
+
+echo "Filename|nodetitle|field_deptf_seine|OldNum|top_left27561|bottom_left27561|bottom_right27561|top_right27561|top_left|bottom_left|bottom_right|top_right|top_left4326|bottom_left4326|bottom_right4326|top_right4326|WKT|RawMapUri|RawMapName|StorageLocation|PreviewPNGLocation|Year|nodeID|WKT_Map_Extent|geoserverworkspace|ZipRawMapUri|NordOuestBasic2571|SudOuestBasic2571|SudEstBasic2571|NordEstBasic2571|NordOuestBasic4326|SudOuestBasic4326|SudEstBasic4326|NordEstBasic4326|NordOuestBasic|SudOuestBasic|SudEstBasic|NordEstBasic|LastModified_GeoTiff" > ../_First_import_Planches.csv
+cat tmp/tmp_First_Import >> ../_First_import_Planches.csv
+
+echo "${green}
+         ##                 ########   #######  ##    ## ########   ####
+       ####                 ##     ## ##     ## ###   ## ##         ####
+         ##                 ##     ## ##     ## ####  ## ##         ####
+         ##      #######    ##     ## ##     ## ## ## ## ######      ##
+         ##                 ##     ## ##     ## ##  #### ##
+         ##                 ##     ## ##     ## ##   ### ##         ####
+       ######               ########   #######  ##    ## ########   ####
+------------------------------------------------------------------------------"
+
+
+
+echo "${white}---> Now copy the files on the server in $StorageLocation
+${white}---> Where folder _Outpout has to be renamed to _Output_3857
+${white}---> Path must look like bellow ${orange}:
+    "$StorageLocation"_Output_3857
+    "$StorageLocation"_Output_PNG_Preview
+    "$StorageLocation"_Output_wld_zip
+${white}---> Then import the CSV ${orange}_First_import_Planches.csv in ${green}sous-paris.com
+${white}---> Then via ssh run from the server main folder the commands ${orange} :
+    sudo drush ne-export --type=planche_wfs --file=WFS_Assemblage.txt
+    sudo mv WFS_Assemblage.txt /tmp/
+    "
+
+
+read -p "When done hit enter" DONE
+if [ -f Server_Port.cfg ]
+then
+echo "${green}---> Server.cfg found"
+else
+read -p "What is the server name .eg : sous-paris.com ? : " Server_SCP
+echo "$Server_SCP" > Server_SCP.cfg
+
+read -p "What is the server port .eg :  1777 ? : " Server_port
+echo "$Server_port" > Server_Port.cfg
+
+read -p "What is the server user .eg :  philibert ? : " Server_User
+echo "$Server_User" > User_SCP.cfg
 
 fi
+Port_SCP=$(cat Server_Port.cfg)
+Server_SCP=$(cat Server_SCP.cfg)
+User_scp=$(cat User_SCP.cfg)
+
+echo "${white}---> From the ${orange}Server_SCP.cfg Server_Port.cfg${white} the server name is${orange} $Server_SCP${white} port ${orange}$Port_SCP"
+echo "${white}---> The command shoult be : ${green}scp -P "$Port_SCP" "$User_scp"@"$Server_SCP":/tmp/WFS_Assemblage.txt "$dir"/tmp/WFS_Assemblage.txt"
+scp -P "$Port_SCP" "$User_scp"@"$Server_SCP":/tmp/WFS_Assemblage.txt "$dir"/tmp/WFS_Assemblage.txt
+
 
 rm temp.tif
 
