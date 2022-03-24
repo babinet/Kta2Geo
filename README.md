@@ -177,6 +177,16 @@ Folder/_Output/WhateverName(Folder)
 
 #### Special case :
 
+# Planches IGC
+
+```
+Feuille-281-union_Special_
+```
+
+```
+Feuille-300-301_
+```
+
 INSPECTION GÉNÉRALE DES CARRIÈRES DE LA SEINE
 
 ATLAS DES CARRIÈRES SOUTERRAINES DU DÉPARTEMENT - 1962
