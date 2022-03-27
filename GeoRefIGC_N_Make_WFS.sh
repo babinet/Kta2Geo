@@ -71,7 +71,7 @@ echo dir=\"$dir\" >> tmp/variable_invariable
 
 
 echo "${white}---> Generating special Maps information"
-#./Generate_WFS_GRID_FROM_GeoRefIGC.sh
+./Generate_WFS_GRID_FROM_GeoRefIGC.sh
 
 source tmp/variable_invariable
 
@@ -91,7 +91,10 @@ echo "Observatoire=\"$Observatoire\"" >> tmp/variable_invariable
 echo "ObservatoireLong=\"$ObservatoireLong\"" >> tmp/variable_invariable
 echo "ObservatoireLat=\"$ObservatoireLat\"" >> tmp/variable_invariable
 
-
+if [ -f ../Computed_Maps.csv ]
+then
+rm ../Computed_Maps.csv
+fi
 
 for TiffSource in ../*.tif
 do
@@ -2604,16 +2607,29 @@ fi
 gdalwarp -co COMPRESS=NONE -r bilinear -s_srs "EPSG:27561" -t_srs "EPSG:3857" -dstalpha temp.tif "../_Output/"$NameNoExt"_"$Year".tif"
 gdaladdo -r average "../_Output/"$NameNoExt"_"$Year".tif" 2 4 8 16
 
-# Planche ../25-50-union_*
-elif [[ "$TiffSource" =~ "../25-50-union_"* ]]||[[ "$TiffSource" =~ "../Feuille-281-union_"* ]]||[[ "$TiffSource" =~ "../55Y-union_"* ]]
+# Planche ../25-50-Special-union_*
+elif [[ "$TiffSource" =~ "../25-50-Special-union_"* ]]||[[ "$TiffSource" =~ "../Feuille-281-Special-union_"* ]]||[[ "$TiffSource" =~ "../55Y-Special-union_"* ]]
 then
-gdal_translate -co ALPHA=YES -co COMPRESS=NONE -a_srs EPSG:27561 -of GTiff -r bilinear -gcp 0 0 599400 126324 -gcp 0 "$HeightImage" 599400 125824 -gcp "$WidthImage" 0 600100  126324 -gcp "$WidthImage" "$HeightImage" 600100 125824 "$TiffSource" temp.tif
+gdal_translate -co ALPHA=YES -co COMPRESS=NONE -a_srs EPSG:27561 -of GTiff -r bilinear -gcp 0 0 599400 126324 -gcp 0 "$HeightImage" 599400 125724 -gcp "$WidthImage" 0 600100  126324 -gcp "$WidthImage" "$HeightImage" 600100 125724 "$TiffSource" temp.tif
 if [ -f "../_Output/"$NameNoExt"_"$Year".tif" ]
 then
 mv "../_Output/"$NameNoExt"_"$Year".tif" ../_TRASH_TEMP/"$FileDate"_"$NameNoExt"_"$Year".tif
 fi
 gdalwarp -co COMPRESS=NONE -r bilinear -s_srs "EPSG:27561" -t_srs "EPSG:3857" -dstalpha temp.tif "../_Output/"$NameNoExt"_"$Year".tif"
 gdaladdo -r average "../_Output/"$NameNoExt"_"$Year".tif" 2 4 8 16
+
+# Planche ../25-50-union_*
+elif [[ "$TiffSource" =~ "../25-50-union_"* ]]||[[ "$TiffSource" =~ "../Feuille-281-union_"* ]]||[[ "$TiffSource" =~ "../55Y-union_"* ]]
+then
+gdal_translate -co ALPHA=YES -co COMPRESS=NONE -a_srs EPSG:27561 -of GTiff -r bilinear -gcp 0 0 599400 126324 -gcp 0 "$HeightImage" 599400 125824 -gcp "$WidthImage" 0 600100  126324 -gcp "$WidthImage" "$HeightImage" 600100 125824 "$TiffSource" temp.tif
+echo "$purple Hello C'est pas moi"
+if [ -f "../_Output/"$NameNoExt"_"$Year".tif" ]
+then
+mv "../_Output/"$NameNoExt"_"$Year".tif" ../_TRASH_TEMP/"$FileDate"_"$NameNoExt"_"$Year".tif
+fi
+gdalwarp -co COMPRESS=NONE -r bilinear -s_srs "EPSG:27561" -t_srs "EPSG:3857" -dstalpha temp.tif "../_Output/"$NameNoExt"_"$Year".tif"
+gdaladdo -r average "../_Output/"$NameNoExt"_"$Year".tif" 2 4 8 16
+
 
 # Planche ../25-50-union_*
 elif [[ "$TiffSource" == ../Feuille-281-B-union_1896.tif ]]
@@ -2636,6 +2652,8 @@ mv "../_Output/"$NameNoExt"_"$Year".tif" ../_TRASH_TEMP/"$FileDate"_"$NameNoExt"
 fi
 gdalwarp -co COMPRESS=NONE -r bilinear  -dstalpha -s_srs "EPSG:27561" -t_srs "EPSG:3857" temp.tif "../_Output/"$NameNoExt"_"$Year".tif"
 gdaladdo -r average "../_Output/"$NameNoExt"_"$Year".tif" 2 4 8 16
+
+
 
 # Planche ../26-50-union_*
 elif [[ "$TiffSource" == ../Feuille-282-B-union_1896.tif ]]
@@ -3117,7 +3135,7 @@ echo "${white}---> Back from ${orange}CsvNWfs.sh${orange}"
 source tmp/tmp_bash tmp/variable_invariable
 
 done
-echo "Filename|nodetitle|field_deptf_seine|OldNum|top_left27561|bottom_left27561|bottom_right27561|top_right27561|top_left|bottom_left|bottom_right|top_right|top_left4326|bottom_left4326|bottom_right4326|top_left4326|WKT|RawMapUri|RawMapName|StorageLocation|PreviewPNGLocation|Year|nodeID|WKT_Map_Extent|geoserverworkspace|ZipRawMapUri|NordOuestBasic2571|SudOuestBasic2571|SudEstBasic2571|NordEstBasic2571|NordOuestBasic4326|SudOuestBasic4326|SudEstBasic4326|NordEstBasic4326|NordOuestBasic|SudOuestBasic|SudEstBasic|NordEstBasic|LastModified_GeoTiff" > ../Computed_Maps.csv
+echo "Filename|nodetitle|field_deptf_seine|OldNum|top_left27561|bottom_left27561|bottom_right27561|top_right27561|top_left|bottom_left|bottom_right|top_right|top_left4326|bottom_left4326|bottom_right4326|top_left4326|WKT|RawMapUri|RawMapName|StorageLocation|PreviewPNGLocation|Year|nodeID|WKT_Map_Extent|geoserverworkspace|ZipRawMapUri|NordOuestBasic2571|SudOuestBasic2571|SudEstBasic2571|NordEstBasic2571|NordOuestBasic4326|SudOuestBasic4326|SudEstBasic4326|NordEstBasic4326|NordOuestBasic|SudOuestBasic|SudEstBasic|NordEstBasic|LastModified_GeoTiff|MapCentroid" >> ../Computed_Maps.csv
 cat tmp/computed_MapsTMP.csv| sort -k23 -n >> ../Computed_Maps.csv
 
 
@@ -3190,7 +3208,7 @@ WKT_Map_Extent=$(awk -F'|' -v 'CurentNodID'="$CurentNodID" '$23=='CurentNodID'' 
 
 # Basic Coord
 #27561
-geoserverworkspace=$(awk -F'|' -v 'CurentNodID'="$CurentNodID" '$23=='CurentNodID'' OFS='|' ../Computed_Maps.csv |awk -F'|' '{print $25}'|tr '\n' '@'| awk -F'@' '{print $1}')
+geoserverworkspace=$(awk -F'|' -v 'CurentNodID'="$CurentNodID" '$23=='CurentNodID'' OFS='|' ../Computed_Maps.csv |awk -F'|' '{print $25}'|tr '\n' '@'|sed 's/\@$//')
 NordOuestBasic2571=$(awk -F'|' -v 'CurentNodID'="$CurentNodID" '$23=='CurentNodID'' OFS='|' ../Computed_Maps.csv |awk -F'|' '{print $27}'|tr '\n' '@'| awk -F'@' '{print $1}')
 SudOuestBasic2571=$(awk -F'|' -v 'CurentNodID'="$CurentNodID" '$23=='CurentNodID'' OFS='|' ../Computed_Maps.csv |awk -F'|' '{print $28}'|tr '\n' '@'| awk -F'@' '{print $1}')
 SudEstBasic2571=$(awk -F'|' -v 'CurentNodID'="$CurentNodID" '$23=='CurentNodID'' OFS='|' ../Computed_Maps.csv |awk -F'|' '{print $29}'|tr '\n' '@'| awk -F'@' '{print $1}')
@@ -3273,10 +3291,10 @@ ThePNGfile=$(cat tmp/ThePNGfile)
 
 
 
-echo "$Filename|$nodetitle|$field_deptf_seine|$OldNum|$top_left27561|$bottom_left27561|$bottom_right27561|$top_right27561|$top_left|$bottom_left|$bottom_right|$top_right|$top_left4326|$bottom_left4326|$bottom_right4326|$top_right4326|$WKTBASE|$TheaTiffSourcePath|$TheaTiffMapName|$StorageLocation|$ThePNGfile|$Years|$CurentNodID|$WKT_Map_Extent|$geoserverworkspace|$TheZipfile|$NordOuestBasic2571|$SudOuestBasic2571|$SudEstBasic2571|$NordEstBasic2571|$NordOuestBasic4326|$SudOuestBasic4326|$SudEstBasic4326|$NordEstBasic4326|$NordOuestBasic|$SudOuestBasic|$SudEstBasic|$NordEstBasic|$LastModified_GeoTiff" >> tmp/tmp_First_Import
+echo "$Filename|$nodetitle|$field_deptf_seine|$OldNum|$top_left27561|$bottom_left27561|$bottom_right27561|$top_right27561|$top_left|$bottom_left|$bottom_right|$top_right|$top_left4326|$bottom_left4326|$bottom_right4326|$top_right4326|$WKTBASE|$TheaTiffSourcePath|$TheaTiffMapName|$StorageLocation|$ThePNGfile|$Years|$CurentNodID|$WKT_Map_Extent|$geoserverworkspace|$TheZipfile|$NordOuestBasic2571|$SudOuestBasic2571|$SudEstBasic2571|$NordEstBasic2571|$NordOuestBasic4326|$SudOuestBasic4326|$SudEstBasic4326|$NordEstBasic4326|$NordOuestBasic|$SudOuestBasic|$SudEstBasic|$NordEstBasic|$LastModified_GeoTiff|$MapCentroid" >> tmp/tmp_First_Import
 done
 
-echo "Filename|nodetitle|field_deptf_seine|OldNum|top_left27561|bottom_left27561|bottom_right27561|top_right27561|top_left|bottom_left|bottom_right|top_right|top_left4326|bottom_left4326|bottom_right4326|top_right4326|WKT|RawMapUri|RawMapName|StorageLocation|PreviewPNGLocation|Year|nodeID|WKT_Map_Extent|geoserverworkspace|ZipRawMapUri|NordOuestBasic2571|SudOuestBasic2571|SudEstBasic2571|NordEstBasic2571|NordOuestBasic4326|SudOuestBasic4326|SudEstBasic4326|NordEstBasic4326|NordOuestBasic|SudOuestBasic|SudEstBasic|NordEstBasic|LastModified_GeoTiff" > ../_First_import_Planches.csv
+echo "Filename|nodetitle|field_deptf_seine|OldNum|top_left27561|bottom_left27561|bottom_right27561|top_right27561|top_left|bottom_left|bottom_right|top_right|top_left4326|bottom_left4326|bottom_right4326|top_right4326|WKT|RawMapUri|RawMapName|StorageLocation|PreviewPNGLocation|Year|nodeID|WKT_Map_Extent|geoserverworkspace|ZipRawMapUri|NordOuestBasic2571|SudOuestBasic2571|SudEstBasic2571|NordEstBasic2571|NordOuestBasic4326|SudOuestBasic4326|SudEstBasic4326|NordEstBasic4326|NordOuestBasic|SudOuestBasic|SudEstBasic|NordEstBasic|LastModified_GeoTiff|MapCentroid" > ../_First_import_Planches.csv
 cat tmp/tmp_First_Import >> ../_First_import_Planches.csv
 
 echo "${green}
@@ -3298,9 +3316,8 @@ ${white}---> Path must look like bellow ${orange}:
     "$StorageLocation"_Output_PNG_Preview
     "$StorageLocation"_Output_wld_zip
 ${white}---> Then import the CSV ${orange}_First_import_Planches.csv in ${green}sous-paris.com
-${white}---> Then via ssh run from the server main folder the commands ${orange} :
-    sudo drush ne-export --type=planche_wfs --file=WFS_Assemblage.txt
-    sudo mv WFS_Assemblage.txt /tmp/
+${white}---> Then via ssh run from the server main folder the script ${orange} :
+        ./Export_and_Move_WFS.sh
     "
 
 
@@ -3325,8 +3342,9 @@ User_scp=$(cat User_SCP.cfg)
 
 echo "${white}---> From the ${orange}Server_SCP.cfg Server_Port.cfg${white} the server name is${orange} $Server_SCP${white} port ${orange}$Port_SCP"
 echo "${white}---> The command shoult be : ${green}scp -P "$Port_SCP" "$User_scp"@"$Server_SCP":/tmp/WFS_Assemblage.txt "$dir"/tmp/WFS_Assemblage.txt"
+echo "                                   : ${green}scp -P "$Port_SCP" "$User_scp"@"$Server_SCP":/tmp/WFS_Assemblage.json "$dir"/tmp/WFS_Assemblage.txt"
 scp -P "$Port_SCP" "$User_scp"@"$Server_SCP":/tmp/WFS_Assemblage.txt "$dir"/tmp/WFS_Assemblage.txt
-
+scp -P "$Port_SCP" "$User_scp"@"$Server_SCP":/tmp/WFS_Assemblage.json "$dir"/tmp/WFS_Assemblage.json
 
 rm temp.tif
 
