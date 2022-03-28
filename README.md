@@ -175,12 +175,12 @@ Ouput images & .csv
 Folder/_Output/WhateverName(Folder)
 ```
 
-#### Special case :
+#### Special cases :
 
 # Planches IGC
 
 ```
-Feuille-281-union_Special_
+Feuille-281-Special-union_
 ```
 
 ```
