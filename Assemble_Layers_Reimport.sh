@@ -79,6 +79,7 @@ do
 
 
 # to keep as is
+
 TheNodeID=$(echo "$TheLine"| awk -F',"nid":"' '{print $2}'| awk -F'"' '{print $1}')
 echo "${orange}---> The Current node ID $TheNodeID"
 nodetitle=$(awk -F'|' -v 'TheNodeID'="$TheNodeID" '$23=='TheNodeID'' OFS='|' ../_First_import_Planches.csv | awk -F'|' '{print $2}')
@@ -86,12 +87,7 @@ field_deptf_seine=$(awk -F'|' -v 'TheNodeID'="$TheNodeID" '$23=='TheNodeID'' OFS
 OldNum=$(awk -F'|' -v 'TheNodeID'="$TheNodeID" '$23=='TheNodeID'' OFS='|' ../_First_import_Planches.csv | awk -F'|' '{print $4}')
 TheTiffs=$(echo "$TheLine" |awk -F'"field_raw_map_epsg_3857"' '{print $2}'| awk -F'}]},"' '{print $1}'|sed 's/"uri"/\
 /g'|awk -F'","filemime"' '{print $1}'|awk '/private:/'|awk '{print $NF}' FS=/ |awk -v 'filepathTIF'="$filepathTIF" '{print 'filepathTIF'"/"$0}'| tr '\n' '@'|sed 's/\@$//')
-#echo $red$TheTiffs TheTiffs
 
-#echo $purple "$TheLine"
-#To explode eg. A@B =
-# A
-# B
 top_left27561=$(awk -F'|' -v 'TheNodeID'="$TheNodeID" '$23=='TheNodeID'' OFS='|' ../_First_import_Planches.csv | awk -F'|' '{print $5}')
 bottom_left27561=$(awk -F'|' -v 'TheNodeID'="$TheNodeID" '$23=='TheNodeID'' OFS='|' ../_First_import_Planches.csv | awk -F'|' '{print $6}')
 bottom_right27561=$(awk -F'|' -v 'TheNodeID'="$TheNodeID" '$23=='TheNodeID'' OFS='|' ../_First_import_Planches.csv | awk -F'|' '{print $7}')
@@ -170,25 +166,18 @@ echo "$top_right4326" |tr '@' '\n' >> tmp/Multifields/top_right4326
 # PNG Link
 echo "$TheLine" | awk -F'"field_img_small_map":{' '{print $2}'|awk -F'"}]},"' '{print $1}'| sed 's/private:\\\/\\\//\
 /g'|awk -F'"' '{print "/system/files/"$1}' | sed 's/\\\//\//g' |awk '/.png/' >> tmp/Multifields/The_PNG_PRVIEW
+
+
 # Zip Link
 
-
-
-
-
-
-
-
-
-
 ThezipFileSize=$(echo "$Thezipsize"|awk -F'filesize":"' '{print $2}'|awk -F'"' '{print $1}'| awk '{ total = $1 / 1000000 ; print total }')
-
 
 echo "$TheLine" | awk -F'"field_zip_wld":{' '{print $2}'|awk -F'"}]},"' '{print $1}'| sed 's/private:\\\/\\\//\
 /g'|awk -F'"' '{print "/system/files/"$1}' | sed 's/\\\//\//g' |awk '/.zip/' >> tmp/Multifields/The_ZIPs_Files
 
 
 ZipSizeRounded=$(printf "%.2f \n" $ThezipFileSize)
+
 
 #ThePrivate
 
@@ -210,17 +199,22 @@ echo "$OriginalFilename" |tr '@' '\n' >> tmp/Multifields/OriginalFilename
 echo "$ZipSizeRounded" |tr '@' '\n' | awk '{print "Zip .jpg + .wld + .prj - "$0" MO"}' >> tmp/Multifields/zip_name
 echo "$zip_popover" |tr '@' '\n' >> tmp/Multifields/zip_popover
 
-echo $red B
 
 FilesDates=$(awk -F'|' -v 'TheNodeID'="$TheNodeID" '$23=='TheNodeID'' OFS='|' ../_First_import_Planches.csv | awk -F'|' '{print $39}')
 echo "$FilesDates" |tr '@' '\n' >> tmp/Multifields/FilesDates
 awk -F'|' -v 'TheNodeID'="$TheNodeID" '$23=='TheNodeID'' OFS='|' ../_First_import_Planches.csv | awk -F'|' '{print $25}'|tr '@' '\n' >> tmp/Multifields/TheWorkspace
 awk -F'|' -v 'TheNodeID'="$TheNodeID" '$23=='TheNodeID'' OFS='|' ../_First_import_Planches.csv | awk -F'|' '{print $25}'| awk '{print tolower($0)}'|tr '@' '\n' >> tmp/Multifields/TheWorkspaceClassJsCss
 
+awk -F'|' -v 'TheNodeID'="$TheNodeID" '$23=='TheNodeID'' OFS='|' ../_First_import_Planches.csv  | awk -F'|' '{print $26}'|tr '@' '\n' >> tmp/Multifields/The_zips_sources
+awk -F'|' -v 'TheNodeID'="$TheNodeID" '$23=='TheNodeID'' OFS='|' ../_First_import_Planches.csv  | awk -F'|' '{print $41}'|tr '@' '\n' >> tmp/Multifields/HumanReadableName
+awk -F'|' -v 'TheNodeID'="$TheNodeID" '$23=='TheNodeID'' OFS='|' ../_First_import_Planches.csv  | awk -F'|' '{print $40}'|tr '@' '\n' >> tmp/Multifields/CentroidPlanche
+awk -F'|' -v 'TheNodeID'="$TheNodeID" '$23=='TheNodeID'' OFS='|' ../_First_import_Planches.csv  | awk -F'|' '{print $21}'|tr '@' '\n' >> tmp/Multifields/SourcePNG
+
+
 echo "$YearMap" |tr '@' '\n' >> tmp/Multifields/YearMap
 TheDefinitiveFileHardpath="$TheTiffs"
 echo "$TheDefinitiveFileHardpath" |tr '@' '\n' >> tmp/Multifields/TheDefinitiveFileHardpath
-paste -d "|" tmp/Multifields/YearMap tmp/Multifields/FileDescID tmp/Multifields/TheTiffsDescription tmp/Multifields/TheHTTPTiffs tmp/Multifields/LayerMachineName tmp/Multifields/addLayerMachineName tmp/Multifields/set_center_LayerMachineName tmp/Multifields/LayerMachineName_rm tmp/Multifields/zip_name tmp/Multifields/zip_popover tmp/Multifields/top_left27561 tmp/Multifields/bottom_left27561 tmp/Multifields/bottom_right27561 tmp/Multifields/top_right27561 tmp/Multifields/top_left tmp/Multifields/bottom_left tmp/Multifields/bottom_right tmp/Multifields/top_right tmp/Multifields/top_left4326 tmp/Multifields/bottom_left4326 tmp/Multifields/bottom_right4326 tmp/Multifields/top_right4326 tmp/Multifields/The_PNG_PRVIEW tmp/Multifields/The_ZIPs_Files tmp/Multifields/FilesDates tmp/Multifields/TheDefinitiveFileHardpath tmp/Multifields/TheWorkspace tmp/Multifields/TheWorkspaceClassJsCss tmp/Multifields/OriginalFilename > tmp/buttonLinks
+paste -d "|" tmp/Multifields/YearMap tmp/Multifields/FileDescID tmp/Multifields/TheTiffsDescription tmp/Multifields/TheHTTPTiffs tmp/Multifields/LayerMachineName tmp/Multifields/addLayerMachineName tmp/Multifields/set_center_LayerMachineName tmp/Multifields/LayerMachineName_rm tmp/Multifields/zip_name tmp/Multifields/zip_popover tmp/Multifields/top_left27561 tmp/Multifields/bottom_left27561 tmp/Multifields/bottom_right27561 tmp/Multifields/top_right27561 tmp/Multifields/top_left tmp/Multifields/bottom_left tmp/Multifields/bottom_right tmp/Multifields/top_right tmp/Multifields/top_left4326 tmp/Multifields/bottom_left4326 tmp/Multifields/bottom_right4326 tmp/Multifields/top_right4326 tmp/Multifields/The_PNG_PRVIEW tmp/Multifields/The_ZIPs_Files tmp/Multifields/FilesDates tmp/Multifields/TheDefinitiveFileHardpath tmp/Multifields/TheWorkspace tmp/Multifields/TheWorkspaceClassJsCss tmp/Multifields/OriginalFilename tmp/Multifields/The_zips_sources tmp/Multifields/HumanReadableName tmp/Multifields/CentroidPlanche tmp/Multifields/SourcePNG > tmp/buttonLinks
 
 if [ -f tmp/NodeID_PlanchesOutput ]
 then
@@ -261,6 +255,15 @@ ShortTitleHeader=$(echo "$SUbstringOrdered" |awk -F'|' '{print $2}'|awk -F' - ' 
 ShortTifName=$(echo "$SUbstringOrdered" |awk -F'|' '{print $3}' | awk -F' - ' '{print $1, $2, $4, $5}')
 TheHTTPTiffsLink=$(echo "$SUbstringOrdered" |awk -F'|' '{print $4}')
 TiffTooltip=$(echo "$SUbstringOrdered" |awk -F'|' '{print $3}')
+
+
+
+
+HumanReadableName=$(echo "$SUbstringOrdered" |awk -F'|' '{print $31}')
+
+
+
+
 
 ThePngPreview=$(echo "$SUbstringOrdered" |awk -F'|' '{print $23}')
 
@@ -366,7 +369,7 @@ echo $purple TheLayerMachineName_rm
 
 
 # MachineNameMap_maindiv
- cat ModelJS.txt | sed "s/MachineNameMap/$The_LayerMachineName/g" | sed "s/HumanReadable_Name/$TitleHumanReadable/g" | sed "s/WokspaceLayerName/$workspace:$titlewhileread/g" | sed "s/SetMapCenter/$Center/g" | sed "s/SetZoomLevel/18/g" >> tmp/TMPJS.js
+ cat ModelJS.txt | sed "s/MachineNameMap/$The_LayerMachineName/g" | sed "s/HumanReadable_Name/$HumanReadableName/g" | sed "s/WokspaceLayerName/$workspace:$titlewhileread/g" | sed "s/SetMapCenter/$Center/g" | sed "s/SetZoomLevel/18/g" >> tmp/TMPJS.js
 
 echo "---> Genrating the javascript file"
 
@@ -385,6 +388,16 @@ done
 ##
 echo "${green}-----------------END INSIDE THE SUBSTRING-----------------------"
 echo "${white}---> Reorder from here with new path and new fields"
+
+# tmp/Multifields/CentroidPlanche tmp/Multifields/SourcePNG
+
+
+
+S68_SourcePNG=$(cat tmp/NodeID_PlanchesOutputOrdered | awk -F'|' '{print $33}'|tr '\n' '@' |sed 's/\@$//')
+
+S67_CentroidPlanche=$(cat tmp/NodeID_PlanchesOutputOrdered | awk -F'|' '{print $32}'|tr '\n' '@' |sed 's/\@$//')
+S66_HumanReadableName=$(cat tmp/NodeID_PlanchesOutputOrdered | awk -F'|' '{print $31}'|tr '\n' '@' |sed 's/\@$//')
+S65_The_zips_sources=$(cat tmp/NodeID_PlanchesOutputOrdered | awk -F'|' '{print $30}'|tr '\n' '@' |sed 's/\@$//')
 
 S64_TheWorkspaceClassJsCss=$(cat tmp/NodeID_PlanchesOutputOrdered | awk -F'|' '{print $26}'|tr '\n' '@' |sed 's/\@$//')
 
@@ -469,9 +482,12 @@ S2_nodetitle=$(awk -F'|' -v 'TheNodeID'="$TheNodeID" '$23=='TheNodeID'' OFS='|' 
 S1_Original_Filename=$(cat tmp/NodeID_PlanchesOutputOrdered | awk -F'|' '{print $29}'|tr '\n' '@' |sed 's/\@$//')
 
 
-echo "$S1_Original_Filename|$S2_nodetitle|$S3_field_deptf_seine|$S4_OldNum|$S5_top_left27561|$S6_bottom_left27561|$S7_bottom_right27561|$S8_top_right27561|$S9_top_left|$S10_bottom_left|$S11_bottom_right|$S12_top_right|$S13_top_left4326|$S14_bottom_left4326|$S15_bottom_right4326|$S16_top_right4326|$S17_WKT|$S18_Original_Tiff_Sources|$S19_Original_RawMapName|$S20_Original_StorageLocation|$S21_Original_PreviewPNGLocation|$S22_Year|$S23_NodeID|$S24_WKT_Map_Extent|$S25_Workspace|$S26_Zip_FilesINPlace|$S27_NordOuestBasic2571|$S28_SudOuestBasic2571|$S29_SudEstBasic2571|$S30_NordEstBasic2571|$S31_NordOuestBasic4326|$S32_SudOuestBasic4326|$S33_SudEstBasic4326|$S34_NordEstBasic4326|$S35_NordOuestBasic|$S36_SudOuestBasic|$S37_SudEstBasic|$S38_NordEstBasic|$S39_LastModified_GeoTiff|$S40_Body|$S41_Tiff_FilesHardPath|$S42_ShorNameID|$S43_TheHttpFileSystemLink|$S44_PlancheMachineName|$S45_AddPlancheMachineName|$S46_Set_center_PlancheMachineName|$S47_PlancheMachineNameRM|$S48_Zip_short_info|$S49_top_left_planches27561|$S50_bottom_left_planches27561|$S51_bottom_right_planches27561|$S52_top_right_planches27561|$S53_top_left_planches3857|$S54_bottom_left_planches3857|$S55_bottom_right_planches3857|$S56_top_right_planches3857|$S57_top_left_planches4326|$S58_bottom_left_planches4326|$S59_bottom_right_planches4326|$S60_top_right_planches4326|$S61_png_system_link|$S62_The_File_Date_LAST_SAVED|$S63_The_Definitive_private_Tifffile" >> tmp/LastimportsTMP.csv
+echo "$S1_Original_Filename|$S2_nodetitle|$S3_field_deptf_seine|$S4_OldNum|$S5_top_left27561|$S6_bottom_left27561|$S7_bottom_right27561|$S8_top_right27561|$S9_top_left|$S10_bottom_left|$S11_bottom_right|$S12_top_right|$S13_top_left4326|$S14_bottom_left4326|$S15_bottom_right4326|$S16_top_right4326|$S17_WKT|$S18_Original_Tiff_Sources|$S19_Original_RawMapName|$S20_Original_StorageLocation|$S21_Original_PreviewPNGLocation|$S22_Year|$S23_NodeID|$S24_WKT_Map_Extent|$S25_Workspace|$S26_Zip_FilesINPlace|$S27_NordOuestBasic2571|$S28_SudOuestBasic2571|$S29_SudEstBasic2571|$S30_NordEstBasic2571|$S31_NordOuestBasic4326|$S32_SudOuestBasic4326|$S33_SudEstBasic4326|$S34_NordEstBasic4326|$S35_NordOuestBasic|$S36_SudOuestBasic|$S37_SudEstBasic|$S38_NordEstBasic|$S39_LastModified_GeoTiff|$S40_Body|$S41_Tiff_FilesHardPath|$S42_ShorNameID|$S43_TheHttpFileSystemLink|$S44_PlancheMachineName|$S45_AddPlancheMachineName|$S46_Set_center_PlancheMachineName|$S47_PlancheMachineNameRM|$S48_Zip_short_info|$S49_top_left_planches27561|$S50_bottom_left_planches27561|$S51_bottom_right_planches27561|$S52_top_right_planches27561|$S53_top_left_planches3857|$S54_bottom_left_planches3857|$S55_bottom_right_planches3857|$S56_top_right_planches3857|$S57_top_left_planches4326|$S58_bottom_left_planches4326|$S59_bottom_right_planches4326|$S60_top_right_planches4326|$S61_png_system_link|$S62_The_File_Date_LAST_SAVED|$S63_The_Definitive_private_Tifffile|$S65_The_zips_sources|$S66_HumanReadableName|$S67_CentroidPlanche|$S68_SourcePNG" >> tmp/LastimportsTMP.csv
 
 
+#S68_SourcePNG=$(cat tmp/NodeID_PlanchesOutputOrdered | awk -F'|' '{print $33}'|tr '\n' '@' |sed 's/\@$//')
+#
+#S67_CentroidPlanche=$(cat tmp/NodeID_PlanchesOutputOrdered | awk -F'|' '{print $32}'|tr '\n' '@' |sed 's/\@$//')
 
 
 #echo "$S45_AddPlancheMachineName|$S46_Set_center_PlancheMachineName|$S46_Set_center_PlancheMachineName|$S47_PlancheMachineNameRM|$S43_TheHttpFileSystemLink|$TheWorkspaceClassJsCss|$S25_Workspace"
@@ -503,7 +519,8 @@ read -p "Wait here"
 done
 
 
-echo "I'm not well ordered (S1) only S1_Original_Filename|S2_nodetitle|S3_field_deptf_seine|S4_OldNum|S5_top_left27561|S6_bottom_left27561|S7_bottom_right27561|S8_top_right27561|S9_top_left|S10_bottom_left|S11_bottom_right|S12_top_right|S13_top_left4326|S14_bottom_left4326|S15_bottom_right4326|S16_top_right4326|S17_WKT|S18_Original_Tiff_Sources|S19_Original_RawMapName|S20_Original_StorageLocation|S21_Original_PreviewPNGLocation|S22_Year|S23_NodeID|S24_WKT_Map_Extent|S25_Workspacered|S26_Zip_FilesINPlace|S27_NordOuestBasic2571|S28_SudOuestBasic2571|S29_SudEstBasic2571|S30_NordEstBasic2571|S31_NordOuestBasic4326|S32_SudOuestBasic4326|S33_SudEstBasic4326|S34_NordEstBasic4326|S35_NordOuestBasic|S36_SudOuestBasic|S37_SudEstBasic|S38_NordEstBasic|S39_LastModified_GeoTiff|S40_Body|S41_Tiff_FilesHardPath|S42_ShorNameID|S43_TheHttpFileSystemLink|S44_PlancheMachineName|S45_AddPlancheMachineName|S46_Set_center_PlancheMachineName|S47_PlancheMachineNameRM|S48_Zip_short_info|S49_top_left_planches27561|S50_bottom_left_planches27561|S51_bottom_right_planches27561|S52_top_right_planches27561|S53_top_left_planches3857|S54_bottom_left_planches3857|S55_bottom_right_planches3857|S56_top_right_planches3857|S57_top_left_planches4326|S58_bottom_left_planches4326|S59_bottom_right_planches4326|S60_top_right_planches4326|S61_png_system_link|S62_The_File_Date_LAST_SAVED|S63_The_Definitive_private_Tifffile" > tmp/_Lastimports.csv
+#echo "S1_Original_Filename|S2_nodetitle|S3_field_deptf_seine|S4_OldNum|S5_top_left27561|S6_bottom_left27561|S7_bottom_right27561|S8_top_right27561|S9_top_left|S10_bottom_left|S11_bottom_right|S12_top_right|S13_top_left4326|S14_bottom_left4326|S15_bottom_right4326|S16_top_right4326|S17_WKT|S18_Original_Tiff_Sources|S19_Original_RawMapName|S20_Original_StorageLocation|S21_Original_PreviewPNGLocation|S22_Year|S23_NodeID|S24_WKT_Map_Extent|S25_Workspacered|S26_Zip_FilesINPlace|S27_NordOuestBasic2571|S28_SudOuestBasic2571|S29_SudEstBasic2571|S30_NordEstBasic2571|S31_NordOuestBasic4326|S32_SudOuestBasic4326|S33_SudEstBasic4326|S34_NordEstBasic4326|S35_NordOuestBasic|S36_SudOuestBasic|S37_SudEstBasic|S38_NordEstBasic|S39_LastModified_GeoTiff|S40_Body|S41_Tiff_FilesHardPath|S42_ShorNameID|S43_TheHttpFileSystemLink|S44_PlancheMachineName|S45_AddPlancheMachineName|S46_Set_center_PlancheMachineName|S47_PlancheMachineNameRM|S48_Zip_short_info|S49_top_left_planches27561|S50_bottom_left_planches27561|S51_bottom_right_planches27561|S52_top_right_planches27561|S53_top_left_planches3857|S54_bottom_left_planches3857|S55_bottom_right_planches3857|S56_top_right_planches3857|S57_top_left_planches4326|S58_bottom_left_planches4326|S59_bottom_right_planches4326|S60_top_right_planches4326|S61_png_system_link|S62_The_File_Date_LAST_SAVED|S63_The_Definitive_private_Tifffile|S65_The_zips_sources" > tmp/_Lastimports.csv
+echo "S1_Original_Filename|S2_nodetitle|S3_field_deptf_seine|S4_OldNum|S5_top_left27561|S6_bottom_left27561|S7_bottom_right27561|S8_top_right27561|S9_top_left|S10_bottom_left|S11_bottom_right|S12_top_right|S13_top_left4326|S14_bottom_left4326|S15_bottom_right4326|S16_top_right4326|S17_WKT|S18_Original_Tiff_Sources|S19_Original_RawMapName|S20_Original_StorageLocation|S21_Original_PreviewPNGLocation|S22_Year|S23_NodeID|S24_WKT_Map_Extent|S25_Workspace|S26_Zip_FilesINPlace|S27_NordOuestBasic2571|S28_SudOuestBasic2571|S29_SudEstBasic2571|S30_NordEstBasic2571|S31_NordOuestBasic4326|S32_SudOuestBasic4326|S33_SudEstBasic4326|S34_NordEstBasic4326|S35_NordOuestBasic|S36_SudOuestBasic|S37_SudEstBasic|S38_NordEstBasic|S39_LastModified_GeoTiff|S40_Body|S41_Tiff_FilesHardPath|S42_ShorNameID|S43_TheHttpFileSystemLink|S44_PlancheMachineName|S45_AddPlancheMachineName|S46_Set_center_PlancheMachineName|S47_PlancheMachineNameRM|S48_Zip_short_info|S49_top_left_planches27561|S50_bottom_left_planches27561|S51_bottom_right_planches27561|S52_top_right_planches27561|S53_top_left_planches3857|S54_bottom_left_planches3857|S55_bottom_right_planches3857|S56_top_right_planches3857|S57_top_left_planches4326|S58_bottom_left_planches4326|S59_bottom_right_planches4326|S60_top_right_planches4326|S61_png_system_link|S62_The_File_Date_LAST_SAVED|S63_The_Definitive_private_Tifffile|S65_The_zips_sources|S66_HumanReadableName|S67_CentroidPlanche|S68_SourcePNG" > tmp/_Lastimports.csv
 
 cat tmp/LastimportsTMP.csv >> tmp/_Lastimports.csv
 # | awk -F'|' '$18!=""'
@@ -536,7 +553,7 @@ User_scp=$(cat User_SCP.cfg)
 
 echo "${white}---> From the ${orange}Server_SCP.cfg Server_Port.cfg${white} the server name is${orange} $Server_SCP${white} port ${orange}$Port_SCP"
 echo "${white}---> The command shoult be : ${green}scp -P "$Port_SCP" "$User_scp"@"$Server_SCP":/tmp/WFS_Assemblage.txt "$dir"/tmp/WFS_Assemblage.txt"
-echo "                                   : ${green}scp -P "$Port_SCP" "$User_scp"@"$Server_SCP":/tmp/WFS_Assemblage.json "$dir"/tmp/WFS_Assemblage.txt"
+echo "                                   : ${green}scp -P "$Port_SCP" "$User_scp"@"$Server_SCP":/tmp/WFS_Assemblage.json "$dir"/tmp/WFS_Assemblage.json"
 scp -P "$Port_SCP" "$User_scp"@"$Server_SCP":/tmp/WFS_Assemblage.txt "$dir"/tmp/WFS_Assemblage.txt
 scp -P "$Port_SCP" "$User_scp"@"$Server_SCP":/tmp/WFS_Assemblage.json "$dir"/tmp/WFS_Assemblage.json
 

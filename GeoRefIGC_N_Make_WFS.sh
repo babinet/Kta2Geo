@@ -71,7 +71,7 @@ echo dir=\"$dir\" >> tmp/variable_invariable
 
 
 echo "${white}---> Generating special Maps information"
-./Generate_WFS_GRID_FROM_GeoRefIGC.sh
+#./Generate_WFS_GRID_FROM_GeoRefIGC.sh
 
 source tmp/variable_invariable
 
@@ -3135,7 +3135,7 @@ echo "${white}---> Back from ${orange}CsvNWfs.sh${orange}"
 source tmp/tmp_bash tmp/variable_invariable
 
 done
-echo "Filename|nodetitle|field_deptf_seine|OldNum|top_left27561|bottom_left27561|bottom_right27561|top_right27561|top_left|bottom_left|bottom_right|top_right|top_left4326|bottom_left4326|bottom_right4326|top_left4326|WKT|RawMapUri|RawMapName|StorageLocation|PreviewPNGLocation|Year|nodeID|WKT_Map_Extent|geoserverworkspace|ZipRawMapUri|NordOuestBasic2571|SudOuestBasic2571|SudEstBasic2571|NordEstBasic2571|NordOuestBasic4326|SudOuestBasic4326|SudEstBasic4326|NordEstBasic4326|NordOuestBasic|SudOuestBasic|SudEstBasic|NordEstBasic|LastModified_GeoTiff|MapCentroid" >> ../Computed_Maps.csv
+echo "Filename|nodetitle|field_deptf_seine|OldNum|top_left27561|bottom_left27561|bottom_right27561|top_right27561|top_left|bottom_left|bottom_right|top_right|top_left4326|bottom_left4326|bottom_right4326|top_left4326|WKT|RawMapUri|RawMapName|StorageLocation|PreviewPNGLocation|Year|nodeID|WKT_Map_Extent|geoserverworkspace|ZipRawMapUri|NordOuestBasic2571|SudOuestBasic2571|SudEstBasic2571|NordEstBasic2571|NordOuestBasic4326|SudOuestBasic4326|SudEstBasic4326|NordEstBasic4326|NordOuestBasic|SudOuestBasic|SudEstBasic|NordEstBasic|LastModified_GeoTiff|MapCentroid" > ../Computed_Maps.csv
 cat tmp/computed_MapsTMP.csv| sort -k23 -n >> ../Computed_Maps.csv
 
 
@@ -3155,7 +3155,7 @@ fi
 
 
 
-IFS=$'\n'       # Processing directory
+IFS=$'\n'       # Processing lines
 set -f          # disable globbing
 for TheLine in $(cat ../Computed_Maps.csv|sed '1d')
 do
@@ -3225,6 +3225,15 @@ SudEstBasic=$(awk -F'|' -v 'CurentNodID'="$CurentNodID" '$23=='CurentNodID'' OFS
 NordEstBasic=$(awk -F'|' -v 'CurentNodID'="$CurentNodID" '$23=='CurentNodID'' OFS='|' ../Computed_Maps.csv |awk -F'|' '{print $38}'|tr '\n' '@'| awk -F'@' '{print $1}')
 
 
+
+
+MapCentroid=$(awk -F'|' -v 'CurentNodID'="$CurentNodID" '$23=='CurentNodID'' OFS='|' ../Computed_Maps.csv |awk -F'|' '{print $40}'|tr '\n' '@'|sed 's/\@$//')
+MapTitleHumanReadable=$(awk -F'|' -v 'CurentNodID'="$CurentNodID" '$23=='CurentNodID'' OFS='|' ../Computed_Maps.csv |awk -F'|' '{print $41}'|tr '\n' '@'|sed 's/\@$//')
+
+
+
+
+
 RawMapUri=$(awk -F'|' -v 'CurentNodID'="$CurentNodID" '$23=='CurentNodID'' OFS='|' ../Computed_Maps.csv |awk -F'|' '{print $18}' OFS='|'|tr '\n' '@')
 
 LastModified_GeoTiff=$(awk -F'|' -v 'CurentNodID'="$CurentNodID" '$23=='CurentNodID'' OFS='|' ../Computed_Maps.csv |awk -F'|' '{print $39}' OFS='|'|tr '\n' '@'|sed 's/\@$//')
@@ -3291,10 +3300,10 @@ ThePNGfile=$(cat tmp/ThePNGfile)
 
 
 
-echo "$Filename|$nodetitle|$field_deptf_seine|$OldNum|$top_left27561|$bottom_left27561|$bottom_right27561|$top_right27561|$top_left|$bottom_left|$bottom_right|$top_right|$top_left4326|$bottom_left4326|$bottom_right4326|$top_right4326|$WKTBASE|$TheaTiffSourcePath|$TheaTiffMapName|$StorageLocation|$ThePNGfile|$Years|$CurentNodID|$WKT_Map_Extent|$geoserverworkspace|$TheZipfile|$NordOuestBasic2571|$SudOuestBasic2571|$SudEstBasic2571|$NordEstBasic2571|$NordOuestBasic4326|$SudOuestBasic4326|$SudEstBasic4326|$NordEstBasic4326|$NordOuestBasic|$SudOuestBasic|$SudEstBasic|$NordEstBasic|$LastModified_GeoTiff|$MapCentroid" >> tmp/tmp_First_Import
+echo "$Filename|$nodetitle|$field_deptf_seine|$OldNum|$top_left27561|$bottom_left27561|$bottom_right27561|$top_right27561|$top_left|$bottom_left|$bottom_right|$top_right|$top_left4326|$bottom_left4326|$bottom_right4326|$top_right4326|$WKTBASE|$TheaTiffSourcePath|$TheaTiffMapName|$StorageLocation|$ThePNGfile|$Years|$CurentNodID|$WKT_Map_Extent|$geoserverworkspace|$TheZipfile|$NordOuestBasic2571|$SudOuestBasic2571|$SudEstBasic2571|$NordEstBasic2571|$NordOuestBasic4326|$SudOuestBasic4326|$SudEstBasic4326|$NordEstBasic4326|$NordOuestBasic|$SudOuestBasic|$SudEstBasic|$NordEstBasic|$LastModified_GeoTiff|$MapCentroid|$MapTitleHumanReadable" >> tmp/tmp_First_Import
 done
 
-echo "Filename|nodetitle|field_deptf_seine|OldNum|top_left27561|bottom_left27561|bottom_right27561|top_right27561|top_left|bottom_left|bottom_right|top_right|top_left4326|bottom_left4326|bottom_right4326|top_right4326|WKT|RawMapUri|RawMapName|StorageLocation|PreviewPNGLocation|Year|nodeID|WKT_Map_Extent|geoserverworkspace|ZipRawMapUri|NordOuestBasic2571|SudOuestBasic2571|SudEstBasic2571|NordEstBasic2571|NordOuestBasic4326|SudOuestBasic4326|SudEstBasic4326|NordEstBasic4326|NordOuestBasic|SudOuestBasic|SudEstBasic|NordEstBasic|LastModified_GeoTiff|MapCentroid" > ../_First_import_Planches.csv
+echo "Filename|nodetitle|field_deptf_seine|OldNum|top_left27561|bottom_left27561|bottom_right27561|top_right27561|top_left|bottom_left|bottom_right|top_right|top_left4326|bottom_left4326|bottom_right4326|top_right4326|WKT|RawMapUri|RawMapName|StorageLocation|PreviewPNGLocation|Year|nodeID|WKT_Map_Extent|geoserverworkspace|ZipRawMapUri|NordOuestBasic2571|SudOuestBasic2571|SudEstBasic2571|NordEstBasic2571|NordOuestBasic4326|SudOuestBasic4326|SudEstBasic4326|NordEstBasic4326|NordOuestBasic|SudOuestBasic|SudEstBasic|NordEstBasic|LastModified_GeoTiff|MapCentroid|MapTitleHumanReadable" > ../_First_import_Planches.csv
 cat tmp/tmp_First_Import >> ../_First_import_Planches.csv
 
 echo "${green}

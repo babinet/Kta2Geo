@@ -50,14 +50,14 @@ echo NodeID=\"$NodeID\" >> tmp/tmp_bash
 elif [[ $PlancheName_Simple == Feuille-* ]]
 then
 PlancheFeuille=$( echo "$PlancheName_Simple"| sed 's/Feuille-//g' )
-planchesNames=$(awk -F'|' -v "le_nom_completb"="$PlancheName_Simple" '$4=='le_nom_completb'' CODEX_PLANCHES.csv | awk -F'|' '{print $2, $3, $4}' OFS='|'| awk '{print $0"|"}' )
+planchesNames=$(awk -F'|' -v "le_nom_completb"="$PlancheFeuille" '$4=='le_nom_completb'' CODEX_PLANCHES.csv | awk -F'|' '{print $2, $3, $4}' OFS='|'| awk '{print $0"|"}' )
 OriginalPost1980Name=$(echo "$planchesNames" |awk -F'|' '{print $1}'|awk -F'_' '{print $1}')
 Seine=$(echo "$planchesNames" |awk -F'|' '{print $2}'|awk -F'_' '{print $1}')
-OldNum=$(echo "$planchesNames" |awk -F'|' '{print $3}'|awk -F'_' '{print $1}')
+OldNum=$(echo "$planchesNames" |awk -F'|' '{print $3}'|awk -F'_' '{print $1}'| sed 's/Feuille-//g'| sed 's/-Special//g')
 
 
 
-
+# # Rares and specials names
 if [[ "$TiffSource" =~ "../Feuille-300-301_"* ]]
 then
 NodeID="34679"
@@ -65,6 +65,10 @@ echo "${red} spécial${white}"
 elif [[ "$TiffSource" =~ "../Feuille-281-Special_"* ]]
 then
 NodeID="34663"
+OldNum="281"
+Seine="55Y"
+planchesNames="25-50|55Y|281|"
+OriginalPost1980Name="25-50"
 echo "${red} spécial${white}"
 else
 NodeID=$(awk -F'|' -v "lenomcompletc"="$PlancheFeuille" '$4=='lenomcompletc'' CODEX_PLANCHES.csv | awk -F'|' '{print $1}'| awk 'NR == 1')
@@ -260,7 +264,12 @@ ResolutionX=$(exiftool ../_Output/"$Lastrender" | awk '/X Resolution/' |awk -F' 
 ResolutionY=$(exiftool ../_Output/"$Lastrender" | awk '/Y Resolution/' |awk -F' : ' '{print $2}')
 
 MapCentroid=$(gdalinfo ../_Output/"$Lastrender" |awk '/Center   /'|awk -F'\\(  '  '{print $2}'|awk -F'\\)'  '{print $1}')
+MapTitleHumanReadable=$(echo ../_Output/"$Lastrender"|awk -F'_Output/' '{print $2}'|sed 's/.tif//g'|tr '-' ' '|tr '_' ' ')
+
+echo MapTitleHumanReadable=$\"$MapTitleHumanReadable\" >> tmp/tmp_bash
 echo MapCentroid=$\"$MapCentroid\" >> tmp/tmp_bash
+
+read -p "WAIT HERE"
 
 ResolutionY_rounded=`printf "%.0f" $ResolutionY`
 ResolutionX_rounded=`printf "%.0f" $ResolutionX`
@@ -280,8 +289,8 @@ LastModified_GeoTiff=$(exiftool ../_Output/"$Lastrender" |awk '/Modify Date/' |a
 if [[ "$InfoSpecialMap" == "" ]]
 then
 WKT_Map_Extent=$(echo "Polygon (($NordOuest3857, $SudOuest3857, $SudEst3857, $NordEst3857, $NordOuest3857))")
-exiftool -r -overwrite_original -keywords= -m -keywords="$Lastrender|$OriginalPost1980Name|$Seine|$OldNum|$Ouest $Nord|$Ouest $Sud|$Est $Sud|$Est $Nord|$NordOuest3857|$SudOuest3857|$SudEst3857|$NordEst3857|$NordOuest4326|$SudOuest4326|$SudEst4326|$NordEst4326|Polygon (($NordOuest3857, $SudOuest3857, $SudEst3857, $NordEst3857, $NordOuest3857))|$RawMapUri|$RawMapName|$StorageLocation|$PreviewPNGLocation|$Year|$NodeID|$WKT_Map_Extent|$geoserverworkspace|$ZipRawMapUri|$NordOuestBasic2571|$SudOuestBasic2571|$SudEstBasic2571|$NordEstBasic2571|$NordOuestBasic4326|$SudOuestBasic4326|$SudEstBasic4326|$NordEstBasic4326|$NordOuestBasic|$SudOuestBasic|$SudEstBasic|$NordEstBasic|$LastModified_GeoTiff|$MapCentroid"  -artist="sous-paris.com" -Software="Kta2geo 1.1" ../_Output/"$Lastrender"
-echo "$Lastrender|$OriginalPost1980Name|$Seine|$OldNum|$Ouest $Nord|$Ouest $Sud|$Est $Sud|$Est $Nord|$NordOuest3857|$SudOuest3857|$SudEst3857|$NordEst3857|$NordOuest4326|$SudOuest4326|$SudEst4326|$NordEst4326|Polygon (($NordOuest3857, $SudOuest3857, $SudEst3857, $NordEst3857, $NordOuest3857))|$RawMapUri|$RawMapName|$StorageLocation|$PreviewPNGLocation|$Year|$NodeID|$WKT_Map_Extent|$geoserverworkspace|$ZipRawMapUri|$NordOuestBasic2571|$SudOuestBasic2571|$SudEstBasic2571|$NordEstBasic2571|$NordOuestBasic4326|$SudOuestBasic4326|$SudEstBasic4326|$NordEstBasic4326|$NordOuestBasic|$SudOuestBasic|$SudEstBasic|$NordEstBasic|$LastModified_GeoTiff|$MapCentroid"  > tmp/csv_tmp
+exiftool -r -overwrite_original -keywords= -m -keywords="$Lastrender|$OriginalPost1980Name|$Seine|$OldNum|$Ouest $Nord|$Ouest $Sud|$Est $Sud|$Est $Nord|$NordOuest3857|$SudOuest3857|$SudEst3857|$NordEst3857|$NordOuest4326|$SudOuest4326|$SudEst4326|$NordEst4326|Polygon (($NordOuest3857, $SudOuest3857, $SudEst3857, $NordEst3857, $NordOuest3857))|$RawMapUri|$RawMapName|$StorageLocation|$PreviewPNGLocation|$Year|$NodeID|$WKT_Map_Extent|$geoserverworkspace|$ZipRawMapUri|$NordOuestBasic2571|$SudOuestBasic2571|$SudEstBasic2571|$NordEstBasic2571|$NordOuestBasic4326|$SudOuestBasic4326|$SudEstBasic4326|$NordEstBasic4326|$NordOuestBasic|$SudOuestBasic|$SudEstBasic|$NordEstBasic|$LastModified_GeoTiff|$MapCentroid|$MapTitleHumanReadable"  -artist="sous-paris.com" -Software="Kta2geo 1.1" ../_Output/"$Lastrender"
+echo "$Lastrender|$OriginalPost1980Name|$Seine|$OldNum|$Ouest $Nord|$Ouest $Sud|$Est $Sud|$Est $Nord|$NordOuest3857|$SudOuest3857|$SudEst3857|$NordEst3857|$NordOuest4326|$SudOuest4326|$SudEst4326|$NordEst4326|Polygon (($NordOuest3857, $SudOuest3857, $SudEst3857, $NordEst3857, $NordOuest3857))|$RawMapUri|$RawMapName|$StorageLocation|$PreviewPNGLocation|$Year|$NodeID|$WKT_Map_Extent|$geoserverworkspace|$ZipRawMapUri|$NordOuestBasic2571|$SudOuestBasic2571|$SudEstBasic2571|$NordEstBasic2571|$NordOuestBasic4326|$SudOuestBasic4326|$SudEstBasic4326|$NordEstBasic4326|$NordOuestBasic|$SudOuestBasic|$SudEstBasic|$NordEstBasic|$LastModified_GeoTiff|$MapCentroid|$MapTitleHumanReadable"  > tmp/csv_tmp
 else
 echo "$yellow I'm .. SPECIAL !"
 WKT_Map_Extent=$(awk -F'|' -v 'NameOf_LastProcessed'='$NameOf_LastProcessed' "/$NameOf_LastProcessed/"  tmp/List_Special_Planches.csv |awk -F'|' '{print $16}')
@@ -305,8 +314,8 @@ echo $purple $BasicWKT
 
 
 
-exiftool -r -overwrite_original -keywords= -m -keywords="$Lastrender|$OriginalPost1980Name|$Seine|$OldNum|$InfoSpecialMap|$BasicWKT|$RawMapUri|$RawMapName|$StorageLocation|$PreviewPNGLocation|$Year|$NodeID|$WKT_Map_Extent|$geoserverworkspace|$ZipRawMapUri|$NordOuestBasic2571|$SudOuestBasic2571|$SudEstBasic2571|$NordEstBasic2571|$NordOuestBasic4326|$SudOuestBasic4326|$SudEstBasic4326|$NordEstBasic4326|$NordOuestBasic|$SudOuestBasic|$SudEstBasic|$NordEstBasic|$LastModified_GeoTiff|$MapCentroid" -artist="sous-paris.com" -Software="Kta2geo 1.1" ../_Output/"$Lastrender"
-echo "$Lastrender|$OriginalPost1980Name|$Seine|$OldNum|$InfoSpecialMap|$BasicWKT|$RawMapUri|$RawMapName|$StorageLocation|$PreviewPNGLocation|$Year|$NodeID|$WKT_Map_Extent|$geoserverworkspace|$ZipRawMapUri|$NordOuestBasic2571|$SudOuestBasic2571|$SudEstBasic2571|$NordEstBasic2571|$NordOuestBasic4326|$SudOuestBasic4326|$SudEstBasic4326|$NordEstBasic4326|$NordOuestBasic|$SudOuestBasic|$SudEstBasic|$NordEstBasic|$LastModified_GeoTiff|$MapCentroid" > tmp/csv_tmp
+exiftool -r -overwrite_original -keywords= -m -keywords="$Lastrender|$OriginalPost1980Name|$Seine|$OldNum|$InfoSpecialMap|$BasicWKT|$RawMapUri|$RawMapName|$StorageLocation|$PreviewPNGLocation|$Year|$NodeID|$WKT_Map_Extent|$geoserverworkspace|$ZipRawMapUri|$NordOuestBasic2571|$SudOuestBasic2571|$SudEstBasic2571|$NordEstBasic2571|$NordOuestBasic4326|$SudOuestBasic4326|$SudEstBasic4326|$NordEstBasic4326|$NordOuestBasic|$SudOuestBasic|$SudEstBasic|$NordEstBasic|$LastModified_GeoTiff|$MapCentroid|$MapTitleHumanReadable" -artist="sous-paris.com" -Software="Kta2geo 1.1" ../_Output/"$Lastrender"
+echo "$Lastrender|$OriginalPost1980Name|$Seine|$OldNum|$InfoSpecialMap|$BasicWKT|$RawMapUri|$RawMapName|$StorageLocation|$PreviewPNGLocation|$Year|$NodeID|$WKT_Map_Extent|$geoserverworkspace|$ZipRawMapUri|$NordOuestBasic2571|$SudOuestBasic2571|$SudEstBasic2571|$NordEstBasic2571|$NordOuestBasic4326|$SudOuestBasic4326|$SudEstBasic4326|$NordEstBasic4326|$NordOuestBasic|$SudOuestBasic|$SudEstBasic|$NordEstBasic|$LastModified_GeoTiff|$MapCentroid|$MapTitleHumanReadable" > tmp/csv_tmp
 fi
 
 
