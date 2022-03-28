@@ -1,0 +1,59 @@
+jQuery(document).ready(function($) {  
+$('#MachineNameMap_maindiv').remove();
+$('#add_MachineNameMap').click(function () {
+$( '#add_MachineNameMap' ).removeClass("list-group-item add-layer").addClass("list-group-item add-layer disabled");
+    var MachineNameMap_main_div = document.createElement("li");
+        MachineNameMap_main_div.className = "list-group-item";
+        MachineNameMap_main_div.setAttribute("id", "MachineNameMap_maindiv");
+        MachineNameMap_main_div.innerHTML = ('<div class="list-group-item add-layer" id="add_MachineNameMap">HumanReadable_Name</div><div class="list-group-item expanded-layer" id="MachineNameMap"><div class="list-header-black"><div class="nom-calque text-left">HumanReadable_Name</div><span id="MachineNameMap_rm" class="typeicon-close-layer rm-layer"></span></div></div><div class="list-pannel"><div id="stop-swipe-MachineNameMap" class="swipe-main disabled"><div class="swipe-wrapper swipe_off"><img class="swipe-btn" src="/sites/all/themes/cdm/css/svg/SWIPE.svg" data-toggle="tooltip" data-placement="bottom" title="Stop swipe"/></div></div><div id="start-swipe-MachineNameMap" class="swipe-main"><div class="swipe-wrapper"><img class="swipe-btn on" src="/sites/all/themes/cdm/css/svg/SWIPE.svg" data-toggle="tooltip" data-placement="bottom" title="Swipe"/></div></div><div class="btn btn-rectangle btn-xs map-area" data-toggle="tooltip" data-placement="bottom" data-original-title="Emprise"><span class="philicon philicon-Logo-header"></span><div class="position">TO_REPLACE_WITH_WKT</div></div><div class="slider-wrapper" data-toggle="tooltip" data-placement="bottom" title="Opacité"><div id="slider_MachineNameMap"><span class="ui-slider-handle"></span></div></div></div></div>');
+function insertAfter(referenceNode, newNode) {
+    referenceNode.parentNode.insertBefore(newNode, referenceNode.nextSibling);
+}
+var div_before = document.getElementById("add_MachineNameMap");
+    document.getElementById("ol-dynamique-layer");
+    insertAfter(div_before, MachineNameMap_main_div);
+          map = $('.openlayers-map').data('openlayers');
+    var MachineNameMap = new OpenLayers.Layer.TMS(
+        "HumanReadable_Name",
+        "https://sous-paris.com/geoserver/gwc/service/tms/",
+        {
+            layername: "WokspaceLayerName",
+            type: "png",
+            alpha: true,
+            transitionEffect: 'resize',
+            isBaseLayer: false,
+            displayInLayerSwitcher: false,
+            tileOrigin: new OpenLayers.LonLat(-20037508.34, -20037508.34)
+        });
+    map.openlayers.addLayers([MachineNameMap]);
+$(function() {
+      $( "#slider_MachineNameMap" ).slider({
+      range: "min",
+      min: 0,
+      value: 100,
+      slide: function(e, ui) {
+          MachineNameMap.setOpacity(ui.value / 100);
+          $( "#amount" ).val( ui.value );
+          }
+      });
+      $("#amount" ).val($( "#slider_MachineNameMap" ).slider( "value" ) );
+  });
+    swipe = new OpenLayers.Control.Swipe(MachineNameMap);
+    map.openlayers.addControl(swipe);
+    $('#start-swipe-MachineNameMap').click(function () {
+$(this).addClass('disabled').siblings().removeClass('disabled');
+        swipe.deactivate();
+        swipe.activate();
+});
+    $('#stop-swipe-MachineNameMap').click(function () {
+$(this).addClass('disabled').siblings().removeClass('disabled');
+        swipe.deactivate();
+});
+$('#MachineNameMap_rm').click(function () {
+$('#MachineNameMap_maindiv').remove();
+map.openlayers.removeLayer(MachineNameMap);
+$( '#add_MachineNameMap' ).removeClass("list-group-item add-layer disabled").addClass("list-group-item add-layer");
+});
+
+      });
+ });
