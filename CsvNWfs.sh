@@ -407,8 +407,8 @@ CSV_INFO=$(cat tmp/csv_tmp)
 
 gdal_translate -co "TFW=YES" ../_Output_3857/"$Lastrender" temp.tif
 LastrenderNoExt=$(echo "$Lastrender"| sed 's/\.tif//g')
-convert temp.tif "$LastrenderNoExt".jpg
-convert ../_Output_3857/"$Lastrender"[1]  -define png:swap-bytes -resize x200 ../_Output_PNG_Preview/"$NameNoExt"_"$geoserverworkspace"_"$Year".png
+convert -quiet temp.tif "$LastrenderNoExt".jpg
+convert -quiet ../_Output_3857/"$Lastrender"[1]  -define png:swap-bytes -resize x200 ../_Output_PNG_Preview/"$NameNoExt"_"$geoserverworkspace"_"$Year".png
 
 exiftool -all= -m -Keywords="$CSV_INFO" -Software="Kta2geo 1.1" -artist="sous-paris.com" ../_Output_PNG_Preview/"$NameNoExt"_"$geoserverworkspace"_"$Year".png
 if [ -f ../_Output_PNG_Preview/"$NameNoExt"_"$geoserverworkspace"_"$Year".png_original ]

@@ -656,6 +656,13 @@ Abscissa=60
 echo "${white}---> Ordinate substitut : ${green}$Ordinate"
 echo "${white}---> Abscissa substitut : ${green}$Abscissa"
 
+elif [[ "$TiffSource" == "../73D_"* ]]
+then
+Ordinate=28
+Abscissa=59
+echo "${white}---> Ordinate substitut : ${green}$Ordinate"
+echo "${white}---> Abscissa substitut : ${green}$Abscissa"
+
 elif [[ "$TiffSource" == "../80C_"* ]]
 then
 Ordinate=18
@@ -1886,8 +1893,8 @@ fi
 gdalwarp -co COMPRESS=NONE -r bilinear -dstalpha -s_srs "EPSG:27561" -t_srs "EPSG:3857"  temp.tif "../_Output_3857/"$NameNoExt"_"$geoserverworkspace"_"$Year".tif"
 gdaladdo -r average "../_Output_3857/"$NameNoExt"_"$geoserverworkspace"_"$Year".tif" 2 4 8 16
 
-# Planche ../71P_* or ../15-59-16_*
-elif [[ "$TiffSource" =~ "../71P_"* ]]||[[ "$TiffSource" =~ "../15-59-16_"* ]]
+# Planche ../71P_* or ../15-16-59_*
+elif [[ "$TiffSource" =~ "../71P_"* ]]||[[ "$TiffSource" =~ "../15-16-59_"* ]]
 then
 gdal_translate -co COMPRESS=NONE -a_srs EPSG:27561 -of GTiff -gcp 0 0 593800 122624 -gcp 0 "$HeightImage" 593800 122224 -gcp "$WidthImage" 0 594400 122624 -gcp "$WidthImage" "$HeightImage" 594400 122224 "$TiffSource" temp.tif
 
