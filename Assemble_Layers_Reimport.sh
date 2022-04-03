@@ -22,18 +22,82 @@ bleuetern=`tput setaf 45`
 ilghtpurple=`tput setaf 33`
 lightred=`tput setaf 161`
 darkblue=`tput setaf 19`
-
-#NameNoExt="25-51"
-#Year="1955"
 dir=$(
 cd -P -- "$(dirname -- "$0")" && pwd -P
 )
 cd "$dir"
 parentdir="$(dirname "$dir")"
-#if [ -d tmp ]
-#then
-#rm -R tmp
-#fi
+mkdir -p tmp ../_Output_3857 ../_Output_CSVs ../_DONE/ ../_Output_PNG_Preview ../_Output_wld_zip/ ../_TRASH_TEMP
+if [ -f tmp/HidendSeek.js ]
+then
+rm tmp/HidendSeek.js
+fi
+if [ -f tmp/HidendSeekTMP.js ]
+then
+rm tmp/HidendSeekTMP.js
+fi
+if [ -f tmp/JSWorkspace ]
+then
+rm tmp/JSWorkspace
+fi
+
+
+# Menu to check the storage and the layer name in javascript
+function askYesNo {
+        QUESTION=$(echo "${white}---> Would you like to round-up files from different Geoserver workspace in a common workspace in the javascript Dynamic Layers ?
+${white}---> Common use case: ${orange}The IDC Background from diffrent sources (BHVP, CapGeo, OpenData92, RATP, ...)${white} but in the same workspace to agregate layers in one single layer
+${white}---> This rule will have only consequeces on ${orange}Geoserver Workspace ${white}where are stored the GeoTiff and in the ${orange}JavaScript of the dynamic Layers eg. ${green}Workspace:LayerName"
+)
+        DEFAULT=$2
+        if [ "$DEFAULT" = true ]; then
+                OPTIONS="${red}[Y/n]"
+                DEFAULT="y"
+            else
+                OPTIONS="${red}[y/N]"
+                DEFAULT="n"
+        fi
+        read -p "$QUESTION $OPTIONS " -n 1 -s -r INPUT
+        INPUT=${INPUT:-${DEFAULT}}
+        echo ${INPUT}
+        if [[ "$INPUT" =~ ^[yY]$ ]]; then
+            ANSWER=true
+        else
+            ANSWER=false
+        fi
+}
+
+askYesNo "Do it?" true
+DOIT=$ANSWER
+if [ "$DOIT" = true ]; then
+    read -p "${orange}---> What is the name of the geoserver workspace .eg : IDC ? : ${green}" JavacriptWorkspace
+
+JSWorkspace=$(echo "$JavacriptWorkspace")
+echo "$JSWorkspace" > tmp/JSWorkspace
+else
+JSWorkspace=$(echo "$TheWorkspace")
+fi
+
+echo "${white}---> $JSWorkspace will be used to print javascript and will have to be use as Workspace ${orange}$JSWorkspace in geoserver"
+
+
+
+
+
+
+
+
+echo 'jQuery(document).ready(function($) {
+
+map.openlayers.events.register("moveend", map, function(){
+    var mapbounds = map.openlayers.getExtent();
+    bbox = mapbounds.toArray();
+    var bleft = bbox[0];
+    var bbottom = bbox[1];
+    var bright = bbox[2];
+    var btop = bbox[3];
+    ' > tmp/HidendSeek.js
+
+
 if [ -f tmp/temp_layers_div_elements.txt ]
 then
 rm tmp/temp_layers_div_elements.txt
@@ -67,9 +131,6 @@ filepathPNG=$(echo "$filepathTIF"_png_preview)
 # The HTML private path to download the tiffs
 # The HTML private path of the png
 HTMLprview_png=$(echo /system/files/"$filepathPNG")
-#echo $purple $HTMLprview_png
-#
-#echo ${green}filepathTIFFolder $filepathTIFFolder filepathTIF $filepathTIF $DownloadHTML_TIF_Path DownloadHTML_TIF_Path $filepathPNG filepathPNG
 
 IFS=$'\n'       # Processing ful line (ignoring spaces)
 set -f          # disable globbing
@@ -116,10 +177,6 @@ TheTiffsDescription=$(echo "$TheLine"  |awk -F'"field_raw_map_epsg_3857"' '{prin
 
 # File ID Based on string Name 25-50-union BHVP - 1988 - IDC - 16345
 FileDescID=$(echo "$TheTiffsDescription" |tr '@' '\n' | awk -F' X' '{print $1}' ) #| sed 's/ /\&nbsp;/g'
-echo $cyan"$FileDescID"
-
-echo $white$TheTiffsDescription TheTiffsDescription
-
 
 Thezip=$(echo "$TheLine"  |awk -F'"field_zip_wld"' '{print $2}'| awk -F'}]},"' '{print $1}'|sed 's/"description":"/\
 "description":"/g')
@@ -127,12 +184,6 @@ Thezip=$(echo "$TheLine"  |awk -F'"field_zip_wld"' '{print $2}'| awk -F'}]},"' '
 Thezipsize=$(echo "$TheLine"  |awk -F'"field_zip_wld"' '{print $2}'| awk -F'}]},"' '{print $1}'|sed 's/"filesize":"/\
 "filesize":"/g' |awk '/filesize/')
 
-
-
-#
-##for javascript action on layers linked to geoserver 3 actions = 3 buttons : #add_"$LayerMachineName" #set_center_"$LayerMachineName" #"$LayerMachineName"_rm + one button for the map extent
-## <div class="btn btn-dark btn-xs geometry" (WKT)
-#
 
 if [ -d tmp/Multifields ]
 then
@@ -143,7 +194,6 @@ mkdir -p tmp/Multifields
 Tiffs_name=$(echo "$TheLine" |awk -F'"field_raw_map_epsg_3857"' '{print $2}'| awk -F'}]},"' '{print $1}'|sed 's/"uri"/\
 /g'|awk -F'","filemime"' '{print $1}'|awk '/private:/'|awk '{print $NF}' FS=/|awk '{print "planche"$0}'| tr '\n' '@'|sed 's/\@$//')
 LayerMachineName=$(echo "$Tiffs_name" |tr '-' '_' | awk '{print tolower($0)}'| sed 's/.tif//g'|tr ' ' '_')
-#echo "$LayerMachineName" |tr '@' '\n' >> tmp/Multifields/LayerMachineName
 echo Tiffs_name $red $Tiffs_name
 
 
@@ -231,7 +281,7 @@ echo "${white}----------------INSIDE THE SUBSTRING------------------------"
 ##
 #
 # Round up and order by year
-IFS=$'\n'       # Processing LINE
+IFS=$'\n'       # Processing full line (ignoring spaces)
 set -f          # disable globbing
 for TheSubstring in $(cat tmp/buttonLinks)
 do
@@ -246,7 +296,7 @@ then
 rm tmp/buttons.csv
 fi
 
-IFS=$'\n'       # Processing LINE
+IFS=$'\n'       # Processing full line (ignoring spaces)
 set -f          # disable globbing
 for SUbstringOrdered in $(cat tmp/NodeID_PlanchesOutputOrdered)
 do
@@ -255,124 +305,110 @@ ShortTitleHeader=$(echo "$SUbstringOrdered" |awk -F'|' '{print $2}'|awk -F' - ' 
 ShortTifName=$(echo "$SUbstringOrdered" |awk -F'|' '{print $3}' | awk -F' - ' '{print $1, $2, $4, $5}')
 TheHTTPTiffsLink=$(echo "$SUbstringOrdered" |awk -F'|' '{print $4}')
 TiffTooltip=$(echo "$SUbstringOrdered" |awk -F'|' '{print $3}')
-
-
-
-
 HumanReadableName=$(echo "$SUbstringOrdered" |awk -F'|' '{print $31}')
-
-
-
-
-
-ThePngPreview=$(echo "$SUbstringOrdered" |awk -F'|' '{print $23}')
-
+ThePngPreview=$(echo "$TheHTTPTiffsLink" |sed 's/Raw_map_EPSG_3857/Raw_map_EPSG_3857_png_preview/g'|sed 's/\.tif/\.png/g')
 TheEmprise=$(echo "$SUbstringOrdered" |awk -F'|' '{print "GEOMETRYCOLLECTION(POLYGON(("$15, $16, $17, $18, $15")))"}' OFS=', ')
-
 TheWorkspace=$(echo "$SUbstringOrdered" |awk -F'|' '{print $27}')
 TheWorkspaceClassJsCss=$(echo "$SUbstringOrdered" |awk -F'|' '{print $28}')
-
 TheOriginalFilename=$(echo "$SUbstringOrdered" |awk -F'|' '{print $29}')
-
+TheGeoserverFileName=$(echo  "$TheOriginalFilename" | sed 's/\.tif//g'|sed "s/'/\\'/g")
 The_LayerMachineName=$(echo "$SUbstringOrdered" |awk -F'|' '{print $5}')
 TheLayerMachineName_rm=$(echo "$SUbstringOrdered" |awk -F'|' '{print $8}')
 TheAddLayerMachineName=$(echo "$SUbstringOrdered" |awk -F'|' '{print $6}')
-
 Thetop_left4326=$(echo "$SUbstringOrdered" | awk -F'|' '{print $19}')
 Thebottom_left4326=$(echo "$SUbstringOrdered" | awk -F'|' '{print $20}')
 Thebottom_right4326=$(echo "$SUbstringOrdered" | awk -F'|' '{print $21}')
 Thetop_right4326=$(echo "$SUbstringOrdered" | awk -F'|' '{print $22}')
-
 Thetop_left27561=$(echo "$SUbstringOrdered" | awk -F'|' '{print $11}')
 Thebottom_left27561=$(echo "$SUbstringOrdered" | awk -F'|' '{print $12}')
 Thebottom_right27561=$(echo "$SUbstringOrdered" | awk -F'|' '{print $13}')
 Thetop_right27561=$(echo "$SUbstringOrdered" | awk -F'|' '{print $14}')
-
 Thetop_left=$(echo "$SUbstringOrdered" | awk -F'|' '{print $15}')
 Thebottom_left=$(echo "$SUbstringOrdered" | awk -F'|' '{print $16}')
 Thebottom_right=$(echo "$SUbstringOrdered" | awk -F'|' '{print $17}')
 Thetop_right=$(echo "$SUbstringOrdered" | awk -F'|' '{print $18}')
-
 TheZipNameShort=$(echo "$SUbstringOrdered" |awk -F'|' '{print $9}')
 The_fullname=$(echo "$SUbstringOrdered" |awk -F'|' '{print $3}'|awk -F'","' '{print $1"</br> GeoTiff - WGS 84 - Tagged"}')
 The_fullnameexerpforTheZipNameTooltip=$(echo "$The_fullname"|awk -F'pouce' '{print $1"pouce"}')
 TheZipNameTooltip=$(echo "$The_fullnameexerpforTheZipNameTooltip     <br> $TheZipNameShort" )
-
+The_CentroidPlanche=$(echo "$SUbstringOrdered" | awk -F'|' '{print $32}')
 
 TheZipLink=$(echo "$SUbstringOrdered" |awk -F'|' '{print $24}')
 PrivatePath=$(echo "$SUbstringOrdered" |awk -F'|' '{print $26}')
 
-echo $lightblue $The_fullname The_fullname The_fullname The_fullname
+echo $lightblue $The_fullname
 
-#TheHTTPTiffsLink="/system/files/Raw_map_EPSG_3857/Feuille-281-union_1954.tif"
-#Thetop_right="260098.642816645 6247162.50356738"
-#Thetop_left="259188.765852965 6247162.44540077"
-#Thetop_left27561='1234'
-#Thetop_left27561='1234'
-#TheWorkspace=idc
 DoubleQuote=$(echo \")
 QUOTE="'"
-echo "$lightblue helohelo helo $DoubleQuote"
-echo "<div class="$QUOTE"btn-group $TheWorkspaceClassJsCss btn-group-xs"$QUOTE">
+echo "<div class="$QUOTE"btn-group $TheWorkspaceClassJsCss btn-group-xs"$QUOTE" year="$QUOTE"$TheYear"$QUOTE">
 
-<div class="$QUOTE"btn btn-dark btn-xs geometry layer-selected"$QUOTE" data-toggle="$QUOTE"popover"$QUOTE" data-original-title="$QUOTE"$ShortTitleHeader"$QUOTE" data-placement="$QUOTE"left"$QUOTE" data-content="$QUOTE"$TheEmprise"$QUOTE">
-<div class="$QUOTE"loc-wkt"$QUOTE"><div class="$QUOTE"position"$QUOTE">$TheEmprise</div>Emprise</div>
-</div>
-
+<div class="$QUOTE"btn btn-dark btn-xs geometry layer-selected"$QUOTE" data-toggle="$QUOTE"popover"$QUOTE" data-original-title="$QUOTE"$ShortTitleHeader"$QUOTE" data-placement="$QUOTE"left"$QUOTE" data-content="$QUOTE"$TheEmprise"$QUOTE"><div class="$QUOTE"position"$QUOTE">$TheEmprise</div>Emprise</div>
 <div class="$QUOTE"btn btn-dark btn-xs geometry corners"$QUOTE">
-
 <div class="$DoubleQuote"tpl"$DoubleQuote">
 <div class="$DoubleQuote"loc-wkt"$DoubleQuote">
-<div class="$DoubleQuote"position"$DoubleQuote">GEOMETRYCOLLECTION(POINT("$Thetop_left"))</div>
+<div class="$DoubleQuote"position"$DoubleQuote">GEOMETRYCOLLECTION(POINT("$Thetop_left"))</div><span class=$DoubleQuote"zoominfo$DoubleQuote">18</span>
 <span class="$DoubleQuote"philicon-cible-UlLt"$DoubleQuote" data-toggle="$QUOTE"popover"$QUOTE" data-original-title="$QUOTE"Top left EPSG:3857"$QUOTE" data-content="$QUOTE"<div class="$DoubleQuote"epsg-3857"$DoubleQuote">$Thetop_left</div><div class="$DoubleQuote"epsg-4326"$DoubleQuote">EPSG:4326 $Thetop_left4326</div><div class="$DoubleQuote"epsg-27571"$DoubleQuote">EPSG:27561 $Thetop_left27561</div>"$QUOTE"></span>
 </div>
 </div>
-
 <div class="$DoubleQuote"tprght"$DoubleQuote">
 <div class="$DoubleQuote"loc-wkt"$DoubleQuote">
-<div class="$DoubleQuote"position"$DoubleQuote">GEOMETRYCOLLECTION(POINT("$Thetop_right"))</div>
+<div class="$DoubleQuote"position"$DoubleQuote">GEOMETRYCOLLECTION(POINT("$Thetop_right"))</div><span class=$DoubleQuote"zoominfo$DoubleQuote">18</span>
 <span class="$DoubleQuote"philicon-cible-UlLt"$DoubleQuote" data-toggle="$QUOTE"popover"$QUOTE" data-original-title="$QUOTE"Top right EPSG:3857"$QUOTE" data-content="$QUOTE"<div class="$DoubleQuote"epsg-3857"$DoubleQuote">$Thetop_right</div><div class="$DoubleQuote"epsg-4326"$DoubleQuote">EPSG:4326 $Thetop_right4326</div><div class="$DoubleQuote"epsg-27571"$DoubleQuote">EPSG:27561 $Thetop_right27561</div>"$QUOTE"></span>
 </div>
 </div>
-
 <div class="$DoubleQuote"coin"$DoubleQuote">Corners</div>
-
 <div class="$DoubleQuote"btmlft"$DoubleQuote">
 <div class="$DoubleQuote"loc-wkt"$DoubleQuote">
-<div class="$DoubleQuote"position"$DoubleQuote">GEOMETRYCOLLECTION(POINT("$Thebottom_left"))</div>
+<div class="$DoubleQuote"position"$DoubleQuote">GEOMETRYCOLLECTION(POINT("$Thebottom_left"))</div><span class=$DoubleQuote"zoominfo$DoubleQuote">18</span>
 <span class="$DoubleQuote"philicon-cible-UlLt"$DoubleQuote" data-toggle="$QUOTE"popover"$QUOTE" data-original-title="$QUOTE"Bottom left EPSG:3857"$QUOTE" data-content="$QUOTE"<div class="$DoubleQuote"epsg-3857"$DoubleQuote">$Thetop_right</div><div class="$DoubleQuote"epsg-4326"$DoubleQuote">EPSG:4326 $Thebottom_left4326</div><div class="$DoubleQuote"epsg-27571"$DoubleQuote">EPSG:27561 $Thebottom_left27561</div>"$QUOTE"></span>
 </div>
 </div>
-
-
-
 <div class="$DoubleQuote"btmrght"$DoubleQuote">
 <div class="$DoubleQuote"loc-wkt"$DoubleQuote">
-<div class="$DoubleQuote"position"$DoubleQuote">GEOMETRYCOLLECTION(POINT("$Thebottom_right"))</div>
+<div class="$DoubleQuote"position"$DoubleQuote">GEOMETRYCOLLECTION(POINT("$Thebottom_right"))</div><span class=$DoubleQuote"zoominfo$DoubleQuote">18</span>
 <span class="$DoubleQuote"philicon-cible-UlLt"$DoubleQuote" data-toggle="$QUOTE"popover"$QUOTE" data-original-title="$QUOTE"Bottom right EPSG:3857"$QUOTE" data-content="$QUOTE"<div class="$DoubleQuote"epsg-3857"$DoubleQuote">$Thetop_right</div><div class="$DoubleQuote"epsg-4326"$DoubleQuote">EPSG:4326 $Thebottom_right4326</div><div class="$DoubleQuote"epsg-27571"$DoubleQuote">EPSG:27561 $Thebottom_right27561</div>"$QUOTE"></span>
 </div>
 </div>
-
 </div>
-
 <div class="$QUOTE"btn btn-dark btn-xs showlayer"$QUOTE" data-img="$QUOTE"$ThePngPreview"$QUOTE" data-original-title="$QUOTE""$ShortTitleHeader""$QUOTE" data-toggle="$QUOTE"popover"$QUOTE" layer="$QUOTE"$TheAddLayerMachineName"$QUOTE" addlayertolist="$QUOTE"$PrivatePath"$QUOTE">Voir</div>
 <div class="$QUOTE"btn btn-dark btn-xs hidelayer"$QUOTE" layer="$QUOTE"$TheLayerMachineName_rm"$QUOTE" removelayerfromlist="$DoubleQuote"$PrivatePath"$DoubleQuote">Cacher</div>
 <a class="$QUOTE"btn btn-dark btn-xs download-tif"$QUOTE" href="$QUOTE"$TheHTTPTiffsLink"$QUOTE" data-toggle="$QUOTE"tooltip"$QUOTE" data-original-title="$QUOTE"$The_fullname"$QUOTE">$ShortTifName<span class="$QUOTE"glyphicon glyphicon-download-alt"$QUOTE"></span></a>
 <a class="$QUOTE"btn btn-dark btn-xs download-zip"$QUOTE" href="$QUOTE"$TheZipLink"$QUOTE" data-toggle="$QUOTE"tooltip"$QUOTE" data-original-title="$QUOTE"$TheZipNameTooltip"$QUOTE">$TheZipNameShort<span class="$QUOTE"glyphicon glyphicon-download-alt"$QUOTE"></span></a>
-
 </div>" |tr -d '\n' >> tmp/buttons.csv
 
+echo "
+$white# JavScript and Html Element
+# Make Hide and Seek
+# Dynamic Layers (with map info)
+# Make jquey
+"
 
 echo "<div class="$DoubleQuote"list-group-item $TheWorkspaceClassJsCss add-layer"$DoubleQuote" year="$DoubleQuote"$TheYear"$DoubleQuote" pathtogeotif="$QUOTE"$PrivatePath"$QUOTE" style="$DoubleQuote"display:none"$DoubleQuote" emprise="$QUOTE"$TheEmprise"$QUOTE" id="$DoubleQuote"$TheAddLayerMachineName"$DoubleQuote">$ShortTifName</div>" >> tmp/temp_layers_div_elements.txt
 
-echo $purple TheLayerMachineName_rm
-
-
-# MachineNameMap_maindiv
- cat ModelJS.txt | sed "s/MachineNameMap/$The_LayerMachineName/g" | sed "s/HumanReadable_Name/$HumanReadableName/g" | sed "s/WokspaceLayerName/$workspace:$titlewhileread/g" | sed "s/SetMapCenter/$Center/g" | sed "s/SetZoomLevel/18/g" >> tmp/TMPJS.js
+# Answer from menu line 45
+if [ -f tmp/JSWorkspace ]
+then
+JSWorkspace=$(cat tmp/JSWorkspace)
+else
+JSWorkspace=$(echo "$TheWorkspace")
+fi
 
 echo "---> Genrating the javascript file"
+# MachineNameMap_maindiv
+cat ModelJS_Emprise.txt | sed "s/MachineNameMap/$The_LayerMachineName/g" | sed "s/HumanReadable_Name/$HumanReadableName/g" | sed "s/WokspaceLayerName/$JSWorkspace:$TheGeoserverFileName/g" | sed "s/TO_REPLACE_WITH_WKT/$TheEmprise/g" | sed "s/SOURCE_LAYER_CLASS/$TheWorkspace/g">> tmp/TMPJS.js
 
+echo  "var $The_LayerMachineName = new OpenLayers.LonLat($The_CentroidPlanche)
+    if (mapbounds.containsLonLat($The_LayerMachineName)) {
+        \$(\"#add_$The_LayerMachineName\").show();" >> tmp/HidendSeekTMP.js
+echo  "} else { \$(\"#add_$The_LayerMachineName\").hide(); }" >> tmp/HidendSeekTMP.js
+
+#        var position_MachineNameMap     = new OpenLayers.LonLat(SetMapCenter);
+#        var zoom_MachineNameMap         = SetZoomLevel;
+#$('#set_center_MachineNameMap').click(function () {
+#                map.openlayers.setCenter(position_MachineNameMap, zoom_MachineNameMap);
+#});
+
+#<div class="btn btn-rectangle btn-xs map-area" data-toggle="tooltip" data-placement="bottom" data-original-title="Emprise"><span class="philicon philicon-Logo-header"></span><div class="position">GEOMETRYCOLLECTION(POLYGON((259188.747961425 6247314.53570392, 259188.855300666 6246402.03488965, 260250.282476199 6246402.09311567, 260250.290278547 6247314.59394335, 259188.747961425 6247314.53570392)))</div></div>
 
 
 
@@ -493,12 +529,6 @@ echo "$S1_Original_Filename|$S2_nodetitle|$S3_field_deptf_seine|$S4_OldNum|$S5_t
 #echo "$S45_AddPlancheMachineName|$S46_Set_center_PlancheMachineName|$S46_Set_center_PlancheMachineName|$S47_PlancheMachineNameRM|$S43_TheHttpFileSystemLink|$TheWorkspaceClassJsCss|$S25_Workspace"
 
 #<div class="list-group-item add-layer" style="display:none" id="add_plancheimage_bernier_claude_louis_plan_de_lancien_cimetiere_des_innocents_actuelles_rue_saint_denis_rue_berger_ru_329040">Bernier Claude-louis plan de lancien cimetiere des innocents</div>
-echo "
-$white# JavScript and Html Element
-# Make Hide and Seek
-# Dynamic Layers (with map info)
-# Make jquey
-"
 
 #if [ -d tmp/splitted ]
 #then
@@ -515,11 +545,10 @@ $white# JavScript and Html Element
 
 
 
-read -p "Wait here"
+#read -p "Wait here"
 done
 
 
-#echo "S1_Original_Filename|S2_nodetitle|S3_field_deptf_seine|S4_OldNum|S5_top_left27561|S6_bottom_left27561|S7_bottom_right27561|S8_top_right27561|S9_top_left|S10_bottom_left|S11_bottom_right|S12_top_right|S13_top_left4326|S14_bottom_left4326|S15_bottom_right4326|S16_top_right4326|S17_WKT|S18_Original_Tiff_Sources|S19_Original_RawMapName|S20_Original_StorageLocation|S21_Original_PreviewPNGLocation|S22_Year|S23_NodeID|S24_WKT_Map_Extent|S25_Workspacered|S26_Zip_FilesINPlace|S27_NordOuestBasic2571|S28_SudOuestBasic2571|S29_SudEstBasic2571|S30_NordEstBasic2571|S31_NordOuestBasic4326|S32_SudOuestBasic4326|S33_SudEstBasic4326|S34_NordEstBasic4326|S35_NordOuestBasic|S36_SudOuestBasic|S37_SudEstBasic|S38_NordEstBasic|S39_LastModified_GeoTiff|S40_Body|S41_Tiff_FilesHardPath|S42_ShorNameID|S43_TheHttpFileSystemLink|S44_PlancheMachineName|S45_AddPlancheMachineName|S46_Set_center_PlancheMachineName|S47_PlancheMachineNameRM|S48_Zip_short_info|S49_top_left_planches27561|S50_bottom_left_planches27561|S51_bottom_right_planches27561|S52_top_right_planches27561|S53_top_left_planches3857|S54_bottom_left_planches3857|S55_bottom_right_planches3857|S56_top_right_planches3857|S57_top_left_planches4326|S58_bottom_left_planches4326|S59_bottom_right_planches4326|S60_top_right_planches4326|S61_png_system_link|S62_The_File_Date_LAST_SAVED|S63_The_Definitive_private_Tifffile|S65_The_zips_sources" > tmp/_Lastimports.csv
 echo "S1_Original_Filename|S2_nodetitle|S3_field_deptf_seine|S4_OldNum|S5_top_left27561|S6_bottom_left27561|S7_bottom_right27561|S8_top_right27561|S9_top_left|S10_bottom_left|S11_bottom_right|S12_top_right|S13_top_left4326|S14_bottom_left4326|S15_bottom_right4326|S16_top_right4326|S17_WKT|S18_Original_Tiff_Sources|S19_Original_RawMapName|S20_Original_StorageLocation|S21_Original_PreviewPNGLocation|S22_Year|S23_NodeID|S24_WKT_Map_Extent|S25_Workspace|S26_Zip_FilesINPlace|S27_NordOuestBasic2571|S28_SudOuestBasic2571|S29_SudEstBasic2571|S30_NordEstBasic2571|S31_NordOuestBasic4326|S32_SudOuestBasic4326|S33_SudEstBasic4326|S34_NordEstBasic4326|S35_NordOuestBasic|S36_SudOuestBasic|S37_SudEstBasic|S38_NordEstBasic|S39_LastModified_GeoTiff|S40_Body|S41_Tiff_FilesHardPath|S42_ShorNameID|S43_TheHttpFileSystemLink|S44_PlancheMachineName|S45_AddPlancheMachineName|S46_Set_center_PlancheMachineName|S47_PlancheMachineNameRM|S48_Zip_short_info|S49_top_left_planches27561|S50_bottom_left_planches27561|S51_bottom_right_planches27561|S52_top_right_planches27561|S53_top_left_planches3857|S54_bottom_left_planches3857|S55_bottom_right_planches3857|S56_top_right_planches3857|S57_top_left_planches4326|S58_bottom_left_planches4326|S59_bottom_right_planches4326|S60_top_right_planches4326|S61_png_system_link|S62_The_File_Date_LAST_SAVED|S63_The_Definitive_private_Tifffile|S65_The_zips_sources|S66_HumanReadableName|S67_CentroidPlanche|S68_SourcePNG" > tmp/_Lastimports.csv
 
 cat tmp/LastimportsTMP.csv >> tmp/_Lastimports.csv
@@ -573,7 +602,7 @@ then
 rm tmp/the_WFS_Updated.txt
 fi
 
-IFS=$'\n'       # Processing full line
+IFS=$'\n'       # Processing full line (ignoring spaces)
 set -f          # disable globbing
 for ThelineFromJson in $(cat tmp/WFS_Assemblage.jsonFlatten)
 do
@@ -586,15 +615,31 @@ srch="THE_LONG_STRING_TO_REPLACE_WITH_THE_FULL_BODY"
 TheBodyAndTheWrappers=$(echo "'body' => array\(@        'und' => array\(@          array\(@            'value' => \"$TheCleanedBody\",@            'summary' => '',@            'format' => 'filtered_html',@          \),@        \),@      \),@      'field_loc_planche'")
 echo "$TheEmptyBody" | awk -v 'srch'="$srch" -v 'repl'="$TheBodyAndTheWrappers" '{ sub('srch','repl',$0); print $0 }' >> tmp/the_WFS_Updated.txt
 done
-echo " array(" > ../_Button_import.json
-cat tmp/the_WFS_Updated.txt |tr '@' '\n'|awk NF|sed 's/IMADOUBLEQUOTE/\\"/g' >> ../_Button_import.json
-echo " )" >> ../_Button_import.json
+echo " array(" > tmp/_Button_import.json
+cat tmp/the_WFS_Updated.txt |tr '@' '\n'|awk NF|sed 's/IMADOUBLEQUOTE/\\"/g' >> tmp/_Button_import.json
+echo " )" >> tmp/_Button_import.json
 
+cat tmp/HidendSeekTMP.js >> tmp/HidendSeek.js
+echo '
+});
+});' >> tmp/HidendSeek.js
 
+FileDate=$(echo $(date +%Y_%m_%d_%Hh%Mm%Ss) | tr "/" "_")
 
+mkdir -p csvinfo/js
+mkdir -p csvinfo/CSVs
 
+cp tmp/HidendSeek.js csvinfo/js/"$FileDate"_HidendSeek.js
+cp tmp/TMPJS.js csvinfo/js/"$FileDate"_TMPJS.js
+cp tmp/temp_layers_div_elements.txt csvinfo/js/"$FileDate"_layers_div_elements.txt
+cp ../Computed_Maps.csv csvinfo/CSVs/"$FileDate"_Computed_Maps.csv
+cp tmp/WFS_Assemblage.json csvinfo/CSVs/"$FileDate"_WFS_Assemblage.json
+cp tmp/WFS_Assemblage.txt csvinfo/CSVs/"$FileDate"_WFS_Assemblage.txt
+cp tmp/_Lastimports.csv csvinfo/CSVs/"$FileDate"_Imports_2.csv
+cp ../_First_import_Planches.csv csvinfo/CSVs/"$FileDate"_First_import_Planches_1.csv
+zip -r ../_Output_CSVs/csvinfo_"$FileDate".zip csvinfo
+mv csvinfo ../_TRASH_TEMP/csvinfo_"$FileDate"
 
-#<div class="btn btn-dark btn-xs showlayer" data-img="/system/files/Raw_map_EPSG_3857_png_preview/Feuille-281-union_1907.png" data-original-title="Popover Header" data-toggle="popover" layer="">Voir</div>
 
 
 
