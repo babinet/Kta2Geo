@@ -595,8 +595,8 @@ echo "${white}---> Abscissa substitut : ${green}$Abscissa"
 
 elif [[ "$TiffSource" == "../73D_"* ]]
 then
-Ordinate=28
-Abscissa=59
+Ordinate=29
+Abscissa=56
 echo "${white}---> Ordinate substitut : ${green}$Ordinate"
 echo "${white}---> Abscissa substitut : ${green}$Abscissa"
 

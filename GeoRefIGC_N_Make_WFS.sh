@@ -46,7 +46,6 @@ read -p "${orange}What is the name of the workspace in geoserver ${white} : " ge
 if [ -f tmp/StorageLocation ]
 then
 StorageLocation=$(cat tmp/StorageLocation)
-#echo "${white}---> The current Storage Location is                                 :${orange}$StorageLocation"
 read -p "${white}---> The current Storage Location is                                 : ${orange}$StorageLocation (y/n) ? :" RESP
 if [ "$RESP" = "y" ]; then
 echo "${white}---> Using $StorageLocation as default Storage Location"
@@ -658,8 +657,8 @@ echo "${white}---> Abscissa substitut : ${green}$Abscissa"
 
 elif [[ "$TiffSource" == "../73D_"* ]]
 then
-Ordinate=28
-Abscissa=59
+Ordinate=29
+Abscissa=56
 echo "${white}---> Ordinate substitut : ${green}$Ordinate"
 echo "${white}---> Abscissa substitut : ${green}$Abscissa"
 
