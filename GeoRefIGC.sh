@@ -1997,7 +1997,7 @@ gdalwarp -co COMPRESS=NONE -r bilinear -s_srs "EPSG:27561" -t_srs "EPSG:3857" -d
 gdaladdo -r average "../_Output/"$NameNoExt"_"$Year".tif" 2 4 8 16
 
 # Planche ../22-63-union_*
-elif [[ "$TiffSource" =~ "../22-63-union_"* ]]||[[ "$TiffSource" =~ "../82L-union_"* ]]
+elif [[ "$TiffSource" =~ "../22-63-union_"* ]]||[[ "$TiffSource" =~ "../81L-union_"* ]]
 then
 gdal_translate -co ALPHA=YES -co COMPRESS=NONE -a_srs EPSG:27561 -of GTiff -r bilinear -gcp 0 0 597600 121024 -gcp 0 "$HeightImage" 597600 120624 -gcp "$WidthImage" 0 598400 121024 -gcp "$WidthImage" "$HeightImage" 598400 120624 "$TiffSource" temp.tif
 if [ -f "../_Output/"$NameNoExt"_"$Year".tif" ]

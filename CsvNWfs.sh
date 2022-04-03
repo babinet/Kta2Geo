@@ -128,9 +128,17 @@ SudEstBasic=$(echo $EstBasicTMP $SudBasicTMP| gdaltransform -s_srs EPSG:27561 -t
 NordEstBasic=$(echo $EstBasicTMP $NordBasicTMP| gdaltransform -s_srs EPSG:27561 -t_srs EPSG:3857 | awk '{print $1, $2}')
 
 
+#TempLastProcessed=$(ls -t _Output_3857/ | head -n1|awk '{print "../_Output_3857/"$0}')
+#exiftool $TempLastProcessed |awk '/Keywords/'| awk -F'|' '{print $1}'
+
+
+
+
+
+
 
 # last modified in
-NameOf_LastProcessed=$(ls -t ../_Output/ | head -n1| sed 's/........$//'| awk -F'_' '{print $1}')
+NameOf_LastProcessed=$(ls -t ../_Output_3857/ | head -n1| sed 's/........$//'| awk -F'_' '{print $1"_"}')
 
 NameForUnion=$(echo "$NameOf_LastProcessed" |awk '/-union_/'| awk -F'-union_' '{print $1"-union_"}')
 
@@ -140,6 +148,7 @@ NameForUnion=$(echo "$NameOf_LastProcessed" |awk '/-union_/'| awk -F'-union_' '{
 if [[ $base_name == 42-43-39 ]]||[[ $base_name == 34-38-35 ]]||[[ $base_name == 48-38-39 ]]||[[ $base_name == 36-40-41 ]]||[[ $base_name == 3-4-41 ]]||[[ $base_name == 32-41-33 ]]||[[ $base_name == 34-41-42 ]]||[[ $base_name == 36-41-42 ]]||[[ $base_name == 36-42-43 ]]||[[ $base_name == 39-43-44 ]]||[[ $base_name == 39-44-45 ]]||[[ $base_name == 41-46-42 ]]||[[ $base_name == 41-45-42 ]]||[[ $base_name == 41-45-42_Encart ]]||[[ $base_name == 34-48-49 ]]||[[ $base_name == 33-48-49 ]]||[[ $base_name == 34-49-50 ]]||[[ $base_name == 35-49-50 ]]||[[ $base_name == 8-9-51-52 ]]||[[ $base_name == 33-51-34 ]]||[[ $base_name == 12-54-55 ]]||[[ $base_name == 37-58-59 ]]||[[ $base_name == 45-58-59 ]]||[[ $base_name == 38-58-59 ]]||[[ $base_name == 42-60-43 ]]||[[ $base_name == 15-59-16 ]]||[[ $base_name == 18-40-19 ]]||[[ $base_name == 28-12-13 ]]||[[ $base_name == 42Q-R ]]||[[ $base_name == 40M-N ]]||[[ $base_name == 43M-R ]]||[[ $base_name == 41U-50A ]]||[[ $base_name == 49B-C ]]||[[ $base_name == 49D-I ]]||[[ $base_name == 50A-F ]]||[[ $base_name == 50F-N ]]||[[ $base_name == 50N-S ]]||[[ $base_name == 50S-X ]]||[[ $base_name == 59A-B ]]||[[ $base_name == 51U-V ]]||[[ $base_name == 51U ]]||[[ $base_name == 57N-S ]]||[[ $base_name == 57M-R ]]||[[ $base_name == 57S-X ]]||[[ $base_name == 57T-Y ]]||[[ $base_name == 65C-D ]]||[[ $base_name == 61Q-V ]]||[[ $base_name == 76O-T ]]||[[ $base_name == 75M-N ]]||[[ $base_name == 76V-W ]]||[[ $base_name == 70T-71P ]]||[[ $base_name == 37W-X ]]||[[ $base_name == 3H-M ]]||[[ $base_name == Feuille-76 ]]||[[ $base_name == Feuille-124-125 ]]||[[ $base_name == Feuille-126-144 ]]||[[ $base_name == Feuille-273 ]]||[[ $base_name == Feuille-274 ]]||[[ $base_name == Feuille-304 ]]||[[ $base_name == Feuille-93 ]]||[[ $base_name == Feuille-93 ]]
 then
 
+echo "$purple  3-4-41 detected base_name= $base_name"
 
 echo "$purple  Feuille-281-Special detected base_name= $base_name"
 
@@ -151,10 +160,13 @@ BasicWKT=$(echo "Polygon (($NordOuest3857, $SudOuest3857, $SudEst3857, $NordEst3
 
 
 Nord=$(echo $top_left27561|awk '{print $2}')
-Sud=$(echo $bottom_right27561|awk '{print $2}')
+Sud=$(echo $bottom_left27561|awk '{print $2}')
 Est=$(echo $bottom_right27561|awk '{print $1}')
 Ouest=$(echo $top_left27561|awk '{print $1}')
 
+echo $purple 27561 top_left27561 $top_left27561 bottom_left27561 $bottom_left27561 bottom_right27561 $bottom_right27561 top_right27561 $top_right27561
+
+echo $purple 27561 Nord $Nord Sud $Sud Est $Est Ouest $Ouest
 # NW
 NordOuest4326=$(echo "$Ouest $Nord" | gdaltransform -s_srs EPSG:27561 -t_srs EPSG:4326 | awk '{print $2, $1}')
 NordOuest3857=$(echo "$Ouest $Nord" | gdaltransform -s_srs EPSG:27561 -t_srs EPSG:3857 | awk '{print $1, $2}')
@@ -181,7 +193,7 @@ echo SudOuest3857=\"$SudOuest3857\" >> tmp/tmp_bash
 echo NordEst4326=\"$NordEst4326\" >> tmp/tmp_bash
 echo NordEst3857=\"$NordEst3857\" >> tmp/tmp_bash
 echo SudEst4326=\"$SudEst4326\" >> tmp/tmp_bash
-echo SudEst3857=$\"$SudEst3857\" >> tmp/tmp_bash
+echo SudEst3857=\"$SudEst3857\" >> tmp/tmp_bash
 
 
 
@@ -193,6 +205,79 @@ SudEst3857=$(awk -F'|' -v 'base_name'='$base_name' "/$base_name/"  tmp/List_Spec
 NordEst3857=$(awk -F'|' -v 'base_name'='$base_name' "/$base_name/"  tmp/List_Special_Planches.csv |awk -F'|' '{print $11}')
 BasicWKT=$(echo "Polygon (($NordOuest3857, $SudOuest3857, $SudEst3857, $NordEst3857, $NordOuest3857))")
 echo "$green Hello there... I'm Special $red(Special Map Extent)"
+
+
+
+
+
+
+
+ ####### #######  #####  #######
+    #    #       #     #    #
+    #    #       #          #
+    #    #####    #####     #
+    #    #             #    #
+    #    #       #     #    #
+    #    #######  #####     #
+    
+    
+    
+#Nord=$(echo $top_left27561|awk '{print $2}')
+#Sud=$(echo $bottom_right27561|awk '{print $2}')
+#Est=$(echo $bottom_right27561|awk '{print $1}')
+#Ouest=$(echo $top_left27561|awk '{print $1}')
+
+    
+
+
+NordOuestBasic2571=$(echo $Ouest $Nord)
+SudOuestBasic2571=$(echo $Ouest $Sud)
+SudEstBasic2571=$(echo $Est $Sud)
+NordEstBasic2571=$(echo $Est $Nord)
+
+NordOuestBasic4326=$(echo $Ouest $Nord| gdaltransform -s_srs EPSG:27561 -t_srs EPSG:4326 | awk '{print $2, $1}')
+SudOuestBasic4326=$(echo $Ouest $Sud| gdaltransform -s_srs EPSG:27561 -t_srs EPSG:4326 | awk '{print $2, $1}')
+SudEstBasic4326=$(echo $Est $Sud| gdaltransform -s_srs EPSG:27561 -t_srs EPSG:4326 | awk '{print $2, $1}')
+NordEstBasic4326=$(echo $Est $Nord| gdaltransform -s_srs EPSG:27561 -t_srs EPSG:4326 |awk '{print $2, $1}')
+
+NordOuestBasic="$NordOuest3857"
+SudOuestBasic="$SudOuest3857"
+SudEstBasic="$SudEst3857"
+NordEstBasic="$NordEst3857"
+
+
+#NordOuest3857=$(awk -F'|' -v 'base_name'='$base_name' "/$base_name/"  tmp/List_Special_Planches.csv |awk -F'|' '{print $8}')
+#SudOuest3857=$(awk -F'|' -v 'base_name'='$base_name' "/$base_name/"  tmp/List_Special_Planches.csv |awk -F'|' '{print $9}')
+#SudEst3857=$(awk -F'|' -v 'base_name'='$base_name' "/$base_name/"  tmp/List_Special_Planches.csv |awk -F'|' '{print $10}')
+#NordEst3857=$(awk -F'|' -v 'base_name'='$base_name' "/$base_name/"  tmp/List_Special_Planches.csv |awk -F'|' '{print $11}')
+
+
+ ####### #######  #####  #######    ####### #     # ######
+    #    #       #     #    #       #       ##    # #     #
+    #    #       #          #       #       # #   # #     #
+    #    #####    #####     #       #####   #  #  # #     #
+    #    #             #    #       #       #   # # #     #
+    #    #       #     #    #       #       #    ## #     #
+    #    #######  #####     #       ####### #     # ######
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -257,19 +342,18 @@ echo "${grey}---> \$planchesNames${grey} -   -    -   -   -   -   -   -   -   - 
 echo "${grey}---> \$OriginalPost1980Name${grey}   -   -   -   -   -   -   -   -   -   -   -   -   ${purple}$OriginalPost1980Name"
 
 
-filesizePX=$(exiftool ../_Output/"$Lastrender" | awk '/Image Size/' |sed 's/x/ X /g' |awk -F' : ' '{print $2" PX "}')
-filesizeMO=$(exiftool ../_Output/"$Lastrender" | awk '/File Size/' |sed 's/x/ X /g' |awk -F' : ' '{print $2}'| sed 's/MB/MO/g' | sed 's/MiB/MO/g'  )
-FileName=$(exiftool ../_Output/"$Lastrender" | awk '/File Name/' |sed 's/x/ X /g' |awk -F' : ' '{print $2}' | awk -F'_' '{print $1, $2}' |awk -F'.' '{print $1}'  )
-ResolutionX=$(exiftool ../_Output/"$Lastrender" | awk '/X Resolution/' |awk -F' : ' '{print $2}')
-ResolutionY=$(exiftool ../_Output/"$Lastrender" | awk '/Y Resolution/' |awk -F' : ' '{print $2}')
+filesizePX=$(exiftool ../_Output_3857/"$Lastrender" | awk '/Image Size/' |sed 's/x/ X /g' |awk -F' : ' '{print $2" PX "}')
+filesizeMO=$(exiftool ../_Output_3857/"$Lastrender" | awk '/File Size/' |sed 's/x/ X /g' |awk -F' : ' '{print $2}'| sed 's/MB/MO/g' | sed 's/MiB/MO/g'  )
+FileName=$(exiftool ../_Output_3857/"$Lastrender" | awk '/File Name/' |sed 's/x/ X /g' |awk -F' : ' '{print $2}' | awk -F'_' '{print $1, $2}' |awk -F'.' '{print $1}'  )
+ResolutionX=$(exiftool ../_Output_3857/"$Lastrender" | awk '/X Resolution/' |awk -F' : ' '{print $2}')
+ResolutionY=$(exiftool ../_Output_3857/"$Lastrender" | awk '/Y Resolution/' |awk -F' : ' '{print $2}')
 
-MapCentroid=$(gdalinfo ../_Output/"$Lastrender" |awk '/Center   /'|awk -F'\\(  '  '{print $2}'|awk -F'\\)'  '{print $1}')
-MapTitleHumanReadable=$(echo ../_Output/"$Lastrender"|awk -F'_Output/' '{print $2}'|sed 's/.tif//g'|tr '-' ' '|tr '_' ' ')
+MapCentroid=$(gdalinfo ../_Output_3857/"$Lastrender" |awk '/Center   /'|awk -F'\\(  '  '{print $2}'|awk -F'\\)'  '{print $1}')
+MapTitleHumanReadable=$(echo ../_Output_3857/"$Lastrender"|awk -F'_Output_3857/' '{print $2}'|sed 's/.tif//g'|tr '-' ' '|tr '_' ' ')
 
-echo MapTitleHumanReadable=$\"$MapTitleHumanReadable\" >> tmp/tmp_bash
-echo MapCentroid=$\"$MapCentroid\" >> tmp/tmp_bash
+echo MapTitleHumanReadable=\"$MapTitleHumanReadable\" >> tmp/tmp_bash
+echo MapCentroid=\"$MapCentroid\" >> tmp/tmp_bash
 
-read -p "WAIT HERE"
 
 ResolutionY_rounded=`printf "%.0f" $ResolutionY`
 ResolutionX_rounded=`printf "%.0f" $ResolutionX`
@@ -281,15 +365,15 @@ echo "${grey}---> \$InfoSpecialMap${grey}   :  ${orange}$InfoSpecialMap"
 
 
 RawMapName=$(echo "$NameNoExt" - "$Year" - "$geoserverworkspace" - "$filesizePX" - "$ResolutionX_rounded"  pixels/pouce - Mètre - EPSG:3857 - "$filesizeMO" | tr '_' ' ')
-RawMapUri=$(echo "$StorageLocation"_Output_3857/"$NameNoExt"_"$Year".tif)
-ZipRawMapUri=$(echo "$StorageLocation"_Output_wld_zip/"$NameNoExt"_"$Year".zip)
-PreviewPNGLocation=$(echo "$StorageLocation"_Output_PNG_Preview/"$NameNoExt"_"$Year".png)
-LastModified_GeoTiff=$(exiftool ../_Output/"$Lastrender" |awk '/Modify Date/' |awk -F': ' '{print $2}')
+RawMapUri=$(echo "$StorageLocation"_Output_3857/"$NameNoExt"_"$geoserverworkspace"_"$Year".tif)
+ZipRawMapUri=$(echo "$StorageLocation"_Output_wld_zip/"$NameNoExt"_"$geoserverworkspace"_"$Year".zip)
+PreviewPNGLocation=$(echo "$StorageLocation"_Output_PNG_Preview/"$NameNoExt"_"$geoserverworkspace"_"$Year".png)
+LastModified_GeoTiff=$(exiftool ../_Output_3857/"$Lastrender" |awk '/Modify Date/' |awk -F': ' '{print $2}')
 
 if [[ "$InfoSpecialMap" == "" ]]
 then
 WKT_Map_Extent=$(echo "Polygon (($NordOuest3857, $SudOuest3857, $SudEst3857, $NordEst3857, $NordOuest3857))")
-exiftool -r -overwrite_original -keywords= -m -keywords="$Lastrender|$OriginalPost1980Name|$Seine|$OldNum|$Ouest $Nord|$Ouest $Sud|$Est $Sud|$Est $Nord|$NordOuest3857|$SudOuest3857|$SudEst3857|$NordEst3857|$NordOuest4326|$SudOuest4326|$SudEst4326|$NordEst4326|Polygon (($NordOuest3857, $SudOuest3857, $SudEst3857, $NordEst3857, $NordOuest3857))|$RawMapUri|$RawMapName|$StorageLocation|$PreviewPNGLocation|$Year|$NodeID|$WKT_Map_Extent|$geoserverworkspace|$ZipRawMapUri|$NordOuestBasic2571|$SudOuestBasic2571|$SudEstBasic2571|$NordEstBasic2571|$NordOuestBasic4326|$SudOuestBasic4326|$SudEstBasic4326|$NordEstBasic4326|$NordOuestBasic|$SudOuestBasic|$SudEstBasic|$NordEstBasic|$LastModified_GeoTiff|$MapCentroid|$MapTitleHumanReadable"  -artist="sous-paris.com" -Software="Kta2geo 1.1" ../_Output/"$Lastrender"
+exiftool -r -overwrite_original -keywords= -m -keywords="$Lastrender|$OriginalPost1980Name|$Seine|$OldNum|$Ouest $Nord|$Ouest $Sud|$Est $Sud|$Est $Nord|$NordOuest3857|$SudOuest3857|$SudEst3857|$NordEst3857|$NordOuest4326|$SudOuest4326|$SudEst4326|$NordEst4326|Polygon (($NordOuest3857, $SudOuest3857, $SudEst3857, $NordEst3857, $NordOuest3857))|$RawMapUri|$RawMapName|$StorageLocation|$PreviewPNGLocation|$Year|$NodeID|$WKT_Map_Extent|$geoserverworkspace|$ZipRawMapUri|$NordOuestBasic2571|$SudOuestBasic2571|$SudEstBasic2571|$NordEstBasic2571|$NordOuestBasic4326|$SudOuestBasic4326|$SudEstBasic4326|$NordEstBasic4326|$NordOuestBasic|$SudOuestBasic|$SudEstBasic|$NordEstBasic|$LastModified_GeoTiff|$MapCentroid|$MapTitleHumanReadable"  -artist="sous-paris.com" -Software="Kta2geo 1.1" ../_Output_3857/"$Lastrender"
 echo "$Lastrender|$OriginalPost1980Name|$Seine|$OldNum|$Ouest $Nord|$Ouest $Sud|$Est $Sud|$Est $Nord|$NordOuest3857|$SudOuest3857|$SudEst3857|$NordEst3857|$NordOuest4326|$SudOuest4326|$SudEst4326|$NordEst4326|Polygon (($NordOuest3857, $SudOuest3857, $SudEst3857, $NordEst3857, $NordOuest3857))|$RawMapUri|$RawMapName|$StorageLocation|$PreviewPNGLocation|$Year|$NodeID|$WKT_Map_Extent|$geoserverworkspace|$ZipRawMapUri|$NordOuestBasic2571|$SudOuestBasic2571|$SudEstBasic2571|$NordEstBasic2571|$NordOuestBasic4326|$SudOuestBasic4326|$SudEstBasic4326|$NordEstBasic4326|$NordOuestBasic|$SudOuestBasic|$SudEstBasic|$NordEstBasic|$LastModified_GeoTiff|$MapCentroid|$MapTitleHumanReadable"  > tmp/csv_tmp
 else
 echo "$yellow I'm .. SPECIAL !"
@@ -314,22 +398,22 @@ echo $purple $BasicWKT
 
 
 
-exiftool -r -overwrite_original -keywords= -m -keywords="$Lastrender|$OriginalPost1980Name|$Seine|$OldNum|$InfoSpecialMap|$BasicWKT|$RawMapUri|$RawMapName|$StorageLocation|$PreviewPNGLocation|$Year|$NodeID|$WKT_Map_Extent|$geoserverworkspace|$ZipRawMapUri|$NordOuestBasic2571|$SudOuestBasic2571|$SudEstBasic2571|$NordEstBasic2571|$NordOuestBasic4326|$SudOuestBasic4326|$SudEstBasic4326|$NordEstBasic4326|$NordOuestBasic|$SudOuestBasic|$SudEstBasic|$NordEstBasic|$LastModified_GeoTiff|$MapCentroid|$MapTitleHumanReadable" -artist="sous-paris.com" -Software="Kta2geo 1.1" ../_Output/"$Lastrender"
+exiftool -r -overwrite_original -keywords= -m -keywords="$Lastrender|$OriginalPost1980Name|$Seine|$OldNum|$InfoSpecialMap|$BasicWKT|$RawMapUri|$RawMapName|$StorageLocation|$PreviewPNGLocation|$Year|$NodeID|$WKT_Map_Extent|$geoserverworkspace|$ZipRawMapUri|$NordOuestBasic2571|$SudOuestBasic2571|$SudEstBasic2571|$NordEstBasic2571|$NordOuestBasic4326|$SudOuestBasic4326|$SudEstBasic4326|$NordEstBasic4326|$NordOuestBasic|$SudOuestBasic|$SudEstBasic|$NordEstBasic|$LastModified_GeoTiff|$MapCentroid|$MapTitleHumanReadable" -artist="sous-paris.com" -Software="Kta2geo 1.1" ../_Output_3857/"$Lastrender"
 echo "$Lastrender|$OriginalPost1980Name|$Seine|$OldNum|$InfoSpecialMap|$BasicWKT|$RawMapUri|$RawMapName|$StorageLocation|$PreviewPNGLocation|$Year|$NodeID|$WKT_Map_Extent|$geoserverworkspace|$ZipRawMapUri|$NordOuestBasic2571|$SudOuestBasic2571|$SudEstBasic2571|$NordEstBasic2571|$NordOuestBasic4326|$SudOuestBasic4326|$SudEstBasic4326|$NordEstBasic4326|$NordOuestBasic|$SudOuestBasic|$SudEstBasic|$NordEstBasic|$LastModified_GeoTiff|$MapCentroid|$MapTitleHumanReadable" > tmp/csv_tmp
 fi
 
 
 CSV_INFO=$(cat tmp/csv_tmp)
 
-gdal_translate -co "TFW=YES" ../_Output/"$Lastrender" temp.tif
+gdal_translate -co "TFW=YES" ../_Output_3857/"$Lastrender" temp.tif
 LastrenderNoExt=$(echo "$Lastrender"| sed 's/\.tif//g')
 convert temp.tif "$LastrenderNoExt".jpg
-convert ../_Output/"$Lastrender"[1]  -define png:swap-bytes -resize x200 ../_Output_PNG_Preview/"$NameNoExt"_"$Year".png
+convert ../_Output_3857/"$Lastrender"[1]  -define png:swap-bytes -resize x200 ../_Output_PNG_Preview/"$NameNoExt"_"$geoserverworkspace"_"$Year".png
 
-exiftool -all= -m -Keywords="$CSV_INFO" -Software="Kta2geo 1.1" -artist="sous-paris.com" ../_Output_PNG_Preview/"$NameNoExt"_"$Year".png
-if [ -f ../_Output_PNG_Preview/"$NameNoExt"_"$Year".png_original ]
+exiftool -all= -m -Keywords="$CSV_INFO" -Software="Kta2geo 1.1" -artist="sous-paris.com" ../_Output_PNG_Preview/"$NameNoExt"_"$geoserverworkspace"_"$Year".png
+if [ -f ../_Output_PNG_Preview/"$NameNoExt"_"$geoserverworkspace"_"$Year".png_original ]
 then
-rm ../_Output_PNG_Preview/"$NameNoExt"_"$Year".png_original
+rm ../_Output_PNG_Preview/"$NameNoExt"_"$geoserverworkspace"_"$Year".png_original
 fi
 exiftool -m -keywords="$CSV_INFO" -artist="sous-paris.com" -Software="Kta2geo 1.1" "$LastrenderNoExt".jpg
 
@@ -358,7 +442,7 @@ then
 rm tmp/computed_MapsTMP.csv
 fi
 
-for ListGeoreferenced in ../_Output/*.tif
+for ListGeoreferenced in ../_Output_3857/*.tif
 do
 exiftool "$ListGeoreferenced" | awk '/Keywords                        :/'| awk -F': ' '{print $2}' >> tmp/computed_MapsTMP.csv
 
