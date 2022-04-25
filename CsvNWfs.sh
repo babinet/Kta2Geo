@@ -145,19 +145,14 @@ NameForUnion=$(echo "$NameOf_LastProcessed" |awk '/-union_/'| awk -F'-union_' '{
 
 
 
-if [[ $base_name == 42-43-39 ]]||[[ $base_name == 34-38-35 ]]||[[ $base_name == 48-38-39 ]]||[[ $base_name == 36-40-41 ]]||[[ $base_name == 3-4-41 ]]||[[ $base_name == 32-41-33 ]]||[[ $base_name == 34-41-42 ]]||[[ $base_name == 36-41-42 ]]||[[ $base_name == 36-42-43 ]]||[[ $base_name == 39-43-44 ]]||[[ $base_name == 39-44-45 ]]||[[ $base_name == 41-46-42 ]]||[[ $base_name == 41-45-42 ]]||[[ $base_name == 41-45-42_Encart ]]||[[ $base_name == 34-48-49 ]]||[[ $base_name == 33-48-49 ]]||[[ $base_name == 34-49-50 ]]||[[ $base_name == 35-49-50 ]]||[[ $base_name == 8-9-51-52 ]]||[[ $base_name == 33-51-34 ]]||[[ $base_name == 12-54-55 ]]||[[ $base_name == 37-58-59 ]]||[[ $base_name == 45-58-59 ]]||[[ $base_name == 38-58-59 ]]||[[ $base_name == 42-60-43 ]]||[[ $base_name == 15-59-16 ]]||[[ $base_name == 18-40-19 ]]||[[ $base_name == 28-12-13 ]]||[[ $base_name == 42Q-R ]]||[[ $base_name == 40M-N ]]||[[ $base_name == 43M-R ]]||[[ $base_name == 41U-50A ]]||[[ $base_name == 49B-C ]]||[[ $base_name == 49D-I ]]||[[ $base_name == 50A-F ]]||[[ $base_name == 50F-N ]]||[[ $base_name == 50N-S ]]||[[ $base_name == 50S-X ]]||[[ $base_name == 59A-B ]]||[[ $base_name == 51U-V ]]||[[ $base_name == 51U ]]||[[ $base_name == 57N-S ]]||[[ $base_name == 57M-R ]]||[[ $base_name == 57S-X ]]||[[ $base_name == 57T-Y ]]||[[ $base_name == 65C-D ]]||[[ $base_name == 61Q-V ]]||[[ $base_name == 76O-T ]]||[[ $base_name == 75M-N ]]||[[ $base_name == 76V-W ]]||[[ $base_name == 71P ]]||[[ $base_name == 37W-X ]]||[[ $base_name == 3H-M ]]||[[ $base_name == Feuille-76 ]]||[[ $base_name == Feuille-124-125 ]]||[[ $base_name == Feuille-126-144 ]]||[[ $base_name == Feuille-273 ]]||[[ $base_name == Feuille-274 ]]||[[ $base_name == Feuille-304 ]]||[[ $base_name == Feuille-93 ]]||[[ $base_name == Feuille-93 ]]
+if [[ $base_name == 42-43-39 ]]||[[ $base_name == 34-38-35 ]]||[[ $base_name == 48-38-39 ]]||[[ $base_name == 36-40-41 ]]||[[ $base_name == 3-4-41 ]]||[[ $base_name == 32-41-33 ]]||[[ $base_name == 34-41-42 ]]||[[ $base_name == 36-41-42 ]]||[[ $base_name == 36-42-43 ]]||[[ $base_name == 39-43-44 ]]||[[ $base_name == 39-44-45 ]]||[[ $base_name == 41-46-42 ]]||[[ $base_name == 34-48-49 ]]||[[ $base_name == 33-48-49 ]]||[[ $base_name == 34-49-50 ]]||[[ $base_name == 35-49-50 ]]||[[ $base_name == 8-9-51-52 ]]||[[ $base_name == 33-51-34 ]]||[[ $base_name == 12-54-55 ]]||[[ $base_name == 37-58-59 ]]||[[ $base_name == 45-58-59 ]]||[[ $base_name == 38-58-59 ]]||[[ $base_name == 42-60-43 ]]||[[ $base_name == 15-59-16 ]]||[[ $base_name == 18-40-19 ]]||[[ $base_name == 28-12-13 ]]||[[ $base_name == 42Q-R ]]||[[ $base_name == 40M-N ]]||[[ $base_name == 43M-R ]]||[[ $base_name == 41U-50A ]]||[[ $base_name == 49B-C ]]||[[ $base_name == 49D-I ]]||[[ $base_name == 50A-F ]]||[[ $base_name == 50F-N ]]||[[ $base_name == 50N-S ]]||[[ $base_name == 50S-X ]]||[[ $base_name == 59A-B ]]||[[ $base_name == 51U-V ]]||[[ $base_name == 51U ]]||[[ $base_name == 57N-S ]]||[[ $base_name == 57M-R ]]||[[ $base_name == 57S-X ]]||[[ $base_name == 57T-Y ]]||[[ $base_name == 65C-D ]]||[[ $base_name == 61Q-V ]]||[[ $base_name == 76O-T ]]||[[ $base_name == 75M-N ]]||[[ $base_name == 76V-W ]]||[[ $base_name == 71P ]]||[[ $base_name == 37W-X ]]||[[ $base_name == 3H-M ]]||[[ $base_name == Feuille-76 ]]||[[ $base_name == Feuille-124-125 ]]||[[ $base_name == Feuille-126-144 ]]||[[ $base_name == Feuille-273 ]]||[[ $base_name == Feuille-274 ]]||[[ $base_name == Feuille-304 ]]||[[ $base_name == Feuille-93 ]]||[[ $base_name == Feuille-93 ]]||[[ $base_name == 77P ]]
 then
 
-echo "$purple  3-4-41 detected base_name= $base_name"
-
-echo "$purple  Feuille-281-Special detected base_name= $base_name"
-
-top_left27561=$(awk -F'|' -v 'base_name'='$base_name' "/$base_name/"  tmp/List_Special_Planches.csv |awk -F'|' '{print $4}')
-bottom_left27561=$(awk -F'|' -v 'base_name'='$base_name' "/$base_name/"  tmp/List_Special_Planches.csv |awk -F'|' '{print $5}')
-bottom_right27561=$(awk -F'|' -v 'base_name'='$base_name' "/$base_name/"  tmp/List_Special_Planches.csv |awk -F'|' '{print $6}')
-top_right27561=$(awk -F'|' -v 'base_name'='$base_name' "/$base_name/"  tmp/List_Special_Planches.csv |awk -F'|' '{print $7}')
+top_left27561=$(awk -F'|' -v 'base_name'='$NameOf_LastProcessed' "/$NameOf_LastProcessed/"  tmp/List_Special_Planches.csv |awk -F'|' '{print $4}')
+bottom_left27561=$(awk -F'|' -v 'base_name'='$NameOf_LastProcessed' "/$NameOf_LastProcessed/"  tmp/List_Special_Planches.csv |awk -F'|' '{print $5}')
+bottom_right27561=$(awk -F'|' -v 'base_name'='$NameOf_LastProcessed' "/$NameOf_LastProcessed/"  tmp/List_Special_Planches.csv |awk -F'|' '{print $6}')
+top_right27561=$(awk -F'|' -v 'base_name'='$NameOf_LastProcessed' "/$NameOf_LastProcessed/"  tmp/List_Special_Planches.csv |awk -F'|' '{print $7}')
 BasicWKT=$(echo "Polygon (($NordOuest3857, $SudOuest3857, $SudEst3857, $NordEst3857, $NordOuest3857))")
-
 
 Nord=$(echo $top_left27561|awk '{print $2}')
 Sud=$(echo $bottom_left27561|awk '{print $2}')
@@ -199,16 +194,12 @@ echo SudEst3857=\"$SudEst3857\" >> tmp/tmp_bash
 
 
 
-NordOuest3857=$(awk -F'|' -v 'base_name'='$base_name' "/$base_name/"  tmp/List_Special_Planches.csv |awk -F'|' '{print $8}')
-SudOuest3857=$(awk -F'|' -v 'base_name'='$base_name' "/$base_name/"  tmp/List_Special_Planches.csv |awk -F'|' '{print $9}')
-SudEst3857=$(awk -F'|' -v 'base_name'='$base_name' "/$base_name/"  tmp/List_Special_Planches.csv |awk -F'|' '{print $10}')
-NordEst3857=$(awk -F'|' -v 'base_name'='$base_name' "/$base_name/"  tmp/List_Special_Planches.csv |awk -F'|' '{print $11}')
+NordOuest3857=$(awk -F'|' -v 'base_name'='$NameOf_LastProcessed' "/$NameOf_LastProcessed/"  tmp/List_Special_Planches.csv |awk -F'|' '{print $8}')
+SudOuest3857=$(awk -F'|' -v 'base_name'='$NameOf_LastProcessed' "/$NameOf_LastProcessed/"  tmp/List_Special_Planches.csv |awk -F'|' '{print $9}')
+SudEst3857=$(awk -F'|' -v 'base_name'='$NameOf_LastProcessed' "/$NameOf_LastProcessed/"  tmp/List_Special_Planches.csv |awk -F'|' '{print $10}')
+NordEst3857=$(awk -F'|' -v 'base_name'='$NameOf_LastProcessed' "/$NameOf_LastProcessed/"  tmp/List_Special_Planches.csv |awk -F'|' '{print $11}')
 BasicWKT=$(echo "Polygon (($NordOuest3857, $SudOuest3857, $SudEst3857, $NordEst3857, $NordOuest3857))")
 echo "$green Hello there... I'm Special $red(Special Map Extent)"
-
-
-
-
 
 
 
@@ -260,11 +251,11 @@ NordEstBasic="$NordEst3857"
     #    #       #     #    #       #       #    ## #     #
     #    #######  #####     #       ####### #     # ######
 
-
-
-
-
-
+#
+#Polygon ((268288.119512518 6247766.94966583.268287.972885489 6247614.85129926, 268287.239829581 6246854.40047534.268287.386430199 6247006.48517259, 269197.082956737 6246853.46882872.269197.2460064 6247005.55349249, 269198.061342866 6247766.01781834.269197.898263818 6247613.91948525, 268288.119512518 6247766.94966583.268287.972885489 6247614.85129926))
+#
+#Polygon ((266468.462760882 6248072.72140264.266468.349029735 6247920.61751139, 266467.780435398 6247160.13906708.266467.89414608 6247312.22928801, 267377.656820114 6247159.40532925.267377.78698105 6247311.49552383, 267378.437856045 6248071.98750676.267378.307671671 6247919.88364185, 266468.462760882 6248072.72140264.266468.349029735 6247920.61751139))
+#
 
 
 

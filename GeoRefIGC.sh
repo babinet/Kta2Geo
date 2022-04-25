@@ -46,7 +46,6 @@ FileDate=$(echo $(date +%Y_%m_%d_%Hh%Mm%Ss) | tr "/" "_")
 Year=$( echo "$TiffSource" | tail -c -9 | awk -F'.tif' '{print $1}')
 
 NameNoExt=$(echo "$TiffSource"|sed 's/.tif//g'| sed 's/..\///g'| sed 's/.....$//')
-echo $purple $NameNoExt NameNoExt
 
 
 if [ "$NameNoExt" == ../2222Y_*  ]
@@ -892,6 +891,13 @@ Abscissa=37
 echo "${white}---> Ordinate substitut : ${green}$Ordinate"
 echo "${white}---> Abscissa substitut : ${green}$Abscissa"
 
+elif [[ "$TiffSource" == "../43F_"* ]]
+then
+Ordinate=46
+Abscissa=37
+echo "${white}---> Ordinate substitut : ${green}$Ordinate"
+echo "${white}---> Abscissa substitut : ${green}$Abscissa"
+
 elif [[ "$TiffSource" == "../Feuille-72_"* ]]||[[ "$TiffSource" == "../39O_"* ]]
 then
 Ordinate=30
@@ -938,6 +944,20 @@ elif [[ "$TiffSource" == "../Feuille-107_"* ]]||[[ "$TiffSource" == "../40V_"* ]
 then
 Ordinate=32
 Abscissa=40
+echo "${white}---> Ordinate substitut : ${green}$Ordinate"
+echo "${white}---> Abscissa substitut : ${green}$Abscissa"
+
+elif [[ "$TiffSource" == "../43G_"* ]]
+then
+Ordinate=47
+Abscissa=37
+echo "${white}---> Ordinate substitut : ${green}$Ordinate"
+echo "${white}---> Abscissa substitut : ${green}$Abscissa"
+
+elif [[ "$TiffSource" == "../43P_"* ]]
+then
+Ordinate=46
+Abscissa=39
 echo "${white}---> Ordinate substitut : ${green}$Ordinate"
 echo "${white}---> Abscissa substitut : ${green}$Abscissa"
 
@@ -1615,6 +1635,35 @@ Abscissa=52
 echo "${white}---> Ordinate substitut : ${green}$Ordinate"
 echo "${white}---> Abscissa substitut : ${green}$Abscissa"
 
+elif [[ "$TiffSource" == "../76B_"* ]]
+then
+Ordinate=42
+Abscissa=56
+echo "${white}---> Ordinate substitut : ${green}$Ordinate"
+echo "${white}---> Abscissa substitut : ${green}$Abscissa"
+
+elif [[ "$TiffSource" == "../76G_"* ]]
+then
+Ordinate=42
+Abscissa=57
+echo "${white}---> Ordinate substitut : ${green}$Ordinate"
+echo "${white}---> Abscissa substitut : ${green}$Abscissa"
+
+elif [[ "$TiffSource" == "../76C_"* ]]
+then
+Ordinate=43
+Abscissa=56
+echo "${white}---> Ordinate substitut : ${green}$Ordinate"
+echo "${white}---> Abscissa substitut : ${green}$Abscissa"
+
+elif [[ "$TiffSource" == "../76H_"* ]]
+then
+Ordinate=43
+Abscissa=57
+echo "${white}---> Ordinate substitut : ${green}$Ordinate"
+echo "${white}---> Abscissa substitut : ${green}$Abscissa"
+
+
 # END Abscissa FIX
 else
 
@@ -2070,20 +2119,20 @@ gdalwarp -co COMPRESS=NONE -r bilinear -s_srs "EPSG:27561" -t_srs "EPSG:3857" -d
 gdaladdo -r average "../_Output/"$NameNoExt"_"$Year".tif" 2 4 8 16
 
 # Planche ../32-37_*
-elif [[ "$TiffSource" =~ "../32-37_"* ]]||[[ "$TiffSource" =~ "../Feuille-59_"* ]]
+elif [[ "$TiffSource" == "../32-37_"* ]]||[[ "$TiffSource" == "../Feuille-59_"* ]]
 then
 gdal_translate -co COMPRESS=NONE -a_srs EPSG:27561 -of GTiff -gcp 0 0 603600 131424 -gcp 0 "$HeightImage" 603600 131024 -gcp "$WidthImage" 0 604200 131424 -gcp "$WidthImage" "$HeightImage" 604200 131024 "$TiffSource" temp.tif
 if [ -f "../_Output/"$NameNoExt"_"$Year".tif" ]
 then
 mv "../_Output/"$NameNoExt"_"$Year".tif" ../_TRASH_TEMP/"$FileDate"_"$NameNoExt"_"$Year".tif
 fi
-gdalwarp -co COMPRESS=NONE -r bilinear -s_srs "EPSG:27561" -t_srs "EPSG:3857" temp.tif "../_Output/"$NameNoExt"_"$Year".tif"
+gdalwarp -co COMPRESS=NONE -r bilinear -s_srs "EPSG:27561" -t_srs "EPSG:3857" -dstalpha temp.tif  temp.tif "../_Output/"$NameNoExt"_"$Year".tif"
 gdaladdo -r average "../_Output/"$NameNoExt"_"$Year".tif" 2 4 8 16
 
 # Planche ../32-37-union_*
-elif [[ "$TiffSource" =~ "../32-37-union"* ]]||[[ "$TiffSource" =~ "../Feuille-59-union"* ]]||[[ "$TiffSource" =~ "../40G-union_"* ]]
+elif [[ "$TiffSource" == "../32-37-union"* ]]||[[ "$TiffSource" == "../Feuille-59-union"* ]]||[[ "$TiffSource" == "../40G-union_"* ]]
 then
-gdal_translate -co ALPHA=YES -co COMPRESS=NONE -a_srs EPSG:27561 -of GTiff -r bilinear -gcp 0 0 603600 131424 -gcp 0 "$HeightImage" 603600 130924 -gcp "$WidthImage" 0 604200 131424 -gcp "$WidthImage" "$HeightImage" 604200 130924 "$TiffSource" temp.tif
+gdal_translate -co ALPHA=YES -co COMPRESS=NONE -a_srs EPSG:27561 -of GTiff -r bilinear -gcp 0 0 603600 131424 -gcp 0 "$HeightImage" 603600 130894 -gcp "$WidthImage" 0 604200 131424 -gcp "$WidthImage" "$HeightImage" 604200 130894 "$TiffSource" temp.tif
 if [ -f "../_Output/"$NameNoExt"_"$Year".tif" ]
 then
 mv "../_Output/"$NameNoExt"_"$Year".tif" ../_TRASH_TEMP/"$FileDate"_"$NameNoExt"_"$Year".tif
@@ -2201,6 +2250,17 @@ fi
 gdalwarp -co COMPRESS=NONE -r bilinear -s_srs "EPSG:27561" -t_srs "EPSG:3857" -dstalpha temp.tif "../_Output/"$NameNoExt"_"$Year".tif"
 gdaladdo -r average "../_Output/"$NameNoExt"_"$Year".tif" 2 4 8 16
 
+# Planche ../40-55-union_*
+elif [[ "$TiffSource" =~ "../40-55-union_"* ]]||[[ "$TiffSource" =~ "../66Y-union_"* ]]
+then
+gdal_translate -co ALPHA=YES -co COMPRESS=NONE -a_srs EPSG:27561 -of GTiff -r bilinear -gcp 0 0 608400 124324 -gcp 0 "$HeightImage" 608400 123824 -gcp "$WidthImage" 0 609000 124324 -gcp "$WidthImage" "$HeightImage" 609000 123824 "$TiffSource" temp.tif
+if [ -f "../_Output/"$NameNoExt"_"$Year".tif" ]
+then
+mv "../_Output/"$NameNoExt"_"$Year".tif" ../_TRASH_TEMP/"$FileDate"_"$NameNoExt"_"$Year".tif
+fi
+gdalwarp -co COMPRESS=NONE -r bilinear -s_srs "EPSG:27561" -t_srs "EPSG:3857" -dstalpha temp.tif "../_Output/"$NameNoExt"_"$Year".tif"
+gdaladdo -r average "../_Output/"$NameNoExt"_"$Year".tif" 2 4 8 16
+
 # Planche ../41-45-42-Encart*
 elif [[ "$TiffSource" =~ "../41-45-42-Encart"* ]]
 then
@@ -2243,27 +2303,26 @@ gdalwarp -co COMPRESS=NONE -r bilinear -s_srs "EPSG:27561" -t_srs "EPSG:3857" -d
 gdaladdo -r average "../_Output/"$NameNoExt"_"$Year".tif" 2 4 8 16
 
 # Planche ../42-43-60_*
-elif [[ "$TiffSource" =~ "../42-43-60_"* ]]||[[ "$TiffSource" =~ "../76V-W_"* ]]
+elif [[ "$TiffSource" == "../42-43-60_"* ]]||[[ "$TiffSource" == "../76V-W_"* ]]
 then
 gdal_translate -co COMPRESS=NONE -a_srs EPSG:27561 -of GTiff -gcp 0 0 609900 122224 -gcp 0 "$HeightImage" 609900 121824 -gcp "$WidthImage" 0 610500 122224 -gcp "$WidthImage" "$HeightImage" 610500 121824 "$TiffSource" temp.tif
-if [ -f "../_Output/"$NameNoExt"_"$Year".tif" ]
+if [ -f "../_Output_3857/"$NameNoExt"_"$geoserverworkspace"_"$Year".tif" ]
 then
-mv "../_Output/"$NameNoExt"_"$Year".tif" ../_TRASH_TEMP/"$FileDate"_"$NameNoExt"_"$Year".tif
+mv "../_Output_3857/"$NameNoExt"_"$geoserverworkspace"_"$Year".tif" ../_TRASH_TEMP/"$FileDate"_"$NameNoExt"_"$Year".tif
 fi
-gdalwarp -co COMPRESS=NONE -r bilinear -s_srs "EPSG:27561" -t_srs "EPSG:3857" -dstalpha temp.tif "../_Output/"$NameNoExt"_"$Year".tif"
-gdaladdo -r average "../_Output/"$NameNoExt"_"$Year".tif" 2 4 8 16
+gdalwarp -co COMPRESS=NONE -r bilinear -s_srs "EPSG:27561" -t_srs "EPSG:3857" -dstalpha temp.tif "../_Output_3857/"$NameNoExt"_"$geoserverworkspace"_"$Year".tif"
+gdaladdo -r average "../_Output_3857/"$NameNoExt"_"$geoserverworkspace"_"$Year".tif" 2 4 8 16
 
 # Planche ../42-67-union_*
-elif [[ "$TiffSource" =~ "../42-67-union_"* ]]||[[ "$TiffSource" =~ "../76V-W_"* ]]
+elif [[ "$TiffSource" == "../42-67-union_"* ]]||[[ "$TiffSource" == "../76V-W-union_"* ]]
 then
 gdal_translate -co ALPHA=YES -co COMPRESS=NONE -a_srs EPSG:27561 -of GTiff -r bilinear -gcp 0 0 609600 119424 -gcp 0 "$HeightImage" 609600 118924 -gcp "$WidthImage" 0 610200 119424 -gcp "$WidthImage" "$HeightImage" 610200 118924 "$TiffSource" temp.tif
-if [ -f "../_Output/"$NameNoExt"_"$Year".tif" ]
+if [ -f "../_Output_3857/"$NameNoExt"_"$geoserverworkspace"_"$Year".tif" ]
 then
-mv "../_Output/"$NameNoExt"_"$Year".tif" ../_TRASH_TEMP/"$FileDate"_"$NameNoExt"_"$Year".tif
+mv "../_Output_3857/"$NameNoExt"_"$geoserverworkspace"_"$Year".tif" ../_TRASH_TEMP/"$FileDate"_"$NameNoExt"_"$Year".tif
 fi
-gdalwarp -co COMPRESS=NONE -r bilinear -s_srs "EPSG:27561" -t_srs "EPSG:3857" -dstalpha temp.tif "../_Output/"$NameNoExt"_"$Year".tif"
-gdaladdo -r average "../_Output/"$NameNoExt"_"$Year".tif" 2 4 8 16
-
+gdalwarp -co COMPRESS=NONE -r bilinear -s_srs "EPSG:27561" -t_srs "EPSG:3857" -dstalpha temp.tif "../_Output_3857/"$NameNoExt"_"$geoserverworkspace"_"$Year".tif"
+gdaladdo -r average "../_Output_3857/"$NameNoExt"_"$geoserverworkspace"_"$Year".tif" 2 4 8 16
 
 # Planche ../34-35-38_*
 elif [[ "$TiffSource" =~ "../34-35-38_"* ]]||[[ "$TiffSource" =~ "../Feuille-76_"* ]]||[[ "$TiffSource" =~ "../40N-O_"* ]]
@@ -2411,7 +2470,7 @@ gdaladdo -r average "../_Output/"$NameNoExt"_"$Year".tif" 2 4 8 16
 # Planche ../45-38-union_*
 elif [[ "$TiffSource" =~ "../45-38-union_"* ]]||[[ "$TiffSource" =~ "../42O-union_"* ]]
 then
-gdal_translate -co ALPHA=YES -co COMPRESS=NONE -a_srs EPSG:27561 -of GTiff -r bilinear -gcp 0 0 611400 131080 -gcp 0 "$HeightImage" 611400 130624 -gcp "$WidthImage" 0 612000  131080 -gcp "$WidthImage" "$HeightImage" 612000 130624 "$TiffSource" temp.tif
+gdal_translate -co ALPHA=YES -co COMPRESS=NONE -a_srs EPSG:27561 -of GTiff -r bilinear -gcp 0 0 611400 131124 -gcp 0 "$HeightImage" 611400 130624 -gcp "$WidthImage" 0 612000  131124 -gcp "$WidthImage" "$HeightImage" 612000 130624 "$TiffSource" temp.tif
 if [ -f "../_Output/"$NameNoExt"_"$Year".tif" ]
 then
 mv "../_Output/"$NameNoExt"_"$Year".tif" ../_TRASH_TEMP/"$FileDate"_"$NameNoExt"_"$Year".tif
@@ -2599,6 +2658,49 @@ fi
 gdalwarp -co COMPRESS=NONE -r bilinear  -dstalpha -s_srs "EPSG:27561" -t_srs "EPSG:3857" temp.tif "../_Output/Feuille-282-B-union_1896.tif"
 gdaladdo -r average "../_Output/Feuille-282-B-union_1896.tif" 2 4 8 16
 
+# Planche ../40-35-union_*
+elif [[ "$TiffSource" =~ "../40-35-union_"* ]]||[[ "$TiffSource" =~ "../32Y-union_"* ]]||[[ "$TiffSource" =~ "../55U-union_"* ]]
+then
+gdal_translate -co ALPHA=YES -co COMPRESS=NONE -a_srs EPSG:27561 -of GTiff -r bilinear -gcp 0 0 608400 132224 -gcp 0 "$HeightImage" 608400 131824 -gcp "$WidthImage" 0 609100  132224 -gcp "$WidthImage" "$HeightImage" 609100 131824 "$TiffSource" temp.tif
+if [ -f "../_Output_3857/"$NameNoExt"_"$Year".tif" ]
+then
+mv "../_Output_3857/"$NameNoExt"_"$Year".tif" ../_TRASH_TEMP/"$FileDate"_"$NameNoExt"_"$Year".tif
+fi
+gdalwarp -co COMPRESS=NONE -r bilinear  -dstalpha -s_srs "EPSG:27561" -t_srs "EPSG:3857" temp.tif "../_Output_3857/"$NameNoExt"_"$Year".tif"
+gdaladdo -r average "../_Output_3857/"$NameNoExt"_"$Year".tif" 2 4 8 16
+
+# Planche ../40-36-union_*
+elif [[ "$TiffSource" =~ "../40-36-union_"* ]]||[[ "$TiffSource" =~ "../41E-union_"* ]]||[[ "$TiffSource" =~ "../55U-union_"* ]]
+then
+gdal_translate -co ALPHA=YES -co COMPRESS=NONE -a_srs EPSG:27561 -of GTiff -r bilinear -gcp 0 0 608400 131824 -gcp 0 "$HeightImage" 608400 131324 -gcp "$WidthImage" 0 609000  131824 -gcp "$WidthImage" "$HeightImage" 609000 131324 "$TiffSource" temp.tif
+if [ -f "../_Output_3857/"$NameNoExt"_"$Year".tif" ]
+then
+mv "../_Output_3857/"$NameNoExt"_"$Year".tif" ../_TRASH_TEMP/"$FileDate"_"$NameNoExt"_"$Year".tif
+fi
+gdalwarp -co COMPRESS=NONE -r bilinear  -dstalpha -s_srs "EPSG:27561" -t_srs "EPSG:3857" temp.tif "../_Output_3857/"$NameNoExt"_"$Year".tif"
+gdaladdo -r average "../_Output_3857/"$NameNoExt"_"$Year".tif" 2 4 8 16
+
+# Planche ../40-43-union_*
+elif [[ "$TiffSource" =~ "../40-43-union_"* ]]||[[ "$TiffSource" =~ "../50O-union_"* ]]
+then
+gdal_translate -co ALPHA=YES -co COMPRESS=NONE -a_srs EPSG:27561 -of GTiff -r bilinear -gcp 0 0 608400 129124 -gcp 0 "$HeightImage" 608400 128624 -gcp "$WidthImage" 0 609000  129124 -gcp "$WidthImage" "$HeightImage" 609000 128624 "$TiffSource" temp.tif
+if [ -f "../_Output_3857/"$NameNoExt"_"$Year".tif" ]
+then
+mv "../_Output_3857/"$NameNoExt"_"$Year".tif" ../_TRASH_TEMP/"$FileDate"_"$NameNoExt"_"$Year".tif
+fi
+gdalwarp -co COMPRESS=NONE -r bilinear  -dstalpha -s_srs "EPSG:27561" -t_srs "EPSG:3857" temp.tif "../_Output_3857/"$NameNoExt"_"$Year".tif"
+gdaladdo -r average "../_Output_3857/"$NameNoExt"_"$Year".tif" 2 4 8 16
+
+# Planche ../41-54-union_*
+elif [[ "$TiffSource" =~ "../41-54-union_"* ]]||[[ "$TiffSource" =~ "../67P-union_"* ]]
+then
+gdal_translate -co ALPHA=YES -co COMPRESS=NONE -a_srs EPSG:27561 -of GTiff -r bilinear -gcp 0 0 608900 124624 -gcp 0 "$HeightImage" 608900 124224 -gcp "$WidthImage" 0 609600  124624 -gcp "$WidthImage" "$HeightImage" 609600 124224 "$TiffSource" temp.tif
+if [ -f "../_Output_3857/"$NameNoExt"_"$Year".tif" ]
+then
+mv "../_Output_3857/"$NameNoExt"_"$Year".tif" ../_TRASH_TEMP/"$FileDate"_"$NameNoExt"_"$Year".tif
+fi
+gdalwarp -co COMPRESS=NONE -r bilinear  -dstalpha -s_srs "EPSG:27561" -t_srs "EPSG:3857" temp.tif "../_Output_3857/"$NameNoExt"_"$Year".tif"
+gdaladdo -r average "../_Output_3857/"$NameNoExt"_"$Year".tif" 2 4 8 16
 
 #
 ## De Fourcy 1858

@@ -392,10 +392,13 @@ JSWorkspace=$(cat tmp/JSWorkspace)
 else
 JSWorkspace=$(echo "$TheWorkspace")
 fi
+ToReplacePath=$(echo pathtogeotif=\"$PrivatePath\"|sed 's/\//\\\//g')
+
+echo $purple $TorReplacePath $The_LayerMachineName
 
 echo "---> Genrating the javascript file"
 # MachineNameMap_maindiv
-cat ModelJS_Emprise.txt | sed "s/MachineNameMap/$The_LayerMachineName/g" | sed "s/HumanReadable_Name/$HumanReadableName/g" | sed "s/WokspaceLayerName/$JSWorkspace:$TheGeoserverFileName/g" | sed "s/TO_REPLACE_WITH_WKT/$TheEmprise/g" | sed "s/SOURCE_LAYER_CLASS/$TheWorkspace/g">> tmp/TMPJS.js
+cat ModelJS_Emprise.txt | sed "s/MachineNameMap/$The_LayerMachineName/g" | sed "s/HumanReadable_Name/$HumanReadableName/g" | sed "s/WokspaceLayerName/$JSWorkspace:$TheGeoserverFileName/g" | sed "s/TO_REPLACE_WITH_WKT/$TheEmprise/g" | sed "s/SOURCE_LAYER_CLASS/$TheWorkspace/g"| sed "s/PATH_2_GEOTIF/$ToReplacePath/g" >> tmp/TMPJS.js
 
 echo  "var $The_LayerMachineName = new OpenLayers.LonLat($The_CentroidPlanche)
     if (mapbounds.containsLonLat($The_LayerMachineName)) {
