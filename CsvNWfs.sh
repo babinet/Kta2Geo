@@ -285,6 +285,27 @@ fi
 
 
 
+if [[ "$TiffSource" == ../Feuille-254-273-* ]]
+then
+echo "${red} spécial${white} "$TiffSource""
+NodeID="34655"
+OldNum="276"
+Seine="57M-R"
+planchesNames="20-50|54Y|276-277"
+OriginalPost1980Name="33-48-49"
+fi
+
+if [[ "$TiffSource" == ../Feuille-276-277* ]]
+then
+echo "${red} spécial${white} "$TiffSource""
+NodeID="34591"
+OldNum="126-144"
+Seine="49D-I"
+planchesNames="20-50|54Y|276-277"
+OriginalPost1980Name="34-41-42"
+fi
+
+
 ### Echo des variables
 echo "                                                                     ${grey}Nord     Lambert 1"
 echo "${grey}---> \$Nord   Lambert Nord    -   - EPSG:${green}27561${grey}-   -   -   -   -   -   ${orange}$Nord"

@@ -34,9 +34,9 @@ fi
 mkdir -p tmp/NewLayers/Layers_by_NodeID
 
 if [ -f tmp/NewLayers/JSWorkspace ]
-do
+then
 rm tmp/NewLayers/JSWorkspace
-done
+fi
 # Menu to check the storage and the layer name in javascript
 function askYesNo {
         QUESTION=$(echo "${white}---> Would you like to round-up files from different Geoserver workspace in a common workspace in the javascript Dynamic Layers ?
@@ -395,9 +395,9 @@ cat tmp/NewLayers/Import2.csv.TMP >> tmp/NewLayers/Import2.csv
 cat tmp/NewLayers/HidendSeekTMP.js >> tmp/NewLayers/HidendSeek.js
 echo '
 });
-});' >> tmp/HidendSeek.js
+});' >> tmp/NewLayers/HidendSeek.js
 
 
-
+cat ModelJS_HideNSeek_END.txt >> tmp/NewLayers/HidendSeek.js
 
 
