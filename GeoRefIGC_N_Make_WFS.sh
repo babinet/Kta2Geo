@@ -813,6 +813,13 @@ Abscissa=34
 echo "${white}---> Ordinate substitut : ${green}$Ordinate"
 echo "${white}---> Abscissa substitut : ${green}$Abscissa"
 
+elif [[ "$TiffSource" == "../Feuille-59_"* ]]||[[ "$TiffSource" == "../40G_"* ]]
+then
+Ordinate=32
+Abscissa=37
+echo "${white}---> Ordinate substitut : ${green}$Ordinate"
+echo "${white}---> Abscissa substitut : ${green}$Abscissa"
+
 elif [[ "$TiffSource" == "../Feuille-15_"* ]]||[[ "$TiffSource" == "../30P_"* ]]
 then
 Ordinate=26
@@ -2131,7 +2138,7 @@ gdalwarp -co COMPRESS=NONE -r bilinear -s_srs "EPSG:27561" -t_srs "EPSG:3857" -d
 gdaladdo -r average "../_Output_3857/"$NameNoExt"_"$geoserverworkspace"_"$Year".tif" 2 4 8 16
 
 # Planche ../32-33-41_
-elif [[ "$TiffSource" =~ "../32-33-41_"* ]]||[[ "$TiffSource" =~ "../Feuille-124_"* ]]||[[ "$TiffSource" =~ "../49B-C_"* ]]
+elif [[ "$TiffSource" =~ "../32-33-41_"* ]]||[[ "$TiffSource" =~ "../Feuille-124_"* ]]||[[ "$TiffSource" =~ "../49B-C_"* ]]||[[ "$TiffSource" =~ "../Feuille-124-125_"* ]]
 then
 gdal_translate -co COMPRESS=NONE -a_srs EPSG:27561 -of GTiff -gcp 0 0 603700 129824 -gcp 0 "$HeightImage" 603700 129424 -gcp "$WidthImage" 0 604300 129824 -gcp "$WidthImage" "$HeightImage" 604300 129424 "$TiffSource" temp.tif
 if [ -f "../_Output_3857/"$NameNoExt"_"$geoserverworkspace"_"$Year".tif" ]
@@ -2141,25 +2148,16 @@ fi
 gdalwarp -co COMPRESS=NONE -r bilinear -s_srs "EPSG:27561" -t_srs "EPSG:3857" -dstalpha temp.tif "../_Output_3857/"$NameNoExt"_"$geoserverworkspace"_"$Year".tif"
 gdaladdo -r average "../_Output_3857/"$NameNoExt"_"$geoserverworkspace"_"$Year".tif" 2 4 8 16
 
-# Planche ../32-37_*
-elif [[ "$TiffSource" == "../32-37_"* ]]||[[ "$TiffSource" == "../Feuille-59_"* ]]
-then
-gdal_translate -co COMPRESS=NONE -a_srs EPSG:27561 -of GTiff -gcp 0 0 603600 131424 -gcp 0 "$HeightImage" 603600 131024 -gcp "$WidthImage" 0 604200 131424 -gcp "$WidthImage" "$HeightImage" 604200 131024 "$TiffSource" temp.tif
-if [ -f "../_Output/"$NameNoExt"_"$Year".tif" ]
-then
-mv "../_Output/"$NameNoExt"_"$Year".tif" ../_TRASH_TEMP/"$FileDate"_"$NameNoExt"_"$Year".tif
-fi
-gdal_translate -co ALPHA=YES -co COMPRESS=NONE -a_srs EPSG:27561 -of GTiff -r bilinear -gcp 0 0 603600 131424 -gcp 0 "$HeightImage" 603600 130894 -gcp "$WidthImage" 0 604200 131424 -gcp "$WidthImage" "$HeightImage" 604200 130894 "$TiffSource" temp.tif
 # Planche ../32-37-union_*
 elif [[ "$TiffSource" == "../32-37-union"* ]]||[[ "$TiffSource" == "../Feuille-59-union"* ]]||[[ "$TiffSource" == "../40G-union_"* ]]
 then
-gdal_translate -co ALPHA=YES -co COMPRESS=NONE -a_srs EPSG:27561 -of GTiff -r bilinear -gcp 0 0 603600 131424 -gcp 0 "$HeightImage" 603600 130896 -gcp "$WidthImage" 0 604200 131424 -gcp "$WidthImage" "$HeightImage" 604200 130896 "$TiffSource" temp.tif
-if [ -f "../_Output/"$NameNoExt"_"$Year".tif" ]
+gdal_translate -co ALPHA=YES -co COMPRESS=NONE -a_srs EPSG:27561 -of GTiff -r bilinear -gcp 0 0 603600 131424 -gcp 0 "$HeightImage" 603600 130924 -gcp "$WidthImage" 0 604200 131424 -gcp "$WidthImage" "$HeightImage" 604200 130924 "$TiffSource" temp.tif
+if [ -f "../_Output_3857/"$NameNoExt"_"$geoserverworkspace"_"$Year".tif" ]
 then
-mv "../_Output/"$NameNoExt"_"$Year".tif" ../_TRASH_TEMP/"$FileDate"_"$NameNoExt"_"$Year".tif
+mv "../_Output_3857/"$NameNoExt"_"$geoserverworkspace"_"$Year".tif" ../_TRASH_TEMP/"$FileDate"_"$NameNoExt"_"$Year".tif
 fi
-gdalwarp -co COMPRESS=NONE -r bilinear -s_srs "EPSG:27561" -t_srs "EPSG:3857" -dstalpha temp.tif "../_Output/"$NameNoExt"_"$Year".tif"
-gdaladdo -r average "../_Output/"$NameNoExt"_"$Year".tif" 2 4 8 16
+gdalwarp -co COMPRESS=NONE -r bilinear -s_srs "EPSG:27561" -t_srs "EPSG:3857" -dstalpha temp.tif "../_Output_3857/"$NameNoExt"_"$geoserverworkspace"_"$Year".tif"
+gdaladdo -r average "../_Output_3857/"$NameNoExt"_"$geoserverworkspace"_"$Year".tif" 2 4 8 16
 
 # Planche ../33-34-51_*
 elif [[ "$TiffSource" =~ "../33-34-51_"* ]]||[[ "$TiffSource" =~ "../Feuille-304_"* ]]
@@ -2217,7 +2215,7 @@ gdalwarp -co COMPRESS=NONE -r bilinear -s_srs "EPSG:27561" -t_srs "EPSG:3857" -d
 gdaladdo -r average "../_Output_3857/"$NameNoExt"_"$geoserverworkspace"_"$Year".tif" 2 4 8 16
 
 # Planche ../33-48-49_*
-elif [[ "$TiffSource" =~ "../33-48-49-union_"* ]]||[[ "$TiffSource" =~ "../Feuille-254-273-union"* ]]
+elif [[ "$TiffSource" =~ "../33-48-49-union_"* ]]||[[ "$TiffSource" =~ "../Feuille-254-273-union_"* ]]
 then
 gdal_translate -co ALPHA=YES -co COMPRESS=NONE -a_srs EPSG:27561 -of GTiff -r bilinear -gcp 0 0 604200 126824 -gcp 0 "$HeightImage" 604200 126224 -gcp "$WidthImage" 0 604800 126824 -gcp "$WidthImage" "$HeightImage" 604800 126224 "$TiffSource" temp.tif
 if [ -f "../_Output_3857/"$NameNoExt"_"$geoserverworkspace"_"$Year".tif" ]
@@ -2275,8 +2273,8 @@ gdaladdo -r average "../_Output_3857/"$NameNoExt"_"$geoserverworkspace"_"$Year".
 elif [[ "$TiffSource" == "../41-45-42-Encart_"* ]]
 then
 gdal_translate -co COMPRESS=NONE -a_srs EPSG:27561 -of GTiff -gcp 0 0 609347 128673 -gcp 0 "$HeightImage" 609347 128570 -gcp "$WidthImage" 0 609500 128673 -gcp "$WidthImage" "$HeightImage" 609500 128570 "$TiffSource" temp.tif
-gdalwarp -co COMPRESS=NONE -overwrite -s_srs "EPSG:27561" -t_srs "EPSG:3857" temp.tif ../_Output_3857/41-45-42-Encart_"$Year".tif
-gdaladdo -r average ../_Output_3857/41-45-42-Encart_"$Year".tif 2 4 8 16
+gdalwarp -co COMPRESS=NONE -overwrite -s_srs "EPSG:27561" -t_srs "EPSG:3857" temp.tif ../_Output_3857/"$NameNoExt"_"$geoserverworkspace"_"$Year".tif
+gdaladdo -r average ../_Output_3857/"$NameNoExt"_"$geoserverworkspace"_"$Year".tif 2 4 8 16
 
 # Planche ../41-45-42-union_*
 # La planche sans l'encart, mais avec l'alpha
@@ -2350,6 +2348,18 @@ gdaladdo -r average "../_Output_3857/"$NameNoExt"_"$geoserverworkspace"_"$Year".
 elif [[ "$TiffSource" =~ "../34-41-42_"* ]]||[[ "$TiffSource" =~ "../49D-I_"* ]]||[[ "$TiffSource" =~ "../Feuille-126-144_"* ]]
 then
 gdal_translate -co COMPRESS=NONE -a_srs EPSG:27561 -of GTiff -gcp 0 0 604800 129724 -gcp 0 "$HeightImage" 604800 129324 -gcp "$WidthImage" 0 605400 129724 -gcp "$WidthImage" "$HeightImage" 605400 129324 "$TiffSource" temp.tif
+if [ -f "../_Output_3857/"$NameNoExt"_"$geoserverworkspace"_"$Year".tif" ]
+then
+mv "../_Output_3857/"$NameNoExt"_"$geoserverworkspace"_"$Year".tif" ../_TRASH_TEMP/"$FileDate"_"$NameNoExt"_"$Year".tif
+fi
+gdalwarp -co COMPRESS=NONE -r bilinear -s_srs "EPSG:27561" -t_srs "EPSG:3857" -dstalpha temp.tif "../_Output_3857/"$NameNoExt"_"$geoserverworkspace"_"$Year".tif"
+gdaladdo -r average "../_Output_3857/"$NameNoExt"_"$geoserverworkspace"_"$Year".tif" 2 4 8 16
+
+# Planche ../34-48-49-union_*
+elif [[ "$TiffSource" == "../34-48-49-union_"* ]]||[[ "$TiffSource" == "../Feuille-255-union_"* ]]||[[ "$TiffSource" == "../57N-S-union_"* ]]
+then
+echo $purple hello there
+gdal_translate -co ALPHA=YES -co COMPRESS=NONE -a_srs EPSG:27561 -of GTiff -r bilinear -gcp 0 0 604800 126924 -gcp 0 "$HeightImage" 604800 126524 -gcp "$WidthImage" 0 605500  126924 -gcp "$WidthImage" "$HeightImage" 605500 126524 "$TiffSource" temp.tif
 if [ -f "../_Output_3857/"$NameNoExt"_"$geoserverworkspace"_"$Year".tif" ]
 then
 mv "../_Output_3857/"$NameNoExt"_"$geoserverworkspace"_"$Year".tif" ../_TRASH_TEMP/"$FileDate"_"$NameNoExt"_"$Year".tif
@@ -2512,7 +2522,7 @@ gdalwarp -co COMPRESS=NONE -r bilinear -s_srs "EPSG:27561" -t_srs "EPSG:3857" -d
 gdaladdo -r average "../_Output_3857/"$NameNoExt"_"$geoserverworkspace"_"$Year".tif" 2 4 8 16
 
 # Planche ../46-57*
-elif [[ "$TiffSource" =~ "../46-57"* ]]||[[ "$TiffSource" =~ "../77F_"* ]]
+elif [[ "$TiffSource" == "../46-57_"* ]]||[[ "$TiffSource" =~ "../77F_"* ]]
 then
 gdal_translate -co ALPHA=YES -co COMPRESS=NONE -a_srs EPSG:27561 -of GTiff -r bilinear -gcp 0 0 612100 123424 -gcp 0 "$HeightImage" 612100 123024 -gcp "$WidthImage" 0 612700 123424 -gcp "$WidthImage" "$HeightImage" 612700 123024 "$TiffSource" temp.tif
 if [ -f "../_Output_3857/"$NameNoExt"_"$geoserverworkspace"_"$Year".tif" ]
@@ -2525,7 +2535,7 @@ gdaladdo -r average "../_Output_3857/"$NameNoExt"_"$geoserverworkspace"_"$Year".
 # Planche ../46-58*
 elif [[ "$TiffSource" =~ "../46-58"* ]]||[[ "$TiffSource" =~ "../77K_"* ]]
 then
-gdal_translate -co ALPHA=YES -co COMPRESS=NONE -a_srs EPSG:27561 -of GTiff -r bilinear -gcp 0 0 612100 123024 -gcp 0 "$HeightImage" 612100 122624 -gcp "$WidthImage" 0 612700  123024 -gcp "$WidthImage" "$HeightImage" 612700 122624 "$TiffSource" temp.tif
+gdal_translate -co COMPRESS=NONE -a_srs EPSG:27561 -of GTiff -gcp 0 0 612100 123024 -gcp 0 "$HeightImage" 612100 122624 -gcp "$WidthImage" 0 612700  123024 -gcp "$WidthImage" "$HeightImage" 612700 122624 "$TiffSource" temp.tif
 if [ -f "../_Output_3857/"$NameNoExt"_"$geoserverworkspace"_"$Year".tif" ]
 then
 mv "../_Output_3857/"$NameNoExt"_"$geoserverworkspace"_"$Year".tif" ../_TRASH_TEMP/"$FileDate"_"$NameNoExt"_"$Year".tif
@@ -2652,12 +2662,12 @@ gdaladdo -r average "../_Output_3857/"$NameNoExt"_"$geoserverworkspace"_"$Year".
 elif [[ "$TiffSource" == ../Feuille-281-B-union_1896.tif ]]
 then
 gdal_translate -co ALPHA=YES -co COMPRESS=NONE -a_srs EPSG:27561 -of GTiff -r bilinear -gcp 0 0 599400 126324 -gcp 0 "$HeightImage" 599400 125824 -gcp "$WidthImage" 0 600100  126324 -gcp "$WidthImage" "$HeightImage" 600100 125824 "$TiffSource" temp.tif
-if [ -f ../_Output/Feuille-281-B-union_1896.tif ]
+if [ -f ../_Output_3857/Feuille-281-B-union_1896.tif ]
 then
-mv ../_Output/Feuille-281-B-union_1896.tif ../_TRASH_TEMP/"$FileDate"Feuille-281-B-union_1896.tif
+mv ../_Output_3857/Feuille-281-B-union_1896.tif ../_TRASH_TEMP/"$FileDate"Feuille-281-B-union_1896.tif
 fi
-gdalwarp -co COMPRESS=NONE -r bilinear -s_srs "EPSG:27561" -t_srs "EPSG:3857" -dstalpha temp.tif ../_Output/Feuille-281-B-union_1896.tif
-gdaladdo -r average ../_Output/Feuille-281-B-union_1896.tif 2 4 8 16
+gdalwarp -co COMPRESS=NONE -r bilinear -s_srs "EPSG:27561" -t_srs "EPSG:3857" -dstalpha temp.tif ../_Output_3857/Feuille-281-B-union_1896.tif
+gdaladdo -r average ../_Output_3857/Feuille-281-B-union_1896.tif 2 4 8 16
 
 # Planche ../26-50-union_*
 elif [[ "$TiffSource" =~ "../26-50-union_"* ]]||[[ "$TiffSource" =~ "../Feuille-282-union_"* ]]||[[ "$TiffSource" =~ "../55U-union_"* ]]
@@ -3218,13 +3228,28 @@ set -f          # disable globbing
 for TheLine in $(cat tmp/nodes_IDs)
 do
 CurentNodID="$TheLine"
-#echo "$CurentNodID"
+echo "${white}$CurentNodID"
 
 #awk -F'|' -v 'CurentNodID'="$CurentNodID" '$23=='CurentNodID'' OFS='|' ../Computed_Maps.csv |awk -F'|' '{print $18}' OFS='|'
 
 NodID=$(awk -F'|' -v 'CurentNodID'="$CurentNodID" '$23=='CurentNodID'' OFS='|' ../Computed_Maps.csv |awk -F'|' '{print $23}'|tr '\n' '@'|sed 's/\@$//')
 
+echo "$green##############
+#############
+############
+$NodID"
+
+
 Filename=$(awk -F'|' -v 'CurentNodID'="$CurentNodID" '$23=='CurentNodID'' OFS='|' ../Computed_Maps.csv |awk -F'|' '{print $1}' OFS='|'|tr '\n' '@'|sed 's/\@$//')
+
+echo "$red##############
+#############
+############
+$Filename"
+
+
+
+
 nodetitle=$(awk -F'|' -v 'CurentNodID'="$CurentNodID" '$23=='CurentNodID'' OFS='|' ../Computed_Maps.csv |awk -F'|' '{print $2}' |tr '\n' '@'| awk -F'@' '{print $1}')
 field_deptf_seine=$(awk -F'|' -v 'CurentNodID'="$CurentNodID" '$23=='CurentNodID'' OFS='|' ../Computed_Maps.csv |awk -F'|' '{print $3}' |tr '\n' '@'| awk -F'@' '{print $1}')
 OldNum=$(awk -F'|' -v 'CurentNodID'="$CurentNodID" '$23=='CurentNodID'' OFS='|' ../Computed_Maps.csv |awk -F'|' '{print $4}'|tr '\n' '@'| awk -F'@' '{print $1}')
@@ -3279,7 +3304,6 @@ NordEstBasic=$(awk -F'|' -v 'CurentNodID'="$CurentNodID" '$23=='CurentNodID'' OF
 
 MapCentroid=$(awk -F'|' -v 'CurentNodID'="$CurentNodID" '$23=='CurentNodID'' OFS='|' ../Computed_Maps.csv |awk -F'|' '{print $40}'|tr '\n' '@'|sed 's/\@$//')
 MapTitleHumanReadable=$(awk -F'|' -v 'CurentNodID'="$CurentNodID" '$23=='CurentNodID'' OFS='|' ../Computed_Maps.csv |awk -F'|' '{print $41}'|tr '\n' '@'|sed 's/\@$//')
-
 
 
 
@@ -3344,10 +3368,6 @@ TheaTiffMapName=$(cat tmp/TheaTiffMapName)
 TheaTiffSourcePath=$(cat tmp/TheaTiffSourcePath)
 TheZipfile=$(cat tmp/TheZipfile)
 ThePNGfile=$(cat tmp/ThePNGfile)
-
-
-
-
 
 
 echo "$Filename|$nodetitle|$field_deptf_seine|$OldNum|$top_left27561|$bottom_left27561|$bottom_right27561|$top_right27561|$top_left|$bottom_left|$bottom_right|$top_right|$top_left4326|$bottom_left4326|$bottom_right4326|$top_right4326|$WKTBASE|$TheaTiffSourcePath|$TheaTiffMapName|$StorageLocation|$ThePNGfile|$Years|$CurentNodID|$WKT_Map_Extent|$geoserverworkspace|$TheZipfile|$NordOuestBasic2571|$SudOuestBasic2571|$SudEstBasic2571|$NordEstBasic2571|$NordOuestBasic4326|$SudOuestBasic4326|$SudEstBasic4326|$NordEstBasic4326|$NordOuestBasic|$SudOuestBasic|$SudEstBasic|$NordEstBasic|$LastModified_GeoTiff|$MapCentroid|$MapTitleHumanReadable" >> tmp/tmp_First_Import

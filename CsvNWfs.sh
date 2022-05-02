@@ -35,6 +35,9 @@ echo "${white}---> Also, I make jpegs files with .wld ans .prj encapsulated in a
 
 source tmp/tmp_bash
 source tmp/variable_invariable
+echo "$purple#####################
+#################
+####### "$TiffSource" $NameOf_LastProcessed"
 
 
 if [[ $Char3 == [A-Z] ]]
@@ -71,6 +74,11 @@ planchesNames="25-50|55Y|281|"
 OriginalPost1980Name="25-50"
 echo "${red} spécial${white}"
 else
+
+echo "$purple#####################
+#################
+####### "$TiffSource" $NameOf_LastProcessed this process"
+
 NodeID=$(awk -F'|' -v "lenomcompletc"="$PlancheFeuille" '$4=='lenomcompletc'' CODEX_PLANCHES.csv | awk -F'|' '{print $1}'| awk 'NR == 1')
 fi
 
@@ -84,7 +92,7 @@ Seine=$(echo "$planchesNames" |awk -F'|' '{print $2}'|awk -F'_' '{print $1}')
 OldNum=$(echo "$planchesNames" |awk -F'|' '{print $3}'|awk -F'_' '{print $1}')
 echo NodeID=\"$NodeID\" >> tmp/tmp_bash
 fi
-
+source tmp/tmp_bash
 base_name=$(echo "$PlancheName_Simple" | awk -F'_' '{print $1}')
 
 if [[ $TiffSource == *-union_* ]]||[[ $TiffSource == *Feuille-300-301_* ]]||[[ $TiffSource == *Feuille-281-Special-union_* ]]
@@ -141,9 +149,6 @@ NordEstBasic=$(echo $EstBasicTMP $NordBasicTMP| gdaltransform -s_srs EPSG:27561 
 NameOf_LastProcessed=$(ls -t ../_Output_3857/ | head -n1| sed 's/........$//'| awk -F'_' '{print $1"_"}')
 
 NameForUnion=$(echo "$NameOf_LastProcessed" |awk '/-union_/'| awk -F'-union_' '{print $1"-union_"}')
-
-
-
 
 if [[ $base_name == 42-43-39 ]]||[[ $base_name == 34-38-35 ]]||[[ $base_name == 48-38-39 ]]||[[ $base_name == 36-40-41 ]]||[[ $base_name == 3-4-41 ]]||[[ $base_name == 32-41-33 ]]||[[ $base_name == 34-41-42 ]]||[[ $base_name == 36-41-42 ]]||[[ $base_name == 36-42-43 ]]||[[ $base_name == 39-43-44 ]]||[[ $base_name == 39-44-45 ]]||[[ $base_name == 41-46-42 ]]||[[ $base_name == 34-48-49 ]]||[[ $base_name == 33-48-49 ]]||[[ $base_name == 34-49-50 ]]||[[ $base_name == 35-49-50 ]]||[[ $base_name == 8-9-51-52 ]]||[[ $base_name == 33-51-34 ]]||[[ $base_name == 12-54-55 ]]||[[ $base_name == 37-58-59 ]]||[[ $base_name == 45-58-59 ]]||[[ $base_name == 38-58-59 ]]||[[ $base_name == 42-60-43 ]]||[[ $base_name == 15-59-16 ]]||[[ $base_name == 18-40-19 ]]||[[ $base_name == 28-12-13 ]]||[[ $base_name == 42Q-R ]]||[[ $base_name == 40M-N ]]||[[ $base_name == 43M-R ]]||[[ $base_name == 41U-50A ]]||[[ $base_name == 49B-C ]]||[[ $base_name == 49D-I ]]||[[ $base_name == 50A-F ]]||[[ $base_name == 50F-N ]]||[[ $base_name == 50N-S ]]||[[ $base_name == 50S-X ]]||[[ $base_name == 59A-B ]]||[[ $base_name == 51U-V ]]||[[ $base_name == 51U ]]||[[ $base_name == 57N-S ]]||[[ $base_name == 57M-R ]]||[[ $base_name == 57S-X ]]||[[ $base_name == 57T-Y ]]||[[ $base_name == 65C-D ]]||[[ $base_name == 61Q-V ]]||[[ $base_name == 76O-T ]]||[[ $base_name == 75M-N ]]||[[ $base_name == 76V-W ]]||[[ $base_name == 71P ]]||[[ $base_name == 37W-X ]]||[[ $base_name == 3H-M ]]||[[ $base_name == Feuille-76 ]]||[[ $base_name == Feuille-124-125 ]]||[[ $base_name == Feuille-126-144 ]]||[[ $base_name == Feuille-273 ]]||[[ $base_name == Feuille-274 ]]||[[ $base_name == Feuille-304 ]]||[[ $base_name == Feuille-93 ]]||[[ $base_name == Feuille-93 ]]||[[ $base_name == 77P ]]
 then
@@ -271,14 +276,42 @@ NordEstBasic="$NordEst3857"
 
 
 
-
-
 else
 BasicWKT=$(echo "Polygon (($NordOuestBasic, $SudOuestBasic, $SudEstBasic, $NordEstBasic, $NordOuestBasic))")
 echo "${grey}---> \$BasicWKT${grey}   Original layer extent   -   -   -   -   -   -   -   -   -   ${orange}$BasicWKT"
 echo "$green Normal.. I'm Normal (Map Extent)"
 fi
 
+
+#
+
+if [[ "$TiffSource" == ../41-45-42-Encart_* ]]
+then
+echo "${red} spécial${white} 41-45-42-Encart_"
+NodeID="34619"
+OldNum=""
+Seine="51U-V"
+planchesNames="41-45-42|51U-V|"
+OriginalPost1980Name="41-45-42"
+fi
+if [[ "$TiffSource" == ../Feuille-281-B* ]]
+then
+echo "${red} spécial${white} "$TiffSource""
+NodeID="34663"
+OldNum="281"
+Seine="51U-V"
+planchesNames="25-50|55Y|"
+OriginalPost1980Name="25-50"
+fi
+if [[ "$TiffSource" == ../Feuille-282-B* ]]
+then
+echo "${red} spécial${white} "$TiffSource""
+NodeID="34664"
+OldNum="282"
+Seine="56U"
+planchesNames="26-50|56U|"
+OriginalPost1980Name="26-50"
+fi
 
 
 
@@ -440,4 +473,4 @@ exiftool "$ListGeoreferenced" | awk '/Keywords                        :/'| awk -
 
 done
 echo "${white}---> Control bash export${orange}"
-cat tmp/tmp_bash
+
