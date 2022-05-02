@@ -206,23 +206,6 @@ NordEst3857=$(awk -F'|' -v 'base_name'='$NameOf_LastProcessed' "/$NameOf_LastPro
 BasicWKT=$(echo "Polygon (($NordOuest3857, $SudOuest3857, $SudEst3857, $NordEst3857, $NordOuest3857))")
 echo "$green Hello there... I'm Special $red(Special Map Extent)"
 
-
-
- ####### #######  #####  #######
-    #    #       #     #    #
-    #    #       #          #
-    #    #####    #####     #
-    #    #             #    #
-    #    #       #     #    #
-    #    #######  #####     #
-    
-    
-    
-#Nord=$(echo $top_left27561|awk '{print $2}')
-#Sud=$(echo $bottom_right27561|awk '{print $2}')
-#Est=$(echo $bottom_right27561|awk '{print $1}')
-#Ouest=$(echo $top_left27561|awk '{print $1}')
-
     
 
 
@@ -240,38 +223,6 @@ NordOuestBasic="$NordOuest3857"
 SudOuestBasic="$SudOuest3857"
 SudEstBasic="$SudEst3857"
 NordEstBasic="$NordEst3857"
-
-
-#NordOuest3857=$(awk -F'|' -v 'base_name'='$base_name' "/$base_name/"  tmp/List_Special_Planches.csv |awk -F'|' '{print $8}')
-#SudOuest3857=$(awk -F'|' -v 'base_name'='$base_name' "/$base_name/"  tmp/List_Special_Planches.csv |awk -F'|' '{print $9}')
-#SudEst3857=$(awk -F'|' -v 'base_name'='$base_name' "/$base_name/"  tmp/List_Special_Planches.csv |awk -F'|' '{print $10}')
-#NordEst3857=$(awk -F'|' -v 'base_name'='$base_name' "/$base_name/"  tmp/List_Special_Planches.csv |awk -F'|' '{print $11}')
-
-
- ####### #######  #####  #######    ####### #     # ######
-    #    #       #     #    #       #       ##    # #     #
-    #    #       #          #       #       # #   # #     #
-    #    #####    #####     #       #####   #  #  # #     #
-    #    #             #    #       #       #   # # #     #
-    #    #       #     #    #       #       #    ## #     #
-    #    #######  #####     #       ####### #     # ######
-
-#
-#Polygon ((268288.119512518 6247766.94966583.268287.972885489 6247614.85129926, 268287.239829581 6246854.40047534.268287.386430199 6247006.48517259, 269197.082956737 6246853.46882872.269197.2460064 6247005.55349249, 269198.061342866 6247766.01781834.269197.898263818 6247613.91948525, 268288.119512518 6247766.94966583.268287.972885489 6247614.85129926))
-#
-#Polygon ((266468.462760882 6248072.72140264.266468.349029735 6247920.61751139, 266467.780435398 6247160.13906708.266467.89414608 6247312.22928801, 267377.656820114 6247159.40532925.267377.78698105 6247311.49552383, 267378.437856045 6248071.98750676.267378.307671671 6247919.88364185, 266468.462760882 6248072.72140264.266468.349029735 6247920.61751139))
-#
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -312,7 +263,24 @@ Seine="56U"
 planchesNames="26-50|56U|"
 OriginalPost1980Name="26-50"
 fi
-
+if [[ "$TiffSource" == ../Feuille-147-148-union_* ]]
+then
+echo "${red} spécial${white} "$TiffSource""
+NodeID="34605"
+OldNum="282"
+Seine="46N"
+planchesNames="19-43|46N|147-148"
+OriginalPost1980Name="19-43"
+fi
+if [[ "$TiffSource" == ../Feuille-276-277* ]]
+then
+echo "${red} spécial${white} "$TiffSource""
+NodeID="34658"
+OldNum="276"
+Seine="54Y"
+planchesNames="20-50|54Y|276-277"
+OriginalPost1980Name="20-50"
+fi
 
 
 
