@@ -49,9 +49,13 @@ OldNum=$(echo "$planchesNames" |awk -F'|' '{print $3}'|awk -F'_' '{print $1}')
 NodeID=$(awk -F'|' -v "lenomcompletc"="$planchesNamesTMP" '$3=='lenomcompletc'' CODEX_PLANCHES.csv | awk -F'|' '{print $1}'| awk 'NR == 1')
 
 
+echo "$purple debug 01"
+
 echo NodeID=\"$NodeID\" >> tmp/tmp_bash
 elif [[ $PlancheName_Simple == Feuille-* ]]
 then
+echo "$purple debug 02"
+
 PlancheFeuille=$( echo "$PlancheName_Simple"| sed 's/Feuille-//g' )
 planchesNames=$(awk -F'|' -v "le_nom_completb"="$PlancheFeuille" '$4=='le_nom_completb'' CODEX_PLANCHES.csv | awk -F'|' '{print $2, $3, $4}' OFS='|'| awk '{print $0"|"}' )
 OriginalPost1980Name=$(echo "$planchesNames" |awk -F'|' '{print $1}'|awk -F'_' '{print $1}')
@@ -67,6 +71,8 @@ NodeID="34679"
 echo "${red} spécial${white}"
 elif [[ "$TiffSource" =~ "../Feuille-281-Special_"* ]]
 then
+echo "$purple debug 03"
+
 NodeID="34663"
 OldNum="281"
 Seine="55Y"
@@ -95,7 +101,7 @@ fi
 source tmp/tmp_bash
 base_name=$(echo "$PlancheName_Simple" | awk -F'_' '{print $1}')
 
-if [[ $TiffSource == *-union_* ]]||[[ $TiffSource == *Feuille-300-301_* ]]||[[ $TiffSource == *Feuille-281-Special-union_* ]]
+if [[ $TiffSource == *-union_* ]]||[[ $TiffSource == *Feuille-300-301_* ]]||[[ $TiffSource == *Feuille-281-Special-union_* ]]||[[ $TiffSource == *Feuille-281-B-union_* ]]
 then
 OriginalAbsica=$(echo "$OriginalPost1980Name"| awk -F'-' '{print $2}')
 OriginalOrditae=$(echo "$OriginalPost1980Name"| awk -F'-' '{print $1}')

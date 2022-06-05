@@ -51,11 +51,11 @@ planche_name=$(echo "$list_planche_Pour_corners" |awk -F'"../' '{print $2}'|awk 
 OldName=$(echo "$list_planche_Pour_corners" |awk -F'\TiffSource' '{print $2}'|awk -F'"../' '{print $2}'|awk -F'"' '{print $1}')
 Seine=$(echo "$list_planche_Pour_corners"|awk -F'\TiffSource' '{print $3}'|awk -F'"../' '{print $2}'|awk -F'"' '{print $1}')
 
-if [[ "$OldName" == "_Output/" ]]
+if [[ "$OldName" == "_Output_3857/" ]]
 then
 OldName=""
 fi
-if [[ "$Seine" == "_Output/" ]]
+if [[ "$Seine" == "_Output_3857/" ]]
 then
 Seine=""
 fi
