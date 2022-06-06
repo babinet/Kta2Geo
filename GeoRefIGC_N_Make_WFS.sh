@@ -70,7 +70,7 @@ echo dir=\"$dir\" >> tmp/variable_invariable
 
 
 echo "${white}---> Generating special Maps information"
-./Generate_WFS_GRID_FROM_GeoRefIGC.sh
+#./Generate_WFS_GRID_FROM_GeoRefIGC.sh
 
 source tmp/variable_invariable
 

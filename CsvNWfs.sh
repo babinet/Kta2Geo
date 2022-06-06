@@ -49,12 +49,10 @@ OldNum=$(echo "$planchesNames" |awk -F'|' '{print $3}'|awk -F'_' '{print $1}')
 NodeID=$(awk -F'|' -v "lenomcompletc"="$planchesNamesTMP" '$3=='lenomcompletc'' CODEX_PLANCHES.csv | awk -F'|' '{print $1}'| awk 'NR == 1')
 
 
-echo "$purple debug 01"
 
 echo NodeID=\"$NodeID\" >> tmp/tmp_bash
 elif [[ $PlancheName_Simple == Feuille-* ]]
 then
-echo "$purple debug 02"
 
 PlancheFeuille=$( echo "$PlancheName_Simple"| sed 's/Feuille-//g' )
 planchesNames=$(awk -F'|' -v "le_nom_completb"="$PlancheFeuille" '$4=='le_nom_completb'' CODEX_PLANCHES.csv | awk -F'|' '{print $2, $3, $4}' OFS='|'| awk '{print $0"|"}' )
@@ -64,29 +62,9 @@ OldNum=$(echo "$planchesNames" |awk -F'|' '{print $3}'|awk -F'_' '{print $1}'| s
 
 
 
-# # Rares and specials names
-if [[ "$TiffSource" =~ "../Feuille-300-301_"* ]]
-then
-NodeID="34679"
-echo "${red} spécial${white}"
-elif [[ "$TiffSource" =~ "../Feuille-281-Special_"* ]]
-then
-echo "$purple debug 03"
-
-NodeID="34663"
-OldNum="281"
-Seine="55Y"
-planchesNames="25-50|55Y|281|"
-OriginalPost1980Name="25-50"
-echo "${red} spécial${white}"
-else
-
-echo "$purple#####################
-#################
-####### "$TiffSource" $NameOf_LastProcessed this process"
 
 NodeID=$(awk -F'|' -v "lenomcompletc"="$PlancheFeuille" '$4=='lenomcompletc'' CODEX_PLANCHES.csv | awk -F'|' '{print $1}'| awk 'NR == 1')
-fi
+
 
 
 echo NodeID=\"$NodeID\" >> tmp/tmp_bash
@@ -101,8 +79,49 @@ fi
 source tmp/tmp_bash
 base_name=$(echo "$PlancheName_Simple" | awk -F'_' '{print $1}')
 
-if [[ $TiffSource == *-union_* ]]||[[ $TiffSource == *Feuille-300-301_* ]]||[[ $TiffSource == *Feuille-281-Special-union_* ]]||[[ $TiffSource == *Feuille-281-B-union_* ]]
+if [[ $TiffSource == *-union_* ]]||[[ $TiffSource == *Feuille-300-301_* ]]||[[ $TiffSource == *Feuille-281-Special-union_* ]]||[[ $TiffSource == *Feuille-281-B-union_* ]]||[[ $TiffSource == *Feuille-276-277_* ]]||[[ $TiffSource == *76V-W_* ]]
 then
+
+
+## Rares and specials names
+
+if [[ "$TiffSource" =~ "../Feuille-281-B-union_"* ]]
+then
+NodeID="34663"
+OldNum="281"
+Seine="55Y"
+planchesNames="25-50|55Y|281|"
+OriginalPost1980Name="25-50"
+fi
+
+
+if [[ "$TiffSource" =~ "../Feuille-300-301_"* ]]
+then
+NodeID="34679"
+OldNum="300"
+Seine="64D"
+planchesNames="29-51|64D|300|"
+OriginalPost1980Name="29-51"
+fi
+
+if [[ "$TiffSource" == *Feuille-276-277_* ]]
+then
+OldNum="277"
+Seine="55U"
+OriginalPost1980Name="21-50"
+fi
+
+if [[ "$TiffSource" == ../Feuille-147-148-union_* ]]
+then
+BasicWKT=$(echo "Polygon ((253726.239 6251420.329, 53726.239 6250810.978, 254788.639 6250810.978, 253726.239 6251420.329))")
+echo "${red} spécial${white} Feuille-147-148-union_"
+NodeID="34605"
+OldNum="147"
+Seine="46N"
+planchesNames="19-43|46N|147"
+OriginalPost1980Name="19-43"
+fi
+
 OriginalAbsica=$(echo "$OriginalPost1980Name"| awk -F'-' '{print $2}')
 OriginalOrditae=$(echo "$OriginalPost1980Name"| awk -F'-' '{print $1}')
 echo "${green}---> i'm very special (not cropped as the original frame or like Feuille-300-301 with a different size)"
@@ -153,6 +172,18 @@ NordEstBasic=$(echo $EstBasicTMP $NordBasicTMP| gdaltransform -s_srs EPSG:27561 
 
 # last modified in
 NameOf_LastProcessed=$(ls -t ../_Output_3857/ | head -n1| sed 's/........$//'| awk -F'_' '{print $1"_"}')
+# Special case adjustment
+if [ "$NameOf_LastProcessed" == "Feuille-147-148-union_" ]
+then
+NameOf_LastProcessed="Feuille-147-union_"
+fi
+
+if [ "$NameOf_LastProcessed" == "Feuille-276-277_" ]
+then
+NameOf_LastProcessed="Feuille-276-277_"
+fi
+
+
 
 NameForUnion=$(echo "$NameOf_LastProcessed" |awk '/-union_/'| awk -F'-union_' '{print $1"-union_"}')
 
@@ -211,7 +242,7 @@ SudEst3857=$(awk -F'|' -v 'base_name'='$NameOf_LastProcessed' "/$NameOf_LastProc
 NordEst3857=$(awk -F'|' -v 'base_name'='$NameOf_LastProcessed' "/$NameOf_LastProcessed/"  tmp/List_Special_Planches.csv |awk -F'|' '{print $11}')
 BasicWKT=$(echo "Polygon (($NordOuest3857, $SudOuest3857, $SudEst3857, $NordEst3857, $NordOuest3857))")
 echo "$green Hello there... I'm Special $red(Special Map Extent)"
-
+echo $purple $BasicWKT BasicWKT
     
 
 
@@ -282,10 +313,10 @@ if [[ "$TiffSource" == ../Feuille-276-277* ]]
 then
 echo "${red} spécial${white} "$TiffSource""
 NodeID="34658"
-OldNum="276"
-Seine="54Y"
-planchesNames="20-50|54Y|276-277"
-OriginalPost1980Name="20-50"
+OldNum="277"
+Seine="55U"
+planchesNames="21-50|54Y|276-277"
+OriginalPost1980Name="21-50"
 fi
 
 
@@ -309,6 +340,16 @@ OldNum="126-144"
 Seine="49D-I"
 planchesNames="20-50|54Y|276-277"
 OriginalPost1980Name="34-41-42"
+fi
+
+# # Rares and specials names
+if [[ "$TiffSource" =~ "../76V-W_"* ]]
+then
+NodeID="34875"
+OldNum=""
+Seine="76V-W"
+planchesNames="42-60-43|76V-W||"
+OriginalPost1980Name="42-60-43"
 fi
 
 
