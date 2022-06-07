@@ -79,11 +79,20 @@ fi
 source tmp/tmp_bash
 base_name=$(echo "$PlancheName_Simple" | awk -F'_' '{print $1}')
 
-if [[ $TiffSource == *-union_* ]]||[[ $TiffSource == *Feuille-300-301_* ]]||[[ $TiffSource == *Feuille-281-Special-union_* ]]||[[ $TiffSource == *Feuille-281-B-union_* ]]||[[ $TiffSource == *Feuille-276-277_* ]]||[[ $TiffSource == *76V-W_* ]]
+if [[ $TiffSource == *-union_* ]]||[[ $TiffSource == *Feuille-300-301_* ]]||[[ $TiffSource == *Feuille-281-Special-union_* ]]||[[ $TiffSource == *Feuille-281-B-union_* ]]||[[ $TiffSource == *Feuille-276-277_* ]]
 then
 
 
 ## Rares and specials names
+#if [[ "$TiffSource" == "../Feuille-324_"* ]]
+#then
+#echo "${red} spécial${white} "$TiffSource""
+#NodeID="34729"
+#OldNum="324"
+#Seine="63S"
+#planchesNames="24-54|63S|324"
+#OriginalPost1980Name="24-54"
+#fi
 
 if [[ "$TiffSource" =~ "../Feuille-281-B-union_"* ]]
 then
@@ -92,6 +101,15 @@ OldNum="281"
 Seine="55Y"
 planchesNames="25-50|55Y|281|"
 OriginalPost1980Name="25-50"
+fi
+
+if [[ "$TiffSource" =~ "../Feuille-282-B-union_"* ]]
+then
+NodeID="34664"
+OldNum="282"
+Seine="56U"
+planchesNames="26-50|56U|282|"
+OriginalPost1980Name="26-50"
 fi
 
 

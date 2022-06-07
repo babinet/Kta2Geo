@@ -690,7 +690,7 @@ Abscissa=61
 echo "${white}---> Ordinate substitut : ${green}$Ordinate"
 echo "${white}---> Abscissa substitut : ${green}$Abscissa"
 
-elif [[ "$TiffSource" == "../80J_"* ]]
+elif [[ "$TiffSource" == "../82J_"* ]]
 then
 Ordinate=20
 Abscissa=62
