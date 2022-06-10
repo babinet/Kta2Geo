@@ -2662,12 +2662,12 @@ gdaladdo -r average "../_Output_3857/"$NameNoExt"_"$geoserverworkspace"_"$Year".
 elif [[ "$TiffSource" =~ "../Feuille-281-B-union_"* ]]
 then
 gdal_translate -co ALPHA=YES -co COMPRESS=NONE -a_srs EPSG:27561 -of GTiff -r bilinear -gcp 0 0 599400 126324 -gcp 0 "$HeightImage" 599400 125824 -gcp "$WidthImage" 0 600100  126324 -gcp "$WidthImage" "$HeightImage" 600100 125824 "$TiffSource" temp.tif
-if [ -f ../_Output_3857/Feuille-281-B-union_1896.tif ]
+if [ -f ../_Output_3857/Feuille-281-B-union_"$geoserverworkspace"_1896.tif ]
 then
-mv ../_Output_3857/Feuille-281-B-union_1896.tif ../_TRASH_TEMP/"$FileDate"Feuille-281-B-union_1896.tif
+mv ../_Output_3857/Feuille-281-B-union_"$geoserverworkspace"_1896.tif ../_TRASH_TEMP/"$FileDate"Feuille-281-B-union_"$geoserverworkspace"_1896.tif
 fi
-gdalwarp -co COMPRESS=NONE -r bilinear -s_srs "EPSG:27561" -t_srs "EPSG:3857" -dstalpha temp.tif ../_Output_3857/Feuille-281-B-union_1896.tif
-gdaladdo -r average ../_Output_3857/Feuille-281-B-union_1896.tif 2 4 8 16
+gdalwarp -co COMPRESS=NONE -r bilinear -s_srs "EPSG:27561" -t_srs "EPSG:3857" -dstalpha temp.tif ../_Output_3857/Feuille-281-B-union_"$geoserverworkspace"_1896.tif
+gdaladdo -r average ../_Output_3857/Feuille-281-B-union_"$geoserverworkspace"_1896.tif 2 4 8 16
 
 # Planche ../26-50-union_*
 elif [[ "$TiffSource" =~ "../26-50-union_"* ]]||[[ "$TiffSource" =~ "../Feuille-282-union_"* ]]||[[ "$TiffSource" =~ "../55U-union_"* ]]
@@ -2716,15 +2716,15 @@ gdaladdo -r average "../_Output_3857/"$NameNoExt"_"$geoserverworkspace"_"$Year".
 
 
 # Planche ../26-50-union_*
-elif [[ "$TiffSource" == ../Feuille-282-B-union_1896.tif ]]
+elif [[ "$TiffSource" == ../Feuille-282-B-union_* ]]
 then
 gdal_translate -co ALPHA=YES -co COMPRESS=NONE -a_srs EPSG:27561 -of GTiff -r bilinear -gcp 0 0 599900 126324 -gcp 0 "$HeightImage" 599900 125824 -gcp "$WidthImage" 0 600600  126324 -gcp "$WidthImage" "$HeightImage" 600600 125824 "$TiffSource" temp.tif
-if [ -f "../_Output_3857/Feuille-282-B-union_1896.tif" ]
+if [ -f "../_Output_3857/Feuille-282-B-union_"$geoserverworkspace"_1896.tif" ]
 then
-mv "../_Output_3857/Feuille-282-B-union_1896.tif" ../_TRASH_TEMP/"$FileDate"_Feuille-282-B-union_1896.tif
+mv "../_Output_3857/Feuille-282-B-union_"$geoserverworkspace"_1896.tif" ../_TRASH_TEMP/"$FileDate"_Feuille-282-B-union_"$geoserverworkspace"_1896.tif
 fi
-gdalwarp -co COMPRESS=NONE -r bilinear  -dstalpha -s_srs "EPSG:27561" -t_srs "EPSG:3857" temp.tif "../_Output_3857/Feuille-282-B-union_1896.tif"
-gdaladdo -r average "../_Output_3857/Feuille-282-B-union_1896.tif" 2 4 8 16
+gdalwarp -co COMPRESS=NONE -r bilinear  -dstalpha -s_srs "EPSG:27561" -t_srs "EPSG:3857" temp.tif "../_Output_3857/Feuille-282-B-union_"$geoserverworkspace"_1896.tif"
+gdaladdo -r average "../_Output_3857/Feuille-282-B-union_"$geoserverworkspace"_1896.tif" 2 4 8 16
 
 
 #
