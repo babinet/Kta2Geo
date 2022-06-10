@@ -391,7 +391,7 @@ done
 
 echo "S23_NodeID|S2_nodetitle|S3_field_deptf_seine|S4_OldNum|S17_WKT|S19_Original_RawMapName|S18_Original_Tiff_Sources|S40_Body|S68_SourcePNG|S65_The_zips_sources|S35_NordOuestBasic|S36_SudOuestBasic|S37_SudEstBasic|S38_NordEstBasic| S27_NordOuestBasic2571|S28_SudOuestBasic2571|S29_SudEstBasic2571|S30_NordEstBasic2571|S31_NordOuestBasic4326|S32_SudOuestBasic4326|S33_SudEstBasic4326|S34_NordEstBasic4326" > tmp/NewLayers/Import2.csv
 cat tmp/NewLayers/Import2.csv.TMP >> tmp/NewLayers/Import2.csv
-
+cp tmp/NewLayers/Import2.csv ../_2IMPORT.CSV
 cat tmp/NewLayers/HidendSeekTMP.js >> tmp/NewLayers/HidendSeek.js
 echo '
 });

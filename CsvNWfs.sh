@@ -79,20 +79,20 @@ fi
 source tmp/tmp_bash
 base_name=$(echo "$PlancheName_Simple" | awk -F'_' '{print $1}')
 
-if [[ $TiffSource == *-union_* ]]||[[ $TiffSource == *Feuille-300-301_* ]]||[[ $TiffSource == *Feuille-281-Special-union_* ]]||[[ $TiffSource == *Feuille-281-B-union_* ]]||[[ $TiffSource == *Feuille-276-277_* ]]
+if [[ $TiffSource == *-union_* ]]||[[ $TiffSource == *Feuille-300-301_* ]]||[[ $TiffSource == *Feuille-281-Special-union_* ]]||[[ $TiffSource == *Feuille-281-B-union_* ]]||[[ $TiffSource == *Feuille-276-277_* ]]||[[ $TiffSource == *Feuille-59-union* ]]
 then
 
 
 ## Rares and specials names
-#if [[ "$TiffSource" == "../Feuille-324_"* ]]
-#then
-#echo "${red} spécial${white} "$TiffSource""
-#NodeID="34729"
-#OldNum="324"
-#Seine="63S"
-#planchesNames="24-54|63S|324"
-#OriginalPost1980Name="24-54"
-#fi
+if [[ "$TiffSource" == "../Feuille-59-union"* ]]
+then
+echo "${red} spécial${white} "$TiffSource""
+NodeID="54891"
+OldNum="59"
+Seine="40G"
+planchesNames="32-37|40G|59"
+OriginalPost1980Name="32-37"
+fi
 
 if [[ "$TiffSource" =~ "../Feuille-281-B-union_"* ]]
 then
@@ -205,7 +205,7 @@ fi
 
 NameForUnion=$(echo "$NameOf_LastProcessed" |awk '/-union_/'| awk -F'-union_' '{print $1"-union_"}')
 
-if [[ $base_name == 42-43-39 ]]||[[ $base_name == 34-38-35 ]]||[[ $base_name == 48-38-39 ]]||[[ $base_name == 36-40-41 ]]||[[ $base_name == 3-4-41 ]]||[[ $base_name == 32-41-33 ]]||[[ $base_name == 34-41-42 ]]||[[ $base_name == 36-41-42 ]]||[[ $base_name == 36-42-43 ]]||[[ $base_name == 39-43-44 ]]||[[ $base_name == 39-44-45 ]]||[[ $base_name == 41-46-42 ]]||[[ $base_name == 34-48-49 ]]||[[ $base_name == 33-48-49 ]]||[[ $base_name == 34-49-50 ]]||[[ $base_name == 35-49-50 ]]||[[ $base_name == 8-9-51-52 ]]||[[ $base_name == 33-51-34 ]]||[[ $base_name == 12-54-55 ]]||[[ $base_name == 37-58-59 ]]||[[ $base_name == 45-58-59 ]]||[[ $base_name == 38-58-59 ]]||[[ $base_name == 42-60-43 ]]||[[ $base_name == 15-59-16 ]]||[[ $base_name == 18-40-19 ]]||[[ $base_name == 28-12-13 ]]||[[ $base_name == 42Q-R ]]||[[ $base_name == 40M-N ]]||[[ $base_name == 43M-R ]]||[[ $base_name == 41U-50A ]]||[[ $base_name == 49B-C ]]||[[ $base_name == 49D-I ]]||[[ $base_name == 50A-F ]]||[[ $base_name == 50F-N ]]||[[ $base_name == 50N-S ]]||[[ $base_name == 50S-X ]]||[[ $base_name == 59A-B ]]||[[ $base_name == 51U-V ]]||[[ $base_name == 51U ]]||[[ $base_name == 57N-S ]]||[[ $base_name == 57M-R ]]||[[ $base_name == 57S-X ]]||[[ $base_name == 57T-Y ]]||[[ $base_name == 65C-D ]]||[[ $base_name == 61Q-V ]]||[[ $base_name == 76O-T ]]||[[ $base_name == 75M-N ]]||[[ $base_name == 76V-W ]]||[[ $base_name == 71P ]]||[[ $base_name == 37W-X ]]||[[ $base_name == 3H-M ]]||[[ $base_name == Feuille-76 ]]||[[ $base_name == Feuille-124-125 ]]||[[ $base_name == Feuille-126-144 ]]||[[ $base_name == Feuille-273 ]]||[[ $base_name == Feuille-274 ]]||[[ $base_name == Feuille-304 ]]||[[ $base_name == Feuille-93 ]]||[[ $base_name == Feuille-93 ]]||[[ $base_name == 77P ]]
+if [[ $base_name == 42-43-39 ]]||[[ $base_name == 34-38-35 ]]||[[ $base_name == 48-38-39 ]]||[[ $base_name == 36-40-41 ]]||[[ $base_name == 3-4-41 ]]||[[ $base_name == 32-41-33 ]]||[[ $base_name == 34-41-42 ]]||[[ $base_name == 36-41-42 ]]||[[ $base_name == 36-42-43 ]]||[[ $base_name == 39-43-44 ]]||[[ $base_name == 39-44-45 ]]||[[ $base_name == 41-46-42 ]]||[[ $base_name == 34-48-49 ]]||[[ $base_name == 33-48-49 ]]||[[ $base_name == 34-49-50 ]]||[[ $base_name == 35-49-50 ]]||[[ $base_name == 8-9-51-52 ]]||[[ $base_name == 33-51-34 ]]||[[ $base_name == 12-54-55 ]]||[[ $base_name == 37-58-59 ]]||[[ $base_name == 45-58-59 ]]||[[ $base_name == 38-58-59 ]]||[[ $base_name == 42-60-43 ]]||[[ $base_name == 15-59-16 ]]||[[ $base_name == 18-40-19 ]]||[[ $base_name == 28-12-13 ]]||[[ $base_name == 42Q-R ]]||[[ $base_name == 40M-N ]]||[[ $base_name == 43M-R ]]||[[ $base_name == 41U-50A ]]||[[ $base_name == 49B-C ]]||[[ $base_name == 49D-I ]]||[[ $base_name == 50A-F ]]||[[ $base_name == 50F-N ]]||[[ $base_name == 50N-S ]]||[[ $base_name == 50S-X ]]||[[ $base_name == 59A-B ]]||[[ $base_name == 51U-V ]]||[[ $base_name == 51U ]]||[[ $base_name == 57N-S ]]||[[ $base_name == 57M-R ]]||[[ $base_name == 57S-X ]]||[[ $base_name == 57T-Y ]]||[[ $base_name == 65C-D ]]||[[ $base_name == 61Q-V ]]||[[ $base_name == 76O-T ]]||[[ $base_name == 75M-N ]]||[[ $base_name == 76V-W ]]||[[ $base_name == 71P ]]||[[ $base_name == 37W-X ]]||[[ $base_name == 3H-M ]]||[[ $base_name == Feuille-76 ]]||[[ $base_name == Feuille-124-125 ]]||[[ $base_name == Feuille-126-144 ]]||[[ $base_name == Feuille-273 ]]||[[ $base_name == Feuille-274 ]]||[[ $base_name == Feuille-304 ]]||[[ $base_name == Feuille-93 ]]||[[ $base_name == Feuille-93 ]]||[[ $base_name == 77P ]]||[[ $base_name == Feuille-59 ]]
 then
 
 top_left27561=$(awk -F'|' -v 'base_name'='$NameOf_LastProcessed' "/$NameOf_LastProcessed/"  tmp/List_Special_Planches.csv |awk -F'|' '{print $4}')

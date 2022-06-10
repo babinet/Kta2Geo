@@ -70,7 +70,7 @@ echo dir=\"$dir\" >> tmp/variable_invariable
 
 
 echo "${white}---> Generating special Maps information"
-#./Generate_WFS_GRID_FROM_GeoRefIGC.sh
+./Generate_WFS_GRID_FROM_GeoRefIGC.sh
 
 source tmp/variable_invariable
 
@@ -2116,7 +2116,7 @@ gdalwarp -co COMPRESS=NONE -r bilinear -s_srs "EPSG:27561" -t_srs "EPSG:3857" -d
 gdaladdo -r average "../_Output_3857/"$NameNoExt"_"$geoserverworkspace"_"$Year".tif" 2 4 8 16
 
 # Planche ../30-55-union_*
-elif [[ "$TiffSource" =~ "../30-55-union_"* ]]||[[ "$TiffSource" =~ "../Feuille-59_"* ]]
+elif [[ "$TiffSource" =~ "../30-55-union_"* ]]
 then
 gdal_translate -co ALPHA=YES -co COMPRESS=NONE -a_srs EPSG:27561 -of GTiff -r bilinear -gcp 0 0 602400 124224 -gcp 0 "$HeightImage" 602400 123824 -gcp "$WidthImage" 0 603100 124224 -gcp "$WidthImage" "$HeightImage" 603100 123824 "$TiffSource" temp.tif
 if [ -f "../_Output_3857/"$NameNoExt"_"$geoserverworkspace"_"$Year".tif" ]
@@ -2149,7 +2149,7 @@ gdalwarp -co COMPRESS=NONE -r bilinear -s_srs "EPSG:27561" -t_srs "EPSG:3857" -d
 gdaladdo -r average "../_Output_3857/"$NameNoExt"_"$geoserverworkspace"_"$Year".tif" 2 4 8 16
 
 # Planche ../32-37-union_*
-elif [[ "$TiffSource" == "../32-37-union"* ]]||[[ "$TiffSource" == "../Feuille-59-union"* ]]||[[ "$TiffSource" == "../40G-union_"* ]]
+elif [[ "$TiffSource" == "../32-37-union"* ]]||[[ "$TiffSource" =~ "../Feuille-59-union_"* ]]||[[ "$TiffSource" =~ "../40G-union_"* ]]
 then
 gdal_translate -co ALPHA=YES -co COMPRESS=NONE -a_srs EPSG:27561 -of GTiff -r bilinear -gcp 0 0 603600 131424 -gcp 0 "$HeightImage" 603600 130924 -gcp "$WidthImage" 0 604200 131424 -gcp "$WidthImage" "$HeightImage" 604200 130924 "$TiffSource" temp.tif
 if [ -f "../_Output_3857/"$NameNoExt"_"$geoserverworkspace"_"$Year".tif" ]
