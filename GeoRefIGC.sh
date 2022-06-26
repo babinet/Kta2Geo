@@ -2939,15 +2939,15 @@ mv ../_Output/P21_Planche_17_DeFourcy_1858.tif ../_TRASH_TEMP/"$FileDate"_P21_Pl
 fi
 gdalwarp -co COMPRESS=NONE -r bilinear -s_srs "EPSG:27561" -t_srs "EPSG:3857" -dstalpha temp.tif ../_Output/P21_Planche_17_DeFourcy_1858.tif
 
-# De Fourcy 1858 ../P00_Planche_0_Assemblage_DeFourcy_1958.tif
-elif [ "$TiffSource" == ../P00_Planche_0_Assemblage_DeFourcy_1958.tif ]
+# De Fourcy 1858 ../P00_Planche_0_Assemblage_DeFourcy_1858.tif
+elif [ "$TiffSource" == ../P00_Planche_0_Assemblage_DeFourcy_1858.tif ]
 then
 gdal_translate -co ALPHA=YES -co COMPRESS=NONE -a_srs EPSG:27561 -of GTiff -r bilinear -gcp 0 0 596000 129824 -gcp 0 "$HeightImage" 596000 125024  -gcp "$WidthImage" 0 602000 129824 -gcp "$WidthImage" "$HeightImage" 602000 125024 "$TiffSource" temp.tif
-if [ -f ../_Output/P00_Planche_0_Assemblage_DeFourcy_1958.tif ]
+if [ -f ../_Output/P00_Planche_0_Assemblage_DeFourcy_1858.tif ]
 then
-mv ../_Output/P00_Planche_0_Assemblage_DeFourcy_1958.tif ../_TRASH_TEMP/"$FileDate"_P00_Planche_0_Assemblage_DeFourcy_1958.tif
+mv ../_Output/P00_Planche_0_Assemblage_DeFourcy_1858.tif ../_TRASH_TEMP/"$FileDate"_P00_Planche_0_Assemblage_DeFourcy_1958.tif
 fi
-gdalwarp -co COMPRESS=NONE -r bilinear -s_srs "EPSG:27561" -t_srs "EPSG:3857" -dstalpha temp.tif ../_Output/P00_Planche_0_Assemblage_DeFourcy_1958.tif
+gdalwarp -co COMPRESS=NONE -r bilinear -s_srs "EPSG:27561" -t_srs "EPSG:3857" -dstalpha temp.tif ../_Output/P00_Planche_0_Assemblage_DeFourcy_1858.tif
 
 #
 # Fin des traitements particuliers
